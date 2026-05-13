@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GodHealth — Transform Your Temple. Soul. Spirit.</title>
+<meta name="description" content="The only method combining Biblical Wisdom, Modern Science, and certified coaching to transform your body, mind, and spirit — together.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#1A4A2E;--gd:#0F2D1C;--gm:#2A6B44;--gl:#EBF3EE;
+  --gold:#C9A84C;--goldl:#E2C97A;--goldd:#A8863A;
+  --w:#FFFFFF;--cr:#FAF6EE;--crd:#F2EAD8;--crdd:#EAE0CA;
+  --text:#1C2B22;--textm:#4A5E52;--textl:#7A8C82;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cr);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+
+/* POPUP */
+.pop-ov{position:fixed;inset:0;z-index:9999;background:rgba(15,45,28,.82);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:1rem;animation:fI .35s ease;}
+@keyframes fI{from{opacity:0}to{opacity:1}}
+.pop{background:var(--cr);border-radius:2px;max-width:500px;width:100%;position:relative;overflow:hidden;box-shadow:0 32px 80px rgba(15,45,28,.25),0 0 0 1px rgba(201,168,76,.3);animation:sU .5s cubic-bezier(.16,1,.3,1);}
+@keyframes sU{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.pop-top{background:var(--g);padding:clamp(1.75rem,4vw,2.5rem);position:relative;overflow:hidden;}
+.pop-top::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:rgba(201,168,76,.07);}
+.pop-top::after{content:'';position:absolute;bottom:-40px;left:-40px;width:150px;height:150px;border-radius:50%;background:rgba(201,168,76,.05);}
+.pop-logo{height:52px;width:auto;filter:drop-shadow(0 2px 12px rgba(201,168,76,.4));position:relative;z-index:2;}
+.pop-h{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:600;color:var(--w);line-height:1.2;margin-top:.85rem;position:relative;z-index:2;}
+.pop-h em{color:var(--gold);font-style:italic;}
+.pop-sub{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.65;margin-top:.4rem;position:relative;z-index:2;}
+.pop-x{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.1);border:1px solid rgba(201,168,76,.3);color:rgba(255,255,255,.55);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;cursor:pointer;transition:all .3s;z-index:10;}
+.pop-x:hover{background:rgba(201,168,76,.2);color:var(--gold);}
+.pop-body{padding:clamp(1.5rem,4vw,2rem);}
+.pop-tag{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--goldd);display:flex;align-items:center;gap:.6rem;margin-bottom:.85rem;}
+.pop-tag::before{content:'';width:16px;height:1px;background:var(--gold);}
+.fi{background:var(--w);border:1px solid rgba(201,168,76,.22);border-bottom:2px solid rgba(201,168,76,.45);color:var(--text);padding:.82rem 1rem;font-family:'Jost',sans-serif;font-size:.9rem;border-radius:1px;outline:none;transition:all .3s;width:100%;margin-bottom:.5rem;}
+.fi::placeholder{color:var(--textl);}
+.fi:focus{border-color:var(--gold);background:rgba(201,168,76,.03);}
+.btn-gold{display:block;width:100%;background:var(--gold);color:var(--gd);padding:.95rem;font-family:'Jost',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;border-radius:1px;cursor:pointer;transition:all .3s;text-align:center;}
+.btn-gold:hover{background:var(--goldl);transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,168,76,.3);}
+.btn-g{display:block;width:100%;background:var(--g);color:var(--w);padding:.95rem;font-family:'Jost',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:1px;cursor:pointer;transition:all .3s;text-align:center;}
+.btn-g:hover{background:var(--gm);transform:translateY(-1px);box-shadow:0 6px 20px rgba(26,74,46,.22);}
+.pop-or{display:flex;align-items:center;gap:.75rem;color:var(--textl);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;margin:.82rem 0;}
+.pop-or::before,.pop-or::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.2);}
+.btn-out{display:block;width:100%;background:transparent;border:1px solid rgba(26,74,46,.22);color:var(--g);padding:.8rem;font-family:'Jost',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border-radius:1px;cursor:pointer;transition:all .3s;text-align:center;}
+.btn-out:hover{border-color:var(--g);background:var(--gl);}
+.pop-note{font-size:.62rem;color:var(--textl);text-align:center;margin-top:.6rem;}
+.psuc{display:none;text-align:center;padding:1.5rem 0;}
+.psuc h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--g);margin-bottom:.4rem;}
+.psuc p{font-size:.85rem;color:var(--textm);line-height:1.7;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;padding:0 clamp(1rem,4vw,4rem);display:flex;align-items:center;justify-content:space-between;background:rgba(250,246,238,.97);border-bottom:1px solid rgba(201,168,76,.28);backdrop-filter:blur(12px);}
+.nav-logo{display:flex;align-items:center;transition:opacity .3s;}
+.nav-logo:hover{opacity:.82;}
+.nav-links{display:flex;gap:clamp(.75rem,2vw,2rem);list-style:none;align-items:center;}
+.nav-links a{color:var(--textm);font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:color .3s;}
+.nav-links a:hover{color:var(--g);}
+.nav-cta{background:var(--g)!important;color:var(--w)!important;padding:.42rem 1.2rem;border-radius:1px;font-weight:600!important;transition:all .3s!important;}
+.nav-cta:hover{background:var(--gm)!important;}
+.nav-mob{display:none;background:none;border:none;padding:.25rem;flex-direction:column;gap:5px;cursor:pointer;}
+.nav-mob span{display:block;width:22px;height:1.5px;background:var(--g);}
+.mob-menu{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:var(--cr);z-index:999;padding:2rem;flex-direction:column;border-top:1px solid rgba(201,168,76,.18);}
+.mob-menu.open{display:flex;}
+.mob-link{color:var(--textm);font-size:1rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.9rem 0;border-bottom:1px solid rgba(201,168,76,.1);display:block;transition:color .3s;}
+.mob-link:hover{color:var(--g);}
+.mob-cta{margin-top:1.5rem;background:var(--g);color:var(--w)!important;text-align:center;padding:.9rem;border-radius:1px;font-weight:600;font-size:.85rem;border-bottom:none!important;}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:72px;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;background:var(--gd);}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.28) brightness(.2) sepia(.15);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(108deg,rgba(15,45,28,.97) 48%,rgba(26,74,46,.9) 100%);}
+.hero-orb{position:absolute;top:72px;left:50%;right:0;bottom:0;overflow:hidden;pointer-events:none;}
+.hero-orb::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;border:1px solid rgba(201,168,76,.06);}
+.hero-orb::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;height:380px;border-radius:50%;border:1px solid rgba(201,168,76,.05);}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);z-index:5;}
+
+.hero-left{position:relative;z-index:4;padding:clamp(2.5rem,5vw,4.5rem) clamp(1.5rem,3vw,3rem) clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center;animation:hL .9s cubic-bezier(.16,1,.3,1) both;}
+@keyframes hL{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-logo{height:clamp(72px,11vw,105px);width:auto;filter:drop-shadow(0 4px 20px rgba(201,168,76,.4));margin-bottom:clamp(1.25rem,3vw,2rem);}
+.eyebrow{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.1vw,.62rem);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.75rem;margin-bottom:clamp(.85rem,2vw,1.4rem);}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);flex-shrink:0;}
+.eyebrow-c{justify-content:center;}
+.eyebrow-c::before,.eyebrow-c::after{content:'';width:20px;height:1px;background:var(--goldd);flex-shrink:0;}
+.eyebrow-w{color:rgba(201,168,76,.75);}
+.eyebrow-w::before{background:rgba(201,168,76,.5);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.8vw,4rem);font-weight:600;color:var(--w);line-height:1.08;margin-bottom:clamp(.85rem,2vw,1.25rem);}
+.hero h1 em{color:var(--gold);font-style:italic;}
+.hero-rule{display:flex;align-items:center;gap:1rem;margin:clamp(.85rem,2vw,1.25rem) 0;}
+.hrl{width:32px;height:1px;background:rgba(201,168,76,.35);}
+.hrs{color:var(--gold);font-size:.7rem;}
+.hero-body{font-size:clamp(.88rem,1.8vw,1rem);color:rgba(255,255,255,.62);line-height:1.9;max-width:460px;margin-bottom:clamp(1.5rem,3vw,2.5rem);}
+.hero-pills{display:flex;gap:1rem;margin-bottom:clamp(1.5rem,3vw,2.5rem);}
+.hp{display:flex;align-items:center;gap:.5rem;}
+.hp-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);}
+.hp-txt{font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.hero-form{background:rgba(250,246,238,.97);border-radius:2px;padding:clamp(1.25rem,3vw,1.75rem);position:relative;max-width:420px;box-shadow:0 16px 48px rgba(15,45,28,.18);}
+.hero-form::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g),var(--gold),var(--g));}
+.form-tag{font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--goldd);margin-bottom:.82rem;display:block;}
+.fi-l{background:var(--crd);border:1px solid rgba(201,168,76,.2);border-bottom:2px solid rgba(201,168,76,.38);color:var(--text);padding:clamp(.68rem,2vw,.85rem) 1rem;font-family:'Jost',sans-serif;font-size:.9rem;border-radius:1px;outline:none;transition:all .3s;width:100%;margin-bottom:.5rem;}
+.fi-l::placeholder{color:var(--textl);}
+.fi-l:focus{border-color:var(--gold);background:rgba(201,168,76,.04);}
+.form-note{font-size:.62rem;color:var(--textl);text-align:center;margin-top:.55rem;line-height:1.5;}
+.form-note a{color:var(--g);text-decoration:underline;}
+.fsuc{display:none;text-align:center;padding:1rem 0;}
+.fsuc h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--g);margin-bottom:.3rem;}
+.fsuc p{font-size:.82rem;color:var(--textm);line-height:1.7;}
+
+.hero-right{position:relative;z-index:4;padding:clamp(2.5rem,5vw,4.5rem) clamp(1.5rem,4vw,4rem) clamp(3rem,6vw,5rem) clamp(1rem,2vw,2rem);display:flex;flex-direction:column;justify-content:center;gap:clamp(1rem,2vw,1.4rem);animation:hR .9s cubic-bezier(.16,1,.3,1) .2s both;}
+@keyframes hR{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+.sp{background:rgba(250,246,238,.07);border:1px solid rgba(201,168,76,.2);border-radius:2px;padding:clamp(1.25rem,3vw,2rem);position:relative;overflow:hidden;}
+.sp::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.3));}
+.sp::after{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),transparent);}
+.sp-text{font-family:'Cormorant Garamond',serif;font-size:clamp(.88rem,1.8vw,1.02rem);font-style:italic;color:rgba(255,255,255,.85);line-height:1.82;margin-bottom:.65rem;}
+.sp-ref{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.5rem;}
+.sp-ref::before{content:'';width:12px;height:1px;background:var(--gold);}
+.h-stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(201,168,76,.18);border-radius:2px;overflow:hidden;}
+.hs{padding:clamp(.75rem,2vw,1rem);text-align:center;border-right:1px solid rgba(201,168,76,.1);}
+.hs:last-child{border-right:none;}
+.hs-n{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:600;color:var(--gold);line-height:1;}
+.hs-l{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.2rem;}
+.hero-img{border-radius:2px;overflow:hidden;border:1px solid rgba(201,168,76,.18);position:relative;}
+.hero-img::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);z-index:2;}
+.hero-img img{width:100%;height:clamp(130px,16vw,190px);object-fit:cover;filter:saturate(.7) brightness(.62);}
+.hero-img-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,45,28,.9));padding:.75rem 1rem;font-family:'Cinzel',serif;font-size:.52rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;}
+
+/* GOLD BAND */
+.gband{background:var(--gold);padding:clamp(.7rem,1.5vw,.9rem) clamp(1rem,4vw,4rem);display:flex;align-items:center;justify-content:center;gap:clamp(.75rem,2.5vw,2.5rem);flex-wrap:wrap;}
+.gband-item{font-family:'Cinzel',serif;font-size:clamp(.5rem,1.1vw,.6rem);letter-spacing:.22em;text-transform:uppercase;color:var(--gd);white-space:nowrap;}
+.gband-sep{width:1px;height:12px;background:rgba(15,45,28,.2);}
+
+/* SECTION SYSTEM */
+.sec{position:relative;}
+.pad{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4.5rem);}
+.sec-cr{background:var(--cr);}
+.sec-w{background:var(--w);}
+.sec-g{background:var(--g);overflow:hidden;}
+.sec-crd{background:var(--crd);}
+.sec-crdd{background:var(--crdd);}
+.gt::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.gb::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+
+.h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.8vw,3rem);font-weight:600;color:var(--text);line-height:1.15;margin-bottom:clamp(.85rem,2vw,1.25rem);}
+.h2 em{color:var(--goldd);font-style:italic;}
+.h2w{color:var(--w);}
+.h2w em{color:var(--gold);}
+.body{font-size:clamp(.88rem,1.8vw,1rem);color:var(--textm);line-height:1.9;}
+.bodyw{color:rgba(255,255,255,.65);}
+
+.sb{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.22);border-radius:2px;padding:clamp(1.25rem,3vw,2rem) clamp(1.5rem,4vw,2.5rem);position:relative;margin:clamp(1.25rem,3vw,2rem) 0;}
+.sb::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--gold);}
+.sbt{font-family:'Cormorant Garamond',serif;font-size:clamp(.92rem,2vw,1.08rem);font-style:italic;line-height:1.8;margin-bottom:.62rem;}
+.sbt-g{color:var(--text);}
+.sbt-w{color:rgba(255,255,255,.9);}
+.sbr{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:.45rem;}
+.sbr::before{content:'';width:12px;height:1px;flex-shrink:0;}
+.sbr-g{color:var(--goldd);}
+.sbr-g::before{background:var(--goldd);}
+.sbr-w{color:var(--gold);}
+.sbr-w::before{background:var(--gold);}
+
+/* PAIN */
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(201,168,76,.2);border-radius:2px;overflow:hidden;max-width:1100px;margin:clamp(2rem,4vw,3rem) auto 0;}
+.pcol{border-right:1px solid rgba(201,168,76,.12);}
+.pcol:last-child{border-right:none;}
+.pcol-head{background:var(--g);padding:.82rem 1.25rem;border-bottom:1px solid rgba(201,168,76,.2);}
+.pcol-lbl{font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--goldl);}
+.p-item{display:flex;align-items:flex-start;gap:.65rem;padding:.85rem 1.25rem;border-bottom:1px solid rgba(201,168,76,.08);background:var(--w);transition:background .25s;}
+.p-item:hover{background:rgba(201,168,76,.04);}
+.p-arrow{color:var(--gold);font-size:.78rem;flex-shrink:0;margin-top:.1rem;}
+.p-text{font-size:clamp(.78rem,1.7vw,.88rem);color:var(--text);line-height:1.5;}
+.p-solve{padding:.82rem 1.25rem;background:rgba(201,168,76,.06);border-top:1px solid rgba(201,168,76,.15);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.9rem,2vw,1rem);color:var(--g);}
+.pain-quote{max-width:680px;margin:clamp(1.5rem,3vw,2.5rem) auto 0;padding:clamp(1rem,2.5vw,1.5rem) clamp(1.25rem,3vw,2rem);border-left:3px solid var(--gold);background:var(--w);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2.2vw,1.1rem);color:var(--g);line-height:1.7;}
+
+/* PILLARS */
+.pill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.2);border-radius:2px;overflow:hidden;max-width:1100px;margin:clamp(2.5rem,5vw,4rem) auto 0;}
+.pill{background:rgba(15,45,28,.72);padding:clamp(1.5rem,3vw,2.5rem);transition:background .3s;}
+.pill:hover{background:rgba(15,45,28,.88);}
+.pill-num{font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;color:rgba(201,168,76,.14);line-height:1;margin-bottom:.5rem;}
+.pill-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:var(--goldl);margin-bottom:.22rem;}
+.pill-sub{font-family:'Cinzel',serif;font-size:clamp(.5rem,1.1vw,.58rem);letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.82rem;}
+.pill-verse{font-family:'Cormorant Garamond',serif;font-size:clamp(.82rem,1.8vw,.95rem);font-style:italic;color:rgba(255,255,255,.7);line-height:1.75;margin-bottom:.28rem;}
+.pill-ref{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.14em;color:var(--gold);margin-bottom:.82rem;}
+.pill-div{width:28px;height:1px;background:rgba(201,168,76,.25);margin-bottom:.82rem;}
+.pill-list{list-style:none;display:flex;flex-direction:column;gap:.35rem;}
+.pill-list li{font-size:clamp(.75rem,1.6vw,.83rem);color:rgba(255,255,255,.55);padding-left:.9rem;position:relative;line-height:1.45;}
+.pill-list li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:.68rem;}
+
+/* OFFERS */
+.offers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.75rem,2vw,1.5rem);max-width:1100px;margin:clamp(2.5rem,5vw,4rem) auto 0;}
+.oc{background:var(--w);border:1px solid rgba(201,168,76,.2);border-radius:2px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;}
+.oc:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(26,74,46,.12),0 0 0 1px rgba(201,168,76,.22);}
+.oc-ft{border-color:rgba(201,168,76,.38);box-shadow:0 6px 24px rgba(26,74,46,.08);}
+.oc-img{position:relative;overflow:hidden;}
+.oc-img::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);z-index:2;}
+.oc-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(transparent,rgba(15,45,28,.82));z-index:1;}
+.oc-img img{width:100%;height:clamp(140px,16vw,190px);object-fit:cover;filter:saturate(.7) brightness(.72);transition:filter .4s;}
+.oc:hover .oc-img img{filter:saturate(.85) brightness(.82);}
+.oc-tag{position:absolute;top:.75rem;left:.75rem;background:var(--cr);border:1px solid rgba(201,168,76,.35);color:var(--goldd);font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;padding:.2rem .6rem;border-radius:1px;z-index:3;}
+.oc-body{padding:clamp(1.25rem,2.5vw,1.75rem);flex:1;display:flex;flex-direction:column;}
+.oc-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2.2vw,1.3rem);font-weight:600;color:var(--g);margin-bottom:.18rem;}
+.oc-price{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.1vw,.6rem);letter-spacing:.18em;text-transform:uppercase;color:var(--goldd);margin-bottom:.85rem;}
+.oc-prob{background:rgba(201,168,76,.06);border-left:2px solid rgba(201,168,76,.28);padding:.58rem .82rem;margin-bottom:.88rem;font-size:clamp(.76rem,1.6vw,.82rem);color:var(--textm);line-height:1.6;font-style:italic;}
+.oc-feats{flex:1;display:flex;flex-direction:column;gap:.28rem;margin-bottom:.95rem;}
+.of{display:flex;align-items:flex-start;gap:.5rem;font-size:clamp(.74rem,1.6vw,.82rem);color:var(--text);line-height:1.45;}
+.of::before{content:'→';color:var(--gold);font-size:.68rem;flex-shrink:0;margin-top:.1rem;}
+.oc-sep{border:none;border-top:1px solid rgba(201,168,76,.1);margin:.62rem 0;}
+.ofi{background:var(--crd);border:1px solid rgba(201,168,76,.18);border-bottom:2px solid rgba(201,168,76,.32);color:var(--text);padding:.7rem .9rem;font-family:'Jost',sans-serif;font-size:.85rem;border-radius:1px;outline:none;transition:all .3s;width:100%;margin-bottom:.42rem;}
+.ofi::placeholder{color:var(--textl);}
+.ofi:focus{border-color:var(--gold);}
+.ofsuc{display:none;text-align:center;padding:.88rem 0;}
+.ofsuc h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--g);margin-bottom:.18rem;}
+.ofsuc p{font-size:.76rem;color:var(--textm);}
+.cta-g{display:block;width:100%;background:var(--g);color:var(--w);padding:clamp(.72rem,2vw,.88rem);font-family:'Jost',sans-serif;font-size:clamp(.7rem,1.5vw,.78rem);font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:1px;cursor:pointer;transition:all .3s;text-align:center;margin-top:auto;}
+.cta-g:hover{background:var(--gm);box-shadow:0 6px 18px rgba(26,74,46,.2);}
+.cta-og{display:block;width:100%;background:transparent;border:1px solid rgba(26,74,46,.22);color:var(--g);padding:clamp(.72rem,2vw,.88rem);font-family:'Jost',sans-serif;font-size:clamp(.7rem,1.5vw,.78rem);font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:1px;cursor:pointer;transition:all .3s;text-align:center;margin-top:auto;}
+.cta-og:hover{background:var(--gl);border-color:var(--g);}
+.cta-gld{display:block;width:100%;background:var(--gold);color:var(--gd);padding:clamp(.72rem,2vw,.88rem);font-family:'Jost',sans-serif;font-size:clamp(.7rem,1.5vw,.78rem);font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:1px;cursor:pointer;transition:all .3s;text-align:center;margin-top:auto;}
+.cta-gld:hover{background:var(--goldl);box-shadow:0 6px 18px rgba(201,168,76,.28);}
+
+/* TRIBE ECOSYSTEM */
+.eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,.16);border:1px solid rgba(201,168,76,.18);border-radius:2px;overflow:hidden;max-width:1100px;margin:clamp(2rem,4vw,3rem) auto 0;}
+.eco-col{background:var(--crd);}
+.eco-head{background:var(--g);padding:clamp(.72rem,2vw,.9rem) clamp(1rem,2.5vw,1.5rem);border-bottom:1px solid rgba(201,168,76,.18);}
+.eco-lbl{font-family:'Cinzel',serif;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--goldl);}
+.eco-item{display:flex;align-items:flex-start;gap:.6rem;padding:clamp(.6rem,1.8vw,.82rem) clamp(1rem,2.5vw,1.5rem);border-bottom:1px solid rgba(201,168,76,.07);font-size:clamp(.76rem,1.7vw,.84rem);color:var(--text);line-height:1.5;transition:background .25s;}
+.eco-item:hover{background:rgba(201,168,76,.06);}
+.eco-item:last-child{border-bottom:none;}
+.eco-item::before{content:'→';color:var(--gold);flex-shrink:0;font-size:.7rem;margin-top:.08rem;}
+
+/* RITUAL TABLE */
+.rtbl{max-width:800px;margin:clamp(2rem,4vw,3rem) auto 0;border:1px solid rgba(201,168,76,.2);border-radius:2px;overflow:hidden;box-shadow:0 8px 32px rgba(26,74,46,.06);}
+.rr{display:grid;grid-template-columns:clamp(80px,12vw,110px) 1fr;border-bottom:1px solid rgba(201,168,76,.08);}
+.rr:last-child{border-bottom:none;}
+.rday{background:var(--g);padding:clamp(.72rem,2vw,.95rem);display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(201,168,76,.15);}
+.rday-txt{font-family:'Cinzel',serif;font-size:clamp(.5rem,1.1vw,.58rem);letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-align:center;}
+.rbody{padding:clamp(.72rem,2vw,.95rem) clamp(1rem,2.5vw,1.5rem);background:var(--crd);}
+.r-name{font-family:'Cormorant Garamond',serif;font-size:clamp(.9rem,2vw,1.05rem);font-weight:600;color:var(--g);margin-bottom:.18rem;}
+.r-desc{font-size:clamp(.72rem,1.6vw,.8rem);color:var(--textm);line-height:1.55;}
+.rr-sab .rday{background:var(--gold);}
+.rr-sab .rday-txt{color:var(--gd);}
+.rr-sab .rbody{background:rgba(201,168,76,.06);}
+
+/* TRANSFORMATION */
+.tr-orn{position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:clamp(8rem,18vw,22rem);color:rgba(201,168,76,.05);pointer-events:none;user-select:none;line-height:1;}
+.tr-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,5rem);align-items:start;max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.tl{border:1px solid rgba(201,168,76,.18);border-radius:2px;overflow:hidden;margin-top:clamp(1.5rem,3vw,2.5rem);}
+.tl-row{display:grid;grid-template-columns:clamp(58px,8vw,78px) 1fr;border-bottom:1px solid rgba(201,168,76,.1);}
+.tl-row:last-child{border-bottom:none;}
+.tl-m{background:rgba(201,168,76,.1);padding:clamp(.82rem,2vw,1.05rem);display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid rgba(201,168,76,.1);text-align:center;}
+.tl-n{font-family:'Cormorant Garamond',serif;font-size:clamp(1.35rem,3vw,1.95rem);font-weight:600;color:var(--gold);line-height:1;}
+.tl-l{font-family:'Cinzel',serif;font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:.14rem;}
+.tl-body{padding:clamp(.82rem,2vw,1.05rem) clamp(.95rem,2.5vw,1.45rem);}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:clamp(.92rem,2vw,1.08rem);font-weight:600;color:var(--w);margin-bottom:.28rem;}
+.tl-text{font-size:clamp(.74rem,1.6vw,.82rem);color:rgba(255,255,255,.52);line-height:1.65;}
+.tr-vis{display:flex;flex-direction:column;gap:clamp(.85rem,2vw,1.25rem);}
+.t-img{position:relative;border-radius:2px;overflow:hidden;border:1px solid rgba(201,168,76,.2);}
+.t-img::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);z-index:2;}
+.t-img img{width:100%;height:clamp(200px,28vw,300px);object-fit:cover;filter:saturate(.65) brightness(.5);}
+.t-img-ov{position:absolute;inset:0;background:linear-gradient(transparent 38%,rgba(15,45,28,.9));}
+.t-cap{position:absolute;bottom:clamp(.85rem,2.5vw,1.4rem);left:clamp(.85rem,2.5vw,1.4rem);right:clamp(.85rem,2.5vw,1.4rem);z-index:2;}
+.t-cap-t{font-family:'Cormorant Garamond',serif;font-size:clamp(.92rem,2vw,1.12rem);font-weight:600;color:var(--w);margin-bottom:.2rem;}
+.t-cap-s{font-family:'Cinzel',serif;font-size:clamp(.48rem,1.1vw,.56rem);color:var(--gold);letter-spacing:.15em;text-transform:uppercase;}
+.pc{position:absolute;width:clamp(20px,3.5vw,30px);height:clamp(20px,3.5vw,30px);border:1px solid rgba(201,168,76,.45);}
+.pc-tl{top:-6px;left:-6px;border-right:none;border-bottom:none;}
+.pc-br{bottom:-6px;right:-6px;border-left:none;border-top:none;}
+
+/* ROBIN */
+.robin-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(2rem,6vw,5rem);align-items:start;max-width:1100px;margin:0 auto;}
+.robin-photo-w{position:relative;}
+.robin-photo{aspect-ratio:3/4;border-radius:2px;overflow:hidden;border:1px solid rgba(201,168,76,.2);background:linear-gradient(160deg,var(--g),var(--gd));position:relative;}
+.robin-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);}
+.robin-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.08;}
+.robin-ov{position:absolute;inset:0;background:linear-gradient(transparent 52%,rgba(15,45,28,.93));}
+.robin-tag{position:absolute;bottom:0;left:0;right:0;padding:clamp(.82rem,2vw,1.2rem) clamp(.95rem,2.5vw,1.45rem);border-top:1px solid rgba(201,168,76,.22);}
+.robin-name{font-family:'Cormorant Garamond',serif;font-size:clamp(.92rem,2.2vw,1.18rem);font-weight:600;color:var(--w);}
+.robin-title{font-family:'Cinzel',serif;font-size:.48rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-top:.12rem;}
+.creds{display:flex;flex-direction:column;border:1px solid rgba(201,168,76,.16);border-radius:2px;overflow:hidden;margin:clamp(1.25rem,3vw,2rem) 0;}
+.cred{display:flex;gap:.82rem;padding:clamp(.68rem,1.8vw,.88rem) clamp(.9rem,2vw,1.2rem);align-items:center;border-bottom:1px solid rgba(201,168,76,.1);background:var(--w);transition:background .25s;}
+.cred:hover{background:rgba(201,168,76,.04);}
+.cred:last-child{border-bottom:none;}
+.cred-ic{width:30px;height:30px;border-radius:50%;background:rgba(26,74,46,.08);border:1px solid rgba(201,168,76,.22);display:flex;align-items:center;justify-content:center;font-size:.82rem;flex-shrink:0;}
+.cred-t{font-size:clamp(.76rem,1.7vw,.88rem);color:var(--text);line-height:1.4;}
+.cred-t strong{color:var(--g);font-weight:600;}
+.hurdle{background:var(--gl);border-radius:2px;padding:clamp(1.25rem,3vw,2rem);border-left:3px solid var(--gold);margin-top:clamp(1rem,2.5vw,1.45rem);}
+.hurdle-grid{display:grid;grid-template-columns:1fr 1fr;gap:.62rem;margin-bottom:.82rem;}
+.hm{background:var(--w);padding:clamp(.62rem,1.5vw,.88rem);border-radius:2px;border:1px solid rgba(201,168,76,.1);}
+.hm-lbl{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--goldd);margin-bottom:.24rem;}
+.hm-text{font-size:clamp(.7rem,1.5vw,.78rem);color:var(--textm);line-height:1.6;}
+.hurdle-v{font-family:'Cormorant Garamond',serif;font-size:clamp(.8rem,1.8vw,.93rem);font-style:italic;color:var(--textm);line-height:1.7;}
+.hurdle-ref{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--goldd);margin-top:.32rem;display:flex;align-items:center;gap:.35rem;}
+.hurdle-ref::before{content:'';width:12px;height:1px;background:var(--gold);}
+
+/* TESTIMONIALS */
+.t-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.18);border-radius:2px;overflow:hidden;max-width:1100px;margin:clamp(2rem,4vw,3rem) auto 0;}
+.tc{background:var(--w);padding:clamp(1.25rem,2.5vw,1.75rem);position:relative;transition:background .3s;}
+.tc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background .3s;}
+.tc:hover::before{background:var(--gold);}
+.tc:hover{background:rgba(201,168,76,.03);}
+.tq{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:rgba(201,168,76,.22);line-height:1;margin-bottom:.28rem;}
+.tt{font-family:'Cormorant Garamond',serif;font-size:clamp(.84rem,1.8vw,.95rem);font-style:italic;color:var(--text);line-height:1.78;margin-bottom:clamp(.72rem,2vw,1.2rem);}
+.tf{display:flex;align-items:center;gap:.6rem;}
+.ta{width:32px;height:32px;border-radius:50%;background:rgba(26,74,46,.08);border:1px solid rgba(201,168,76,.22);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:600;color:var(--g);}
+.tn{font-size:.8rem;font-weight:600;color:var(--g);}
+.ts{color:var(--gold);font-size:.58rem;}
+.ttype{font-family:'Cinzel',serif;font-size:.46rem;color:var(--textl);text-transform:uppercase;letter-spacing:.1em;}
+
+/* QUICK JOIN */
+.qj-inner{max-width:640px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+.qj-verse{font-family:'Cormorant Garamond',serif;font-size:clamp(.9rem,2vw,1.05rem);font-style:italic;color:rgba(255,255,255,.48);line-height:1.7;margin-bottom:clamp(1.5rem,3vw,2.5rem);}
+.qj-btns{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:clamp(1.25rem,3vw,2rem) 0;}
+.btn-ow{display:block;background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);padding:clamp(.78rem,2vw,.94rem);font-family:'Jost',sans-serif;font-size:clamp(.7rem,1.5vw,.78rem);font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:1px;transition:all .3s;text-align:center;cursor:pointer;}
+.btn-ow:hover{border-color:var(--gold);color:var(--gold);}
+.qj-form{background:rgba(250,246,238,.97);border-radius:2px;padding:clamp(1.25rem,3vw,2rem);text-align:left;margin-top:clamp(1rem,2.5vw,1.5rem);box-shadow:0 8px 32px rgba(15,45,28,.15);}
+.qj-form::before{content:'';display:block;width:100%;height:3px;background:linear-gradient(90deg,var(--g),var(--gold),var(--g));margin-bottom:clamp(.85rem,2vw,1.25rem);}
+.qj-tag{font-family:'Cinzel',serif;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--goldd);display:block;margin-bottom:.82rem;}
+
+/* FOOTER */
+footer{background:var(--gd);border-top:1px solid rgba(201,168,76,.3);}
+.footer-img{width:100%;height:clamp(90px,11vw,150px);object-fit:cover;filter:saturate(.22) brightness(.22) sepia(.15);display:block;border-bottom:1px solid rgba(201,168,76,.15);}
+.footer-top{padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,5vw,4.5rem);display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:clamp(1.5rem,4vw,3rem);border-bottom:1px solid rgba(201,168,76,.1);}
+.f-col-t{font-family:'Cinzel',serif;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.82rem;padding-bottom:.38rem;border-bottom:1px solid rgba(201,168,76,.15);}
+.f-links{display:flex;flex-direction:column;gap:.4rem;}
+.f-links a{color:rgba(255,255,255,.35);font-size:clamp(.76rem,1.6vw,.84rem);transition:color .3s;}
+.f-links a:hover{color:var(--gold);}
+.f-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(255,255,255,.3);font-size:clamp(.78rem,1.7vw,.88rem);line-height:1.68;margin-top:.5rem;}
+.f-mission{font-size:.64rem;color:rgba(255,255,255,.18);margin-top:.82rem;line-height:1.7;}
+.footer-bot{padding:clamp(.9rem,2vw,1.2rem) clamp(1.5rem,5vw,4.5rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;}
+.f-copy{font-size:.6rem;color:rgba(255,255,255,.18);}
+.f-mark{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.15em;color:var(--gold);}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1);}
+.rev.vis{opacity:1;transform:translateY(0);}
+.rev-l{opacity:0;transform:translateX(-22px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1);}
+.rev-l.vis{opacity:1;transform:translateX(0);}
+.rev-r{opacity:0;transform:translateX(22px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1);}
+.rev-r.vis{opacity:1;transform:translateX(0);}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .nav-links{display:none;}
+  .nav-mob{display:flex;}
+  .robin-wrap{grid-template-columns:1fr;}
+  .robin-photo{aspect-ratio:16/9;}
+  .tr-wrap{grid-template-columns:1fr;}
+  .offers-grid{grid-template-columns:1fr;}
+  .t-grid{grid-template-columns:1fr 1fr;}
+  .pill-grid{grid-template-columns:1fr;}
+  .eco-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .pain-grid{grid-template-columns:1fr;}
+  .pcol{border-right:none;border-bottom:1px solid rgba(201,168,76,.1);}
+  .t-grid{grid-template-columns:1fr;}
+  .hurdle-grid{grid-template-columns:1fr;}
+  .qj-btns{grid-template-columns:1fr;}
+  .footer-bot{flex-direction:column;text-align:center;}
+  .gband-sep{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- POPUP -->
+<div class="pop-ov" id="popup">
+  <div class="pop">
+    <button class="pop-x" onclick="closePopup()">✕</button>
+    <div class="pop-top">
+      <img src="godhealth-logo.png" alt="GodHealth" class="pop-logo">
+      <h2 class="pop-h">Get free access.<br><em>Start today.</em></h2>
+      <p class="pop-sub">Join the free 7-Day Arise Challenge and the GodHealth Tribe — instantly.</p>
+    </div>
+    <div class="pop-body">
+      <div class="pop-tag">✦ Free · No Credit Card Required</div>
+      <form id="popForm" onsubmit="sF(event,'popForm','psuc')">
+        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY-HERE">
+        <input type="hidden" name="subject" value="Popup — Arise + Tribe Registration">
+        <input type="text" name="first_name" class="fi" placeholder="Your First Name" required>
+        <input type="email" name="email" class="fi" placeholder="Your Email Address" required>
+        <button type="submit" class="btn-gold" style="margin-top:.25rem;">GET FREE ACCESS NOW →</button>
+      </form>
+      <div class="psuc" id="psuc"><h3>✦ You're in.</h3><p>Day 1 is on its way. God bless — Robin</p></div>
+      <p class="pop-note">Free. No credit card. Unsubscribe anytime.</p>
+      <div class="pop-or">or</div>
+      <button class="btn-out" onclick="closePopup()">I'll explore first →</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="godhealth-logo.png" alt="GodHealth" style="height:44px;width:auto;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#offers">Programs</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#tribe">Tribe</a></li>
+    <li><a href="#robin">Robin</a></li>
+    <li><a href="inner-covenant.html" class="nav-cta">Apply Now</a></li>
+  </ul>
+  <button class="nav-mob" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#offers" class="mob-link" onclick="toggleNav()">Programs</a>
+  <a href="#method" class="mob-link" onclick="toggleNav()">The Method</a>
+  <a href="#tribe" class="mob-link" onclick="toggleNav()">The Tribe</a>
+  <a href="#robin" class="mob-link" onclick="toggleNav()">About Robin</a>
+  <a href="inner-covenant.html" class="mob-link mob-cta">Apply for Inner Covenant →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1600&q=80" alt=""></div>
+  <div class="hero-orb"></div>
+  <div class="hero-left">
+    <img src="godhealth-logo.png" alt="GodHealth" class="hero-logo">
+    <div class="eyebrow eyebrow-w">✦ Temple · Soul · Spirit</div>
+    <h1>God designed you<br>for <em>complete</em><br>health.</h1>
+    <div class="hero-rule"><div class="hrl"></div><span class="hrs">✦</span><div class="hrl"></div></div>
+    <p class="hero-body">Biblical Wisdom. Modern Science. Top-level coaching. All three pillars — in one place, with a community of believers beside you.</p>
+    <div class="hero-pills">
+      <div class="hp"><div class="hp-dot"></div><span class="hp-txt">Temple</span></div>
+      <div class="hp"><div class="hp-dot"></div><span class="hp-txt">Soul</span></div>
+      <div class="hp"><div class="hp-dot"></div><span class="hp-txt">Spirit</span></div>
+    </div>
+    <div class="hero-form">
+      <span class="form-tag">✦ Free 7-Day Arise Challenge</span>
+      <form id="heroForm" onsubmit="sF(event,'heroForm','heroSuc')">
+        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY-HERE">
+        <input type="hidden" name="subject" value="Hero — Arise Challenge Registration">
+        <input type="text" name="first_name" class="fi-l" placeholder="Your First Name" required>
+        <input type="email" name="email" class="fi-l" placeholder="Your Email Address" required>
+        <button type="submit" class="btn-g" style="margin-top:.25rem;">START FREE TODAY →</button>
+      </form>
+      <div class="fsuc" id="heroSuc"><h3>✦ You're in.</h3><p>Check your inbox — Day 1 is coming.</p></div>
+      <p class="form-note">Free. No credit card. &nbsp;|&nbsp; <a href="tribe.html">Join the Tribe free →</a></p>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="sp">
+      <p class="sp-text">"Know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own? For ye are bought with a price: therefore glorify God in your body, and in your spirit, which are God's."</p>
+      <div class="sp-ref">1 Corinthians 6:19-20 · KJV</div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=700&q=80" alt="GodHealth Training">
+      <div class="hero-img-cap">Temple · Soul · Spirit — All Three Together</div>
+    </div>
+    <div class="h-stats">
+      <div class="hs"><div class="hs-n">100+</div><div class="hs-l">Coached</div></div>
+      <div class="hs"><div class="hs-n">7</div><div class="hs-l">Day Challenge</div></div>
+      <div class="hs"><div class="hs-n">3</div><div class="hs-l">Pillars</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD BAND -->
+<div class="gband">
+  <span class="gband-item">✦ Biblical Wisdom</span><div class="gband-sep"></div>
+  <span class="gband-item">✦ Modern Science</span><div class="gband-sep"></div>
+  <span class="gband-item">✦ Certified Coaching</span><div class="gband-sep"></div>
+  <span class="gband-item">✦ Christian Community</span><div class="gband-sep"></div>
+  <span class="gband-item">✦ Temple · Soul · Spirit</span>
+</div>
+
+<!-- PAIN -->
+<section class="sec sec-cr pad gt rev">
+  <div style="max-width:700px;margin:0 auto clamp(2rem,4vw,3rem);">
+    <div class="eyebrow">The Reality</div>
+    <h2 class="h2">You are not failing.<br><em>You are missing the blueprint.</em></h2>
+    <p class="body">God never designed you in parts. Temple, Soul, and Spirit work as one. When one collapses — all three suffer. Most programs address only one. That is why nothing lasts.</p>
+  </div>
+  <div class="pain-grid">
+    <div class="pcol">
+      <div class="pcol-head"><div class="pcol-lbl">✦ Temple — Physical</div></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">Exhausted every morning</span></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">Weight that won't move</span></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">No energy for your calling</span></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">Body you're not proud of</span></div>
+      <div class="p-solve">GodHealth restores the temple.</div>
+    </div>
+    <div class="pcol">
+      <div class="pcol-head"><div class="pcol-lbl">✦ Soul — Mental</div></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">Starting over every Monday</span></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">Shame cycles you can't break</span></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">You know what to do — but don't</span></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">No discipline or consistency</span></div>
+      <div class="p-solve">GodHealth renews the mind.</div>
+    </div>
+    <div class="pcol">
+      <div class="pcol-head"><div class="pcol-lbl">✦ Spirit — Spiritual</div></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">Disconnected from God</span></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">Faith and body not aligned</span></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">Lonely — even around others</span></div>
+      <div class="p-item"><span class="p-arrow">→</span><span class="p-text">Purpose blocked by poor health</span></div>
+      <div class="p-solve">GodHealth sets the spirit free.</div>
+    </div>
+  </div>
+  <div class="pain-quote">"Most programs fix one pillar. GodHealth is the only place that transforms all three — together, at the same time, with a community of believers beside you."</div>
+</section>
+
+<!-- METHOD -->
+<section class="sec sec-g pad gt gb" id="method">
+  <div class="tr-orn" aria-hidden="true">∞</div>
+  <div class="rev" style="max-width:700px;margin:0 auto clamp(2.5rem,5vw,4rem);">
+    <div class="eyebrow eyebrow-w">The GodHealth Method</div>
+    <h2 class="h2 h2w">The only method that transforms<br><em>all three. Together.</em></h2>
+    <p class="body bodyw">Biblical Wisdom as the foundation. Modern Science as the confirmation. Top-level coaching as the application. Christian community as the environment where it becomes permanent.</p>
+    <div class="sb" style="margin-top:clamp(1.5rem,3vw,2rem);">
+      <p class="sbt sbt-w">"Be ye not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God."</p>
+      <div class="sbr sbr-w">Romans 12:2 — King James Version</div>
+    </div>
+  </div>
+  <div class="pill-grid rev">
+    <div class="pill">
+      <div class="pill-num">I</div><div class="pill-name">The Temple</div><div class="pill-sub">Physical Health</div>
+      <p class="pill-verse">"Therefore glorify God in your body, and in your spirit, which are God's."</p>
+      <div class="pill-ref">1 Corinthians 6:20 · KJV</div><div class="pill-div"></div>
+      <ul class="pill-list"><li>Movement &amp; training</li><li>God-created nutrition</li><li>Sleep &amp; recovery</li><li>Energy &amp; consistency</li></ul>
+    </div>
+    <div class="pill">
+      <div class="pill-num">II</div><div class="pill-name">The Soul</div><div class="pill-sub">Mental Health</div>
+      <p class="pill-verse">"Be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God."</p>
+      <div class="pill-ref">Romans 12:2 · KJV</div><div class="pill-div"></div>
+      <ul class="pill-list"><li>Identity in Christ</li><li>Breaking shame cycles</li><li>Biblical discipline</li><li>Mindset &amp; habits</li></ul>
+    </div>
+    <div class="pill">
+      <div class="pill-num">III</div><div class="pill-name">The Spirit</div><div class="pill-sub">Spiritual Health</div>
+      <p class="pill-verse">"But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance."</p>
+      <div class="pill-ref">Galatians 5:22-23 · KJV</div><div class="pill-div"></div>
+      <ul class="pill-list"><li>Daily walk with God</li><li>Faith &amp; body aligned</li><li>Fruit of the Spirit</li><li>Spiritual accountability</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section class="sec sec-cr pad gt" id="offers">
+  <div class="rev" style="max-width:700px;margin:0 auto clamp(2.5rem,5vw,4rem);text-align:center;">
+    <div class="eyebrow eyebrow-c">Choose Your Path</div>
+    <h2 class="h2" style="text-align:center;">Three ways to start.<br><em>All built on the same method.</em></h2>
+  </div>
+  <div class="offers-grid rev">
+    <!-- ARISE -->
+    <div class="oc">
+      <div class="oc-img"><img src="https://images.unsplash.com/photo-1541199249251-f713e6145474?w=600&q=80" alt="Arise Challenge"><div class="oc-tag">✦ Free · 7 Days</div></div>
+      <div class="oc-body">
+        <div class="oc-name">7-Day Arise Challenge</div>
+        <div class="oc-price">Completely Free</div>
+        <div class="oc-prob">For the Christian who feels stuck and wants a powerful first step — in body, mind, and spirit.</div>
+        <div class="oc-feats">
+          <div class="of">Day 0 — Instant Tribe access</div>
+          <div class="of">Day 1-7 — Daily video from Robin at 08:00</div>
+          <div class="of">Arise Workbook PDF</div>
+          <div class="of">Day 4 — Biblical meal + grocery list</div>
+          <div class="of">Partner system — bring someone with you</div>
+          <div class="of">Day 8 — Personal video from Robin</div>
+        </div>
+        <hr class="oc-sep">
+        <form id="ariseForm" onsubmit="sO(event,'ariseForm','ariseSuc')">
+          <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY-HERE">
+          <input type="hidden" name="subject" value="Arise Challenge Registration">
+          <input type="text" name="first_name" class="ofi" placeholder="First Name" required>
+          <input type="email" name="email" class="ofi" placeholder="Email Address" required>
+          <button type="submit" class="cta-og">START THE CHALLENGE FREE →</button>
+        </form>
+        <div class="ofsuc" id="ariseSuc"><h4>✦ You're in!</h4><p>Check your inbox for Day 1.</p></div>
+      </div>
+    </div>
+    <!-- TRIBE -->
+    <div class="oc">
+      <div class="oc-img"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="GodHealth Tribe"><div class="oc-tag">✦ Free · Community</div></div>
+      <div class="oc-body">
+        <div class="oc-name">The GodHealth Tribe</div>
+        <div class="oc-price">Completely Free</div>
+        <div class="oc-prob">For the Christian who wants daily community, accountability, and weekly teachings from Robin.</div>
+        <div class="oc-feats">
+          <div class="of">Daily encouragement from Robin</div>
+          <div class="of">Weekly live teaching from Robin — 45 min</div>
+          <div class="of">Weekly rituals — Sabbath, Sunday Intention</div>
+          <div class="of">12 monthly challenges — all 3 pillars</div>
+          <div class="of">Accountability partner — bring a friend</div>
+          <div class="of">Robin prays for everyone, every week</div>
+          <div class="of">Progress system — 5 levels</div>
+        </div>
+        <hr class="oc-sep">
+        <form id="tribeForm" onsubmit="sO(event,'tribeForm','tribeSuc')">
+          <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY-HERE">
+          <input type="hidden" name="subject" value="Tribe Registration">
+          <input type="text" name="first_name" class="ofi" placeholder="First Name" required>
+          <input type="email" name="email" class="ofi" placeholder="Email Address" required>
+          <button type="submit" class="cta-og">JOIN THE TRIBE FREE →</button>
+        </form>
+        <div class="ofsuc" id="tribeSuc"><h4>✦ Welcome!</h4><p>Check your inbox for Circle access.</p></div>
+      </div>
+    </div>
+    <!-- INNER COVENANT -->
+    <div class="oc oc-ft">
+      <div class="oc-img"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="Inner Covenant"><div class="oc-tag">✦ Elite · Max 12</div></div>
+      <div class="oc-body">
+        <div class="oc-name">The Inner Covenant</div>
+        <div class="oc-price">Investment Discussed Personally · 3 Months</div>
+        <div class="oc-prob">For the Christian ready to go all in — 90 days of personal coaching with Robin.</div>
+        <div class="oc-feats">
+          <div class="of">Personal 60-min intake call with Robin</div>
+          <div class="of">Personal 3-month transformation plan</div>
+          <div class="of">Personalized nutrition plan</div>
+          <div class="of">2× live coaching per week — 90 min</div>
+          <div class="of">We pray together every session</div>
+          <div class="of">Weekly personal feedback from Robin</div>
+          <div class="of">Direct access to Robin via private chat</div>
+          <div class="of">Healthy Recipe Library — 250+ recipes</div>
+          <div class="of">Covenant Pair accountability</div>
+          <div class="of">90-Day review + Certificate</div>
+        </div>
+        <hr class="oc-sep">
+        <a href="inner-covenant.html" class="cta-gld">APPLY FOR THE COVENANT →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIBE ECOSYSTEM -->
+<section class="sec sec-w pad gt" id="tribe">
+  <div class="rev" style="max-width:800px;margin:0 auto clamp(2rem,4vw,3rem);">
+    <div class="eyebrow">The Tribe Ecosystem</div>
+    <h2 class="h2">A community built on<br><em>Biblical rhythm.</em></h2>
+    <p class="body" style="max-width:580px;">Every week has a ritual. Every ritual is rooted in Scripture. Robin posts — the Tribe reads, responds, and grows together. Direct questions to Robin are exclusively for Inner Covenant members.</p>
+  </div>
+  <div class="rtbl rev">
+    <div class="rr"><div class="rday"><div class="rday-txt">Monday</div></div><div class="rbody"><div class="r-name">Monday Mission</div><div class="r-desc">Robin posts one question: "Who are you bringing into the Tribe this week?" Tribe members respond. Community grows.</div></div></div>
+    <div class="rr"><div class="rday"><div class="rday-txt">Wednesday</div></div><div class="rbody"><div class="r-name">The Mid-Week Word</div><div class="r-desc">One verse. One question from Robin. Members reflect and respond to each other.</div></div></div>
+    <div class="rr"><div class="rday"><div class="rday-txt">Friday</div></div><div class="rbody"><div class="r-name">Win of the Week</div><div class="r-desc">The community nominates each other. Robin chooses the winner and honours them publicly in the Hall of Faithfulness.</div></div></div>
+    <div class="rr rr-sab"><div class="rday"><div class="rday-txt">Saturday</div></div><div class="rbody"><div class="r-name">The Sabbath + 24-Hour Fast</div><div class="r-desc">Rest. Fast. No phone. No food from Friday sunset to Saturday sunset. The community is silent. The day belongs to God.</div></div></div>
+    <div class="rr"><div class="rday"><div class="rday-txt">Sunday</div></div><div class="rbody"><div class="r-name">The Sunday Intention</div><div class="r-desc">One verse. One weekvision. One intention question. One concrete action. Members fill in the Weekly Vision Template and share with their Covenant Partner.</div></div></div>
+  </div>
+  <div class="eco-grid rev">
+    <div class="eco-col">
+      <div class="eco-head"><div class="eco-lbl">Every Day</div></div>
+      <div class="eco-item">Personal encouragement from Robin</div>
+      <div class="eco-item">Daily check-in prompt — Tribe only</div>
+      <div class="eco-item">Private Circle community access</div>
+    </div>
+    <div class="eco-col">
+      <div class="eco-head"><div class="eco-lbl">Every Week</div></div>
+      <div class="eco-item">Monday Mission</div>
+      <div class="eco-item">Mid-Week Word</div>
+      <div class="eco-item">Win of the Week + Hall of Faithfulness</div>
+      <div class="eco-item">Saturday Sabbath + 24-Hour Fast</div>
+      <div class="eco-item">Sunday Intention + Vision Template</div>
+      <div class="eco-item">Live Teaching from Robin — 45 min</div>
+    </div>
+    <div class="eco-col">
+      <div class="eco-head"><div class="eco-lbl">Every Month</div></div>
+      <div class="eco-item">Monthly Challenge — Temple, Soul &amp; Spirit</div>
+      <div class="eco-item">Behind The Covenant — Robin shares personally</div>
+      <div class="eco-item">Covenant Wall — members introduce themselves</div>
+      <div class="eco-item">Robin prays for everyone, every week</div>
+      <div class="eco-item">Progress levels — Seeker to The Pillar</div>
+      <div class="eco-item">First access to Robin's content — 48 hrs early</div>
+    </div>
+  </div>
+  <div class="rev" style="max-width:680px;margin:clamp(1.5rem,3vw,2.5rem) auto 0;padding:clamp(1rem,2.5vw,1.5rem) clamp(1.25rem,3vw,2rem);border-left:3px solid var(--gold);background:var(--crd);border-radius:2px;">
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2vw,1.1rem);color:var(--g);line-height:1.7;margin-bottom:.35rem;">"Tribe members read Robin's posts and respond to each other. Direct questions to Robin are exclusively for Inner Covenant members — the access that makes the Covenant invaluable."</p>
+    <p style="font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--goldd);">The Boundary That Protects The Inner Covenant</p>
+  </div>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="sec sec-g pad gt gb" style="overflow:hidden;">
+  <div class="tr-orn" aria-hidden="true">90</div>
+  <div class="tr-wrap">
+    <div class="rev-l">
+      <div class="eyebrow eyebrow-w">The 90-Day Inner Covenant</div>
+      <h2 class="h2 h2w">What 90 days<br><em>actually looks like.</em></h2>
+      <p class="body bodyw">This is not willpower. This is what God does when Temple, Soul, and Spirit are all aligned — in a body surrendered to Him.</p>
+      <div class="tl">
+        <div class="tl-row"><div class="tl-m"><div class="tl-n">01</div><div class="tl-l">Month</div></div><div class="tl-body"><div class="tl-title">The Temple Wakes Up</div><div class="tl-text">Energy higher than in years. Body changing visibly. Your plan is built for your body — not a template.</div></div></div>
+        <div class="tl-row"><div class="tl-m"><div class="tl-n">02</div><div class="tl-l">Month</div></div><div class="tl-body"><div class="tl-title">The Soul Is Renewed</div><div class="tl-text">Habits no longer forced — they are who you are. Identity in Christ settled. Discipline flows from the Spirit, not willpower.</div></div></div>
+        <div class="tl-row"><div class="tl-m"><div class="tl-n">03</div><div class="tl-l">Month</div></div><div class="tl-body"><div class="tl-title">The Spirit Moves Freely</div><div class="tl-text">Faith and body aligned. You feel who God designed you to be. Not someday. Now. A temple that is whole and surrendered.</div></div></div>
+      </div>
+      <div style="margin-top:clamp(1.25rem,3vw,2rem);">
+        <a href="inner-covenant.html" class="btn-gold" style="display:inline-block;max-width:320px;padding:.9rem 1.5rem;font-size:.8rem;">APPLY FOR THE COVENANT →</a>
+      </div>
+    </div>
+    <div class="tr-vis rev-r">
+      <div class="t-img" style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=700&q=80" alt="Transformation">
+        <div class="t-img-ov"></div>
+        <div class="t-cap"><div class="t-cap-t">Complete Transformation</div><div class="t-cap-s">✦ Temple · Soul · Spirit · Together</div></div>
+        <div class="pc pc-tl"></div><div class="pc pc-br"></div>
+      </div>
+      <div class="sb">
+        <p class="sbt sbt-w">"Wherefore seeing we also are compassed about with so great a cloud of witnesses, let us lay aside every weight, and the sin which doth so easily beset us, and let us run with patience the race that is set before us, looking unto Jesus the author and finisher of our faith."</p>
+        <div class="sbr sbr-w">Hebrews 12:1-2 · KJV</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROBIN -->
+<section class="sec sec-crd pad gt" id="robin">
+  <div class="robin-wrap">
+    <div class="robin-photo-w rev-l">
+      <div class="robin-photo">
+        <div class="robin-ph">
+          <svg width="180" height="220" viewBox="0 0 180 220" fill="none"><rect x="38" y="148" width="7" height="62" fill="#1A4A2E"/><rect x="135" y="156" width="7" height="52" fill="#1A4A2E"/><rect x="38" y="148" width="104" height="5" fill="#1A4A2E"/><circle cx="90" cy="84" r="19" fill="#1A4A2E"/><path d="M90 103L72 148M90 103L108 148M72 148L58 190M108 148L122 186" stroke="#1A4A2E" stroke-width="6" stroke-linecap="round"/><path d="M83 126L57 112M97 126L123 108" stroke="#1A4A2E" stroke-width="5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="robin-ov"></div>
+        <div class="robin-tag"><div class="robin-name">Robin Kramps</div><div class="robin-title">Founder · GodHealth · Alkmaar, The Netherlands</div></div>
+      </div>
+      <div class="pc pc-tl" style="top:-8px;left:-8px;border-color:rgba(201,168,76,.35);"></div>
+      <div class="pc pc-br" style="bottom:-8px;right:-8px;border-color:rgba(201,168,76,.35);"></div>
+    </div>
+    <div class="rev-r">
+      <div class="eyebrow">Called. Trained. Sent.</div>
+      <h2 class="h2">About Robin Kramps</h2>
+      <p class="body" style="margin-bottom:clamp(1rem,2.5vw,1.5rem);">I finished 2nd in the Dutch national hurdles championship. Studied Sport, Movement and Health for four years. Then I came to faith in Jesus Christ — and everything I had learned made complete sense. GodHealth was born not as a business idea, but as a calling.</p>
+      <div class="creds">
+        <div class="cred"><div class="cred-ic">🏆</div><div class="cred-t"><strong>2nd Place</strong> — Dutch National Hurdles Championship</div></div>
+        <div class="cred"><div class="cred-ic">📚</div><div class="cred-t"><strong>4 Years</strong> — CIOS Sport, Movement, Nutrition &amp; Health</div></div>
+        <div class="cred"><div class="cred-ic">✓</div><div class="cred-t"><strong>Level 4</strong> Certified Lifestyle Coach &amp; Coordinator</div></div>
+        <div class="cred"><div class="cred-ic">💪</div><div class="cred-t"><strong>Certified</strong> Personal Trainer · 100+ people coached</div></div>
+      </div>
+      <div class="hurdle">
+        <div style="font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--goldd);margin-bottom:.82rem;">✦ The Prophetic Picture</div>
+        <div class="hurdle-grid">
+          <div class="hm"><div class="hm-lbl">The Blocks</div><div class="hm-text">Decision already made before the gun fires. God calls us before conditions are perfect.</div></div>
+          <div class="hm"><div class="hm-lbl">The Start</div><div class="hm-text">Immediate response. When God speaks — you cannot wait for a better moment.</div></div>
+          <div class="hm"><div class="hm-lbl">The Hurdles</div><div class="hm-text">Clear every obstacle without losing momentum. Barriers are meant to be cleared.</div></div>
+          <div class="hm"><div class="hm-lbl">The Finish</div><div class="hm-text">Not surviving — crossing as a winner. In all three pillars. That is what GodHealth builds.</div></div>
+        </div>
+        <p class="hurdle-v">"Know ye not that they which run in a race run all, but one receiveth the prize? So run, that ye may obtain."</p>
+        <div class="hurdle-ref">1 Corinthians 9:24 · KJV</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec sec-crdd pad gt rev">
+  <div style="max-width:800px;margin:0 auto clamp(2rem,4vw,3rem);">
+    <div class="eyebrow eyebrow-c">Real People · Real Transformation</div>
+    <h2 class="h2" style="text-align:center;">What people say about<br><em>working with Robin.</em></h2>
+  </div>
+  <div class="t-grid">
+    <div class="tc"><div class="tq">"</div><p class="tt">For the first time someone connected my faith, my mind, and my body as one. That single shift changed everything.</p><div class="tf"><div class="ta">S</div><div><div class="tn">Sarah, 34</div><div class="ts">★★★★★</div><div class="ttype">GodHealth Client</div></div></div></div>
+    <div class="tc"><div class="tq">"</div><p class="tt">Four months in and I'm a different man. Not just the body — the faith, the mind. All three moved together. Nothing else did that.</p><div class="tf"><div class="ta">J</div><div><div class="tn">James, 41</div><div class="ts">★★★★★</div><div class="ttype">GodHealth Client</div></div></div></div>
+    <div class="tc"><div class="tq">"</div><p class="tt">I lost 11 kg. But that is the smallest part. I feel like the person God designed me to be — body, mind, and spirit. All three.</p><div class="tf"><div class="ta">L</div><div><div class="tn">Lisa, 38</div><div class="ts">★★★★★</div><div class="ttype">GodHealth Client</div></div></div></div>
+    <div class="tc"><div class="tq">"</div><p class="tt">Robin reframed everything. My body belongs to God. I am a steward of His temple. That one truth changed my health forever.</p><div class="tf"><div class="ta">D</div><div><div class="tn">David, 45</div><div class="ts">★★★★★</div><div class="ttype">Personal Client</div></div></div></div>
+  </div>
+</section>
+
+<!-- QUICK JOIN -->
+<section class="sec sec-g pad gt gb" style="overflow:hidden;">
+  <div class="tr-orn" aria-hidden="true">↑</div>
+  <div class="qj-inner rev">
+    <div class="eyebrow eyebrow-c eyebrow-w">Your Moment</div>
+    <h2 class="h2 h2w" style="text-align:center;">God is not waiting for<br><em>perfect conditions.</em></h2>
+    <p class="qj-verse">"Arise, shine; for thy light is come, and the glory of the Lord is risen upon thee." — Isaiah 60:1 · KJV</p>
+    <p class="body bodyw" style="text-align:center;">Start free. Start today. Bring someone with you.</p>
+    <div class="qj-btns">
+      <a href="tribe.html" class="btn-ow">JOIN TRIBE FREE →</a>
+      <a href="inner-covenant.html" class="btn-gold" style="display:block;text-align:center;padding:clamp(.78rem,2vw,.94rem);font-family:'Jost',sans-serif;font-size:clamp(.72rem,1.5vw,.8rem);font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:1px;">APPLY FOR COVENANT →</a>
+    </div>
+    <div class="qj-form">
+      <span class="qj-tag">✦ Or Start With The Free 7-Day Arise Challenge</span>
+      <form id="joinForm" onsubmit="sF(event,'joinForm','joinSuc')">
+        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY-HERE">
+        <input type="hidden" name="subject" value="Quick Join — Arise Challenge">
+        <input type="text" name="first_name" class="fi-l" placeholder="Your First Name" required>
+        <input type="email" name="email" class="fi-l" placeholder="Your Email Address" required>
+        <button type="submit" class="btn-g" style="margin-top:.25rem;">START FREE TODAY →</button>
+      </form>
+      <div class="fsuc" id="joinSuc"><h3>✦ You're in.</h3><p>Check your inbox. Day 1 is on its way.</p></div>
+      <p style="font-size:.62rem;color:var(--textl);text-align:center;margin-top:.55rem;">Free. No credit card. God bless — Robin</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-img" src="https://images.unsplash.com/photo-1473186578172-c141e6798cf4?w=1600&q=80" alt="">
+  <div class="footer-top">
+    <div>
+      <img src="godhealth-logo.png" alt="GodHealth" style="height:54px;width:auto;margin-bottom:.65rem;filter:drop-shadow(0 0 10px rgba(201,168,76,.22));">
+      <p class="f-tagline">"Your body is the temple of the Holy Ghost. It is time to treat it like one." — 1 Corinthians 6:19 · KJV</p>
+      <p class="f-mission">A Spirit-led business with a Kingdom purpose — to support the Kingdom of God by spreading the good news of Jesus Christ through the health and transformation of His children.</p>
+    </div>
+    <div>
+      <div class="f-col-t">Pages</div>
+      <div class="f-links">
+        <a href="index.html">Home — Arise Challenge</a>
+        <a href="tribe.html">The GodHealth Tribe</a>
+        <a href="inner-covenant.html">The Inner Covenant</a>
+        <a href="thankyou.html">Thank You</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-t">Start Today</div>
+      <div class="f-links">
+        <a href="#offers">Free Arise Challenge</a>
+        <a href="tribe.html">Join The Tribe</a>
+        <a href="inner-covenant.html#apply">Apply for Inner Covenant</a>
+        <a href="#robin">About Robin</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <p class="f-copy">© 2025 GodHealth · Robin Kramps · Alkmaar, The Netherlands · Worldwide</p>
+    <p class="f-mark">✦ Temple · Soul · Spirit</p>
+  </div>
+</footer>
+
+<script>
+function closePopup(){document.getElementById('popup').style.display='none';sessionStorage.setItem('ghp','1');}
+if(sessionStorage.getItem('ghp')){document.getElementById('popup').style.display='none';}
+document.getElementById('popup').addEventListener('click',function(e){if(e.target===this)closePopup();});
+async function sF(e,id,sid){
+  e.preventDefault();const f=document.getElementById(id),s=document.getElementById(sid),b=f.querySelector('button[type="submit"]');
+  const o=b.textContent;b.textContent='Sending...';b.disabled=true;
+  try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(f)});const d=await r.json();
+  if(d.success){f.style.display='none';s.style.display='block';if(id==='popForm')setTimeout(()=>closePopup(),2800);}
+  else{b.textContent=o;b.disabled=false;}}catch{b.textContent=o;b.disabled=false;}
+}
+async function sO(e,id,sid){
+  e.preventDefault();const f=document.getElementById(id),s=document.getElementById(sid),b=f.querySelector('button[type="submit"]');
+  const o=b.textContent;b.textContent='Sending...';b.disabled=true;
+  try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(f)});const d=await r.json();
+  if(d.success){f.style.display='none';s.style.display='block';}else{b.textContent=o;b.disabled=false;}}catch{b.textContent=o;b.disabled=false;}
+}
+function toggleNav(){document.getElementById('mobMenu').classList.toggle('open');}
+document.addEventListener('click',function(e){const m=document.getElementById('mobMenu'),b=document.querySelector('.nav-mob');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&b&&!b.contains(e.target))m.classList.remove('open');});
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rev,.rev-l,.rev-r').forEach(el=>io.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-80,behavior:'smooth'});}});});
+</script>
+</body>
+</html>
