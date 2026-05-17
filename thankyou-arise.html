@@ -98,7 +98,60 @@ footer{background:rgba(4,10,6,1);border-top:1px solid rgba(201,168,76,.12);paddi
 .f-copy{font-size:.6rem;color:rgba(255,255,255,.28);}
 .f-mark{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.15em;background:var(--gold-soft);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
-@media(max-width:768px){.steps{grid-template-columns:1fr 1fr;}.paths{grid-template-columns:1fr;}.footer-bot{flex-direction:column;text-align:center;}}
+.paths{grid-template-columns:1fr;}.footer-bot{flex-direction:column;text-align:center;}}
+
+/* ── TABLET ── */
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .nav-mob { display: flex; }
+  .mob-menu { top: 60px; }
+}
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  nav { height: 60px; padding: 0 1.25rem; }
+  nav img { height: 36px !important; }
+  .pad, .sec { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+  .h1, .h2 { font-size: 1.75rem !important; }
+  .hero { padding-top: 60px; }
+  .hero-inner { padding: 2rem 1.25rem !important; }
+  .why-grid, .cp-grid, .tr-wrap, .tribe-grid, .robin-wrap,
+  .offers-compare, .offers-grid, .arise-grid, .transform-grid,
+  .trans-grid, .robin-grid { grid-template-columns: 1fr !important; }
+  .offer, .offer-card { border-right: none !important; border-bottom: 1px solid rgba(201,168,76,0.1) !important; }
+  .testi-grid, .tgrid, .t-grid { grid-template-columns: 1fr !important; }
+  .excl-items, .final-paths, .fcta-paths { grid-template-columns: 1fr !important; }
+  .pain-grid { grid-template-columns: 1fr !important; }
+  .pain-col, .pcol { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06) !important; }
+  .hurdle-grid, .hurdle-moments { grid-template-columns: 1fr !important; }
+  .footer-top { grid-template-columns: 1fr !important; padding: 2rem 1.25rem !important; }
+  .footer-bot { flex-direction: column !important; text-align: center !important; }
+  .steps, .fcta-paths { grid-template-columns: 1fr 1fr !important; }
+  .ritual-row, .rr { grid-template-columns: 80px 1fr !important; }
+  .tl-row, .tl-item { grid-template-columns: 56px 1fr !important; }
+  .compare-head, .compare-row, .ct-head, .ct-row { min-width: 420px; }
+  .compare { overflow-x: auto; }
+  .gband, .gold-band { gap: 0.6rem !important; flex-wrap: wrap; }
+  .band-dot, .gband-sep { display: none !important; }
+  .popup { max-width: 100% !important; border-radius: 0 !important; }
+  .popup-overlay { align-items: flex-end !important; padding: 0 !important; }
+  .feat-grid, .feats-grid { grid-template-columns: 1fr !important; }
+  .feat-4 { grid-column: 1 !important; }
+  .sess-tbl, .ritual-tbl, .rtbl { width: 100%; }
+  .recipe-grid, .alumni-grid { grid-template-columns: 1fr !important; }
+  .tl-wrap { grid-template-columns: 1fr !important; }
+  .roles-grid { grid-template-columns: 1fr !important; }
+  .prog-table { overflow-x: auto; }
+  .paths { grid-template-columns: 1fr !important; }
+  .expect-grid { grid-template-columns: 1fr !important; }
+  .qj-btns { grid-template-columns: 1fr !important; }
+  .hero-cta-wrap { flex-direction: column !important; }
+}
+@media (max-width: 480px) {
+  .h1, .h2 { font-size: 1.55rem !important; }
+  .steps { grid-template-columns: 1fr 1fr !important; }
+}
+
 </style>
 </head>
 <body>
