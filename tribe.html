@@ -618,12 +618,20 @@ async function sF(e,id,sid){
   if(d.success){f.style.display='none';s.style.display='block';}else{b.textContent=o;b.disabled=false;}}
   catch{b.textContent=o;b.disabled=false;}
 }
+const ML_TOKEN_T = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiNTVmNWRmNmYxZDM0NzljYjVlMzQ4NzY1NmFkMzBmODMyMmE3Y2IxMWYzYjAzMWE2ODkwOGQyOTg0OTMxNDNiMDU3M2VkNDhkN2FhNTNlZWQiLCJpYXQiOjE3NzkzMDQxMTAuMTg4NDIzLCJuYmYiOjE3NzkzMDQxMTAuMTg4NDI2LCJleHAiOjQ5MzQ5Nzc3MTAuMTgyNjMxLCJzdWIiOiIyMzc3NjgzIiwic2NvcGVzIjpbXX0.HzopOoTjUevmC1D0zmsrsyTcB2lErxXjJ1_0_7oHt1Qs0VnJHsCBj-_1qBt5jHKPMVLtkcQ5YcWYo7vtDYxPs102TCABdyrXaURXFUm9PQnnxM11o8CNYAtgWGm2Ysz8PHYeTyp4MajtnoS4envv1XvN9P4R51QvkM4_YXt02yStE7Faqq8RTfTvF9tzMavf5FueXsOax9iG35r4TFYh6TmR70xX-ipZ1ei3vuH5Ff733wWrjGjK7_DA_KPz0tpOcLZhusOHoTK0_mwNcTniYpGT8kjBCTJFmZc8vlijTXqB0RXvBC4WoZm4GLxGQq9VMiauQqBxCmWEv3me6Zv1SY3QIyfzEPC1CfReHVSkIhdB8M-bx0NnU8dW7bKHBWo7DZT9NqT9syvXBVN-_g84ivrWdtlPeeToULRrsTHknqbrWRxOeRENGcplKQoau9FKarhJvtcgfCoYaWh2G2tAKEyTFUeEGTYVaoMQfeynykaB4rdMh-_U6j2WTmYLry7Q39dw1Ck8QyFqFrPhb0wtyXmOBSZiiuhCXEbifFizuATQ2hJPi7xbsbyBinU1PhsBeZWoov_x3XudEAtXlVnH947ZxMd7UvPGerA7oVsCH1vcmMfv768xLaypXz4nMIuejSu-872Dl5ABGK7EFFUteG3-i7AVfo1CWxvc4At7pOI';
 async function submitTribe(e,id){
   e.preventDefault();const f=document.getElementById(id),b=f.querySelector('button');
   const o=b.textContent;b.textContent='Joining...';b.disabled=true;
-  try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(f)});const d=await r.json();
-  if(d.success){window.location.href='thankyou-tribe.html';}else{b.textContent=o;b.disabled=false;}}
-  catch{b.textContent=o;b.disabled=false;}
+  try{
+    const data=new FormData(f);
+    const r=await fetch('https://connect.mailerlite.com/api/subscribers',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+ML_TOKEN_T},
+      body:JSON.stringify({email:data.get('email'),fields:{name:data.get('first_name'),partner_name:data.get('partner_name'),partner_email:data.get('partner_email')},groups:['188013620326565132']})
+    });
+    if(r.ok||r.status===201){window.location.href='thankyou-tribe.html';}
+    else{b.textContent=o;b.disabled=false;}
+  }catch{b.textContent=o;b.disabled=false;}
 }
 </script>
 </body>

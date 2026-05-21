@@ -829,12 +829,20 @@ function updateInvestment(){
   else if(val==='duo'){ind.style.display='none';duo.style.display='flex';}
   else{ind.style.display='none';duo.style.display='none';}
 }
+const ML_TOKEN_IC = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiNTVmNWRmNmYxZDM0NzljYjVlMzQ4NzY1NmFkMzBmODMyMmE3Y2IxMWYzYjAzMWE2ODkwOGQyOTg0OTMxNDNiMDU3M2VkNDhkN2FhNTNlZWQiLCJpYXQiOjE3NzkzMDQxMTAuMTg4NDIzLCJuYmYiOjE3NzkzMDQxMTAuMTg4NDI2LCJleHAiOjQ5MzQ5Nzc3MTAuMTgyNjMxLCJzdWIiOiIyMzc3NjgzIiwic2NvcGVzIjpbXX0.HzopOoTjUevmC1D0zmsrsyTcB2lErxXjJ1_0_7oHt1Qs0VnJHsCBj-_1qBt5jHKPMVLtkcQ5YcWYo7vtDYxPs102TCABdyrXaURXFUm9PQnnxM11o8CNYAtgWGm2Ysz8PHYeTyp4MajtnoS4envv1XvN9P4R51QvkM4_YXt02yStE7Faqq8RTfTvF9tzMavf5FueXsOax9iG35r4TFYh6TmR70xX-ipZ1ei3vuH5Ff733wWrjGjK7_DA_KPz0tpOcLZhusOHoTK0_mwNcTniYpGT8kjBCTJFmZc8vlijTXqB0RXvBC4WoZm4GLxGQq9VMiauQqBxCmWEv3me6Zv1SY3QIyfzEPC1CfReHVSkIhdB8M-bx0NnU8dW7bKHBWo7DZT9NqT9syvXBVN-_g84ivrWdtlPeeToULRrsTHknqbrWRxOeRENGcplKQoau9FKarhJvtcgfCoYaWh2G2tAKEyTFUeEGTYVaoMQfeynykaB4rdMh-_U6j2WTmYLry7Q39dw1Ck8QyFqFrPhb0wtyXmOBSZiiuhCXEbifFizuATQ2hJPi7xbsbyBinU1PhsBeZWoov_x3XudEAtXlVnH947ZxMd7UvPGerA7oVsCH1vcmMfv768xLaypXz4nMIuejSu-872Dl5ABGK7EFFUteG3-i7AVfo1CWxvc4At7pOI';
 async function submitIC(e){
   e.preventDefault();const f=document.getElementById('icForm'),b=f.querySelector('button');
   const o=b.textContent;b.textContent='Submitting...';b.disabled=true;
-  try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(f)});const d=await r.json();
-  if(d.success){window.location.href='thankyou-ic.html';}
-  else{b.textContent=o;b.disabled=false;}}catch{b.textContent=o;b.disabled=false;}
+  try{
+    const data=new FormData(f);
+    const r=await fetch('https://connect.mailerlite.com/api/subscribers',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+ML_TOKEN_IC},
+      body:JSON.stringify({email:data.get('email'),fields:{name:data.get('first_name'),last_name:data.get('last_name'),phone:data.get('phone'),type:data.get('type'),investment:data.get('investment'),partner_email:data.get('partner_email')},groups:['188013630171645905']})
+    });
+    if(r.ok||r.status===201){window.location.href='thankyou-ic.html';}
+    else{b.textContent=o;b.disabled=false;}
+  }catch{b.textContent=o;b.disabled=false;}
 }
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-80,behavior:'smooth'});}});});
 </script>
