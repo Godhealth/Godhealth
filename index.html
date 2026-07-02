@@ -155,9 +155,15 @@
   .robin .photo .ph { text-align: center; color: var(--ink-mute); font-size: 12px; }
   .robin .photo .brandmark { width: 84px; height: 84px; opacity: .5; margin: 0 auto 10px; }
   .robin .creds { display: flex; flex-wrap: wrap; gap: 9px; margin: 16px 0 18px; }
-  .hero-video { max-width:500px; margin:18px auto 0; border-radius:16px; overflow:hidden; border:1px solid var(--gold-line);
+  .hero-video { position:relative; max-width:500px; margin:18px auto 0; border-radius:16px; overflow:hidden; border:1px solid var(--gold-line);
     background:#020805; box-shadow:0 30px 80px -36px rgba(0,0,0,.9),0 0 45px -24px rgba(217,180,90,.5); }
   .hero-video video { display:block; width:100%; max-height:304px; background:#020805; object-fit:contain; pointer-events:none; }
+  .video-sound { position:absolute; z-index:2; left:50%; bottom:14px; transform:translateX(-50%); display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    border:1px solid rgba(255,235,174,.68); border-radius:9999px; padding:10px 16px; cursor:pointer; color:#241802; font-size:12px; font-weight:800; letter-spacing:.04em;
+    background:linear-gradient(135deg,#f4d77f,#b88a2e); box-shadow:0 10px 28px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.45); transition:opacity .2s ease,transform .2s ease,visibility .2s ease; }
+  .video-sound:hover { transform:translateX(-50%) translateY(-2px); }
+  .video-sound svg { width:16px; height:16px; }
+  .video-sound.hidden { opacity:0; visibility:hidden; pointer-events:none; transform:translateX(-50%) translateY(6px); }
   .hero-impact { font-family:'Cormorant Garamond',serif; font-weight:700; font-size:clamp(20px,2.7vw,25px); line-height:1.35; color:var(--ink); max-width:760px !important; }
   .hero-explainer { max-width:720px !important; font-size:clamp(14px,1.8vw,16.5px); line-height:1.55; }
   @media(max-width:560px){
@@ -370,6 +376,9 @@
   .nav-toggle { display: none; background: none; border: 1px solid var(--gold-line); border-radius: 11px; width: 42px; height: 42px; cursor: pointer; align-items: center; justify-content: center; }
   .nav-toggle svg { width: 22px; height: 22px; color: var(--gold-2); }
   .nav-panel { display: none; }
+  header .nav-panel a.nav-cta { color:#241802; background:linear-gradient(135deg,#f4d77f,#b88a2e); border:1px solid rgba(255,235,174,.65); border-radius:9999px;
+    padding:13px 18px; margin:9px 0; text-align:center; font-weight:750; box-shadow:0 10px 26px -16px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.42); }
+  header .nav-panel a.nav-cta:hover { color:#171004; background:linear-gradient(135deg,#f8e29a,#c99a39); }
   /* header switches to a light bar over light sections */
   header.light { background: rgba(250,246,236,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(184,138,46,0.22); }
   header.light .nav-links a { color: rgba(34,28,18,0.68); }
@@ -379,6 +388,7 @@
   header.light .nav-toggle svg { color: var(--gold-1); }
   header.light.open .nav-panel { background: rgba(250,246,236,0.98); border-bottom-color: rgba(184,138,46,0.22); }
   header.light .nav-panel a { color: rgba(34,28,18,0.72); border-bottom-color: rgba(184,138,46,0.14); }
+  header.light .nav-panel a.nav-cta { color:#241802; border-color:rgba(184,138,46,.55); }
   header.light .btn-outline { color: #221c12; border-color: rgba(184,138,46,0.5); background: rgba(184,138,46,0.06); }
   @media (max-width: 900px) { .nav-actions .btn-outline, .nav-actions .header-call { display: none; } }
   @media (max-width: 980px) { .brand-tag { display: none; } }
@@ -503,11 +513,11 @@
     </div>
   </div>
   <nav class="nav-panel" id="navPanel" aria-label="Mobile navigation">
-    <a href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a>
+    <a class="nav-cta" href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a>
     <a href="#alignment">The Alignment Gap&trade;</a>
     <a href="#scan">The Scan</a>
     <a href="#faq">FAQ</a>
-    <a href="#call">Book My GodHealth Strategy Call</a>
+    <a class="nav-cta" href="#call">Book My GodHealth Strategy Call</a>
   </nav>
 </header>
 
@@ -519,6 +529,10 @@
       <source src="godhealth-robin-intro.mp4" type="video/mp4">
       Your browser does not support this video.
     </video>
+    <button class="video-sound" id="videoSoundButton" type="button" aria-label="Turn video sound on">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg>
+      <span>Sound On</span>
+    </button>
   </div>
   <p class="lead hero-impact">You were not created to live exhausted, stuck or constantly starting over.</p>
   <p class="lead hero-explainer" style="margin-top:8px;">The free 10-minute Kingdom Vitality Scan shows where body, soul and spirit may be out of alignment. Ready for personal guidance? Book a GodHealth Strategy Call and discover your next step.</p>
@@ -1199,42 +1213,57 @@
   /* ===================== HERO VIDEO ===================== */
   (function () {
     const video = document.getElementById("heroVideo");
+    const soundButton = document.getElementById("videoSoundButton");
     if (!video) return;
     video.controls = false;
     video.defaultMuted = true;
     video.muted = true;
     video.volume = 1;
+    let soundEnabled = false;
     const keepPlaying = () => {
       if (video.ended) return;
       const attempt = video.play();
       if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
     };
-    const trySound = () => {
+    const showSoundButton = () => {
+      if (soundButton) soundButton.classList.remove("hidden");
+    };
+    const hideSoundButton = () => {
+      if (soundButton) soundButton.classList.add("hidden");
+    };
+    const enableSound = () => {
       video.muted = false;
+      video.defaultMuted = false;
+      video.volume = 1;
       const attempt = video.play();
       if (attempt && typeof attempt.catch === "function") {
-        attempt.catch(() => {
+        attempt.then(() => {
+          soundEnabled = !video.muted;
+          if (soundEnabled) hideSoundButton();
+          else showSoundButton();
+        }).catch(() => {
+          soundEnabled = false;
           video.muted = true;
+          video.defaultMuted = true;
           keepPlaying();
+          showSoundButton();
         });
+      } else {
+        soundEnabled = !video.muted;
+        if (soundEnabled) hideSoundButton();
       }
-      window.setTimeout(() => {
-        if (!video.ended && video.paused) {
-          video.muted = true;
-          keepPlaying();
-        }
-      }, 300);
     };
+    if (soundButton) soundButton.addEventListener("click", enableSound);
     video.addEventListener("pause", () => {
       if (!video.ended) {
-        video.muted = true;
+        video.muted = !soundEnabled;
         keepPlaying();
       }
     });
     video.addEventListener("contextmenu", event => event.preventDefault());
-    window.addEventListener("load", trySound, { once: true });
     keepPlaying();
-    window.setTimeout(trySound, 250);
+    window.addEventListener("load", enableSound, { once: true });
+    window.setTimeout(enableSound, 250);
   })();
 
   /* ===================== EXAMPLE REPORT ANIMATION ===================== */
