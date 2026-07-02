@@ -12,7 +12,8 @@ security-definer RPC functions.
 Configure these server-side Edge Function secrets:
 
 - `SUPABASE_SECRET_KEYS` — backend secret-key map containing `default`
-- `PDF_RENDERER_URL` — private Gotenberg Chromium HTML-to-PDF endpoint
+- `PDF_RENDERER_URL` — optional private Gotenberg Chromium HTML-to-PDF endpoint;
+  when omitted, the Edge Function uses the built-in premium PDF renderer
 - `PDF_RENDERER_TOKEN` — optional renderer bearer token
 - `ALLOWED_ORIGIN` — comma-separated production origins
 - `REPORT_BUCKET=scan-reports`

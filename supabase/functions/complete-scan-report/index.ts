@@ -3,8 +3,10 @@ import {
   buildReportHtml,
   buildReportModel,
   type ReportLead,
+  type ReportModel,
   type ScanAnswers,
 } from "./report-template.ts";
+import { buildFallbackPdf } from "./fallback-pdf.ts";
 
 const MAX_REQUEST_BYTES = 64 * 1024;
 const MAX_PDF_BYTES = 12 * 1024 * 1024;
@@ -108,8 +110,9 @@ function validatePayload(payload: unknown): { lead: ReportLead; answers: ScanAns
   };
 }
 
-async function renderPdf(html: string, traceId: string): Promise<Uint8Array> {
-  const rendererUrl = env("PDF_RENDERER_URL");
+async function renderPdf(html: string, traceId: string, model: ReportModel): Promise<Uint8Array> {
+  const rendererUrl = Deno.env.get("PDF_RENDERER_URL")?.trim();
+  if (!rendererUrl) return await buildFallbackPdf(model);
   const rendererToken = Deno.env.get("PDF_RENDERER_TOKEN")?.trim();
   const form = new FormData();
   form.append("files", new File([html], "index.html", { type: "text/html; charset=utf-8" }));
@@ -173,7 +176,7 @@ Deno.serve(async (request: Request): Promise<Response> => {
     const { lead, answers } = validatePayload(payload);
     const model = buildReportModel(lead, answers);
     const reportHtml = buildReportHtml(model);
-    const pdf = await renderPdf(reportHtml, requestId);
+    const pdf = await renderPdf(reportHtml, requestId, model);
 
     const supabaseUrl = env("SUPABASE_URL");
     const supabase = createClient(supabaseUrl, secretKey(), {
