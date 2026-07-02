@@ -899,7 +899,7 @@ input, select, textarea { font-family: 'Jost', sans-serif; }
 .hurdle-ref::before { content: ''; width: 10px; height: 1px; background: var(--gold); }
 
 /* ─── TESTIMONIALS ───────────────────────── */
-.testi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.15); max-width: 1100px; margin: clamp(2.5rem, 5vw, 4rem) auto 0; }
+.testi-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.15); max-width: 1100px; margin: clamp(2.5rem, 5vw, 4rem) auto 0; }
 .testi-card { background: var(--cream); padding: clamp(1.2rem, 2.5vw, 1.75rem); position: relative; transition: background 0.25s; }
 .testi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: transparent; transition: background 0.25s; }
 .testi-card:hover::before { background: var(--gold-grad); background-size: 200% auto; animation: goldFlow 3s linear infinite; }
@@ -911,6 +911,23 @@ input, select, textarea { font-family: 'Jost', sans-serif; }
 .testi-name { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
 .testi-stars { color: var(--gold); font-size: 0.56rem; margin-top: 0.06rem; }
 .testi-type { font-family: 'Cinzel', serif; font-size: 0.44rem; color: var(--ink-l); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ─── STRATEGY CALL ─────────────────────── */
+.strategy-wrap { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 0.82fr 1.18fr; background: var(--cream); border: 1px solid rgba(201,168,76,0.22); box-shadow: 0 20px 60px rgba(0,0,0,0.16); }
+.strategy-copy { padding: clamp(1.5rem,4vw,3rem); background: linear-gradient(145deg,var(--forest),var(--green)); color: var(--white); }
+.strategy-copy p { color: rgba(255,255,255,0.76); font-size: clamp(0.78rem,1.6vw,0.9rem); line-height: 1.75; margin-top: 0.8rem; }
+.strategy-form { padding: clamp(1.5rem,4vw,3rem); }
+.phone-fields { display: grid; grid-template-columns: minmax(135px,0.48fr) 1fr; gap: 0.55rem; }
+.field-select { width: 100%; padding: 0.78rem 0.8rem; border: 1px solid rgba(26,74,46,0.2); background: var(--white); color: var(--ink); font: inherit; font-size: 0.78rem; outline: none; }
+.field-select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.1); }
+.consent-check { display: grid; grid-template-columns: 17px 1fr; gap: 0.6rem; align-items: start; margin-top: 0.8rem; color: var(--ink-m); font-size: 0.68rem; line-height: 1.55; cursor: pointer; }
+.consent-check input { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--green); }
+.insider-label { font-family: 'Cinzel',serif; color: var(--green); font-size: 0.52rem; letter-spacing: 0.13em; text-transform: uppercase; margin-top: 1.05rem; }
+.insider-label small { color: var(--ink-l); font-family:'Jost',sans-serif; letter-spacing: 0; text-transform:none; margin-left: 0.35rem; }
+.privacy-copy { color: var(--ink-l); font-size: 0.58rem; line-height: 1.55; text-align:center; margin-top: 0.7rem; }
+.privacy-copy a { color: var(--green); text-decoration: underline; }
+.form-error { display:none; color:#a23030; font-size:0.68rem; line-height:1.5; margin-top:0.75rem; }
+.form-error.show { display:block; }
 
 /* ─── EXCLUSIVITY ────────────────────────── */
 .excl-items { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.2); max-width: 900px; margin: clamp(1.5rem, 3vw, 2.5rem) auto; }
@@ -1081,6 +1098,7 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
 
   /* Testimonials */
   .testi-grid { grid-template-columns: 1fr; }
+  .strategy-wrap { grid-template-columns: 1fr; }
   .testi-card { padding: 1.25rem; }
 
   /* Exclusivity */
@@ -1130,7 +1148,6 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
     <div class="popup-body">
       <div class="popup-tag">✦ Free · No Credit Card Required</div>
       <form id="popupForm" onsubmit="submitPopup(event)">
-        <input type="hidden" name="access_key" value="8fdd91c8-92ca-4531-8a95-0f4ec94a0468">
         <input type="hidden" name="subject" value="Popup — Arise Challenge">
         <input type="text" name="first_name" class="field" placeholder="Your First Name" required>
         <input type="email" name="email" class="field" placeholder="Your Email Address" required>
@@ -1143,7 +1160,7 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
         <p>Day 1 is on its way. God bless — Robin</p>
       </div>
       <div class="popup-divider">or</div>
-      <a href="tribe.html" onclick="closePopup()" class="btn-outline-green">🏛️ Join The GodHealth Tribe Free →</a>
+      <a href="kingdom-vitality-scan.html" onclick="closePopup()" class="btn-outline-green">✦ Take The Free Kingdom Vitality Scan →</a>
       <p class="popup-note">Free. No credit card. Unsubscribe anytime.</p>
     </div>
   </div>
@@ -1155,14 +1172,13 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
   <ul class="nav-links">
     <li><a href="#robin">Robin</a></li>
     <li><a href="#arise-section">Arise Challenge</a></li>
-    <li><a href="tribe.html">Tribe</a></li>
-    <li><a href="inner-covenant.html">Inner Covenant</a></li>
+    <li><a href="kingdom-vitality-scan.html">Free Scan</a></li>
     <li class="nav-apply-wrap">
-      <a href="#" class="nav-apply" id="navApply" onclick="toggleDrop(event)">Apply Now ▾</a>
+      <a href="#" class="nav-apply" id="navApply" onclick="toggleDrop(event)">Start Here ▾</a>
       <div class="offer-drop" id="offerDrop">
         <a href="#arise-section">⚡ 7-Day Arise Challenge<span>Free · Start Today</span></a>
-        <a href="tribe.html">🏛️ The GodHealth Tribe<span>Free · Join The Community</span></a>
-        <a href="inner-covenant.html#apply">⚔️ The Inner Covenant<span>Application Only · Max 12</span></a>
+        <a href="kingdom-vitality-scan.html">✦ Kingdom Vitality Scan<span>Free · About 10 Minutes</span></a>
+        <a href="#strategy-call">⚔️ GodHealth Strategy Call<span>Complimentary · Personal Guidance</span></a>
       </div>
     </li>
   </ul>
@@ -1173,9 +1189,9 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
 <div class="mobile-nav" id="mobileNav">
   <a href="#robin" onclick="closeMobileNav()">About Robin</a>
   <a href="#arise-section" onclick="closeMobileNav()">Arise Challenge</a>
-  <a href="tribe.html">The GodHealth Tribe</a>
-  <a href="inner-covenant.html">The Inner Covenant</a>
-  <a href="inner-covenant.html#apply" class="m-apply">Apply for Inner Covenant →</a>
+  <a href="kingdom-vitality-scan.html">Free Kingdom Vitality Scan</a>
+  <a href="#strategy-call" onclick="closeMobileNav()">GodHealth Strategy Call</a>
+  <a href="kingdom-vitality-scan.html" class="m-apply">Start My Free Scan →</a>
 </div>
 
 <!-- ═══ HERO ═══ -->
@@ -1197,7 +1213,6 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
       <p class="form-title">Start The 7-Day Arise Challenge</p>
       <p class="form-sub">Free. Biblical. 7 days. Bring someone with you.</p>
       <form id="heroForm" onsubmit="submitArise(event, 'heroForm')">
-        <input type="hidden" name="access_key" value="8fdd91c8-92ca-4531-8a95-0f4ec94a0468">
         <input type="hidden" name="subject" value="Hero — Arise Challenge">
         <input type="text" name="first_name" class="field-light" placeholder="Your First Name" required>
         <input type="email" name="email" class="field-light" placeholder="Your Email Address" required>
@@ -1206,7 +1221,7 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
         <button type="submit" class="btn-green">ARISE — START FREE TODAY →</button>
       </form>
       <div class="form-suc" id="heroSuc"><h3>✦ You're in.</h3><p>Redirecting you now...</p></div>
-      <p class="form-note">Free. No credit card. | <a href="tribe.html">Join the Tribe →</a></p>
+      <p class="form-note">Free. No credit card. | <a href="kingdom-vitality-scan.html">Take the free scan →</a></p>
     </div>
   </div>
   <div class="hero-right">
@@ -1324,7 +1339,6 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.2vw,1.4rem);font-weight:600;color:var(--white);margin-bottom:0.3rem;">7 days that could change <em style="color:var(--gold-l);">everything.</em></h3>
         <p style="font-size:0.8rem;color:rgba(255,255,255,0.72);line-height:1.65;margin-bottom:1.1rem;">Free. No credit card. Bring someone with you.</p>
         <form id="ariseForm" onsubmit="submitArise(event, 'ariseForm')">
-          <input type="hidden" name="access_key" value="8fdd91c8-92ca-4531-8a95-0f4ec94a0468">
           <input type="hidden" name="subject" value="Arise Challenge — Section">
           <input type="text" name="first_name" class="field-dark" placeholder="Your First Name" required>
           <input type="email" name="email" class="field-dark" placeholder="Your Email Address" required>
@@ -1369,7 +1383,6 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
         </div>
         <div class="offer-diff">"The first step. For those who are ready to begin."</div>
         <form id="offerAriseForm" onsubmit="submitArise(event,'offerAriseForm')">
-          <input type="hidden" name="access_key" value="8fdd91c8-92ca-4531-8a95-0f4ec94a0468">
           <input type="hidden" name="subject" value="Arise Challenge — Offer Card">
           <input type="text" name="first_name" class="field-dark" placeholder="Your First Name" required>
           <input type="email" name="email" class="field-dark" placeholder="Your Email Address" required>
@@ -1404,7 +1417,6 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
         </div>
         <div class="offer-diff">"The community. For those who know they need others."</div>
         <form id="offerTribeForm" onsubmit="submitTribe(event,'offerTribeForm')">
-          <input type="hidden" name="access_key" value="8fdd91c8-92ca-4531-8a95-0f4ec94a0468">
           <input type="hidden" name="subject" value="Tribe Registration — Offer Card">
           <input type="text" name="first_name" class="field-dark" placeholder="Your First Name" required>
           <input type="email" name="email" class="field-dark" placeholder="Your Email Address" required>
@@ -1439,7 +1451,7 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
           <div class="feat">90-Day review + Certificate</div>
         </div>
         <div class="offer-diff">"The full transformation. For those who will not settle."</div>
-        <a href="inner-covenant.html" class="cta-outline" style="display:block;text-align:center;">APPLY FOR THE COVENANT →</a>
+        <a href="#strategy-call" class="cta-outline" style="display:block;text-align:center;">BOOK A STRATEGY CALL →</a>
       </div>
     </div>
   </div>
@@ -1485,7 +1497,7 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
       <div class="tribe-feat"><div class="tf-ic">📅</div><div><div class="tf-title">12 Monthly Challenges</div><p class="tf-text">Temple, Soul, and Spirit — one Biblical challenge every month, all year.</p></div></div>
       <div class="tribe-feat"><div class="tf-ic">🤝</div><div><div class="tf-title">The Covenant Circle</div><p class="tf-text">You bring one person. They become your partner. You become theirs. Based on Ecclesiastes 4:9-10.</p></div></div>
       <div class="tribe-feat"><div class="tf-ic">🔒</div><div><div class="tf-title">The Boundary That Matters</div><p class="tf-text">Tribe members read Robin's posts and respond to each other. Direct questions to Robin are exclusively for Inner Covenant members. This is what makes the Covenant invaluable.</p></div></div>
-      <a href="tribe.html" class="cta-gold" style="display:block;text-align:center;padding:0.95rem;">JOIN THE TRIBE FREE →</a>
+      <a href="kingdom-vitality-scan.html" class="cta-gold" style="display:block;text-align:center;padding:0.95rem;">START THE FREE SCAN →</a>
     </div>
   </div>
 </section>
@@ -1503,7 +1515,7 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
         <div class="tl-row"><div class="tl-num"><div class="tl-n">02</div><div class="tl-l">Month</div></div><div class="tl-body"><div class="tl-title">The Soul Is Renewed</div><p class="tl-text">Habits become who you are. Identity in Christ settled. Discipline flows from the Spirit, not willpower.</p></div></div>
         <div class="tl-row"><div class="tl-num"><div class="tl-n">03</div><div class="tl-l">Month</div></div><div class="tl-body"><div class="tl-title">The Spirit Moves Freely</div><p class="tl-text">Faith and body aligned. You walk in who God designed you to be. Not someday — now.</p></div></div>
       </div>
-      <a href="inner-covenant.html" class="btn-gold" style="display:inline-block;max-width:320px;padding:0.95rem 1.75rem;font-size:0.8rem;margin-top:clamp(1.25rem,3vw,2rem);">APPLY FOR THE INNER COVENANT →</a>
+      <a href="#strategy-call" class="btn-gold" style="display:inline-block;max-width:320px;padding:0.95rem 1.75rem;font-size:0.8rem;margin-top:clamp(1.25rem,3vw,2rem);">BOOK A GODHEALTH STRATEGY CALL →</a>
     </div>
     <div class="transform-right rr">
       <div class="transform-img" style="position:relative;">
@@ -1556,6 +1568,39 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
   </div>
 </section>
 
+<!-- ═══ STRATEGY CALL ═══ -->
+<section class="sec sec-cream pad divider-top" id="strategy-call">
+  <div style="max-width:720px;margin:0 auto clamp(2rem,4vw,3.5rem);text-align:center;" class="r">
+    <div class="label label-center label-dark">A Personal Next Step</div>
+    <h2 class="h2 h2-forest" style="text-align:center;">Book your complimentary <strong><em style="font-style:italic;color:var(--gold-d);">GodHealth Strategy Call.</em></strong></h2>
+  </div>
+  <div class="strategy-wrap r">
+    <div class="strategy-copy">
+      <div class="label" style="color:var(--gold-l);">Clarity · Stewardship · Alignment</div>
+      <h3 class="h2 h2-white" style="font-size:clamp(1.45rem,3vw,2.15rem);">Talk through where you are—and what may help next.</h3>
+      <p>This complimentary conversation is a space to discuss your goals, your current obstacles and whether Biblical, science-informed coaching may be a good fit.</p>
+      <a href="kingdom-vitality-scan.html" class="btn-outline" style="margin-top:1.25rem;display:inline-block;">Prefer to begin with the free scan? →</a>
+    </div>
+    <div class="strategy-form">
+      <form id="strategyCallForm" onsubmit="submitStrategyCall(event)" novalidate>
+        <input type="text" name="first_name" class="field-light" placeholder="Your First Name" autocomplete="given-name" required>
+        <input type="email" name="email" class="field-light" placeholder="Your Email Address" autocomplete="email" inputmode="email" required>
+        <div class="phone-fields">
+          <select id="strategyCountryCode" class="field-select" aria-label="Country dialing code"></select>
+          <input type="tel" name="phone" class="field-light" placeholder="6 12345678" autocomplete="tel" inputmode="tel" required>
+        </div>
+        <label class="consent-check"><input type="checkbox" name="privacy_consent"><span>I agree that GodHealth may process my personal information to respond to my GodHealth Strategy Call request.</span></label>
+        <label class="consent-check"><input type="checkbox" name="phone_consent"><span>I agree that GodHealth may contact me by phone or WhatsApp regarding my GodHealth Strategy Call.</span></label>
+        <div class="insider-label">Join the GodHealth Insider <small>Optional</small></div>
+        <label class="consent-check"><input type="checkbox" name="marketing_consent"><span>Yes! I'd love to receive exclusive GodHealth resources, Biblical health insights, practical implementation guides, educational content, special invitations, and early access to everything we're building at GodHealth. I understand I can unsubscribe at any time.</span></label>
+        <p id="strategyCallError" class="form-error" role="alert"></p>
+        <button type="submit" class="btn-green" style="margin-top:1rem;">BOOK MY GODHEALTH STRATEGY CALL →</button>
+        <p class="privacy-copy">Privacy protected. We only use your details to provide your scan results, respond to your Strategy Call request, and, if you opt in, send GodHealth updates. You can unsubscribe or update your communication preferences at any time. <a href="privacy.html">Privacy Policy</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ TESTIMONIALS ═══ -->
 <section class="sec sec-cream-dd pad divider-top r">
   <div style="max-width:720px;margin:0 auto clamp(2rem,4vw,3.5rem);text-align:center;">
@@ -1563,10 +1608,10 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
     <h2 class="h2 h2-forest" style="text-align:center;">What changes when <strong>all three <em style="font-style:italic;color:var(--gold-d);">move together.</em></strong></h2>
   </div>
   <div class="testi-grid">
-    <div class="testi-card"><div class="testi-q">"</div><p class="testi-text">For the first time someone connected my faith, my mind, and my body as one. That single shift changed everything.</p><div class="testi-foot"><div class="testi-av">S</div><div><div class="testi-name">Sarah, 34</div><div class="testi-stars">★★★★★</div><div class="testi-type">GodHealth Client</div></div></div></div>
-    <div class="testi-card"><div class="testi-q">"</div><p class="testi-text">Four months in and I'm a different man. Not just the body — the faith, the mind. All three moved together. Nothing else did that.</p><div class="testi-foot"><div class="testi-av">J</div><div><div class="testi-name">James, 41</div><div class="testi-stars">★★★★★</div><div class="testi-type">GodHealth Client</div></div></div></div>
-    <div class="testi-card"><div class="testi-q">"</div><p class="testi-text">I lost 11 kg. But that is the smallest part. I feel like the person God designed me to be — body, mind, and spirit.</p><div class="testi-foot"><div class="testi-av">L</div><div><div class="testi-name">Lisa, 38</div><div class="testi-stars">★★★★★</div><div class="testi-type">GodHealth Client</div></div></div></div>
-    <div class="testi-card"><div class="testi-q">"</div><p class="testi-text">Robin reframed everything. My body belongs to God. I am a steward of His temple. That truth changed my health forever.</p><div class="testi-foot"><div class="testi-av">D</div><div><div class="testi-name">David, 45</div><div class="testi-stars">★★★★★</div><div class="testi-type">Personal Client</div></div></div></div>
+    <div class="testi-card"><div class="testi-q">"</div><div class="testi-stars">★★★★★</div><div class="testi-name" style="margin:.35rem 0 .7rem;">Great experience!</div><p class="testi-text">Since I started at GodHealth, I have made a lot of progress, both physically and in my lifestyle. I feel fitter, more energetic, and have learned a lot about healthy nutrition as God intended. I have also gained a much deeper insight into the connection between mind and body. I can definitely recommend GodHealth to anyone who wants to live healthier and grow, both physically and spiritually.</p><div class="testi-foot"><div class="testi-av">T</div><div><div class="testi-name">Thomas R</div><div class="testi-type">GodHealth Client</div></div></div></div>
+    <div class="testi-card"><div class="testi-q">"</div><div class="testi-stars">★★★★★</div><div class="testi-name" style="margin:.35rem 0 .7rem;">Life-changing experience!</div><p class="testi-text">I completed the 3-month program, and it has truly been a life-changing experience. One of the biggest things I learned is that I can function really well while eating much less than I used to. I also noticed that the afternoon energy crashes I used to struggle with completely disappeared after just a few weeks. This program isn’t just about food; it’s about creating a healthy lifestyle that lasts. If you’re ready to make real changes in the way you eat, move, and grow in your faith, I wholeheartedly encourage you to join. You won’t regret it. One of the most valuable parts of the journey was becoming aware of how nutrition affects your body and learning how to build healthy habits step by step. The knowledge, encouragement, and guidance you receive through GodHealth are truly a blessing and can make a lasting difference in your life.</p><div class="testi-foot"><div class="testi-av">V</div><div><div class="testi-name">Valerie</div><div class="testi-type">GodHealth Client</div></div></div></div>
+    <div class="testi-card"><div class="testi-q">"</div><div class="testi-stars">★★★★★</div><div class="testi-name" style="margin:.35rem 0 .7rem;">More energy and a better relationship with God!</div><p class="testi-text">One of the things GodHealth made me realise is how my physical and spiritual life work together. I’ve learned so much about nutrition and the benefits of eating God-created food. I’m in better shape, I feel more energy, and what surprised me the most is that my relationship with God actually became stronger. I recommend everyone to be a part of GodHealth. It will open your eyes in many ways to how God intended us to take care of our bodies, so that we live a healthy and Godly life.</p><div class="testi-foot"><div class="testi-av">A</div><div><div class="testi-name">Apostle Anthony</div><div class="testi-type">GodHealth Client</div></div></div></div>
+    <div class="testi-card"><div class="testi-q">"</div><div class="testi-stars">★★★★★</div><div class="testi-name" style="margin:.35rem 0 .7rem;">Top results and a healthy lifestyle!</div><p class="testi-text">Since I started at GodHealth, I can see really clear physical progress. My body fat percentage has dropped significantly, and I’m seeing noticeable muscle definition. On top of that, my nutrition has improved tremendously; I finally have a stable, better eating pattern with the right nutrients. Highly recommended if you want to achieve serious results.</p><div class="testi-foot"><div class="testi-av">M</div><div><div class="testi-name">Milan K</div><div class="testi-type">GodHealth Client</div></div></div></div>
   </div>
 </section>
 
@@ -1618,13 +1663,12 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
     <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.92rem,1.9vw,1.08rem);font-style:italic;color:rgba(255,255,255,0.72);line-height:1.75;margin-bottom:clamp(2rem,4vw,3rem);">"The steps of a good man are ordered by the Lord." — Psalm 37:23 · KJV</p>
     <div class="final-paths">
       <div class="final-path"><div class="fp-icon">⚡</div><div class="fp-name">7-Day Arise Challenge</div><div class="fp-price">Free · Start Today</div><a href="#arise-section" class="fp-link">Begin Now →</a></div>
-      <div class="final-path"><div class="fp-icon">🏛️</div><div class="fp-name">The GodHealth Tribe</div><div class="fp-price">Free · For Life</div><a href="tribe.html" class="fp-link">Join Free →</a></div>
-      <div class="final-path"><div class="fp-icon">⚔️</div><div class="fp-name">The Inner Covenant</div><div class="fp-price">Application Only</div><a href="inner-covenant.html" class="fp-link">Apply Now →</a></div>
+      <div class="final-path"><div class="fp-icon">✦</div><div class="fp-name">Kingdom Vitality Scan</div><div class="fp-price">Free · About 10 Minutes</div><a href="kingdom-vitality-scan.html" class="fp-link">Start Scan →</a></div>
+      <div class="final-path"><div class="fp-icon">⚔️</div><div class="fp-name">GodHealth Strategy Call</div><div class="fp-price">Complimentary</div><a href="#strategy-call" class="fp-link">Book Call →</a></div>
     </div>
     <div class="final-form-card">
       <div class="label label-dark" style="margin-bottom:0.75rem;"><span style="width:16px;height:1px;background:var(--gold-d);display:block;flex-shrink:0;"></span>Or Start With The Free 7-Day Arise Challenge</div>
       <form id="finalForm" onsubmit="submitArise(event,'finalForm')">
-        <input type="hidden" name="access_key" value="8fdd91c8-92ca-4531-8a95-0f4ec94a0468">
         <input type="hidden" name="subject" value="Final CTA — Arise Challenge">
         <input type="text" name="first_name" class="field-light" placeholder="Your First Name" required>
         <input type="email" name="email" class="field-light" placeholder="Your Email Address" required>
@@ -1649,17 +1693,17 @@ footer { background: linear-gradient(180deg, #070F09, #040A06); border-top: 1px 
       <div class="f-label">Pages</div>
       <div class="f-links">
         <a href="index.html">Home — Arise Challenge</a>
-        <a href="tribe.html">The GodHealth Tribe</a>
-        <a href="inner-covenant.html">The Inner Covenant</a>
-        <a href="thankyou-arise.html">Thank You — Arise</a>
+        <a href="kingdom-vitality-scan.html">Kingdom Vitality Scan</a>
+        <a href="#strategy-call">GodHealth Strategy Call</a>
+        <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
     <div>
       <div class="f-label">Start Today</div>
       <div class="f-links">
         <a href="#arise-section">Free Arise Challenge</a>
-        <a href="tribe.html">Join The Tribe</a>
-        <a href="inner-covenant.html#apply">Apply for Inner Covenant</a>
+        <a href="kingdom-vitality-scan.html">Take The Free Scan</a>
+        <a href="#strategy-call">Book a Strategy Call</a>
         <a href="#robin">About Robin</a>
         <a href="#faq">FAQ</a>
       </div>
@@ -1680,30 +1724,30 @@ function closePopup() {
 if (sessionStorage.getItem('ghp')) document.getElementById('popup').style.display = 'none';
 document.getElementById('popup').addEventListener('click', function(e) { if (e.target === this) closePopup(); });
 
-/* ── FORMS ── */
-/* ── MAILERLITE CONFIG ── */
-const ML_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiNTVmNWRmNmYxZDM0NzljYjVlMzQ4NzY1NmFkMzBmODMyMmE3Y2IxMWYzYjAzMWE2ODkwOGQyOTg0OTMxNDNiMDU3M2VkNDhkN2FhNTNlZWQiLCJpYXQiOjE3NzkzMDQxMTAuMTg4NDIzLCJuYmYiOjE3NzkzMDQxMTAuMTg4NDI2LCJleHAiOjQ5MzQ5Nzc3MTAuMTgyNjMxLCJzdWIiOiIyMzc3NjgzIiwic2NvcGVzIjpbXX0.HzopOoTjUevmC1D0zmsrsyTcB2lErxXjJ1_0_7oHt1Qs0VnJHsCBj-_1qBt5jHKPMVLtkcQ5YcWYo7vtDYxPs102TCABdyrXaURXFUm9PQnnxM11o8CNYAtgWGm2Ysz8PHYeTyp4MajtnoS4envv1XvN9P4R51QvkM4_YXt02yStE7Faqq8RTfTvF9tzMavf5FueXsOax9iG35r4TFYh6TmR70xX-ipZ1ei3vuH5Ff733wWrjGjK7_DA_KPz0tpOcLZhusOHoTK0_mwNcTniYpGT8kjBCTJFmZc8vlijTXqB0RXvBC4WoZm4GLxGQq9VMiauQqBxCmWEv3me6Zv1SY3QIyfzEPC1CfReHVSkIhdB8M-bx0NnU8dW7bKHBWo7DZT9NqT9syvXBVN-_g84ivrWdtlPeeToULRrsTHknqbrWRxOeRENGcplKQoau9FKarhJvtcgfCoYaWh2G2tAKEyTFUeEGTYVaoMQfeynykaB4rdMh-_U6j2WTmYLry7Q39dw1Ck8QyFqFrPhb0wtyXmOBSZiiuhCXEbifFizuATQ2hJPi7xbsbyBinU1PhsBeZWoov_x3XudEAtXlVnH947ZxMd7UvPGerA7oVsCH1vcmMfv768xLaypXz4nMIuejSu-872Dl5ABGK7EFFUteG3-i7AVfo1CWxvc4At7pOI';
-const ML_GROUPS = {
-  arise: '188013605842585270',
-  tribe: '188013620326565132',
-  ic:    '188013630171645905'
-};
+/* ── FORMS: public Supabase configuration only ── */
+const SUPABASE_URL = "https://cqkcfoswyaxngbqrfums.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_L9giIYxFXTWI3M4gFuiDEA_7tmU0xCe";
+const STRATEGY_CALL_URL = "https://calendly.com/godhealth-info/30min";
 
-async function mlSubscribe(email, name, groupId, fields) {
-  const body = {
-    email: email,
-    fields: { name: name, ...fields },
-    groups: [groupId]
-  };
-  const r = await fetch('https://connect.mailerlite.com/api/subscribers', {
-    method: 'POST',
+async function supabaseRpc(functionName, payload) {
+  const response = await fetch(SUPABASE_URL + "/rest/v1/rpc/" + encodeURIComponent(functionName), {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + ML_TOKEN
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "apikey": SUPABASE_PUBLISHABLE_KEY,
+      "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(payload)
   });
-  return r.ok || r.status === 200 || r.status === 201;
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(body.message || body.error || "We could not securely save your details. Please try again.");
+  return body;
+}
+
+async function registerInterest(firstName, email, source) {
+  await supabaseRpc("gh_register_interest", { p_first_name:firstName, p_email:email, p_source:source });
+  return true;
 }
 
 async function submitArise(e, formId) {
@@ -1713,13 +1757,8 @@ async function submitArise(e, formId) {
   const o = b.textContent; b.textContent = 'Sending...'; b.disabled = true;
   try {
     const data = new FormData(f);
-    const ok = await mlSubscribe(
-      data.get('email'),
-      data.get('first_name'),
-      ML_GROUPS.arise,
-      { partner_name: data.get('partner_name'), partner_email: data.get('partner_email') }
-    );
-    if (ok) { window.location.href = 'thankyou-arise.html'; }
+    const ok = await registerInterest(data.get('first_name'), data.get('email'), 'arise_challenge');
+    if (ok) { window.location.href = 'kingdom-vitality-scan.html'; }
     else { b.textContent = o; b.disabled = false; }
   } catch { b.textContent = o; b.disabled = false; }
 }
@@ -1731,13 +1770,8 @@ async function submitTribe(e, formId) {
   const o = b.textContent; b.textContent = 'Joining...'; b.disabled = true;
   try {
     const data = new FormData(f);
-    const ok = await mlSubscribe(
-      data.get('email'),
-      data.get('first_name'),
-      ML_GROUPS.tribe,
-      { partner_name: data.get('partner_name'), partner_email: data.get('partner_email') }
-    );
-    if (ok) { window.location.href = 'thankyou-tribe.html'; }
+    const ok = await registerInterest(data.get('first_name'), data.get('email'), 'godhealth_tribe');
+    if (ok) { window.location.href = 'kingdom-vitality-scan.html'; }
     else { b.textContent = o; b.disabled = false; }
   } catch { b.textContent = o; b.disabled = false; }
 }
@@ -1749,16 +1783,101 @@ async function submitPopup(e) {
   const o = b.textContent; b.textContent = 'Sending...'; b.disabled = true;
   try {
     const data = new FormData(f);
-    const ok = await mlSubscribe(
-      data.get('email'),
-      data.get('first_name'),
-      ML_GROUPS.arise,
-      { partner_name: data.get('partner_name'), partner_email: data.get('partner_email') }
-    );
-    if (ok) { window.location.href = 'thankyou-arise.html'; }
+    const ok = await registerInterest(data.get('first_name'), data.get('email'), 'arise_popup');
+    if (ok) { window.location.href = 'kingdom-vitality-scan.html'; }
     else { b.textContent = o; b.disabled = false; }
   } catch { b.textContent = o; b.disabled = false; }
 }
+
+const STRATEGY_COUNTRY_CODES = [
+  ['Netherlands','+31'],['Belgium','+32'],['Germany','+49'],['United Kingdom','+44'],
+  ['United States / Canada','+1'],['Australia','+61'],['New Zealand','+64'],['South Africa','+27'],
+  ['Austria','+43'],['Switzerland','+41'],['France','+33'],['Spain','+34'],['Portugal','+351'],
+  ['Italy','+39'],['Ireland','+353'],['Denmark','+45'],['Norway','+47'],['Sweden','+46'],
+  ['Finland','+358'],['Poland','+48'],['Romania','+40'],['Greece','+30'],['Turkey','+90'],
+  ['Brazil','+55'],['Mexico','+52'],['India','+91'],['Indonesia','+62'],['Philippines','+63'],
+  ['Singapore','+65'],['Malaysia','+60'],['United Arab Emirates','+971'],['Nigeria','+234'],
+  ['Ghana','+233'],['Kenya','+254'],['Uganda','+256'],['Israel','+972'],['Other — enter full + number','']
+];
+
+function populateStrategyCountryCodes() {
+  const select = document.getElementById('strategyCountryCode');
+  if (!select) return;
+  STRATEGY_COUNTRY_CODES.forEach(([name, code]) => {
+    const option = document.createElement('option');
+    option.value = code;
+    option.textContent = name + (code ? ' ' + code : '');
+    if (code === '+31') option.selected = true;
+    select.appendChild(option);
+  });
+}
+
+function normalizeStrategyPhone(countryCode, raw) {
+  const value = String(raw || '').trim();
+  const digits = value.replace(/\D/g, '');
+  if (digits.length < 6) return '';
+  if (value.startsWith('+')) return '+' + digits;
+  if (value.startsWith('00')) return '+' + digits.slice(2);
+  if (!countryCode) return '';
+  return '+' + String(countryCode).replace(/\D/g, '') + digits.replace(/^0+/, '');
+}
+
+async function submitStrategyCall(event) {
+  event.preventDefault();
+  const form = document.getElementById('strategyCallForm');
+  const error = document.getElementById('strategyCallError');
+  const data = new FormData(form);
+  const firstName = String(data.get('first_name') || '').trim();
+  const email = String(data.get('email') || '').trim();
+  const phoneRaw = String(data.get('phone') || '').trim();
+  const countryCode = document.getElementById('strategyCountryCode').value;
+  const phoneNormalized = normalizeStrategyPhone(countryCode, phoneRaw);
+  const privacyConsent = data.get('privacy_consent') === 'on';
+  const phoneConsent = data.get('phone_consent') === 'on';
+  const marketingConsent = data.get('marketing_consent') === 'on';
+  error.classList.remove('show');
+  if (!firstName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !phoneNormalized) {
+    error.textContent = 'Please complete your name, email address and a valid international phone number.';
+    error.classList.add('show');
+    return;
+  }
+  if (!privacyConsent || !phoneConsent) {
+    error.textContent = 'Please accept both required consent choices to continue.';
+    error.classList.add('show');
+    return;
+  }
+  const button = form.querySelector('button[type="submit"]');
+  const original = button.textContent;
+  button.disabled = true;
+  button.textContent = 'SAVING SECURELY…';
+  const now = new Date().toISOString();
+  try {
+    await supabaseRpc('gh_request_call', {
+      p_lead_id:null,
+      p_first_name:firstName,
+      p_email:email,
+      p_phone:phoneRaw,
+      p_phone_country_code:countryCode,
+      p_phone_normalized:phoneNormalized,
+      p_source:'landing_page_strategy_call',
+      p_strategy_call_privacy_consent:true,
+      p_strategy_call_phone_consent:true,
+      p_strategy_call_phone_consent_timestamp:now,
+      p_marketing_consent:marketingConsent,
+      p_marketing_consent_timestamp:marketingConsent ? now : null,
+      p_marketing_consent_source:marketingConsent ? 'landing_page_strategy_call' : null,
+      p_privacy_policy_version:'v1.0'
+    });
+    window.location.href = STRATEGY_CALL_URL;
+  } catch (submitError) {
+    error.textContent = submitError.message || 'We could not save your request. Please try again.';
+    error.classList.add('show');
+    button.disabled = false;
+    button.textContent = original;
+  }
+}
+
+populateStrategyCountryCodes();
 
 /* ── NAV ── */
 function toggleMobileNav() { document.getElementById('mobileNav').classList.toggle('open'); }

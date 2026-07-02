@@ -1,0 +1,2 @@
+[functions.complete-scan-report]
+verify_jwt = false
