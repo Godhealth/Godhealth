@@ -141,8 +141,11 @@
 
   .stars { display: flex; gap: 3px; color: var(--gold-2); }
   .stars svg { width: 16px; height: 16px; }
+  .stars .star-line { font-size: 15px; letter-spacing: 2px; line-height: 1; }
+  .tcard { display: flex; flex-direction: column; }
+  .tcard .review-title { color: var(--ink); font-size: 15px; font-weight: 700; margin-top: 12px; }
   .tcard .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16.5px; color: var(--ink); margin: 13px 0 17px; line-height: 1.5; }
-  .tcard .who { display: flex; align-items: center; gap: 12px; }
+  .tcard .who { display: flex; align-items: center; gap: 12px; margin-top: auto; }
   .tcard .av { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--gold-line); background: linear-gradient(135deg, rgba(217,180,90,0.18), rgba(217,180,90,0.04)); flex-shrink: 0; }
   .tcard .nm { font-weight: 600; font-size: 14px; }
 
@@ -494,17 +497,16 @@
     </nav>
     <div class="nav-actions">
       <a class="btn btn-gold header-call" href="#call">Book My Strategy Call</a>
-      <a class="btn btn-gold" href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
   </div>
   <nav class="nav-panel" id="navPanel" aria-label="Mobile navigation">
+    <a href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a>
     <a href="#alignment">The Alignment Gap&trade;</a>
     <a href="#scan">The Scan</a>
     <a href="#faq">FAQ</a>
-    <a href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a>
     <a href="#call">Book My GodHealth Strategy Call</a>
   </nav>
 </header>
@@ -513,7 +515,7 @@
 <section class="hero wrap" id="top">
   <h1><span class="gold-text">Go Back to God's Original Design.</span></h1>
   <div class="hero-video reveal">
-    <video id="heroVideo" autoplay muted playsinline preload="auto" disablepictureinpicture disableremoteplayback tabindex="-1" aria-label="A message from Robin Kramps">
+    <video id="heroVideo" autoplay muted playsinline preload="auto" poster="godhealth-robin-intro-poster.jpg" disablepictureinpicture disableremoteplayback tabindex="-1" aria-label="A message from Robin Kramps">
       <source src="godhealth-robin-intro.mp4" type="video/mp4">
       Your browser does not support this video.
     </video>
@@ -608,31 +610,36 @@
   <div class="center narrow">
     <p class="eyebrow reveal">Testimonials</p>
     <h2 class="reveal" style="margin-top:12px;">Stories Of <span class="gold-text">Alignment</span></h2>
-    <p class="lead reveal" style="margin-top:16px;">Four premium placeholders, ready for verified client stories.</p>
+    <p class="lead reveal" style="margin-top:16px;">Real experiences from people who have walked the GodHealth journey.</p>
   </div>
 
   <div class="grid g2 reveal" style="margin-top:40px; max-width:900px; margin-left:auto; margin-right:auto;">
     <div class="card card-pad tcard">
-      <span class="placeholder-label">Testimonial Placeholder</span>
-      <p class="quote">&ldquo;Add a verified client story about discovering a clearer path toward stewardship and alignment.&rdquo;</p>
-      <div class="who"><div class="av"></div><div><div class="nm">Client Name</div><div class="small">Role · City</div></div></div>
+      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
+      <p class="review-title">Great experience!</p>
+      <p class="quote">&ldquo;Since I started at GodHealth, I have made a lot of progress, both physically and in my lifestyle. I feel fitter, more energetic, and have learned a lot about healthy nutrition as God intended. I have also been able to gain a much deeper insight into the connection between mind and body. I can definitely recommend GodHealth to anyone who wants to live healthier and grow, both physically and spiritually.&rdquo;</p>
+      <div class="who"><div class="av"></div><div><div class="nm">Thomas R</div><div class="small">GodHealth client</div></div></div>
     </div>
     <div class="card card-pad tcard">
-      <span class="placeholder-label">Testimonial Placeholder</span>
-      <p class="quote">&ldquo;Add a verified client story about receiving practical next steps that felt clear and achievable.&rdquo;</p>
-      <div class="who"><div class="av"></div><div><div class="nm">Client Name</div><div class="small">Role · City</div></div></div>
+      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
+      <p class="review-title">Life-changing experience!</p>
+      <p class="quote">&ldquo;I completed the 3-month program, and it has truly been a life-changing experience. One of the biggest things I learned is that I can function really well while eating much less than I used to. I also noticed that the afternoon energy crashes I used to struggle with completely disappeared after just a few weeks. This program isn&rsquo;t just about food, it&rsquo;s about creating a healthy lifestyle that lasts. If you&rsquo;re ready to make real changes in the way you eat, move, and grow in your faith, I wholeheartedly encourage you to join. You won&rsquo;t regret it. One of the most valuable parts of the journey was becoming aware of how nutrition affects your body and learning how to build healthy habits step by step. The knowledge, encouragement, and guidance you receive through GodHealth are truly a blessing and can make a lasting difference in your life.&rdquo;</p>
+      <div class="who"><div class="av"></div><div><div class="nm">Valerie</div><div class="small">GodHealth client</div></div></div>
     </div>
     <div class="card card-pad tcard">
-      <span class="placeholder-label">Testimonial Placeholder</span>
-      <p class="quote">&ldquo;Add a verified client story about understanding the connection between body, soul and spirit.&rdquo;</p>
-      <div class="who"><div class="av"></div><div><div class="nm">Client Name</div><div class="small">Role · City</div></div></div>
+      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
+      <p class="review-title">More energy and better relationship with God!</p>
+      <p class="quote">&ldquo;One of the things GodHealth made me realise is how my physical and spiritual life work together. I&rsquo;ve learned so much about nutrition and the benefits of eating God-created food. I&rsquo;m in better shape, I feel more energy and what surprised me the most is that my relationship with God actually became stronger! I recommend everyone to be a part of GodHealth. It will open up your eyes in many ways in how God intended us to take care of our bodies, so that we live a healthy and Godly life!&rdquo;</p>
+      <div class="who"><div class="av"></div><div><div class="nm">Apostle Anthony</div><div class="small">GodHealth client</div></div></div>
     </div>
     <div class="card card-pad tcard">
-      <span class="placeholder-label">Testimonial Placeholder</span>
-      <p class="quote">&ldquo;Add a verified client story about building consistency through Biblical, science-informed coaching.&rdquo;</p>
-      <div class="who"><div class="av"></div><div><div class="nm">Client Name</div><div class="small">Role · City</div></div></div>
+      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
+      <p class="review-title">Top results and a healthy lifestyle!</p>
+      <p class="quote">&ldquo;Since I started at GodHealth, I can see really clear physical progress. My body fat percentage has dropped significantly, and I&rsquo;m seeing noticeable muscle definition. On top of that, my nutrition has improved tremendously; I finally have a stable, better eating pattern with the right nutrients. Highly recommended if you want to achieve serious results!&rdquo;</p>
+      <div class="who"><div class="av"></div><div><div class="nm">Milan K</div><div class="small">GodHealth client</div></div></div>
     </div>
   </div>
+  <p class="section-note reveal">Personal experiences shared by GodHealth clients. Individual results vary.</p>
 </div>
 </section>
 <hr class="divider">
