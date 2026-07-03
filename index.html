@@ -1237,8 +1237,9 @@
     video.muted = true;
     video.volume = 1;
     let soundEnabled = false;
+    let userPaused = false;
     const keepPlaying = () => {
-      if (video.ended) return;
+      if (video.ended || userPaused) return;
       const attempt = video.play();
       if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
     };
@@ -1262,17 +1263,29 @@
     };
     const togglePlayback = () => {
       if (video.paused || video.ended) {
+        userPaused = false;
         if (video.ended) video.currentTime = 0;
         const attempt = video.play();
         if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
       } else {
+        userPaused = true;
         video.pause();
       }
     };
-    const enableSound = () => {
+    const enableSound = event => {
+      const userInitiated = Boolean(event && event.type === "click");
+      if (userPaused && !userInitiated) {
+        showSoundButton();
+        return;
+      }
       video.muted = false;
       video.defaultMuted = false;
       video.volume = 1;
+      if (userPaused) {
+        soundEnabled = true;
+        hideSoundButton();
+        return;
+      }
       const attempt = video.play();
       if (attempt && typeof attempt.catch === "function") {
         attempt.then(() => {
@@ -1283,7 +1296,7 @@
           soundEnabled = false;
           video.muted = true;
           video.defaultMuted = true;
-          keepPlaying();
+          if (!userPaused) keepPlaying();
           showSoundButton();
         });
       } else {
