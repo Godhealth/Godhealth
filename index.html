@@ -1266,7 +1266,15 @@
         userPaused = false;
         if (video.ended) video.currentTime = 0;
         const attempt = video.play();
-        if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
+        if (attempt && typeof attempt.catch === "function") {
+          attempt.catch(() => {
+            soundEnabled = false;
+            video.muted = true;
+            video.defaultMuted = true;
+            showSoundButton();
+            keepPlaying();
+          });
+        }
       } else {
         userPaused = true;
         video.pause();
