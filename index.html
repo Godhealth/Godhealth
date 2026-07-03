@@ -308,6 +308,8 @@
   .msinput::placeholder { color:var(--ink-mute); }
   .msinput:focus { outline:none; border-color:var(--gold-2); box-shadow:0 0 0 3px rgba(217,180,90,0.14); }
   .msform .btn { margin-top:18px; }
+  .msform .btn-gold { box-shadow:0 14px 34px -18px rgba(184,138,46,.75),inset 0 1px 0 rgba(255,255,255,.42); }
+  .msform .btn-gold:hover { box-shadow:0 18px 38px -18px rgba(184,138,46,.9),inset 0 1px 0 rgba(255,255,255,.5); }
   .optional-label { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-2); font-weight:600; margin:16px 0 -4px; }
   .msback { display:block; margin:14px auto 0; background:none; border:none; color:var(--ink-mute); font-size:13.5px; font-family:inherit; cursor:pointer; padding:8px; min-height:40px; }
   .msback:hover { color:var(--ink-soft); }
@@ -458,7 +460,7 @@
   .hero .trust-bar { margin-top:16px; }
   .placeholder-label { display:inline-flex; align-items:center; border:1px solid var(--gold-line); border-radius:9999px; padding:5px 10px; color:var(--gold-2); font-size:10px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; }
   .section-note { max-width:720px; margin:22px auto 0; font-size:13px; color:var(--ink-mute); text-align:center; line-height:1.6; }
-  .possibility-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:34px; }
+  .possibility-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:34px auto 0; max-width:900px; }
   .possibility { display:flex; gap:12px; align-items:flex-start; min-height:84px; border:1px solid var(--gold-line); border-radius:16px; padding:18px; background:linear-gradient(180deg,rgba(217,180,90,0.05),rgba(0,0,0,0.12)); transition:transform .25s ease,border-color .25s ease; }
   .possibility:hover { transform:translateY(-3px); border-color:var(--gold-2); }
   .possibility svg { width:20px; height:20px; color:var(--gold-2); flex:0 0 auto; margin-top:2px; }
@@ -468,29 +470,33 @@
   .path-card .ibadge { margin-bottom:18px; }
   .path-card h3 { font-size:clamp(25px,3vw,32px); }
   .path-card .path-intro { color:var(--ink-soft); font-size:14px; margin-top:10px; }
-  .path-list,.call-points { list-style:none; display:grid; gap:11px; margin:20px 0 26px; }
-  .path-list li,.call-points li { display:flex; gap:10px; align-items:flex-start; color:var(--ink-soft); font-size:14px; line-height:1.5; }
-  .path-list svg,.call-points svg { width:17px; height:17px; color:var(--gold-2); flex:0 0 auto; margin-top:3px; }
+  .path-list { list-style:none; display:grid; gap:11px; margin:20px 0 26px; }
+  .path-list li { display:flex; gap:10px; align-items:flex-start; color:var(--ink-soft); font-size:14px; line-height:1.5; }
+  .path-list svg { width:17px; height:17px; color:var(--gold-2); flex:0 0 auto; margin-top:3px; }
   .path-card .btn { margin-top:auto; }
-  .call-panel { max-width:820px; margin:34px auto 0; padding:clamp(26px,5vw,46px); text-align:left; }
-  .call-panel .call-points { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .call-panel .btn-row { margin-top:26px; }
+  .call-section { padding-top:clamp(42px,6vw,64px); padding-bottom:clamp(42px,6vw,64px); }
+  .call-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; max-width:780px; margin:22px auto 0; }
+  .call-summary-item { display:flex; align-items:center; justify-content:center; gap:9px; min-height:64px; padding:13px; border:1px solid var(--gold-line); border-radius:15px;
+    background:linear-gradient(180deg,#fffdf8,#fbf4e6); color:var(--ink); font-size:13px; font-weight:650; text-align:center; }
+  .call-summary-item svg { width:18px; height:18px; color:var(--gold-1); flex:0 0 auto; }
+  .call-fit-note { margin:14px auto 0; color:var(--ink-mute); font-size:12px; text-align:center; }
+  .call-form-card { margin:20px auto 0; max-width:520px; padding:clamp(20px,4vw,28px); }
   .secondary-link { display:inline-block; margin-top:16px; color:var(--gold-2); font-size:13px; text-decoration:underline; text-underline-offset:4px; }
   .form-submit[disabled] { cursor:wait; opacity:.65; transform:none; }
-  @media (max-width:960px) {
-    .possibility-grid { grid-template-columns:1fr 1fr; }
-  }
   @media (max-width:760px) {
     .path-grid { grid-template-columns:1fr; }
-    .call-panel .call-points { grid-template-columns:1fr; }
     .software-meta { grid-template-columns:1fr; }
   }
   @media (max-width:560px) {
     .hero-support { font-size:16px; }
     .hero .chip-row { align-items:stretch; }
     .hero .chip { width:100%; justify-content:center; }
-    .possibility-grid { grid-template-columns:1fr; }
-    .mini-card, .check, .possibility { padding:16px; }
+    .mini-card, .check { padding:16px; }
+    .possibility { min-height:76px; padding:13px 11px; gap:9px; }
+    .possibility svg { width:17px; height:17px; }
+    .possibility p { font-size:12.5px; line-height:1.4; }
+    .call-summary { gap:8px; }
+    .call-summary-item { min-height:70px; padding:10px 7px; gap:6px; font-size:11.5px; line-height:1.3; flex-direction:column; }
     .report { padding:18px 16px; }
     .bar-row { grid-template-columns:58px 1fr 32px; gap:8px; }
     .ring { width:158px; }
@@ -549,13 +555,13 @@
     </span>
   </div>
   <p class="lead hero-impact">You were not created to live exhausted, stuck or constantly starting over.</p>
-  <p class="lead hero-explainer" style="margin-top:8px;">The free 10-minute Kingdom Vitality Scan shows where body, soul and spirit may be out of alignment. Ready for personal guidance? Book a GodHealth Strategy Call and discover your next step.</p>
+  <p class="lead hero-explainer" style="margin-top:8px;">See where your body, soul and spirit may be out of alignment. Take the free 10-minute scan, or book a Strategy Call for personal guidance.</p>
 
   <div class="btn-row center" style="margin-top:18px;">
     <a class="btn btn-gold" href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a>
     <a class="btn btn-gold" href="#call">Book My GodHealth Strategy Call</a>
   </div>
-  <p class="cta-sub">Free 10-Minute Scan &nbsp;•&nbsp; Complimentary Strategy Call &nbsp;•&nbsp; No Obligation</p>
+  <p class="cta-sub">Free 10-Minute Scan &nbsp;•&nbsp; Free Strategy Call &nbsp;•&nbsp; No Obligation</p>
 
   <div class="chip-row center">
     <span class="chip">
@@ -570,7 +576,7 @@
 
   <div class="trust-bar">
     <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Privacy protected</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Educational only</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>For education only</span>
     <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Biblical &amp; science-informed</span>
   </div>
 
@@ -582,21 +588,22 @@
 <section class="section sec-light">
   <div class="wrap">
   <div class="center narrow">
-    <p class="eyebrow reveal">Possible Signs Of Misalignment</p>
+    <p class="eyebrow reveal">Do You Recognize This?</p>
     <h2 class="reveal" style="margin-top:12px;">This Is <span class="gold-text">For You</span> If...</h2>
-    <p class="lead reveal" style="margin-top:16px;">You want a Biblical &amp; science-informed way to understand where practical stewardship may need attention.</p>
+    <p class="lead reveal" style="margin-top:16px;">You want a clear, Biblical and science-informed way to care for your health.</p>
   </div>
   <div class="checklist reveal" style="margin-top:36px; max-width:880px; margin-left:auto; margin-right:auto;">
-    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You often experience low energy.</p></div>
-    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You carry excess body fat.</p></div>
-    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You feel uncomfortable in your body.</p></div>
-    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You lack discipline around food.</p></div>
-    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You are constantly starting over.</p></div>
-    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>Your sleep feels poor or inconsistent.</p></div>
-    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You often feel heavy or sluggish.</p></div>
-    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You know your body deserves better stewardship.</p></div>
+    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You often have low energy.</p></div>
+    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You carry extra body fat.</p></div>
+    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You do not feel at home in your body.</p></div>
+    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>Food choices feel hard to control.</p></div>
+    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You keep starting over.</p></div>
+    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You do not sleep well.</p></div>
+    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You often feel heavy or slow.</p></div>
+    <div class="check"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><p>You want to care for your body better.</p></div>
   </div>
-  <p class="serif-i center reveal" style="margin-top:30px; font-size:clamp(19px,2.8vw,26px); color:var(--ink);">&ldquo;The problem is often not a lack of information. <span class="gold-text">The problem is misalignment.</span>&rdquo;</p>
+  <p class="serif-i center reveal" style="margin-top:30px; font-size:clamp(19px,2.8vw,26px); color:var(--ink);">&ldquo;You may not need more information. <span class="gold-text">You may need better alignment.</span>&rdquo;</p>
+  <div class="btn-row center reveal" style="margin-top:24px;"><a class="btn btn-gold" href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a></div>
 </div>
 </section>
 <hr class="divider">
@@ -605,9 +612,9 @@
 <section class="section" id="alignment">
   <div class="wrap">
   <div class="center narrow">
-    <p class="eyebrow reveal">The Central GodHealth Mechanism</p>
+    <p class="eyebrow reveal">Why Knowing Is Not Always Enough</p>
     <h2 class="reveal" style="margin-top:12px;">The <span class="gold-text">Alignment Gap</span>&trade;</h2>
-    <p class="lead reveal" style="margin-top:16px;">Most people do not have an information problem. They have an Alignment Gap between body, soul and spirit.</p>
+    <p class="lead reveal" style="margin-top:16px;">An Alignment Gap appears when your body, soul and spirit are not working well together.</p>
   </div>
 
   <div class="card card-pad reveal" style="margin-top:34px; max-width:820px; margin-left:auto; margin-right:auto; text-align:center;">
@@ -619,9 +626,8 @@
       <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9h14M9 5h6"/></svg><span class="nl">Spirit</span></div>
     </div>
 
-    <p class="lead" style="margin-top:26px;">You may already know what to eat, how to train and why sleep matters. Information alone does not always create alignment.</p>
-    <p class="lead" style="margin-top:14px;">The <b style="color:var(--ink);">Alignment Gap</b>&trade; is the distance between how your body, soul and spirit are functioning today and how they were designed to work together.</p>
-    <p class="lead" style="margin-top:14px;">The Kingdom Vitality Scan helps you see possible gaps, understand which area may need attention first, and receive practical next steps.</p>
+    <p class="lead" style="margin-top:26px;">You may already know that food, movement, sleep and stress matter. But knowing is not the same as living in alignment.</p>
+    <p class="lead" style="margin-top:14px;">The free scan helps you see which area may need attention first and gives you clear next steps.</p>
 
     <div class="btn-row center" style="margin-top:26px;">
       <a class="btn btn-gold" href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a>
@@ -645,25 +651,25 @@
     <div class="card card-pad tcard">
       <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
       <p class="review-title">Great experience!</p>
-      <p class="quote">&ldquo;Since I started at GodHealth, I have made a lot of progress, both physically and in my lifestyle. I feel fitter, more energetic, and have learned a lot about healthy nutrition as God intended. I have also been able to gain a much deeper insight into the connection between mind and body. I can definitely recommend GodHealth to anyone who wants to live healthier and grow, both physically and spiritually.&rdquo;</p>
+      <p class="quote">&ldquo;Since I started at GodHealth, I have made a lot of progress, both physically and in my lifestyle. I feel fitter, more energetic, and have learned a lot about healthy nutrition as God intended.&rdquo;</p>
       <div class="who"><div class="av"></div><div><div class="nm">Thomas R</div><div class="small">GodHealth client</div></div></div>
     </div>
     <div class="card card-pad tcard">
       <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
       <p class="review-title">Life-changing experience!</p>
-      <p class="quote">&ldquo;I completed the 3-month program, and it has truly been a life-changing experience. One of the biggest things I learned is that I can function really well while eating much less than I used to. I also noticed that the afternoon energy crashes I used to struggle with completely disappeared after just a few weeks. This program isn&rsquo;t just about food, it&rsquo;s about creating a healthy lifestyle that lasts. If you&rsquo;re ready to make real changes in the way you eat, move, and grow in your faith, I wholeheartedly encourage you to join. You won&rsquo;t regret it. One of the most valuable parts of the journey was becoming aware of how nutrition affects your body and learning how to build healthy habits step by step. The knowledge, encouragement, and guidance you receive through GodHealth are truly a blessing and can make a lasting difference in your life.&rdquo;</p>
+      <p class="quote">&ldquo;I completed the 3-month program, and it has truly been a life-changing experience. This program isn&rsquo;t just about food; it&rsquo;s about creating a healthy lifestyle that lasts.&rdquo;</p>
       <div class="who"><div class="av"></div><div><div class="nm">Valerie</div><div class="small">GodHealth client</div></div></div>
     </div>
     <div class="card card-pad tcard">
       <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
       <p class="review-title">More energy and better relationship with God!</p>
-      <p class="quote">&ldquo;One of the things GodHealth made me realise is how my physical and spiritual life work together. I&rsquo;ve learned so much about nutrition and the benefits of eating God-created food. I&rsquo;m in better shape, I feel more energy and what surprised me the most is that my relationship with God actually became stronger! I recommend everyone to be a part of GodHealth. It will open up your eyes in many ways in how God intended us to take care of our bodies, so that we live a healthy and Godly life!&rdquo;</p>
+      <p class="quote">&ldquo;GodHealth helped me see how my physical and spiritual life work together. I feel more energy, and what surprised me most is that my relationship with God became stronger.&rdquo;</p>
       <div class="who"><div class="av"></div><div><div class="nm">Apostle Anthony</div><div class="small">GodHealth client</div></div></div>
     </div>
     <div class="card card-pad tcard">
       <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
       <p class="review-title">Top results and a healthy lifestyle!</p>
-      <p class="quote">&ldquo;Since I started at GodHealth, I can see really clear physical progress. My body fat percentage has dropped significantly, and I&rsquo;m seeing noticeable muscle definition. On top of that, my nutrition has improved tremendously; I finally have a stable, better eating pattern with the right nutrients. Highly recommended if you want to achieve serious results!&rdquo;</p>
+      <p class="quote">&ldquo;Since I started at GodHealth, I can see clear physical progress. My body fat percentage has dropped, I see more muscle definition, and my nutrition has improved tremendously.&rdquo;</p>
       <div class="who"><div class="av"></div><div><div class="nm">Milan K</div><div class="small">GodHealth client</div></div></div>
     </div>
   </div>
@@ -676,10 +682,10 @@
 <section class="section" id="meet-robin">
   <div class="wrap">
     <div class="center narrow">
-      <p class="eyebrow reveal">Your Coach &amp; Guide</p>
+      <p class="eyebrow reveal">Faith First. Practical Guidance.</p>
       <h2 class="reveal" style="margin-top:12px;">Meet <span class="gold-text">Robin Kramps</span></h2>
       <p class="eyebrow reveal" style="margin-top:16px;">Believer in Jesus Christ</p>
-      <p class="lead reveal" style="margin-top:12px;">Robin is a follower of Jesus Christ first. His work through GodHealth grows from a sincere desire to help people care for their health with faith, wisdom and personal responsibility.</p>
+      <p class="lead reveal" style="margin-top:12px;">Robin helps Christians care for their health through faith, clear coaching and personal responsibility.</p>
     </div>
 
     <div class="robin" style="margin-top:40px;">
@@ -687,44 +693,21 @@
         <div class="photo" style="background-image:var(--img-strength); background-size:cover; background-position:center 32%;" role="img" aria-label="Robin Kramps"></div>
       </div>
       <div class="reveal">
-        <p class="lead" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(17px,2.4vw,21px); color:var(--ink);">&ldquo;My faith comes first. I founded GodHealth to help believers approach their health as faithful stewardship — with Christ at the center, honest accountability and practical guidance grounded in sound physiology.&rdquo;</p>
+        <p class="lead" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(17px,2.4vw,21px); color:var(--ink);">&ldquo;My faith comes first. I founded GodHealth to help believers care for their health with Christ at the center.&rdquo;</p>
         <div class="cred-grid">
           <div class="cred"><span class="ce">✝</span><span class="ct"><b>Believer in Jesus Christ</b><br>Faith before achievement</span></div>
-          <div class="cred"><span class="ce">◆</span><span class="ct"><b>Founder of GodHealth</b><br>Christ-centered health stewardship</span></div>
-          <div class="cred"><span class="ce">✓</span><span class="ct"><b>Certified Lifestyle Coach</b><br>Practical, person-centered guidance</span></div>
-          <div class="cred"><span class="ce">4</span><span class="ct"><b>4 Years Studied at CIOS</b><br>Sport, Movement &amp; Health</span></div>
-          <div class="cred"><span class="ce">🥈</span><span class="ct"><b>Silver Medalist</b><br>Dutch National Hurdles Championships</span></div>
-          <div class="cred"><span class="ce">100+</span><span class="ct"><b>People Coached</b><br>Practical guidance and accountability</span></div>
+          <div class="cred"><span class="ce">◆</span><span class="ct"><b>Founder of GodHealth</b><br>Christ-centered coaching</span></div>
+          <div class="cred"><span class="ce">✓</span><span class="ct"><b>Certified Lifestyle Coach</b><br>Clear, personal support</span></div>
+          <div class="cred"><span class="ce">4</span><span class="ct"><b>4 Years at CIOS</b><br>Sport, Movement &amp; Health</span></div>
+          <div class="cred"><span class="ce">🥈</span><span class="ct"><b>Silver Medalist</b><br>Dutch National Hurdles</span></div>
+          <div class="cred"><span class="ce">100+</span><span class="ct"><b>People Coached</b><br>Practical experience</span></div>
         </div>
-        <p class="muted" style="font-size:14.5px;">As the founder of GodHealth, Robin brings together four years of study at CIOS in Sport, Movement &amp; Health, certification as a Lifestyle Coach and experience coaching more than 100 people. His silver medal at the Dutch National Hurdles Championships reflects years of discipline, yet he sees every credential as something to place in service of others. His approach is humble, Biblical, evidence-based and personal. GodHealth provides education and coaching; it does not diagnose, treat or replace qualified medical care.</p>
+        <p class="muted" style="font-size:14.5px;">Robin combines faith, coaching and a background in sport and health. He has coached more than 100 people and helps clients take simple, practical steps. GodHealth offers education and coaching, not medical care.</p>
       </div>
     </div>
 
     <div class="verse reveal" style="margin-top:38px;">&ldquo;Know ye not that they which run in a race run all, but one receiveth the prize? So run, that ye may obtain.&rdquo;<span class="ref">1 Corinthians 9:24 · KJV</span></div>
   </div>
-</section>
-<hr class="divider">
-
-<!-- ===================== WHAT YOU RECEIVE ===================== -->
-<section class="section sec-light">
-  <div class="wrap">
-  <div class="center narrow">
-    <p class="eyebrow reveal">Free Scan Value</p>
-    <h2 class="reveal" style="margin-top:12px;">What You <span class="gold-text">Receive</span></h2>
-    <p class="lead reveal" style="margin-top:16px;">A concise, personal report built from your own responses.</p>
-  </div>
-  <div class="mini-grid reveal">
-    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a4 4 0 1 0-4-4"/><path d="M5 19a9 9 0 1 1 14 0"/></svg></span><div class="mt">Body Score</div><div class="md">An educational snapshot of your current body-related responses.</div></div>
-    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4c0 1.5.8 2.8 2 3.5V21h4v-10.5c1.2-.7 2-2 2-3.5a4 4 0 0 0-4-4z"/></svg></span><div class="mt">Soul Score</div><div class="md">A view of patterns around mindset, will and discipline.</div></div>
-    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9h14M9 5h6"/></svg></span><div class="mt">Spirit Score</div><div class="md">A reflection of your responses about spiritual rhythms.</div></div>
-    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg></span><div class="mt">Overall Alignment Score</div><div class="md">One number for how unified your three domains are.</div></div>
-    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></span><div class="mt">Primary Alignment Gap</div><div class="md">The area that may deserve attention first.</div></div>
-    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div class="mt">Personalized Next Steps</div><div class="md">Practical, Biblical &amp; science-informed actions.</div></div>
-    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div class="mt">Practical Stewardship Recommendations</div><div class="md">Small actions you can consider in everyday life.</div></div>
-  </div>
-  <p class="small center reveal" style="margin-top:22px;">Educational only · Generated from your personal responses · Biblical &amp; science-informed.</p>
-  <div class="btn-row center reveal" style="margin-top:24px;"><a class="btn btn-gold" href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a></div>
-</div>
 </section>
 <hr class="divider">
 
@@ -734,7 +717,7 @@
   <div class="center narrow">
     <p class="eyebrow reveal">The Kingdom Vitality Scan</p>
     <h2 class="reveal" style="margin-top:12px;"><span class="gold-text">Example Results</span></h2>
-    <p class="lead reveal" style="margin-top:16px;">A dashboard-style preview of the educational report you may receive.</p>
+    <p class="lead reveal" style="margin-top:16px;">A simple preview of the personal report you may receive.</p>
   </div>
 
   <div class="card report reveal" id="exampleReport" style="margin-top:38px; max-width:680px; margin-left:auto; margin-right:auto;">
@@ -744,8 +727,8 @@
     </div>
 
     <div class="report-status">
-      <span class="status-chip"><span class="status-dot"></span>Assessment Completed</span>
-      <span class="status-chip"><span class="status-dot"></span>Personalized Report Ready</span>
+      <span class="status-chip"><span class="status-dot"></span>Scan Complete</span>
+      <span class="status-chip"><span class="status-dot"></span>Report Ready</span>
     </div>
 
     <div class="score-summary">
@@ -755,7 +738,7 @@
           <span class="pct gold-text" data-score="82">82%</span>
         </div>
       </div>
-      <p class="score-caption">Strong overall alignment</p>
+      <p class="score-caption">Your starting point</p>
     </div>
 
     <div class="bar-row score-mid" style="--score:74%; --delay:.18s;"><span class="bl">Body</span><div class="bar-track"><div class="bar-fill"></div></div><span class="bv">74</span></div>
@@ -772,14 +755,14 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Nutrition</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sleep</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Training</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Prayer Rhythm</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Prayer</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Recovery</li>
       </ul>
     </div>
     <div class="software-meta">
       <div class="meta-item"><div class="meta-label">Last Updated</div><div class="meta-value">Today</div></div>
-      <div class="meta-item"><div class="meta-label">Next Recommended Action</div><div class="meta-value">Review your Soul recommendations</div></div>
-      <div class="meta-item"><div class="meta-label">Confidence Indicator</div><div class="meta-value">High</div></div>
+      <div class="meta-item"><div class="meta-label">Next Step</div><div class="meta-value">Review your Soul actions</div></div>
+      <div class="meta-item"><div class="meta-label">Report Type</div><div class="meta-value">Personal</div></div>
     </div>
     <p class="small" style="margin-top:18px;">Your personal report is generated from your own responses.</p>
   </div>
@@ -794,12 +777,12 @@
     <h2 class="reveal" style="margin-top:12px;">What Happens After <span class="gold-text">Your Scan?</span></h2>
   </div>
   <div class="timeline reveal">
-    <div class="tstep"><div class="tnum">1</div><div class="tbody"><div class="tt">Complete the free scan.</div><div class="td">Answer a few honest questions about body, soul and spirit.</div></div></div>
-    <div class="tstep"><div class="tnum">2</div><div class="tbody"><div class="tt">Receive your Alignment Report.</div><div class="td">See your four scores in one clear report.</div></div></div>
-    <div class="tstep"><div class="tnum">3</div><div class="tbody"><div class="tt">Discover your greatest Alignment Gap.</div><div class="td">See which area may deserve attention first.</div></div></div>
-    <div class="tstep"><div class="tnum">4</div><div class="tbody"><div class="tt">Receive practical next steps.</div><div class="td">Consider Biblical &amp; science-informed actions for everyday life.</div></div></div>
-    <div class="tstep"><div class="tnum">5</div><div class="tbody"><div class="tt">Book a complimentary GodHealth Strategy Call.</div><div class="td">Meet Robin, discuss your challenges and explore whether the 12-week journey may fit your goals.</div></div></div>
-    <div class="tstep"><div class="tnum">6</div><div class="tbody"><div class="tt">If we both believe it is a good fit, you may be invited into the next cohort.</div><div class="td">Every invitation follows a thoughtful, mutual fit conversation.</div></div></div>
+    <div class="tstep"><div class="tnum">1</div><div class="tbody"><div class="tt">Take the free scan.</div><div class="td">Answer questions about body, soul and spirit.</div></div></div>
+    <div class="tstep"><div class="tnum">2</div><div class="tbody"><div class="tt">Get your report.</div><div class="td">See your scores in one clear overview.</div></div></div>
+    <div class="tstep"><div class="tnum">3</div><div class="tbody"><div class="tt">Find your main Alignment Gap.</div><div class="td">See where to begin.</div></div></div>
+    <div class="tstep"><div class="tnum">4</div><div class="tbody"><div class="tt">Follow practical next steps.</div><div class="td">Use simple actions for all three pillars.</div></div></div>
+    <div class="tstep"><div class="tnum">5</div><div class="tbody"><div class="tt">Book a free Strategy Call if you want help.</div><div class="td">Talk with Robin about your goals and challenges.</div></div></div>
+    <div class="tstep"><div class="tnum">6</div><div class="tbody"><div class="tt">Explore coaching if it feels right.</div><div class="td">You may be invited when it feels right for both sides.</div></div></div>
   </div>
   <div class="btn-row center reveal" style="margin-top:38px;">
     <a class="btn btn-gold" href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a>
@@ -812,9 +795,9 @@
 <section class="section">
   <div class="wrap">
   <div class="center narrow">
-    <p class="eyebrow reveal">Beyond The Scan</p>
+    <p class="eyebrow reveal">Support Beyond The Scan</p>
     <h2 class="reveal" style="margin-top:12px;">The 12-Week GodHealth <span class="gold-text">Coaching Journey</span></h2>
-    <p class="lead reveal" style="margin-top:16px;">A structured, Christ-centered cohort journey for Christians who are ready for guidance, accountability and a clear path to rebuild their health according to God's original design.</p>
+    <p class="lead reveal" style="margin-top:16px;">A Christ-centered group journey with clear weekly steps, coaching and personal support.</p>
   </div>
   <div class="mini-grid compact reveal">
     <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h6v16H6a2 2 0 0 0-2 2V5z"/><path d="M20 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2V5z"/></svg></span><div class="mt">Biblical Stewardship</div></div>
@@ -824,11 +807,11 @@
     <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg></span><div class="mt">Sleep &amp; Recovery</div></div>
     <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9h14M9 5h6"/></svg></span><div class="mt">Prayer &amp; Spiritual Growth</div></div>
     <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></span><div class="mt">Accountability</div></div>
-    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg></span><div class="mt">Habit Formation</div></div>
-    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a4 4 0 1 0-4-4"/><path d="M5 19a9 9 0 1 1 14 0"/></svg></span><div class="mt">Lifestyle Transformation</div></div>
-    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span><div class="mt">Long-Term Vitality</div></div>
+    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg></span><div class="mt">Healthy Habits</div></div>
+    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a4 4 0 1 0-4-4"/><path d="M5 19a9 9 0 1 1 14 0"/></svg></span><div class="mt">Healthy Lifestyle</div></div>
+    <div class="mini-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span><div class="mt">Lasting Vitality</div></div>
   </div>
-  <p class="section-note reveal">Participants walk through the same weekly structure and progression alongside other Christians, creating community, accountability and momentum. Explore the journey through a complimentary GodHealth Strategy Call, or begin with the free scan.</p>
+  <p class="section-note reveal">Grow with other Christians through one clear weekly structure. Start with the free scan or book a Strategy Call.</p>
 </div>
 </section>
 <hr class="divider">
@@ -836,32 +819,22 @@
 <!-- ===================== OUTCOME ===================== -->
 <section class="section wrap sec-light">
   <div class="center narrow">
-    <p class="eyebrow reveal">Consider What May Be Possible</p>
+    <p class="eyebrow reveal">What Could Change?</p>
     <h2 class="reveal" style="margin-top:12px;">Imagine Yourself <span class="gold-text">12 Weeks From Now</span></h2>
-    <p class="lead reveal" style="margin-top:16px;">No promises. Simply picture what consistent stewardship, support and practical next steps may make possible.</p>
+    <p class="lead reveal" style="margin-top:16px;">These are possibilities, not promises. Small, steady steps may help you move toward:</p>
   </div>
   <div class="section-photo reveal" style="background-image:var(--img-joy);" role="img" aria-label="Two people leaping for joy at sunset"></div>
   <div class="possibility-grid reveal">
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg><p>Stable energy throughout the entire day.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h4l2-5 4 10 2-5h4"/></svg><p>Fewer afternoon energy crashes.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg><p>Waking up refreshed.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg><p>Better sleep quality.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><p>Greater mental clarity.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg><p>Better focus.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20h16M7 20V8l5-4 5 4v12"/></svg><p>More confidence in the mirror.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M7 7h10M5 12h14M7 17h10"/></svg><p>Better body composition.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8v8M3 10v4M18 8v8M21 10v4M6 12h12"/></svg><p>Increased strength.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg><p>Greater discipline.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><p>More control over your habits.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg><p>Less dependence on motivation.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 9h14"/></svg><p>Better stress resilience.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/></svg><p>An improved relationship with food.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12l5 5L20 6"/></svg><p>Greater consistency.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg><p>Faster recovery.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-6.8z"/></svg><p>More peace of mind.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><p>Becoming a better steward of God's temple.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20h14M7 20V9l5-5 5 5v11"/></svg><p>Feeling physically equipped to serve God's Kingdom.</p></div>
-    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 9h14M9 5h6"/></svg><p>Living closer to God's original design.</p></div>
+    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg><p>More steady energy</p></div>
+    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg><p>Waking up more refreshed</p></div>
+    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg><p>Better sleep</p></div>
+    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8v8M3 10v4M18 8v8M21 10v4M6 12h12"/></svg><p>A stronger body</p></div>
+    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M7 7h10M5 12h14M7 17h10"/></svg><p>A healthier body composition</p></div>
+    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12l5 5L20 6"/></svg><p>More consistent habits</p></div>
+    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/></svg><p>A healthier relationship with food</p></div>
+    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-6.8z"/></svg><p>More peace of mind</p></div>
+    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><p>Better stewardship of your body</p></div>
+    <div class="possibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 9h14M9 5h6"/></svg><p>Living closer to God's design</p></div>
   </div>
   <div class="verse reveal" style="margin-top:38px;">"Arise, shine; for thy light is come, and the glory of the Lord is risen upon thee."<span class="ref">Isaiah 60:1 · KJV</span></div>
 </section>
@@ -871,32 +844,30 @@
 <section class="section" id="paths">
   <div class="wrap">
     <div class="center narrow">
-      <p class="eyebrow reveal">Two Valid Entry Points</p>
+      <p class="eyebrow reveal">Choose Your Next Step</p>
       <h2 class="reveal" style="margin-top:12px;">Which Path Fits You <span class="gold-text">Best?</span></h2>
-      <p class="lead reveal" style="margin-top:16px;">Choose the path that matches where you are today. Neither requires the other.</p>
+      <p class="lead reveal" style="margin-top:16px;">Start with the scan, or book a call if you already want personal guidance.</p>
     </div>
     <div class="path-grid reveal">
       <article class="path-card">
         <div class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m15 9 4-4"/></svg></div>
         <h3>Kingdom Vitality Scan</h3>
-        <p class="path-intro">Perfect if you want to:</p>
+        <p class="path-intro">Choose the scan if you want to:</p>
         <ul class="path-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Discover your Alignment Score</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Understand your Body, Soul &amp; Spirit</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Receive practical next steps</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>See your Alignment Score</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Understand your three pillars</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Get clear next steps</li>
         </ul>
         <a class="btn btn-gold full" href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a>
       </article>
       <article class="path-card">
         <div class="ibadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 19a7 7 0 0 1 14 0"/><circle cx="12" cy="8" r="4"/><path d="M18 3v4M16 5h4"/></svg></div>
         <h3>GodHealth Strategy Call</h3>
-        <p class="path-intro">Perfect if you:</p>
+        <p class="path-intro">Choose the call if you want to:</p>
         <ul class="path-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Already know you need help</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Want expert guidance</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Want accountability</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Want a personalized strategy</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Want to explore coaching</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Get personal guidance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Get personal support</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Explore coaching</li>
         </ul>
         <a class="btn btn-gold full" href="#call">Book My GodHealth Strategy Call</a>
       </article>
@@ -909,9 +880,9 @@
 <section class="section sec-light" id="cohort">
   <div class="wrap">
     <div class="center narrow">
-      <p class="eyebrow reveal">A Structured Journey Together</p>
-      <h2 class="reveal" style="margin-top:12px;">Next GodHealth Cohort <span class="gold-text">Begins In</span></h2>
-      <p class="lead reveal" style="margin-top:16px;">The GodHealth Coaching Journey is a structured 12-week cohort program. Participants walk through the same weekly progression alongside other Christians, creating community, accountability and momentum.</p>
+      <p class="eyebrow reveal">Grow Together</p>
+      <h2 class="reveal" style="margin-top:12px;">Next GodHealth Group <span class="gold-text">Begins In</span></h2>
+      <p class="lead reveal" style="margin-top:16px;">A 12-week journey with weekly steps, a Christian community and personal support.</p>
     </div>
 
     <div class="cohort-shell reveal" aria-live="polite">
@@ -921,16 +892,16 @@
         <div class="count-unit"><span class="count-value" id="cohortMinutes">—</span><span class="count-label">Minutes</span></div>
         <div class="count-unit"><span class="count-value" id="cohortSeconds">—</span><span class="count-label">Seconds</span></div>
       </div>
-      <p class="cohort-status" id="cohortStatus">Applications opening soon</p>
+      <p class="cohort-status" id="cohortStatus">Sign-ups opening soon</p>
       <p class="cohort-date" id="cohortDate"></p>
       <div class="cohort-facts">
-        <div class="cohort-fact"><b>12-Week Shared Journey</b><span>Everyone follows the same weekly structure and progression.</span></div>
-        <div class="cohort-fact"><b>A New Cohort Every 6 Weeks</b><span>New groups begin on a clear, predictable rhythm.</span></div>
-        <div class="cohort-fact"><b>Maximum Two Active Cohorts</b><span>Focused support stays personal, structured and sustainable.</span></div>
+        <div class="cohort-fact"><b>12 Weeks Together</b><span>Follow one clear weekly plan.</span></div>
+        <div class="cohort-fact"><b>New Group Every 6 Weeks</b><span>Join a clear start date.</span></div>
+        <div class="cohort-fact"><b>Small Number of Groups</b><span>Support stays personal.</span></div>
       </div>
     </div>
 
-    <p class="deadline-note reveal">Applications close 72 hours before each cohort begins so every participant has time to complete Pre-Season preparation before Week 1. If someone applies within the final 72 hours, they will be considered for the following cohort.</p>
+    <p class="deadline-note reveal">Sign-ups close 72 hours before the start date. Later sign-ups move to the next group.</p>
   </div>
 </section>
 <hr class="divider">
@@ -939,51 +910,45 @@
 <section class="section" id="preseason">
   <div class="wrap">
     <div class="center narrow">
-      <p class="eyebrow reveal">GodHealth Pre-Season</p>
-      <h2 class="reveal" style="margin-top:12px;">Begin Before The <span class="gold-text">Journey Begins</span></h2>
-      <p class="lead reveal" style="margin-top:16px;">Once accepted into a cohort, participants immediately receive access to the GodHealth Pre-Season. The earlier someone joins, the longer they benefit from preparation before Week 1.</p>
+      <p class="eyebrow reveal">Prepare Before You Start</p>
+      <h2 class="reveal" style="margin-top:12px;">Start Preparing <span class="gold-text">Early</span></h2>
+      <p class="lead reveal" style="margin-top:16px;">If accepted, you can begin preparing before Week 1.</p>
     </div>
     <div class="preseason-layout reveal">
       <div class="preseason-range">
         <strong>3–45</strong>
-        <span>days of Pre-Season preparation, depending on when someone is accepted.</span>
+        <span>days to prepare, depending on your acceptance date.</span>
       </div>
       <div class="preseason-list">
-        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16M7 20V8l5-4 5 4v12"/></svg>Preparing their environment</div>
-        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Building foundational habits</div>
-        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Establishing daily rhythms</div>
-        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg>Receiving onboarding</div>
-        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14M9 5h6"/></svg>Preparing spiritually</div>
-        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9M3 4v5h5"/></svg>Building consistency</div>
+        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16M7 20V8l5-4 5 4v12"/></svg>Prepare your environment</div>
+        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Start key habits</div>
+        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Set daily rhythms</div>
+        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg>Complete onboarding</div>
+        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14M9 5h6"/></svg>Prepare spiritually</div>
+        <div class="preseason-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9M3 4v5h5"/></svg>Build consistency</div>
       </div>
     </div>
-    <p class="section-note reveal">This is not fake scarcity. It is simply how the structured cohort model works: each participant needs time to prepare well before Week 1 begins.</p>
+    <p class="section-note reveal">This preparation gives every participant a clear start before Week 1.</p>
   </div>
 </section>
 <hr class="divider">
 
 <!-- ===================== GODHEALTH STRATEGY CALL ===================== -->
-<section class="section sec-light" id="call">
+<section class="section sec-light call-section" id="call">
   <div class="wrap">
     <div class="center narrow">
-      <p class="eyebrow reveal">A Warm Invitation Into The Journey</p>
+      <p class="eyebrow reveal">Free 30-Minute Call</p>
       <h2 class="reveal" style="margin-top:12px;">GodHealth <span class="gold-text">Strategy Call</span></h2>
-      <p class="lead reveal" style="margin-top:16px;">For Christians who are ready for guidance, accountability, structure and a clear path to rebuild their health according to God's original design.</p>
+      <p class="lead reveal" style="margin-top:14px;">A simple conversation about where you are, where you want to go, and whether GodHealth can help.</p>
     </div>
-    <div class="card call-panel reveal">
-      <p class="lead">During the complimentary GodHealth Strategy Call, we will get to know each other, discuss your current challenges, explore your goals, explain how the 12-week GodHealth Coaching Journey works, and determine whether the next cohort is the right fit.</p>
-      <p class="eyebrow" style="margin-top:26px;">A Thoughtful Conversation</p>
-      <ul class="call-points">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Get to know each other</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Discuss your biggest challenges</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Explore your goals</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Explain the 12-week GodHealth Coaching Journey</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Determine whether the next cohort is the right fit</li>
-      </ul>
-      <p class="small">If we both believe it is a good fit, you may be invited to join the next cohort. Complimentary · No pressure · No obligation.</p>
+    <div class="call-summary reveal">
+      <div class="call-summary-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg><span>Share your challenge</span></div>
+      <div class="call-summary-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg><span>Clarify your goal</span></div>
+      <div class="call-summary-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>Choose your next step</span></div>
     </div>
+    <p class="call-fit-note reveal">Free · No pressure · Coaching is only discussed when it feels right for both sides.</p>
 
-    <div class="card card-pad reveal" style="margin-top:28px; max-width:520px; margin-left:auto; margin-right:auto;">
+    <div class="card call-form-card reveal">
       <form id="callForm" class="msform" novalidate>
         <div class="msdots"><span class="msdot on" data-dot="1"></span><span class="msdot" data-dot="2"></span><span class="msdot" data-dot="3"></span></div>
         <p class="form-error" id="cfError" role="alert" aria-live="polite"></p>
@@ -991,13 +956,13 @@
         <div class="msstep active" data-step="1">
           <h3 class="msq">What is your first name?</h3>
           <input id="cfName" type="text" class="msinput" placeholder="Your first name" autocomplete="given-name">
-          <button type="button" class="btn btn-outline full msnext" data-next="2">Let's start</button>
+          <button type="button" class="btn btn-gold full msnext" data-next="2">Continue</button>
         </div>
 
         <div class="msstep" data-step="2">
           <h3 class="msq">What is your email address?</h3>
           <input id="cfEmail" type="email" class="msinput" placeholder="you@email.com" autocomplete="email" inputmode="email">
-          <button type="button" class="btn btn-outline full msnext" data-next="3">Continue</button>
+          <button type="button" class="btn btn-gold full msnext" data-next="3">Continue</button>
           <button type="button" class="msback" data-back="1">← Back</button>
         </div>
 
@@ -1007,15 +972,14 @@
             <select id="cfCC" class="ccsel" aria-label="Country dialing code"></select>
             <input id="cfPhone" type="tel" class="msinput" placeholder="6 12345678" autocomplete="tel" inputmode="tel" maxlength="30" aria-describedby="cfPhoneHelp">
           </div>
-          <p class="phone-help" id="cfPhoneHelp">Spaces, dashes and parentheses are welcome. You may also enter a full international number beginning with +.</p>
-          <label class="consent" style="margin-top:18px;"><input id="cfPrivacyConsent" type="checkbox"><span>I agree that GodHealth may process my personal information to respond to my GodHealth Strategy Call request.</span></label>
-          <label class="consent" style="margin-top:10px;"><input id="cfPhoneConsent" type="checkbox"><span>I agree that GodHealth may contact me by phone or WhatsApp regarding my GodHealth Strategy Call.</span></label>
-          <p class="eyebrow" style="margin-top:18px;">Join the GodHealth Insider <span style="color:var(--ink-mute);font-family:Inter,sans-serif;letter-spacing:0;text-transform:none;">Optional</span></p>
-          <label class="consent" style="margin-top:10px;"><input id="cfMarketingConsent" type="checkbox"><span>Yes! I'd love to receive exclusive GodHealth resources, Biblical health insights, practical implementation guides, educational content, special invitations, and early access to everything we're building at GodHealth. I understand I can unsubscribe at any time.</span></label>
-          <button type="submit" class="btn btn-outline full form-submit">Continue To Calendly</button>
+          <p class="phone-help" id="cfPhoneHelp">Use your country code, or enter a full number starting with +.</p>
+          <label class="consent" style="margin-top:16px;"><input id="cfCallConsent" type="checkbox"><span>I agree that GodHealth may use my details and contact me by phone or WhatsApp about my Strategy Call request.</span></label>
+          <p class="eyebrow" style="margin-top:16px;">GodHealth Updates <span style="color:var(--ink-mute);font-family:Inter,sans-serif;letter-spacing:0;text-transform:none;">Optional</span></p>
+          <label class="consent" style="margin-top:8px;"><input id="cfMarketingConsent" type="checkbox"><span>Yes, send me GodHealth resources, Biblical health insights, practical guides, educational content, invitations and early access. I can unsubscribe at any time.</span></label>
+          <button type="submit" class="btn btn-gold full form-submit">Continue To Calendly</button>
           <button type="button" class="msback" data-back="2">← Back</button>
         </div>
-        <p class="form-note">Privacy protected. We only use your details to provide your scan results, respond to your Strategy Call request, and, if you opt in, send GodHealth updates. You can unsubscribe or update your communication preferences at any time. · <a href="privacy.html" style="color:var(--gold-2);">Privacy Policy</a></p>
+        <p class="form-note">We use your details only for your call request and, if selected, GodHealth updates. <a href="privacy.html" style="color:var(--gold-2);">Privacy Policy</a></p>
       </form>
     </div>
   </div>
@@ -1031,35 +995,35 @@
   <div class="faq reveal">
     <details>
       <summary>Is the Kingdom Vitality Scan really free?<span class="pl">+</span></summary>
-      <div class="faq-a">Yes — completely free. It takes about 10 minutes, needs no payment details, and you receive your Body, Soul &amp; Spirit scores and personalized next steps right away.</div>
+      <div class="faq-a">Yes. It takes about 10 minutes and needs no payment details.</div>
     </details>
     <details>
       <summary>What is the Alignment Gap™?<span class="pl">+</span></summary>
-      <div class="faq-a">The distance between how your body, soul and spirit are functioning today and how they were designed to work together. The scan helps you identify possible areas for practical stewardship.</div>
+      <div class="faq-a">It is the space between how your body, soul and spirit work today and how they were designed to work together.</div>
     </details>
     <details>
       <summary>Is this medical advice?<span class="pl">+</span></summary>
-      <div class="faq-a">No. GodHealth provides education, accountability and lifestyle coaching — not medical diagnosis, treatment or emergency care. For any medical concern, please speak with a qualified healthcare professional.</div>
+      <div class="faq-a">No. GodHealth offers education and lifestyle coaching, not diagnosis or treatment. Speak with a qualified professional about medical concerns.</div>
     </details>
     <details>
       <summary>Do I need to be a "strong" Christian to take part?<span class="pl">+</span></summary>
-      <div class="faq-a">Not at all. GodHealth is built for believers at every stage of the walk. Come as you are — the scan meets you where you are and points you back toward God's design for your body, soul and spirit.</div>
+      <div class="faq-a">No. GodHealth welcomes believers at every stage of faith.</div>
     </details>
     <details>
       <summary>What exactly do I receive after the scan?<span class="pl">+</span></summary>
-      <div class="faq-a">Your Body, Soul and Spirit scores, an Overall Alignment Score, your Primary Alignment Gap, personalized next steps and practical stewardship recommendations.</div>
+      <div class="faq-a">Your Body, Soul and Spirit scores, Overall Alignment Score, main Alignment Gap and practical next steps.</div>
     </details>
     <details>
       <summary>What is the GodHealth Strategy Call?<span class="pl">+</span></summary>
-      <div class="faq-a">It is a complimentary, personal conversation to get to know each other, discuss your challenges and goals, explain the 12-week GodHealth Coaching Journey, and explore whether the next cohort may be the right fit. You may book the call directly without completing the scan first.</div>
+      <div class="faq-a">A free 30-minute conversation about your goals, challenges and whether GodHealth may be a good fit. You do not need to take the scan first.</div>
     </details>
     <details>
       <summary>Will my information stay private?<span class="pl">+</span></summary>
-      <div class="faq-a">Yes. Your details are used only to deliver your results and, if you choose to opt in, to share relevant coaching options. Privacy protected, no spam, and you can withdraw consent at any time.</div>
+      <div class="faq-a">Yes. We use your details only for the services and updates you request. You may withdraw consent at any time.</div>
     </details>
     <details>
       <summary>Can I take part from outside the Netherlands?<span class="pl">+</span></summary>
-      <div class="faq-a">Yes. GodHealth serves English-speaking believers around the world, and the coaching is delivered online — so you can begin wherever you are.</div>
+      <div class="faq-a">Yes. GodHealth coaching is online and available to English-speaking believers worldwide.</div>
     </details>
   </div>
 </section>
@@ -1070,7 +1034,7 @@
   <div class="wrap narrow center">
   <p class="eyebrow reveal">Your Next Step</p>
   <h2 class="reveal" style="margin-top:12px;">Go Back to <span class="gold-text">God's Original Design.</span></h2>
-  <p class="lead reveal" style="margin-top:16px;">Discover where you currently stand with the free scan, or book a GodHealth Strategy Call if you are ready to explore the 12-week coaching journey.</p>
+  <p class="lead reveal" style="margin-top:16px;">Take the free scan, or book a Strategy Call for personal guidance.</p>
   <div class="btn-row center reveal" style="margin-top:30px;">
     <a class="btn btn-gold" href="kingdom-vitality-scan.html">Get My Free Kingdom Vitality Scan</a>
     <a class="btn btn-gold" href="#call">Book My GodHealth Strategy Call</a>
@@ -1085,10 +1049,10 @@
   <div class="wrap">
     <div class="brandmark" role="img" aria-label="GodHealth logo"></div>
     <p class="display gold-text" style="font-size:clamp(21px,3.4vw,28px); font-weight:700; margin-bottom:16px;">GodHealth — Vitality for the Kingdom</p>
-    <p class="verse" style="margin:0 auto 18px; font-size:clamp(15px,2.2vw,18px);">"Your body is the temple of the Holy Ghost. It is time to treat it like one."<span class="ref">1 Corinthians 6:19 · KJV</span></p>
+    <p class="verse" style="margin:0 auto 18px; font-size:clamp(15px,2.2vw,18px);">"Your body is the temple of the Holy Ghost which is in you."<span class="ref">1 Corinthians 6:19 · KJV</span></p>
     <p class="ft-name">GodHealth — Body, Soul &amp; Spirit in Alignment with God's Design.</p>
     <div class="ft-links"><a href="privacy.html">Privacy Policy</a></div>
-    <p class="disc">GodHealth provides education, accountability and lifestyle coaching. This assessment does not provide medical diagnosis, treatment or emergency care. Results vary based on starting point, health status and personal implementation.</p>
+    <p class="disc">GodHealth offers education, support and lifestyle coaching. It does not provide medical diagnosis, treatment or emergency care. Results vary.</p>
   </div>
 </footer>
 
@@ -1159,14 +1123,14 @@
       const state = getNextCohortState(new Date());
       if (state.mode === "unavailable") {
         setValues(["—", "—", "—", "—"]);
-        statusEl.textContent = "New cohort dates will be announced soon";
+        statusEl.textContent = "New group dates will be announced soon";
         dateEl.textContent = "";
         return;
       }
-      dateEl.textContent = "Next eligible cohort: " + formatDate(state.start);
+      dateEl.textContent = "Next group: " + formatDate(state.start);
       if (state.mode === "soon") {
         setValues(["—", "—", "—", "—"]);
-        statusEl.textContent = "Applications opening soon";
+        statusEl.textContent = "Sign-ups opening soon";
         return;
       }
       const totalSeconds = Math.max(0, Math.floor(state.msRemaining / 1000));
@@ -1180,7 +1144,7 @@
         String(minutes).padStart(2, "0"),
         String(seconds).padStart(2, "0")
       ]);
-      statusEl.textContent = "Applications are open for the next cohort";
+      statusEl.textContent = "Sign-ups are open for the next group";
     }
 
     renderCountdown();
@@ -1452,12 +1416,11 @@
       const phoneRaw = document.getElementById("cfPhone").value.trim();
       const ccEl = document.getElementById("cfCC");
       const cc = ccEl ? ccEl.value : "";
-      const privacyConsent = document.getElementById("cfPrivacyConsent").checked;
-      const phoneConsent = document.getElementById("cfPhoneConsent").checked;
+      const callConsent = document.getElementById("cfCallConsent").checked;
       const marketingConsent = document.getElementById("cfMarketingConsent").checked;
       const rawDigits = phoneRaw.replace(/\D/g, "");
       if (rawDigits.length < 6) return showErr("Please enter a valid phone number with at least 6 digits.");
-      if (!privacyConsent || !phoneConsent) return showErr("Please accept both required consent choices so we can process your Strategy Call request.");
+      if (!callConsent) return showErr("Please accept the required consent so we can handle your Strategy Call request.");
 
       function normalizePhone(countryCode, rawNumber) {
         const trimmed = rawNumber.trim();
@@ -1496,7 +1459,7 @@
       } catch (e) {
         submitButton.disabled = false;
         submitButton.textContent = submitLabel;
-        showErr("We couldn't save your application securely. Please check your connection and try again. You have not been redirected.");
+        showErr("We couldn't save your request. Please check your connection and try again.");
         return;
       }
 
