@@ -158,20 +158,14 @@
   .hero-video { position:relative; max-width:500px; margin:18px auto 0; border-radius:16px; overflow:hidden; border:1px solid var(--gold-line);
     background:#020805; box-shadow:0 30px 80px -36px rgba(0,0,0,.9),0 0 45px -24px rgba(217,180,90,.5); }
   .hero-video video { display:block; width:100%; max-height:304px; background:#020805; object-fit:contain; cursor:pointer; }
-  .video-sound { position:absolute; z-index:2; left:50%; bottom:14px; transform:translateX(-50%); display:inline-flex; align-items:center; justify-content:center; gap:8px;
-    border:1px solid rgba(255,235,174,.68); border-radius:9999px; padding:10px 16px; cursor:pointer; color:#241802; font-size:12px; font-weight:800; letter-spacing:.04em;
-    background:linear-gradient(135deg,#f4d77f,#b88a2e); box-shadow:0 10px 28px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.45); transition:opacity .2s ease,transform .2s ease,visibility .2s ease; }
-  .video-sound:hover { transform:translateX(-50%) translateY(-2px); }
-  .video-sound svg { width:16px; height:16px; }
-  .video-sound.hidden { opacity:0; visibility:hidden; pointer-events:none; transform:translateX(-50%) translateY(6px); }
   .video-progress { position:absolute; z-index:3; left:0; right:0; bottom:0; height:5px; overflow:hidden; background:rgba(255,255,255,.16); pointer-events:none; }
   .video-progress-fill { display:block; width:100%; height:100%; transform:scaleX(0); transform-origin:left center; background:linear-gradient(90deg,#b88a2e,#f4d77f);
     box-shadow:0 0 14px rgba(244,215,127,.62); will-change:transform; }
-  .video-play-state { position:absolute; z-index:2; left:50%; top:50%; width:58px; height:58px; border-radius:50%; display:grid; place-items:center; pointer-events:none;
-    transform:translate(-50%,-50%) scale(.9); opacity:0; color:#241802; background:linear-gradient(135deg,rgba(248,226,154,.96),rgba(184,138,46,.94));
-    border:1px solid rgba(255,235,174,.72); box-shadow:0 14px 34px rgba(0,0,0,.48); transition:opacity .2s ease,transform .2s ease; }
-  .video-play-state svg { width:23px; height:23px; margin-left:3px; }
-  .hero-video.is-paused .video-play-state { opacity:1; transform:translate(-50%,-50%) scale(1); }
+  .video-play-state { position:absolute; z-index:4; left:50%; top:50%; width:42px; height:42px; border-radius:50%; display:grid; place-items:center; pointer-events:none;
+    transform:translate(-50%,-50%) scale(.88); opacity:0; color:#241802; background:linear-gradient(145deg,rgba(250,231,169,.97),rgba(184,138,46,.96));
+    border:1px solid rgba(255,239,192,.78); box-shadow:0 10px 26px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.56); transition:opacity .18s ease,transform .18s ease; }
+  .video-play-state svg { width:17px; height:17px; margin-left:2px; }
+  .hero-video.has-interacted.is-paused .video-play-state { opacity:1; transform:translate(-50%,-50%) scale(1); }
   .hero-impact { font-family:'Cormorant Garamond',serif; font-weight:700; font-size:clamp(20px,2.7vw,25px); line-height:1.35; color:var(--ink); max-width:760px !important; }
   .hero-explainer { max-width:720px !important; font-size:clamp(14px,1.8vw,16.5px); line-height:1.55; }
   @media(max-width:560px){
@@ -543,17 +537,13 @@
 <section class="hero wrap" id="top">
   <h1><span class="gold-text">Go Back to God's Original Design.</span></h1>
   <div class="hero-video reveal">
-    <video id="heroVideo" autoplay muted playsinline preload="auto" poster="godhealth-robin-intro-poster.jpg" disablepictureinpicture disableremoteplayback tabindex="0" role="button" aria-label="Pause video">
+    <video id="heroVideo" autoplay playsinline preload="auto" poster="godhealth-robin-intro-poster.jpg" disablepictureinpicture disableremoteplayback tabindex="0" role="button" aria-label="Pause video">
       <source src="godhealth-robin-intro.mp4" type="video/mp4">
       Your browser does not support this video.
     </video>
     <span class="video-play-state" id="videoPlayState" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z"/></svg>
     </span>
-    <button class="video-sound" id="videoSoundButton" type="button" aria-label="Turn video sound on">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg>
-      <span>Sound On</span>
-    </button>
     <span class="video-progress" id="videoProgress" role="progressbar" aria-label="Video progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
       <span class="video-progress-fill" id="videoProgressFill"></span>
     </span>
@@ -1194,27 +1184,24 @@
   /* ===================== HERO VIDEO ===================== */
   (function () {
     const video = document.getElementById("heroVideo");
-    const soundButton = document.getElementById("videoSoundButton");
     const videoFrame = video && video.closest(".hero-video");
     const progress = document.getElementById("videoProgress");
     const progressFill = document.getElementById("videoProgressFill");
     if (!video) return;
     video.controls = false;
-    video.defaultMuted = true;
-    video.muted = true;
+    video.defaultMuted = false;
+    video.muted = false;
     video.volume = 1;
-    let soundEnabled = false;
     let userPaused = false;
-    const keepPlaying = () => {
+    const keepSoundOn = () => {
+      if (video.muted) video.muted = false;
+      if (video.volume === 0) video.volume = 1;
+    };
+    const attemptAutoplay = () => {
       if (video.ended || userPaused) return;
+      keepSoundOn();
       const attempt = video.play();
       if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
-    };
-    const showSoundButton = () => {
-      if (soundButton) soundButton.classList.remove("hidden");
-    };
-    const hideSoundButton = () => {
-      if (soundButton) soundButton.classList.add("hidden");
     };
     const updateProgress = () => {
       const ratio = Number.isFinite(video.duration) && video.duration > 0
@@ -1229,57 +1216,18 @@
       video.setAttribute("aria-label", paused ? "Play video" : "Pause video");
     };
     const togglePlayback = () => {
+      if (videoFrame) videoFrame.classList.add("has-interacted");
       if (video.paused || video.ended) {
         userPaused = false;
         if (video.ended) video.currentTime = 0;
+        keepSoundOn();
         const attempt = video.play();
-        if (attempt && typeof attempt.catch === "function") {
-          attempt.catch(() => {
-            soundEnabled = false;
-            video.muted = true;
-            video.defaultMuted = true;
-            showSoundButton();
-            keepPlaying();
-          });
-        }
+        if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
       } else {
         userPaused = true;
         video.pause();
       }
     };
-    const enableSound = event => {
-      const userInitiated = Boolean(event && event.type === "click");
-      if (userPaused && !userInitiated) {
-        showSoundButton();
-        return;
-      }
-      video.muted = false;
-      video.defaultMuted = false;
-      video.volume = 1;
-      if (userPaused) {
-        soundEnabled = true;
-        hideSoundButton();
-        return;
-      }
-      const attempt = video.play();
-      if (attempt && typeof attempt.catch === "function") {
-        attempt.then(() => {
-          soundEnabled = !video.muted;
-          if (soundEnabled) hideSoundButton();
-          else showSoundButton();
-        }).catch(() => {
-          soundEnabled = false;
-          video.muted = true;
-          video.defaultMuted = true;
-          if (!userPaused) keepPlaying();
-          showSoundButton();
-        });
-      } else {
-        soundEnabled = !video.muted;
-        if (soundEnabled) hideSoundButton();
-      }
-    };
-    if (soundButton) soundButton.addEventListener("click", enableSound);
     video.addEventListener("click", togglePlayback);
     video.addEventListener("keydown", event => {
       if (event.key === "Enter" || event.key === " ") {
@@ -1289,6 +1237,7 @@
     });
     video.addEventListener("loadedmetadata", updateProgress);
     video.addEventListener("timeupdate", updateProgress);
+    video.addEventListener("volumechange", keepSoundOn);
     video.addEventListener("playing", syncPlaybackUi);
     video.addEventListener("pause", syncPlaybackUi);
     video.addEventListener("ended", () => {
@@ -1298,9 +1247,12 @@
     video.addEventListener("contextmenu", event => event.preventDefault());
     syncPlaybackUi();
     updateProgress();
-    keepPlaying();
-    window.addEventListener("load", enableSound, { once: true });
-    window.setTimeout(enableSound, 250);
+    attemptAutoplay();
+    video.addEventListener("canplay", attemptAutoplay, { once: true });
+    window.addEventListener("load", attemptAutoplay, { once: true });
+    document.addEventListener("click", event => {
+      if (!userPaused && video.paused && (!videoFrame || !videoFrame.contains(event.target))) attemptAutoplay();
+    }, { capture: true });
   })();
 
   /* ===================== EXAMPLE REPORT ANIMATION ===================== */
