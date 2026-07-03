@@ -257,7 +257,11 @@
   }
   @media (max-width: 560px) {
     .g2 { grid-template-columns: 1fr; }
-    .checklist { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+    .check { padding: 13px 10px; gap: 8px; }
+    .check .ck { width: 20px; height: 20px; }
+    .check .ck svg { width: 12px; height: 12px; }
+    .check p { font-size: 12.5px; line-height: 1.4; }
     .btn-row .btn { width: 100%; }
     header .brand-name { display: none; }
     .section { padding-top: 48px; padding-bottom: 48px; }
@@ -608,6 +612,45 @@
 </section>
 <hr class="divider">
 
+<!-- ===================== SOCIAL PROOF ===================== -->
+<section class="section sec-light">
+  <div class="wrap">
+  <div class="center narrow">
+    <p class="eyebrow reveal">Real People, Real Results</p>
+    <h2 class="reveal" style="margin-top:12px;">GodHealth <span class="gold-text">Testimonials</span></h2>
+  </div>
+
+  <div class="grid g2 reveal" style="margin-top:40px; max-width:900px; margin-left:auto; margin-right:auto;">
+    <div class="card card-pad tcard">
+      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
+      <p class="review-title">Great experience!</p>
+      <p class="quote">&ldquo;Since I started at GodHealth, I have made a lot of progress, both physically and in my lifestyle. I feel fitter, more energetic, and have learned a lot about healthy nutrition as God intended. I have also been able to gain a much deeper insight into the connection between mind and body. I can definitely recommend GodHealth to anyone who wants to live healthier and grow, both physically and spiritually.&rdquo;</p>
+      <div class="who"><div class="av"></div><div><div class="nm">Thomas R</div><div class="small">GodHealth client</div></div></div>
+    </div>
+    <div class="card card-pad tcard">
+      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
+      <p class="review-title">Life-changing experience!</p>
+      <p class="quote">&ldquo;I completed the 3-month program, and it has truly been a life-changing experience. One of the biggest things I learned is that I can function really well while eating much less than I used to. I also noticed that the afternoon energy crashes I used to struggle with completely disappeared after just a few weeks. This program isn&rsquo;t just about food, it&rsquo;s about creating a healthy lifestyle that lasts. If you&rsquo;re ready to make real changes in the way you eat, move, and grow in your faith, I wholeheartedly encourage you to join. You won&rsquo;t regret it. One of the most valuable parts of the journey was becoming aware of how nutrition affects your body and learning how to build healthy habits step by step. The knowledge, encouragement, and guidance you receive through GodHealth are truly a blessing and can make a lasting difference in your life.&rdquo;</p>
+      <div class="who"><div class="av"></div><div><div class="nm">Valerie H</div><div class="small">GodHealth client</div></div></div>
+    </div>
+    <div class="card card-pad tcard">
+      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
+      <p class="review-title">More energy and better relationship with God!</p>
+      <p class="quote">&ldquo;One of the things GodHealth made me realise is how my physical and spiritual life work together, Ive learned so much about nutrition and the benefits of eating God created food. Im in better shape, I feel more energy and what surprised me the most is that my relationship with God actually became stronger! I recommend everyone to be a part of GodHealth it will open up your eyes in many ways in how God intended us to take care of our bodies, so that we live a healthy and Godly life!&rdquo;</p>
+      <div class="who"><div class="av"></div><div><div class="nm">Pastor Anthony</div><div class="small">GodHealth client</div></div></div>
+    </div>
+    <div class="card card-pad tcard">
+      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
+      <p class="review-title">Top results and a healthy lifestyle!</p>
+      <p class="quote">&ldquo;Since I started at GodHealth, I can see really clear physical progress. My body fat percentage has dropped significantly, and I&rsquo;m seeing noticeable muscle definition. On top of that, my nutrition has improved tremendously; I finally have a stable, better eating pattern with the right nutrients. Highly recommended if you want to achieve serious results!&rdquo;</p>
+      <div class="who"><div class="av"></div><div><div class="nm">Milan K</div><div class="small">GodHealth client</div></div></div>
+    </div>
+  </div>
+  <p class="section-note reveal">Personal experiences shared by GodHealth clients. Individual results vary.</p>
+</div>
+</section>
+<hr class="divider">
+
 <!-- ===================== UNIQUE MECHANISM: THE ALIGNMENT GAP ===================== -->
 <section class="section" id="alignment">
   <div class="wrap">
@@ -634,46 +677,6 @@
     </div>
   </div>
   <div class="verse reveal" style="margin-top:34px;">&ldquo;And be not conformed to this world: but be ye transformed by the renewing of your mind.&rdquo;<span class="ref">Romans 12:2 · KJV</span></div>
-</div>
-</section>
-<hr class="divider">
-
-<!-- ===================== SOCIAL PROOF (moved high) ===================== -->
-<section class="section sec-light">
-  <div class="wrap">
-  <div class="center narrow">
-    <p class="eyebrow reveal">Testimonials</p>
-    <h2 class="reveal" style="margin-top:12px;">Stories Of <span class="gold-text">Alignment</span></h2>
-    <p class="lead reveal" style="margin-top:16px;">Real experiences from people who have walked the GodHealth journey.</p>
-  </div>
-
-  <div class="grid g2 reveal" style="margin-top:40px; max-width:900px; margin-left:auto; margin-right:auto;">
-    <div class="card card-pad tcard">
-      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
-      <p class="review-title">Great experience!</p>
-      <p class="quote">&ldquo;Since I started at GodHealth, I have made a lot of progress, both physically and in my lifestyle. I feel fitter, more energetic, and have learned a lot about healthy nutrition as God intended.&rdquo;</p>
-      <div class="who"><div class="av"></div><div><div class="nm">Thomas R</div><div class="small">GodHealth client</div></div></div>
-    </div>
-    <div class="card card-pad tcard">
-      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
-      <p class="review-title">Life-changing experience!</p>
-      <p class="quote">&ldquo;I completed the 3-month program, and it has truly been a life-changing experience. This program isn&rsquo;t just about food; it&rsquo;s about creating a healthy lifestyle that lasts.&rdquo;</p>
-      <div class="who"><div class="av"></div><div><div class="nm">Valerie</div><div class="small">GodHealth client</div></div></div>
-    </div>
-    <div class="card card-pad tcard">
-      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
-      <p class="review-title">More energy and better relationship with God!</p>
-      <p class="quote">&ldquo;GodHealth helped me see how my physical and spiritual life work together. I feel more energy, and what surprised me most is that my relationship with God became stronger.&rdquo;</p>
-      <div class="who"><div class="av"></div><div><div class="nm">Apostle Anthony</div><div class="small">GodHealth client</div></div></div>
-    </div>
-    <div class="card card-pad tcard">
-      <div class="stars" aria-label="5 out of 5 stars"><span class="star-line" aria-hidden="true">★★★★★</span></div>
-      <p class="review-title">Top results and a healthy lifestyle!</p>
-      <p class="quote">&ldquo;Since I started at GodHealth, I can see clear physical progress. My body fat percentage has dropped, I see more muscle definition, and my nutrition has improved tremendously.&rdquo;</p>
-      <div class="who"><div class="av"></div><div><div class="nm">Milan K</div><div class="small">GodHealth client</div></div></div>
-    </div>
-  </div>
-  <p class="section-note reveal">Personal experiences shared by GodHealth clients. Individual results vary.</p>
 </div>
 </section>
 <hr class="divider">
