@@ -157,13 +157,21 @@
   .robin .creds { display: flex; flex-wrap: wrap; gap: 9px; margin: 16px 0 18px; }
   .hero-video { position:relative; max-width:500px; margin:18px auto 0; border-radius:16px; overflow:hidden; border:1px solid var(--gold-line);
     background:#020805; box-shadow:0 30px 80px -36px rgba(0,0,0,.9),0 0 45px -24px rgba(217,180,90,.5); }
-  .hero-video video { display:block; width:100%; max-height:304px; background:#020805; object-fit:contain; pointer-events:none; }
+  .hero-video video { display:block; width:100%; max-height:304px; background:#020805; object-fit:contain; cursor:pointer; }
   .video-sound { position:absolute; z-index:2; left:50%; bottom:14px; transform:translateX(-50%); display:inline-flex; align-items:center; justify-content:center; gap:8px;
     border:1px solid rgba(255,235,174,.68); border-radius:9999px; padding:10px 16px; cursor:pointer; color:#241802; font-size:12px; font-weight:800; letter-spacing:.04em;
     background:linear-gradient(135deg,#f4d77f,#b88a2e); box-shadow:0 10px 28px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.45); transition:opacity .2s ease,transform .2s ease,visibility .2s ease; }
   .video-sound:hover { transform:translateX(-50%) translateY(-2px); }
   .video-sound svg { width:16px; height:16px; }
   .video-sound.hidden { opacity:0; visibility:hidden; pointer-events:none; transform:translateX(-50%) translateY(6px); }
+  .video-progress { position:absolute; z-index:3; left:0; right:0; bottom:0; height:5px; overflow:hidden; background:rgba(255,255,255,.16); pointer-events:none; }
+  .video-progress-fill { display:block; width:100%; height:100%; transform:scaleX(0); transform-origin:left center; background:linear-gradient(90deg,#b88a2e,#f4d77f);
+    box-shadow:0 0 14px rgba(244,215,127,.62); will-change:transform; }
+  .video-play-state { position:absolute; z-index:2; left:50%; top:50%; width:58px; height:58px; border-radius:50%; display:grid; place-items:center; pointer-events:none;
+    transform:translate(-50%,-50%) scale(.9); opacity:0; color:#241802; background:linear-gradient(135deg,rgba(248,226,154,.96),rgba(184,138,46,.94));
+    border:1px solid rgba(255,235,174,.72); box-shadow:0 14px 34px rgba(0,0,0,.48); transition:opacity .2s ease,transform .2s ease; }
+  .video-play-state svg { width:23px; height:23px; margin-left:3px; }
+  .hero-video.is-paused .video-play-state { opacity:1; transform:translate(-50%,-50%) scale(1); }
   .hero-impact { font-family:'Cormorant Garamond',serif; font-weight:700; font-size:clamp(20px,2.7vw,25px); line-height:1.35; color:var(--ink); max-width:760px !important; }
   .hero-explainer { max-width:720px !important; font-size:clamp(14px,1.8vw,16.5px); line-height:1.55; }
   @media(max-width:560px){
@@ -525,14 +533,20 @@
 <section class="hero wrap" id="top">
   <h1><span class="gold-text">Go Back to God's Original Design.</span></h1>
   <div class="hero-video reveal">
-    <video id="heroVideo" autoplay muted playsinline preload="auto" poster="godhealth-robin-intro-poster.jpg" disablepictureinpicture disableremoteplayback tabindex="-1" aria-label="A message from Robin Kramps">
+    <video id="heroVideo" autoplay muted playsinline preload="auto" poster="godhealth-robin-intro-poster.jpg" disablepictureinpicture disableremoteplayback tabindex="0" role="button" aria-label="Pause video">
       <source src="godhealth-robin-intro.mp4" type="video/mp4">
       Your browser does not support this video.
     </video>
+    <span class="video-play-state" id="videoPlayState" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z"/></svg>
+    </span>
     <button class="video-sound" id="videoSoundButton" type="button" aria-label="Turn video sound on">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg>
       <span>Sound On</span>
     </button>
+    <span class="video-progress" id="videoProgress" role="progressbar" aria-label="Video progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <span class="video-progress-fill" id="videoProgressFill"></span>
+    </span>
   </div>
   <p class="lead hero-impact">You were not created to live exhausted, stuck or constantly starting over.</p>
   <p class="lead hero-explainer" style="margin-top:8px;">The free 10-minute Kingdom Vitality Scan shows where body, soul and spirit may be out of alignment. Ready for personal guidance? Book a GodHealth Strategy Call and discover your next step.</p>
@@ -1214,6 +1228,9 @@
   (function () {
     const video = document.getElementById("heroVideo");
     const soundButton = document.getElementById("videoSoundButton");
+    const videoFrame = video && video.closest(".hero-video");
+    const progress = document.getElementById("videoProgress");
+    const progressFill = document.getElementById("videoProgressFill");
     if (!video) return;
     video.controls = false;
     video.defaultMuted = true;
@@ -1230,6 +1247,27 @@
     };
     const hideSoundButton = () => {
       if (soundButton) soundButton.classList.add("hidden");
+    };
+    const updateProgress = () => {
+      const ratio = Number.isFinite(video.duration) && video.duration > 0
+        ? Math.min(Math.max(video.currentTime / video.duration, 0), 1)
+        : 0;
+      if (progressFill) progressFill.style.transform = "scaleX(" + ratio + ")";
+      if (progress) progress.setAttribute("aria-valuenow", String(Math.round(ratio * 100)));
+    };
+    const syncPlaybackUi = () => {
+      const paused = video.paused || video.ended;
+      if (videoFrame) videoFrame.classList.toggle("is-paused", paused);
+      video.setAttribute("aria-label", paused ? "Play video" : "Pause video");
+    };
+    const togglePlayback = () => {
+      if (video.paused || video.ended) {
+        if (video.ended) video.currentTime = 0;
+        const attempt = video.play();
+        if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
+      } else {
+        video.pause();
+      }
     };
     const enableSound = () => {
       video.muted = false;
@@ -1254,13 +1292,24 @@
       }
     };
     if (soundButton) soundButton.addEventListener("click", enableSound);
-    video.addEventListener("pause", () => {
-      if (!video.ended) {
-        video.muted = !soundEnabled;
-        keepPlaying();
+    video.addEventListener("click", togglePlayback);
+    video.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        togglePlayback();
       }
     });
+    video.addEventListener("loadedmetadata", updateProgress);
+    video.addEventListener("timeupdate", updateProgress);
+    video.addEventListener("playing", syncPlaybackUi);
+    video.addEventListener("pause", syncPlaybackUi);
+    video.addEventListener("ended", () => {
+      updateProgress();
+      syncPlaybackUi();
+    });
     video.addEventListener("contextmenu", event => event.preventDefault());
+    syncPlaybackUi();
+    updateProgress();
     keepPlaying();
     window.addEventListener("load", enableSound, { once: true });
     window.setTimeout(enableSound, 250);
