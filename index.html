@@ -159,8 +159,14 @@
     background:#020805; box-shadow:0 30px 80px -36px rgba(0,0,0,.9),0 0 45px -24px rgba(217,180,90,.5); }
   .hero-video video { display:block; width:100%; max-height:304px; background:#020805; object-fit:contain; cursor:pointer; }
   body.video-expanded { overflow:hidden; }
-  .hero-video.is-expanded { position:fixed; z-index:999; inset:0; max-width:none; margin:0; border:0; border-radius:0; display:flex; align-items:center; justify-content:center; background:#000; }
-  .hero-video.is-expanded video { width:100vw; height:100vh; max-height:none; object-fit:contain; }
+  .hero-video.is-expanded,
+  .hero-video.is-native-fullscreen,
+  .hero-video:fullscreen,
+  .hero-video:-webkit-full-screen { position:fixed; z-index:999; inset:0; width:100vw; height:100vh; max-width:none; margin:0; border:0; border-radius:0; display:flex; align-items:center; justify-content:center; background:#000; }
+  .hero-video.is-expanded video,
+  .hero-video.is-native-fullscreen video,
+  .hero-video:fullscreen video,
+  .hero-video:-webkit-full-screen video { width:100vw; height:100vh; max-width:none; max-height:none; object-fit:contain; }
   .video-progress { position:absolute; z-index:3; left:0; right:0; bottom:0; height:5px; overflow:hidden; background:rgba(255,255,255,.16); pointer-events:none; }
   .video-progress-fill { display:block; width:100%; height:100%; transform:scaleX(0); transform-origin:left center; background:linear-gradient(90deg,#b88a2e,#f4d77f);
     box-shadow:0 0 14px rgba(244,215,127,.62); will-change:transform; }
@@ -1317,6 +1323,20 @@
       }
       if (expanded) showControls();
     };
+    const getFullscreenElement = () => document.fullscreenElement || document.webkitFullscreenElement || null;
+    const syncFullscreenUi = () => {
+      if (!videoFrame) return;
+      const nativeActive = getFullscreenElement() === videoFrame;
+      const fallbackActive = videoFrame.classList.contains("is-expanded");
+      videoFrame.classList.toggle("is-native-fullscreen", nativeActive);
+      document.body.classList.toggle("video-expanded", nativeActive || fallbackActive);
+      if (fullscreenButton) {
+        const active = nativeActive || fallbackActive;
+        fullscreenButton.setAttribute("aria-label", active ? "Exit full screen" : "Watch video in full screen");
+        fullscreenButton.title = active ? "Exit full screen" : "Full screen";
+      }
+      if (nativeActive) showControls();
+    };
     const toggleFullscreen = async event => {
       event.stopPropagation();
       showControls();
@@ -1325,10 +1345,14 @@
         return;
       }
       try {
-        if (document.fullscreenElement) {
-          await document.exitFullscreen();
+        if (getFullscreenElement()) {
+          if (document.exitFullscreen) await document.exitFullscreen();
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
         } else if (videoFrame && videoFrame.requestFullscreen) {
           await videoFrame.requestFullscreen();
+          syncFullscreenUi();
+        } else if (videoFrame && videoFrame.webkitRequestFullscreen) {
+          videoFrame.webkitRequestFullscreen();
         } else if (video.webkitEnterFullscreen) {
           video.webkitEnterFullscreen();
         } else {
@@ -1362,14 +1386,8 @@
       updateProgress();
       syncPlaybackUi();
     });
-    document.addEventListener("fullscreenchange", () => {
-      if (fullscreenButton) {
-        const active = Boolean(document.fullscreenElement);
-        fullscreenButton.setAttribute("aria-label", active ? "Exit full screen" : "Watch video in full screen");
-        fullscreenButton.title = active ? "Exit full screen" : "Full screen";
-      }
-      if (document.fullscreenElement === videoFrame) showControls();
-    });
+    document.addEventListener("fullscreenchange", syncFullscreenUi);
+    document.addEventListener("webkitfullscreenchange", syncFullscreenUi);
     document.addEventListener("keydown", event => {
       if (event.key === "Escape" && videoFrame && videoFrame.classList.contains("is-expanded")) setExpanded(false);
     });
