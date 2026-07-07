@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Free GodHealth Tribe — Christ-Centered Health Community</title>
+<meta name="description" content="Join the free GodHealth Tribe: a Christ-centered community for believers building healthier habits one faithful step at a time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--forest-deep:#04160e;--forest:#0a2417;--forest-soft:#0f3221;--gold-1:#b88a2e;--gold-2:#d9b45a;--gold-3:#f1d693;--gold-line:rgba(217,180,90,.32);--ink:#f7f3ea;--ink-soft:rgba(247,243,234,.72);--ink-mute:rgba(247,243,234,.48)}
+  *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,sans-serif;background:radial-gradient(circle at 50% -10%,rgba(217,180,90,.12),transparent 35%),linear-gradient(180deg,var(--forest-deep),#061a10 42%,var(--forest-deep));color:var(--ink);line-height:1.6;overflow-x:hidden}body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,black,transparent 78%);opacity:.45}
+  .wrap{width:min(1120px,calc(100% - 44px));margin:auto}.narrow{max-width:760px}.center{text-align:center}.gold-text{background:linear-gradient(135deg,var(--gold-3),var(--gold-2) 38%,var(--gold-1));-webkit-background-clip:text;background-clip:text;color:transparent}.section{padding:clamp(68px,9vw,112px) 0}.sec-light{background:linear-gradient(180deg,#fbf6ec,#f4ead8);color:#211b12}.sec-light .lead,.sec-light .muted{color:rgba(34,28,18,.72)}.divider{border:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-line),transparent)}
+  h1,h2,h3,.display{font-family:"Cormorant Garamond",serif;line-height:.95;font-weight:700}h1{font-size:clamp(52px,8vw,96px);letter-spacing:-.045em}h2{font-size:clamp(38px,6vw,66px);letter-spacing:-.035em}h3{font-size:clamp(25px,3vw,33px)}.lead{font-size:clamp(16px,2vw,19px);color:var(--ink-soft);line-height:1.65}.eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-2);font-weight:700}.muted,.small{color:var(--ink-soft)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 22px;border-radius:9999px;text-decoration:none;font-weight:700;font-size:14px;transition:.22s ease;border:1px solid transparent}.btn-gold{color:#261902;background:linear-gradient(135deg,#f4d77f,#b88a2e);border-color:rgba(255,235,174,.65);box-shadow:0 18px 44px -24px rgba(217,180,90,.95)}.btn-gold:hover{transform:translateY(-2px);box-shadow:0 24px 54px -24px rgba(217,180,90,1)}.btn-outline{color:var(--ink);border-color:var(--gold-line);background:rgba(217,180,90,.04)}.btn-outline:hover{transform:translateY(-2px);border-color:var(--gold-2)}.btn-disabled{opacity:.68;cursor:not-allowed}.btn-row{display:flex;flex-wrap:wrap;gap:14px}.btn-row.center{justify-content:center}
+  header{position:sticky;top:0;z-index:50;background:rgba(4,22,14,.74);backdrop-filter:blur(18px);border-bottom:1px solid rgba(217,180,90,.12)}.bar{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand-row{display:flex;align-items:center;gap:10px;text-decoration:none}.brandmark{width:34px;height:34px;border-radius:50%;background:url("../godhealth-logo.png") center/cover no-repeat;box-shadow:0 0 0 1px var(--gold-line)}.brand-name{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:700}.nav-links{display:flex;align-items:center;gap:20px}.nav-links a{color:var(--ink-soft);text-decoration:none;font-size:13px}.nav-links a:hover{color:var(--gold-2)}.nav-toggle{display:none;border:1px solid var(--gold-line);background:rgba(217,180,90,.06);color:var(--gold-2);border-radius:12px;width:42px;height:42px}.nav-toggle svg{width:22px}.nav-panel{display:none}
+  .hero{padding:clamp(80px,12vw,130px) 0 72px;text-align:center}.hero .lead{max-width:810px;margin:22px auto 0}.trust-line{margin-top:14px;color:var(--ink-mute);font-size:13px}.sec-light .btn-outline{color:#211b12;border-color:rgba(184,138,46,.5);background:rgba(184,138,46,.06)}.card{color:var(--ink);border:1px solid var(--gold-line);border-radius:22px;background:linear-gradient(180deg,var(--forest-soft),var(--forest));box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 28px 70px -46px rgba(0,0,0,.8)}.card .muted{color:var(--ink-soft)}.card-pad{padding:clamp(22px,4vw,34px)}.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:34px}.mini-card,.check{border:1px solid var(--gold-line);border-radius:16px;background:linear-gradient(180deg,rgba(217,180,90,.05),rgba(0,0,0,.12));padding:18px}.mini-card .ic,.check .ck{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:var(--gold-2);border:1px solid var(--gold-line);margin-bottom:12px}.check{display:flex;gap:12px;align-items:flex-start}.check .ck{flex:0 0 auto;margin:0}.section-note{margin-top:20px;text-align:center;color:var(--ink-mute);font-size:13px}
+  footer{padding:58px 0;text-align:center;background:#03110b;border-top:1px solid var(--gold-line)}footer .brandmark{margin:0 auto 14px}.ft-links a{color:var(--gold-2);font-size:13px}.disc{max-width:720px;margin:18px auto 0;color:var(--ink-mute);font-size:12px}.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}
+  @media(max-width:900px){.nav-links,.header-cta{display:none}.nav-toggle{display:grid;place-items:center}.bar{height:68px}header.open .nav-panel{display:block;padding:0 22px 18px}.nav-panel a{display:block;color:var(--ink-soft);padding:13px 0;border-bottom:1px solid rgba(217,180,90,.12);text-decoration:none}.nav-panel .nav-cta{margin-top:8px;padding:13px 16px;text-align:center;border-radius:9999px;background:linear-gradient(135deg,#f4d77f,#b88a2e);color:#241802;font-weight:700}.g2,.g3{grid-template-columns:1fr}.btn-row .btn{width:100%}}
+</style>
+</head>
+<body>
+<header id="hdr">
+  <div class="wrap bar">
+    <a href="/" class="brand-row"><div class="brandmark" role="img" aria-label="GodHealth logo"></div><span class="brand-name gold-text">GodHealth</span></a>
+    <nav class="nav-links" aria-label="Main navigation"><a href="/kingdom-vitality-scan.html">The Scan</a><a href="/coaching">Coaching</a><a href="/tribe">Free Tribe</a><a href="/#testimonials">Testimonials</a><a href="/#faq">FAQ</a></nav>
+    <a class="btn btn-gold header-cta" href="/kingdom-vitality-scan.html">Take the Free Scan</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+  <nav class="nav-panel" id="navPanel" aria-label="Mobile navigation"><a class="nav-cta" href="/kingdom-vitality-scan.html">Take the Free Scan</a><a href="/coaching">Coaching</a><a href="/tribe">Free Tribe</a><a href="/#testimonials">Testimonials</a><a href="/#faq">FAQ</a></nav>
+</header>
+
+<main>
+  <section class="hero wrap" id="top">
+    <p class="eyebrow reveal">The Free GodHealth Community</p>
+    <h1 class="reveal" style="margin-top:14px;">You Were Never Meant To <span class="gold-text">Build Health Alone.</span></h1>
+    <p class="lead reveal">Join the free GodHealth Tribe: a Christ-centered community for believers who want more energy, better habits, practical guidance and encouragement to keep growing — one faithful step at a time.</p>
+    <div class="btn-row center reveal" style="margin-top:30px;">
+      <a class="btn btn-gold btn-disabled" id="tribeJoinButton" href="#" aria-disabled="true">Join the Free GodHealth Tribe</a>
+      <a class="btn btn-outline" href="/kingdom-vitality-scan.html">Take the Free Kingdom Vitality Scan</a>
+    </div>
+    <p class="trust-line reveal">Free to join. No pressure. Start where you are.</p>
+    <p class="section-note reveal" id="tribeTodoNote">Community link coming soon. TODO: ADD_APPROVED_TRIBE_URL.</p>
+  </section>
+  <hr class="divider">
+
+  <section class="section sec-light">
+    <div class="wrap">
+      <div class="center narrow" style="margin:auto;"><p class="eyebrow reveal">Inside The Tribe</p><h2 class="reveal" style="margin-top:12px;">What You&rsquo;ll Find Inside <span class="gold-text">The Tribe</span></h2></div>
+      <div class="mini-grid reveal">
+        <div class="mini-card"><span class="ic">✝</span><p>Weekly Biblical health teachings</p></div>
+        <div class="mini-card"><span class="ic">✓</span><p>Practical habits and simple challenges</p></div>
+        <div class="mini-card"><span class="ic">◆</span><p>Encouragement to keep showing up</p></div>
+        <div class="mini-card"><span class="ic">↗</span><p>Healthy lifestyle guidance</p></div>
+        <div class="mini-card"><span class="ic">★</span><p>Community wins and testimonies</p></div>
+        <div class="mini-card"><span class="ic">7</span><p>Access to the 7-Day Reset</p></div>
+        <div class="mini-card"><span class="ic">+</span><p>Early access to new GodHealth resources</p></div>
+        <div class="mini-card"><span class="ic">♡</span><p>A supportive community of believers growing together</p></div>
+      </div>
+    </div>
+  </section>
+  <hr class="divider">
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid g2" style="align-items:center;">
+        <div class="reveal"><p class="eyebrow">Who It Is For</p><h2 style="margin-top:12px;">A Place To Start, Grow And <span class="gold-text">Build Momentum.</span></h2></div>
+        <div class="card card-pad reveal"><p class="lead">The GodHealth Tribe is for believers who want to take better care of their Body, Soul and Spirit — whether you are taking your first step, rebuilding consistency, or preparing for deeper coaching in the future.</p></div>
+      </div>
+    </div>
+  </section>
+  <hr class="divider">
+
+  <section class="section sec-light">
+    <div class="wrap narrow center">
+      <p class="eyebrow reveal">Your Pace. Your Next Step.</p>
+      <h2 class="reveal" style="margin-top:12px;">Grow At Your Pace. Go Deeper <span class="gold-text">When You&rsquo;re Ready.</span></h2>
+      <p class="lead reveal" style="margin-top:16px;">Some people join the Tribe to build momentum and learn the foundations. Others eventually decide they are ready for deeper structure, accountability and coaching. When that time comes, the GodHealth Transformation Journey is available through a Strategy Call.</p>
+      <div class="btn-row center reveal" style="margin-top:30px;"><a class="btn btn-gold" href="/coaching">Explore GodHealth Coaching</a><a class="btn btn-outline" href="/kingdom-vitality-scan.html">Take the Free Scan</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><div class="brandmark" role="img" aria-label="GodHealth logo"></div><p class="display gold-text" style="font-size:28px;margin-bottom:12px;">GodHealth — Vitality for the Kingdom</p><div class="ft-links"><a href="/privacy.html">Privacy Policy</a></div><p class="disc">GodHealth offers education, support and lifestyle coaching. It does not provide medical diagnosis, treatment or emergency care. Results vary.</p></div>
+</footer>
+
+<script>
+  const GODHEALTH_TRIBE_URL = "TODO_ADD_APPROVED_TRIBE_URL";
+  (function(){const button=document.getElementById("tribeJoinButton");const note=document.getElementById("tribeTodoNote");if(button&&GODHEALTH_TRIBE_URL!=="TODO_ADD_APPROVED_TRIBE_URL"){button.href=GODHEALTH_TRIBE_URL;button.classList.remove("btn-disabled");button.removeAttribute("aria-disabled");if(note)note.style.display="none"}else if(button){button.addEventListener("click",e=>e.preventDefault())}})();
+  (function(){const hdr=document.getElementById("hdr"),toggle=document.getElementById("navToggle"),panel=document.getElementById("navPanel");if(!toggle||!hdr)return;const setOpen=open=>{hdr.classList.toggle("open",open);toggle.setAttribute("aria-expanded",open?"true":"false")};toggle.addEventListener("click",e=>{e.stopPropagation();setOpen(!hdr.classList.contains("open"))});if(panel)panel.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("click",e=>{if(hdr.classList.contains("open")&&!hdr.contains(e.target))setOpen(false)})})();
+  try{const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>io.observe(el))}catch(e){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"))}
+</script>
+</body>
+</html>
