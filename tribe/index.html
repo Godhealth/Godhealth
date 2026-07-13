@@ -18,6 +18,7 @@
   .hero{padding:clamp(88px,12vw,138px) 0 78px;text-align:center}.hero .lead{max-width:810px;margin:24px auto 0}.hero .btn-row{margin-top:34px!important}.trust-line{margin-top:18px;color:var(--ink-mute);font-size:13px}.sec-light .btn-outline{color:#211b12;border-color:rgba(184,138,46,.5);background:rgba(184,138,46,.06)}.card{color:var(--ink);border:1px solid var(--gold-line);border-radius:22px;background:linear-gradient(180deg,var(--forest-soft),var(--forest));box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 28px 70px -46px rgba(0,0,0,.8)}.card .muted{color:var(--ink-soft)}.card-pad{padding:clamp(24px,4vw,36px)}.grid{display:grid;gap:20px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:38px}.mini-card,.check{border:1px solid var(--gold-line);border-radius:17px;background:linear-gradient(180deg,rgba(217,180,90,.055),rgba(0,0,0,.12));padding:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.sec-light .mini-card,.sec-light .check{color:#211b12;background:linear-gradient(180deg,#fffdf8,#fbf4e6);border-color:rgba(184,138,46,.25);box-shadow:0 24px 55px -42px rgba(34,28,18,.45),inset 0 1px 0 rgba(255,255,255,.75)}.mini-card .ic,.check .ck{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--gold-2);border:1px solid var(--gold-line);margin-bottom:13px;background:rgba(217,180,90,.08)}.sec-light .mini-card .ic,.sec-light .check .ck{color:#9b6b16;border-color:rgba(184,138,46,.35);background:rgba(184,138,46,.08)}.check{display:flex;gap:13px;align-items:flex-start}.check .ck{flex:0 0 auto;margin:0}.section-note{margin-top:24px;text-align:center;color:var(--ink-mute);font-size:13px}.sec-light .section-note{color:rgba(34,28,18,.58)}
   footer{padding:58px 0;text-align:center;background:#03110b;border-top:1px solid var(--gold-line)}footer .brandmark{margin:0 auto 14px}.ft-links a{color:var(--gold-2);font-size:13px}.disc{max-width:720px;margin:18px auto 0;color:var(--ink-mute);font-size:12px}.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}
   @media(max-width:980px){.brand-tag{display:none}}@media(max-width:900px){.nav-links,.header-cta{display:none}.nav-toggle{display:grid;place-items:center}.bar{height:68px}header.open .nav-panel{display:block;padding:0 22px 18px}.nav-panel a{display:block;color:var(--ink-soft);padding:13px 0;border-bottom:1px solid rgba(217,180,90,.12);text-decoration:none}.nav-panel .nav-cta{margin-top:8px;padding:13px 16px;text-align:center;border-radius:9999px;background:linear-gradient(135deg,#f4d77f,#b88a2e);color:#241802;font-weight:700}.g2,.g3{grid-template-columns:1fr}.btn-row .btn{width:100%}}
+  .visual-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:34px}.visual-card{position:relative;overflow:hidden;min-height:230px;margin:0;border-radius:26px;border:1px solid rgba(217,180,90,.36);background:#04160e;box-shadow:0 30px 72px -48px rgba(0,0,0,.86),0 0 0 1px rgba(255,255,255,.04),inset 0 1px 0 rgba(255,255,255,.06)}.visual-card:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,22,14,.03) 20%,rgba(4,22,14,.84));pointer-events:none}.visual-card img{width:100%;height:100%;min-height:inherit;object-fit:cover;filter:saturate(.92) contrast(1.04)}.visual-card figcaption{position:absolute;z-index:2;left:16px;right:16px;bottom:14px;color:var(--gold-3);font-size:11px;font-weight:850;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 2px 18px rgba(0,0,0,.55)}.visual-card.wide{grid-column:1/-1}.hero-visual{max-width:920px;margin:34px auto 0}.sec-light .visual-card{box-shadow:0 26px 62px -44px rgba(34,28,18,.62),0 0 0 1px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.08)}@media(max-width:900px){.visual-grid{grid-template-columns:1fr}.visual-card,.visual-card.wide{min-height:210px;border-radius:22px}}@media(max-width:560px){.visual-grid{gap:12px;margin-top:26px}.visual-card,.visual-card.wide{min-height:190px;border-radius:20px}.visual-card figcaption{font-size:9.5px;left:13px;bottom:12px}}
 </style>
 </head>
 <body>
@@ -42,6 +43,10 @@
     </div>
     <p class="trust-line reveal">Free to join. No pressure. Start where you are.</p>
     <p class="section-note reveal" id="tribeTodoNote">The free community link will be added soon.</p>
+    <figure class="visual-card wide hero-visual reveal">
+      <img src="../assets/godhealth-community-sunset.jpg" alt="A small group standing together in warm sunset light.">
+      <figcaption>A Christ-Centered Place To Grow</figcaption>
+    </figure>
   </section>
   <hr class="divider">
 
@@ -57,6 +62,16 @@
         <div class="mini-card"><span class="ic">7</span><p>Access to the 7-Day Reset</p></div>
         <div class="mini-card"><span class="ic">+</span><p>Early access to new GodHealth resources</p></div>
         <div class="mini-card"><span class="ic">♡</span><p>A supportive community of believers growing together</p></div>
+      </div>
+      <div class="visual-grid reveal" aria-label="GodHealth Tribe foundations">
+        <figure class="visual-card">
+          <img src="../assets/godhealth-bible-nature.jpg" alt="A Bible held outdoors in nature.">
+          <figcaption>Biblical Foundation</figcaption>
+        </figure>
+        <figure class="visual-card">
+          <img src="../assets/godhealth-simple-breakfast.jpg" alt="A simple smoothie bowl breakfast.">
+          <figcaption>Simple Healthy Habits</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -78,6 +93,10 @@
       <h2 class="reveal" style="margin-top:12px;">Grow At Your Pace. Go Deeper <span class="gold-text">When You&rsquo;re Ready.</span></h2>
       <p class="lead reveal" style="margin-top:16px;">Some people join the Tribe to build momentum and learn the foundations. Others eventually decide they are ready for deeper structure, accountability and coaching. When that time comes, the GodHealth Transformation Journey is available through a Strategy Call.</p>
       <div class="btn-row center reveal" style="margin-top:30px;"><a class="btn btn-gold" href="/coaching">Explore GodHealth Coaching</a><a class="btn btn-outline" href="/kingdom-vitality-scan.html">Take the Free Scan</a></div>
+      <figure class="visual-card wide hero-visual reveal">
+        <img src="../assets/godhealth-joy-jump.jpg" alt="Two people jumping with joy at sunset.">
+        <figcaption>Grow With Others</figcaption>
+      </figure>
     </div>
   </section>
 </main>
