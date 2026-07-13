@@ -339,9 +339,10 @@
       <p class="gold-text tracking-[0.4em] text-[11px] sm:text-xs font-semibold mb-2">GODHEALTH</p>
       <p class="display italic mb-3" style="color:var(--gold-2); font-size:15px;">Vitality for the Kingdom</p>
       <p class="gold-text text-[11px] font-semibold tracking-[0.22em] uppercase mb-3">The Only Method Of Its Kind In The World</p>
-      <h1 class="display text-[30px] sm:text-5xl font-bold gold-text" style="line-height:1.18; padding-bottom:0.12em;">Kingdom Vitality Scan</h1>
-      <p class="display italic text-[15px] sm:text-lg mt-4 max-w-lg mx-auto leading-snug" style="color: var(--ink-soft);">Where are your body, soul and spirit out of alignment?</p>
-      <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-md mx-auto mt-3" style="color: var(--ink);">In less than 10 minutes, discover the hidden patterns that may be limiting your energy, consistency, focus and physical stewardship — and receive practical next steps to live your God-given calling.</p>
+      <h1 class="display text-[30px] sm:text-5xl font-bold gold-text" style="line-height:1.18; padding-bottom:0.12em;">Take Your Free Kingdom Vitality Scan Now</h1>
+      <p class="display italic text-[15px] sm:text-lg mt-4 max-w-lg mx-auto leading-snug" style="color: var(--ink-soft);">Discover exactly where your Body, Soul &amp; Spirit are out of alignment and receive your personalized roadmap in just 6 minutes.</p>
+      <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-md mx-auto mt-3" style="color: var(--ink);">Based on Biblical Wisdom &amp; Modern Health Science.</p>
+      <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-md mx-auto mt-3" style="color: var(--ink);">Most people who scan today move forward.</p>
     </div>
 
     <!-- benefits: gold icon chips -->
@@ -416,16 +417,6 @@ const QUESTIONS = [
       {pts:4,text:"Jesus Christ is my Lord and Saviour. I know my identity in Christ and walk in it. Every day I am grounded in the Word, in prayer, and I take up my cross daily."}
     ]},
 
-  { id:"q2", pillars:["mental","spiritual"],
-    title:"When life hits you hard, how do you usually respond?",
-    verse:{ ref:"Romans 5:3-4", text:"Tribulation worketh patience; And patience, experience; and experience, hope." },
-    options:[
-      {pts:1,text:"I pull away from God and lose hope. The setback takes over."},
-      {pts:2,text:"I pray for help, but I still feel shaken and easily discouraged."},
-      {pts:3,text:"I lean on God and recover, though it takes me a while to find my footing."},
-      {pts:4,text:"I stay anchored in God. Hard moments grow my faith instead of breaking it."}
-    ]},
-
   { id:"qbelief", pillars:["mental","spiritual"],
     title:"When you imagine becoming truly healthy and strong, do you believe it's possible for YOU?",
     verse:{ ref:"Matthew 19:26", text:"With men this is impossible; but with God all things are possible." },
@@ -446,17 +437,6 @@ const QUESTIONS = [
       {pts:4,text:"I eat mostly God-made whole foods and feel in control of my cravings."}
     ]},
 
-  { id:"qfood", diagnostic:true, relatesTo:"q3", pillars:["physical"],
-    title:"When you reach for unhealthy food, what is really behind it most often?",
-    verse:{ ref:"1 Corinthians 10:13", text:"God is faithful, who will not suffer you to be tempted above that ye are able; but will with the temptation also make a way to escape." },
-    options:[
-      {root:"emotion",text:"Stress, emotions, or boredom — I eat to feel better or to cope."},
-      {root:"noplan",text:"No plan or structure — I just grab whatever is quick and available."},
-      {root:"knowledge",text:"I'm honestly not sure what's truly healthy, or how to prepare it."},
-      {root:"environment",text:"My home, family, or work is full of unhealthy food and temptation."},
-      {root:"none",text:"Nothing really — I rarely reach for unhealthy food."}
-    ]},
-
   { id:"q4", pillars:["physical"],
     title:"How much do you move your body in a normal week?",
     verse:{ ref:"1 Timothy 4:8", text:"For bodily exercise profiteth little: but godliness is profitable unto all things." },
@@ -468,36 +448,16 @@ const QUESTIONS = [
     ]},
 
   { id:"q5", pillars:["mental","physical"],
-    title:"How do you feel about your weight and your body right now?",
-    verse:{ ref:"1 Corinthians 6:19", text:"What? know ye not that your body is the temple of the Holy Ghost which is in you?" },
-    options:[
-      {pts:1,text:"I am carrying a lot of extra weight and often feel physical pain or low energy."},
-      {pts:2,text:"My weight hurts my confidence, and I struggle to stay consistent."},
-      {pts:3,text:"My weight is fairly stable, but I'd like more strength and muscle tone."},
-      {pts:4,text:"I am at a healthy weight and feel lean, strong, and energetic."}
-    ]},
-
-  { id:"q6", pillars:["mental","physical"],
-    title:"How is your sleep and recovery?",
+    title:"How do you feel about your body, sleep, and energy right now?",
     verse:{ ref:"Psalm 4:8", text:"I will both lay me down in peace, and sleep: for thou, LORD, only makest me dwell in safety." },
     options:[
-      {pts:1,text:"I'm always tired. I sleep badly and wake up exhausted."},
-      {pts:2,text:"My sleep is unpredictable and my mind often races at night."},
-      {pts:3,text:"I sleep okay, but I don't have a real recovery routine yet."},
-      {pts:4,text:"I sleep well on a steady rhythm and wake up rested and energized."}
+      {pts:1,text:"Extra weight, low energy, and poor sleep feel like they are all working against me."},
+      {pts:2,text:"I feel okay some days, but my body, sleep, and energy are inconsistent."},
+      {pts:3,text:"My body and sleep are decent, but I know my energy and strength could be better."},
+      {pts:4,text:"I feel strong in my body, sleep well, and usually have steady energy."}
     ]},
 
-  { id:"q7", pillars:["mental"],
-    title:"How would you describe your stress and your thought life?",
-    verse:{ ref:"Philippians 4:6-7", text:"Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God." },
-    options:[
-      {pts:1,text:"I feel overwhelmed and anxious most of the time."},
-      {pts:2,text:"I worry a lot and find it hard to quiet my mind."},
-      {pts:3,text:"I manage stress fairly well, but it still gets the better of me at times."},
-      {pts:4,text:"I take serious moments of rest to silence my thoughts and relax, and I bring my worries to God."}
-    ]},
-
-  { id:"qcope", diagnostic:true, relatesTo:"q7", pillars:["mental"],
+  { id:"qcope", diagnostic:true, relatesTo:"q13", pillars:["mental"],
     title:"When stress or anxiety hits, what do you usually turn to first?",
     verse:{ ref:"Matthew 11:28", text:"Come unto me, all ye that labour and are heavy laden, and I will give you rest." },
     options:[
@@ -506,37 +466,6 @@ const QUESTIONS = [
       {root:"withdraw",text:"I withdraw, isolate, or shut down."},
       {root:"overwork",text:"I push harder and overwork to stay in control."},
       {root:"healthy",text:"I pray, move my body, or talk to someone — I face it head-on."}
-    ]},
-
-  { id:"q8", pillars:["mental","spiritual"],
-    title:"How strong is the support and accountability around you?",
-    verse:{ ref:"Ecclesiastes 4:9-10", text:"Two are better than one; because they have a good reward for their labour. For if they fall, the one will lift up his fellow." },
-    options:[
-      {pts:1,text:"I fight alone. No one really holds me accountable."},
-      {pts:2,text:"People love me, but no one pushes me to grow or keeps me accountable."},
-      {pts:3,text:"I have some support, but I tend to hide my struggles from others."},
-      {pts:4,text:"I have a strong circle and a partner who keeps me accountable."}
-    ]},
-
-  { id:"qopen", diagnostic:true, relatesTo:"q8", pillars:["mental"],
-    title:"What makes it hardest to open up about your real struggles?",
-    verse:{ ref:"James 5:16", text:"Confess your faults one to another, and pray one for another, that ye may be healed." },
-    options:[
-      {root:"shame",text:"Shame — I'm afraid of being judged or seen as weak."},
-      {root:"trust",text:"I don't have anyone I truly trust with this."},
-      {root:"perfection",text:"I feel I should be able to handle it on my own."},
-      {root:"burden",text:"I don't want to burden other people with my problems."},
-      {root:"none",text:"Nothing — I have people I can be fully open with."}
-    ]},
-
-  { id:"q9", pillars:["spiritual","mental","physical"],
-    title:"What is your relationship with fasting?",
-    verse:{ ref:"Matthew 6:17-18", text:"But thou, when thou fastest, anoint thine head, and wash thy face; That thou appear not unto men to fast." },
-    options:[
-      {pts:1,text:"I never fast. The idea feels too hard."},
-      {pts:2,text:"I've tried fasting, but I can't keep it up."},
-      {pts:3,text:"I fast now and then, but not in a structured way."},
-      {pts:4,text:"I fast regularly to renew my body, sharpen my mind, and draw close to God."}
     ]},
 
   { id:"q11", pillars:["physical"],
@@ -740,7 +669,6 @@ async function supabaseRpc(functionName,payload){
 /* ============================================================ QUESTION RENDERING ============================================================ */
 function pillarTagFor(q){
   if(q.pillar === "scale") return "Final Alignment";
-  if(q.id === "q9") return "Body · Soul · Spirit";
   return q.pillars.map(p=> PILLAR_META[p].short).join(" + ");
 }
 
@@ -1028,7 +956,7 @@ function pillarParagraph(pillar, leak){
    invitation to seek Him.
    ============================================================ */
 
-const BRANCH = { q3:"qfood", q7:"qcope", q8:"qopen" };
+const BRANCH = { q13:"qcope" };
 
 /* Shown as the whole Spirit-pillar advice when q1 == "I don't believe in Jesus Christ". */
 const GOSPEL_INVITATION = "Before any plan for your body, there's an invitation for your spirit: the One who made you is not far away. Jesus said, \"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life\" (John 3:16). The way in is simple: \"If thou shalt confess with thy mouth the Lord Jesus, and shalt believe in thine heart that God hath raised him from the dead, thou shalt be saved\" (Romans 10:9). You don't need it all figured out — you only need to seek. If you're willing, pray this honestly: \"Dear Lord Jesus, if You are real, make Yourself known to me, and I will follow You. In Jesus' name I have prayed, Amen.\" Then start reading the Bible, the Word of God — it's the number one place God will speak to you. Through it you get to know Him; it's a mirror for your life, where you recognise yourself and see exactly how to grow in every area. Begin in the New Testament, in the book of Matthew.";
@@ -1038,12 +966,6 @@ const ADVICE = {
   q1:{ area:"your daily walk with God",
     deep:"Your faith is real, but it comes and goes — and being steady is what changes your life. Bookend your day with God: give Him the first 15-60 minutes in prayer and the Word before you touch your phone, and the last 15-60 minutes before sleep. Start and end with Him. Jesus said a branch cut off from the vine can't bear fruit (John 15:5). This helps your body too: time with God calms your stress and steadies your mind, which makes eating, sleeping, and training easier. People close to God even tend to live longer and feel less anxious. Put God first and last, and the middle gets easier to carry.",
     tune:"give God the first and last 15-60 minutes of each day — start and end with Him, and let it anchor everything between" },
-  q2:{ area:"how you handle setbacks",
-    deep:"You bounce back slowly after a hard hit, and that's where most people give up. The Bible says hard times, handled right, build patience and hope (Romans 5:3-4). Here's a simple truth: when you name what you feel and remember God's promise before you react, your mind calms down and you can think clearly again. So pick one promise of God today, put it on your phone's lock screen, and say it out loud the moment things go wrong — then take one small step within the hour. A planned response keeps one slip-up from becoming a wasted week. The setback becomes your teacher, not your verdict.",
-    tune:"shrink the gap between a fall and your comeback — name the lesson, claim a promise, and act today" },
-  q9:{ area:"fasting",
-    deep:"You don't fast in a regular way yet, and you're missing a powerful tool. Jesus said \"when you fast,\" not \"if\" (Matthew 6:17) — He expected it. Here's why it works: after about 16 hours without food, your body switches from burning sugar to burning fat, starts repairing itself, steadies your blood sugar, and sharpens your focus. Start this week with one 16-hour fast — finish dinner by 8pm and eat again at noon — and pray during it. Every time hunger says \"now\" and you answer \"not yet,\" you teach your spirit to lead your appetite. That one win usually spreads into your food, focus, and self-control everywhere else.",
-    tune:"make fasting a set weekly habit tied to prayer, so it renews both body and spirit" },
   qtheo:{ area:"how you see your body before God",
     deep:"Deep down, you may feel God doesn't care about your body, or that you deserve to feel bad. The Bible says the opposite: your body is God's temple, bought at a price, made to honour Him — not to be punished (1 Corinthians 6:19-20). This matters, because shame doesn't help you change; it keeps you stuck and hiding. Being kind to yourself is what helps you follow through. So do one thing today: thank God out loud for your body as His gift, then take one small step to care for it — a walk, a glass of water, an early night. Not to earn His love, but because in Jesus you already have it.",
     tune:"keep trading guilt for thanks — you care for your body out of God's love, not to earn it" },
@@ -1061,38 +983,23 @@ const ADVICE = {
   q4:{ area:"daily movement",
     deep:"You're barely moving, and this is one of the easiest big wins you have. Start with a 30-minute walk in daylight every day, set as a must-do — the Bible says training the body has its value (1 Timothy 4:8). Walking lowers stress, lifts your mood as much as some medicine can, and burns fat without wearing you out. Then add some strength work two or three times a week: even a little lifting each week is linked to a longer life. Exercise also helps your brain grow and fight off low moods. Begin with walking — it gives your body proof that change is real, the momentum no crash plan can give.",
     tune:"add some strength training two or three times a week and grow it slowly — muscle is your engine for life" },
-  q5:{ area:"your weight and body",
-    deep:"Stop the crash-diet cycle — it fails because it fights the symptom, not the cause. The deeper fix is muscle: it's active tissue that protects your health, helps you live longer, and reshapes your body far better than starving yourself. Pick three daily habits: protein at breakfast (it keeps you full longest), a 30-minute walk, and water before meals. Let weight come off as the result of caring for God's temple, not punishing it (1 Corinthians 6:19). And protect your sleep — too little sleep raises hunger and quietly blocks fat loss. Build the habits, feed the muscle, and your body follows — for good, not just for a season.",
-    tune:"aim for strength, not just a lower number — build muscle and feed it protein" },
-  q6:{ area:"sleep and recovery",
-    deep:"Sleep quietly controls your cravings, mood, and willpower — so fix it first. When you sleep only about four hours, your hunger hormone jumps, your \"full\" hormone drops, and you feel much hungrier the next day, especially for sugar and starch. So poor sleep creates the cravings you blame on yourself. Two steps, starting tomorrow: get 10 minutes of sunlight in your eyes within an hour of waking to set your body clock; and put screens away 90 minutes before bed, because their light blocks the sleep hormone. The Bible says God lets His loved ones lie down in peace (Psalm 4:8). Win the night, and the whole day gets easier.",
-    tune:"keep the same sleep and wake time with a short wind-down, so sleep becomes real rest" },
+  q5:{ area:"your body, sleep and energy",
+    deep:"Your body, sleep and energy are connected. When sleep is poor and energy is low, cravings rise, training feels harder and body change slows down. Start with three simple anchors: protein at breakfast, a 20-30 minute walk in daylight, and a realistic screen-free wind-down before bed. Let change come from caring for God's temple, not punishing it (1 Corinthians 6:19). Build strength, protect rest and give your body the rhythm it needs to respond.",
+    tune:"protect sleep, build strength and use protein-first meals so your energy becomes steadier" },
   q11:{ area:"how much water you drink",
     deep:"Water is the cheapest energy boost you're skipping. You wake up a little dried out, and even being slightly low on water makes you tired, foggy, and moody, and makes everything feel harder. A lot of the tiredness you fix with coffee is really just thirst. So tomorrow, drink a big glass of water the moment you wake up, before coffee, and keep a full bottle where you can see it all day — we drink what we see. Tie it to things you already do: \"when I sit down to work, I drink.\" Jesus spoke of living water inside us (John 7:38); start with the real kind, and feel the lift within days.",
     tune:"keep water in sight and tie a few glasses to things you already do" },
 
   /* ---------- SOUL ---------- */
-  q7:{ area:"stress and your thoughts",
-    tune:"build one or two real pauses into each day so stress has less room to climb",
-    deepByRoot:{
-      food:"Stress is steering your eating — when you're tense, your body craves sugar and fat, and food calms you for a moment before the guilt starts it again. The fix begins with your body, not your plate. The fastest reset is your breath: take two breaths in through your nose, then one long, slow breath out, for a few minutes — it calms you better than just sitting still. Tonight, write your worries down and pray them over to God (Philippians 4:6-7); when stress spikes, breathe like this before you eat. Calm the body first, and the craving loses its fuel.",
-      screen:"You calm stress with screens, but it's a trap — scrolling keeps your body on edge and steals the rest you need, and screen light at night blocks your sleep, which feeds tomorrow's stress. Swap numbing for a real off-switch. Take two breaths in through your nose, then one long, slow breath out, for a few minutes — it calms your body better than just sitting quietly. Tonight, write your worries down and hand them to God (Philippians 4:6-7); when anxiety rises, breathe like this before you reach for your phone. Trade the screen for stillness, and you'll feel the difference fast.",
-      withdraw:"You pull away when you're stressed — it feels safe, but being alone makes worry and low moods worse. We aren't built to carry pain by ourselves. Do two things today. First, calm your body: take two breaths in through your nose, then one long, slow breath out, for a few minutes. Second, turn toward people, not away: write your worries down and pray them to God (Philippians 4:6-7), then send one honest message to someone you trust. Saying a burden out loud — to God and to one person — makes it lighter. Don't shut the door; open it a crack, today.",
-      overwork:"You handle stress by working harder, which keeps your body stuck in \"fight or flight\" — and long-term stress quietly wears down your sleep, weight, and mood. Control isn't the same as peace. Rest is what resets you: take two breaths in through your nose, then one long, slow breath out, for a few minutes, and your whole system settles. Tonight, write your worries down and truly hand them to God (Philippians 4:6-7), and build one real pause into tomorrow — even five slow breaths between tasks. Strength isn't carrying more; it's learning, before God, to put the weight down.",
-      healthy:"You already handle stress fairly well — now make calming down a daily habit, not just a rescue. The simplest tool is your breath: take two breaths in through your nose, then one long, slow breath out, for a few minutes; it calms your body better than just sitting quietly. Each evening, write your worries down and pray them over to God, thanking Him too (Philippians 4:6-7); when pressure rises, breathe like this. A mind given to God each day, and a body you can calm on command, stays steady under pressure.",
-      default:"Make calming down a daily habit, not just a rescue. The simplest tool is your breath: take two breaths in through your nose, then one long, slow breath out, for a few minutes; it calms your body better than just sitting quietly. Each evening, write your worries down and pray them over to God, thanking Him too (Philippians 4:6-7); when pressure rises, breathe like this. A mind given to God each day stays steadier under pressure." } },
-  q8:{ area:"the support around you",
-    tune:"let one person see what you tend to hide — a struggle said out loud loses its power",
-    deepByRoot:{
-      shame:"Shame keeps you stuck — it grows in secret and tells you you're the only one. The Bible's fix is simple and practical: tell your struggles to one another, and you'll be healed (James 5:16). You don't need a crowd, just one safe person. Today, tell one trusted believer the thing you most want to hide. Two things happen: the secret loses its power, and you gain someone to keep you on track — and a goal someone checks on is far more likely to stick. Being alone is hard on your health, too. Letting someone in isn't weakness; it's medicine.",
-      trust:"Fighting alone feels safer, but it's the very thing keeping you stuck. The Bible says two are better than one, because when one falls the other lifts him up (Ecclesiastes 4:9-10). This is real for your health: people with close ties live longer and feel better, while being cut off harms you. If you don't trust anyone with this yet, start there, gently. This week, take one small step toward people — a church group, a small circle, or a coach — and be honest with one person about one thing. Trust grows through small, safe steps over time. Start with one; you were never meant to carry this alone.",
-      perfection:"Thinking you must handle it all alone is pride dressed up as strength, and it leaves you stuck right where you need help. The Bible is plain: when one falls, he needs someone to lift him up (Ecclesiastes 4:9-10). Going it alone also removes the best success booster there is — someone to answer to. A goal you say out loud to a person who checks on you is far more likely to last. Being cut off is hard on your health, too. So today, let one trusted person see one area you've handled alone, and ask them to check on you each week. Accountability isn't weakness — it's a tool strong people choose on purpose.",
-      burden:"You think your honesty is a burden — but it's the opposite. Real friendships are built by carrying each other (Ecclesiastes 4:9-10), and the people who love you want to help. Hiding to \"protect\" them just leaves you more alone, which is hard on your health. The Bible ties healing to being open: tell your struggles to one another, and be healed (James 5:16). So today, tell one of them one true thing you've been hiding, and let them check on you each week — a shared goal is far more likely to stick. Your honesty will probably set them free to be honest too. You were never meant to carry it alone.",
-      none:"Make your strong support count — most people never turn good relationships into real help. This week, tell one trusted person your exact goal and ask them to check on you each week. A goal someone keeps an eye on is far more likely to stick, and two are better than one — when one falls, the other lifts him up (Ecclesiastes 4:9-10). Close relationships also help you live longer and feel better.",
-      default:"Make your support count: this week, tell one trusted person your exact goal and ask them to check on you each week. A goal someone keeps an eye on is far more likely to stick, and two are better than one (Ecclesiastes 4:9-10). Close relationships also help you live longer and feel better." } },
   q13:{ area:"your daily rhythm",
-    deep:"Your days have no rhythm, and that alone is wearing you out — apart from what you eat. Your body runs on a 24-hour clock that controls your energy, hormones, digestion, and mood. When your wake, meal, and sleep times jump around, that clock never settles, so you feel tired and foggy. The Bible says there's a time for everything (Ecclesiastes 3:1). Start today with three fixed points: the same wake-up time (with morning sunlight), regular meals, and a set bedtime with a short wind-down. Keep the timing steady for two weeks, and your energy, calm, and self-control will rise to match the order you've given your body.",
-    tune:"tighten the one time that slips most — usually bedtime — and hold it steady" },
+    tune:"tighten the one time that slips most — usually bedtime — and hold it steady",
+    deepByRoot:{
+      food:"Your days need rhythm, but stress is also steering your choices. When pressure rises, your body reaches for quick comfort. Start with three fixed points: a steady wake time, regular meals and a realistic bedtime. Then add one stress reset before food: breathe slowly, name what you feel and bring it to God in prayer (Matthew 11:28). Calm the body first, and the craving loses power.",
+      screen:"Your rhythm is being pulled apart by stress and screens. Scrolling may feel like rest, but it keeps your mind stimulated and often steals sleep. Start with three fixed points: a steady wake time, regular meals and a realistic bedtime. Tonight, put your phone away before your wind-down and give that space to quiet prayer, breathing and release. Order creates peace.",
+      withdraw:"Your rhythm needs support, and stress is tempting you to pull away. Isolation makes pressure heavier. Start with three fixed points: a steady wake time, regular meals and a realistic bedtime. Then send one honest message to someone safe. Let one person know what rhythm you are rebuilding. A steady life is easier when you stop carrying it alone.",
+      overwork:"Your rhythm is being crowded out by overwork. Pushing harder can feel responsible, but it keeps your body in stress mode and makes rest harder. Start with three fixed points: a steady wake time, regular meals and a realistic bedtime. Build one no-work pause into tomorrow, even five quiet minutes with God. Strength includes knowing when to stop.",
+      healthy:"You already have a healthier stress response available. Now make it part of your rhythm, not only a rescue tool. Keep three fixed points: a steady wake time, regular meals and a realistic bedtime. Add a daily pause for prayer, breathing and honest reflection so your calm becomes trained, not accidental.",
+      default:"Your days have no rhythm, and that alone can wear you out. Your body runs on a 24-hour clock that affects energy, digestion, mood and self-control. The Bible says there is a time for every purpose (Ecclesiastes 3:1). Start with three fixed points: a steady wake time, regular meals and a realistic bedtime with a short wind-down. Keep the timing steady and your energy, calm and discipline can begin to rise." } },
   q15:{ area:"connection and serving",
     deep:"Reconnecting isn't a \"nice extra\" for your health — it's a foundation. People with strong ties live longer and feel better, while being cut off is truly harmful — about as harmful as smoking. Those who stay close to their church and community tend to live longer too, with less depression. We're built for this: serving and connecting calm your stress and lift your mood, and the Bible says we're set free to serve one another in love (Galatians 5:13). This week, do two simple things: message one person you love to set a real time together, and do one act of service. The fastest way out of your own pain is often a step toward someone else's.",
     tune:"plan connection and service like they matter, moving them from rare to regular" },
@@ -1102,9 +1009,9 @@ const ADVICE = {
 };
 
 const ADVICE_PILLARS = {
-  spiritual:["q1","q2","q9","qtheo"],
-  physical:["q3","q4","q5","q6","q11"],
-  mental:["q7","q8","q13","q15","qbelief"]
+  spiritual:["q1","qtheo","qbelief","q15"],
+  physical:["q3","q4","q5","q11","q13"],
+  mental:["qbelief","q5","q13","q15"]
 };
 const PILLAR_WORD = { spiritual:"spirit", physical:"body", mental:"soul" };
 
@@ -1465,15 +1372,10 @@ function finishAssessment(skipDispatch){
 
   const focusActions = {
     q1:"Give God the first ten minutes of tomorrow: read the verse below slowly, pray honestly and keep your phone away.",
-    q2:"When a setback comes, pause, name what happened, pray and take one constructive step within the same day.",
     qbelief:"Choose one promise small enough to keep every day this week. Consistency will help rebuild trust in your ability to change.",
     q3:"Plan tomorrow's meals tonight and build each main meal around simple whole foods, a protein source and vegetables.",
     q4:"Put a 20-minute walk in your calendar and treat it as an appointment rather than an optional extra.",
-    q5:"Choose one act of stewardship that builds strength instead of punishing your body: a balanced meal, a walk or simple resistance training.",
-    q6:"Set one realistic bedtime and begin a screen-free wind-down 45 minutes beforehand.",
-    q7:"Create a five-minute daily pause: breathe slowly, write down what is weighing on you and bring it to God in prayer.",
-    q8:"Tell one trusted person the health rhythm you are building and ask them to check in with you this week.",
-    q9:"Practice intentional self-control around one meal or craving and use that moment to pray. If you consider fasting, choose an approach appropriate for your circumstances.",
+    q5:"Choose one act of stewardship that supports body, sleep and energy: a protein-first meal, a daylight walk or an earlier wind-down.",
     q11:"Drink a glass of water after waking and keep a filled bottle visible during the day.",
     q13:"Choose three anchors for the next seven days: a steady wake time, regular meals and a realistic bedtime.",
     q15:"Schedule one meaningful conversation or act of service instead of waiting until you feel more connected.",
@@ -1543,15 +1445,10 @@ function finishAssessment(skipDispatch){
 
   const compactFocus = {
     q1:"Spend ten phone-free minutes in Scripture and honest prayer.",
-    q2:"When something goes wrong, pray and take one constructive step that same day.",
     qbelief:"Keep one small promise to yourself and God today.",
     q3:"Plan one simple whole-food meal built around protein and vegetables.",
     q4:"Complete a comfortable 20-minute walk.",
-    q5:"Choose one caring action that builds strength rather than punishes your body.",
-    q6:"Begin a screen-free wind-down 45 minutes before a realistic bedtime.",
-    q7:"Take five minutes to breathe slowly, name the pressure and pray about it.",
-    q8:"Share one honest commitment with a trusted person.",
-    q9:"Practise intentional self-control around one food choice and use the moment to pray.",
+    q5:"Choose one caring action for body, sleep and energy.",
     q11:"Drink water after waking and keep a filled bottle visible.",
     q13:"Keep one steady wake, meal or bedtime anchor.",
     q15:"Create one moment of real connection or service.",
