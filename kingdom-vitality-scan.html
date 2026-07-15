@@ -780,29 +780,33 @@ function advance(){
 function computeScores(){
   const pp = {spiritual:0,mental:0,physical:0};   // earned points per pillar
   const pmax = {spiritual:0,mental:0,physical:0}; // max possible per pillar
+  const pmin = {spiritual:0,mental:0,physical:0}; // min possible per pillar
   QUESTIONS.forEach(q=>{
     if(q.pillar === "scale" || q.diagnostic) return;
     q.pillars.forEach(p=>{
       pp[p]   += state.answers[q.id].pts;  // each question adds its points to every pillar it serves
       pmax[p] += 4;                        // and 4 is the max per question
+      pmin[p] += 1;                        // and 1 is the lowest scored answer
     });
   });
   const scalePts = state.answers.q10.pts;  // 1-10
 
-  // Grand total: every scored question's points counted once + the scale
-  let baseTotal = 0, baseMax = 0;
-  QUESTIONS.forEach(q=>{
-    if(q.pillar === "scale" || q.diagnostic) return;
-    baseTotal += state.answers[q.id].pts;
-    baseMax   += 4;
-  });
-  const totalPts = baseTotal + scalePts;
-  const grandMax = baseMax + 10;
-  const grandPct = Math.round((totalPts/grandMax)*100);
-
+  const clampScore = value => Math.max(0, Math.min(100, Number.isFinite(value) ? value : 0));
+  const pillarScores = {};
   const leaks = {};
-  Object.keys(pp).forEach(p=> leaks[p] = Math.round(100 - (pp[p]/pmax[p])*100));
-  return { pillarPts:pp, pillarMax:pmax, scalePts, totalPts, grandMax, grandPct, leaks };
+  Object.keys(pp).forEach(p=>{
+    const range = pmax[p] - pmin[p];
+    const pct = range > 0 ? Math.round(((pp[p] - pmin[p]) / range) * 100) : 0;
+    pillarScores[p] = clampScore(pct);
+    leaks[p] = 100 - pillarScores[p];
+  });
+
+  // Overall Alignment is intentionally the exact average of Body, Soul and Spirit.
+  const grandPct = Math.round((pillarScores.physical + pillarScores.mental + pillarScores.spiritual) / 3);
+  const totalPts = pillarScores.physical + pillarScores.mental + pillarScores.spiritual;
+  const grandMax = 300;
+
+  return { pillarPts:pp, pillarMax:pmax, pillarMin:pmin, pillarScores, scalePts, totalPts, grandMax, grandPct, leaks };
 }
 
 /* ============================================================ COPY GENERATION ============================================================ */
@@ -1340,11 +1344,7 @@ function finishAssessment(skipDispatch){
   const s = computeScores();
   setProgress();
 
-  const scores = {
-    physical: 100 - s.leaks.physical,
-    mental: 100 - s.leaks.mental,
-    spiritual: 100 - s.leaks.spiritual
-  };
+  const scores = {...s.pillarScores};
   const order = ["physical","mental","spiritual"];
   const primaryKey = [...order].sort((a,b)=> scores[a] - scores[b])[0];
   const primaryName = PILLAR_META[primaryKey].name;
@@ -1368,20 +1368,20 @@ function finishAssessment(skipDispatch){
       : "Your answers show that simple structure may help more than another burst of motivation. Start small and rebuild one rhythm at a time.";
 
   const gapCopy = {
-    physical:"Your Body score suggests that energy, nutrition, sleep or movement may deserve attention first.",
-    mental:"Your Soul score suggests that mindset, stress, discipline or daily structure may deserve attention first.",
-    spiritual:"Your Spirit score suggests that prayer, Scripture and connection with God may deserve attention first."
+    physical:"Your Body score suggests that energy, nutrition, sleep, hydration or movement may deserve attention first.",
+    mental:"Your Soul score suggests that stress, belief, connection, discipline or daily rhythm may deserve attention first.",
+    spiritual:"Your Spirit score suggests that prayer, Scripture, identity in Christ and daily connection with God may deserve attention first."
   };
 
   const focusActions = {
     q1:"Give God the first ten minutes of tomorrow: read the verse below slowly, pray honestly and keep your phone away.",
-    qbelief:"Choose one promise small enough to keep every day this week. Consistency will help rebuild trust in your ability to change.",
-    q3:"Plan tomorrow's meals tonight and build each main meal around simple whole foods, a protein source and vegetables.",
-    q4:"Put a 20-minute walk in your calendar and treat it as an appointment rather than an optional extra.",
-    q5:"Choose one act of stewardship that supports body, sleep and energy: a protein-first meal, a daylight walk or an earlier wind-down.",
-    q11:"Drink a glass of water after waking and keep a filled bottle visible during the day.",
-    q13:"Choose three anchors for the next seven days: a steady wake time, regular meals and a realistic bedtime.",
-    q15:"Schedule one meaningful conversation or act of service instead of waiting until you feel more connected.",
+    qbelief:"Choose one small promise you are confident you can keep today. Kept promises build self-efficacy and make change feel possible again.",
+    q3:"Plan one balanced whole-food meal with protein, vegetables or fruit, and a simple high-fibre carbohydrate.",
+    q4:"Start with a 10-20 minute walk and build toward regular weekly movement plus two simple strength sessions.",
+    q5:"Protect one sleep anchor tonight: a realistic bedtime, a screen-free wind-down, or a consistent wake time.",
+    q11:"Drink water after waking and keep a filled bottle visible. Replace one sugary drink with water today if that applies.",
+    q13:"Choose three daily anchors for the next seven days: a steady wake time, regular meals and a realistic bedtime.",
+    q15:"Schedule one meaningful conversation or act of service. Support and connection make consistency easier to carry.",
     qtheo:"Thank God for your body each morning and make one caring choice from stewardship rather than guilt."
   };
 
@@ -1448,13 +1448,13 @@ function finishAssessment(skipDispatch){
 
   const compactFocus = {
     q1:"Spend ten phone-free minutes in Scripture and honest prayer.",
-    qbelief:"Keep one small promise to yourself and God today.",
-    q3:"Plan one simple whole-food meal built around protein and vegetables.",
-    q4:"Complete a comfortable 20-minute walk.",
-    q5:"Choose one caring action for body, sleep and energy.",
-    q11:"Drink water after waking and keep a filled bottle visible.",
+    qbelief:"Keep one small promise you are confident you can complete.",
+    q3:"Build one balanced meal around protein, plants and fibre.",
+    q4:"Take a comfortable walk and plan two strength moments this week.",
+    q5:"Protect one sleep anchor tonight.",
+    q11:"Drink water after waking and keep a bottle visible.",
     q13:"Keep one steady wake, meal or bedtime anchor.",
-    q15:"Create one moment of real connection or service.",
+    q15:"Create one real moment of connection or service.",
     qtheo:"Thank God for your body and make one choice from stewardship instead of guilt."
   };
   const focusFor = key => compactFocus[weakestByPillar[key]]
@@ -1472,7 +1472,7 @@ function finishAssessment(skipDispatch){
       title:"Create your starting point",
       intro:"Set one clear intention for each pillar. Your Primary Alignment Gap is shown first.",
       actions:{
-        physical:"Choose the exact time for tomorrow's body action and prepare what you need.",
+        physical:"Choose tomorrow's movement time and prepare one simple balanced meal option.",
         mental:"Write one sentence describing the calm, disciplined response you want to practise this week.",
         spiritual:`Read ${verse.ref} slowly and choose a fixed ten-minute Scripture-and-prayer moment.`
       }
@@ -1481,7 +1481,7 @@ function finishAssessment(skipDispatch){
       title:"Prepare the path",
       intro:"Reduce friction so aligned choices become easier.",
       actions:{
-        physical:"Prepare one simple meal, fill your water bottle and place walking shoes where you can see them.",
+        physical:"Fill your water bottle, place walking shoes where you can see them and decide your first meal.",
         mental:"Write tomorrow's three priorities and remove one predictable distraction.",
         spiritual:"Place your KJV verse somewhere visible before you go to sleep."
       }
@@ -1499,8 +1499,8 @@ function finishAssessment(skipDispatch){
       title:"Build recovery and stillness",
       intro:"Alignment grows when effort is balanced with intentional rest.",
       actions:{
-        physical:"Take a comfortable walk and protect a realistic bedtime tonight.",
-        mental:"Take a ten-minute phone-free pause to breathe, reflect and release mental pressure.",
+        physical:"Take a comfortable walk and protect a realistic sleep window tonight.",
+        mental:"Take a five-minute phone-free pause to breathe slowly, reflect and release pressure.",
         spiritual:"Bring one worry to God in prayer and end the day with three specific points of gratitude."
       }
     },
@@ -1508,7 +1508,7 @@ function finishAssessment(skipDispatch){
       title:"Strengthen through support",
       intro:"Use healthy challenge and honest connection instead of relying on willpower alone.",
       actions:{
-        physical:"Complete suitable resistance movement at your own level, or repeat your walking rhythm.",
+        physical:"Complete simple resistance movement at your level, or repeat your walking rhythm.",
         mental:"Tell one trusted person what you are building and ask for a simple check-in.",
         spiritual:"Pray with, encourage or serve one person without seeking recognition."
       }
@@ -1640,7 +1640,7 @@ function finishAssessment(skipDispatch){
       </section>
 
       ${skipDispatch ? "" : '<p id="pdfReportStatus" class="report-note" aria-live="polite">Preparing your premium PDF report securely for email delivery…</p>'}
-      <p class="report-note">Generated from your own responses · Educational only · Biblical &amp; science-informed · Not medical advice</p>
+      <p class="report-note">Overall Alignment = average of Body, Soul and Spirit · Generated from your own responses · Educational only · Biblical &amp; science-informed · Not medical advice</p>
 
       <section class="report-cta">
         <h3>Want help applying your results?</h3>
