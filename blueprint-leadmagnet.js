@@ -222,7 +222,7 @@
       document.addEventListener("mouseout", event=>{
         if(event.clientY <= 0 && !event.relatedTarget) desktopTrigger();
       }, {once:true});
-      window.setTimeout(desktopTrigger, 45000);
+      window.setTimeout(desktopTrigger, 30000);
     } else {
       let shown = false;
       const mobileTrigger = ()=>{
@@ -237,7 +237,7 @@
         if(depth >= .6) mobileTrigger();
       };
       window.addEventListener("scroll", onScroll, {passive:true});
-      window.setTimeout(mobileTrigger, 45000);
+      window.setTimeout(mobileTrigger, 30000);
     }
   }
 
