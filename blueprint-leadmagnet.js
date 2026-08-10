@@ -79,6 +79,37 @@
     }
   }
 
+  async function saveBlueprintLead(client,payload){
+    const blueprintResult = await client.rpc("submit_blueprint_lead", payload);
+    if(!blueprintResult.error) return blueprintResult.data;
+
+    console.warn("Blueprint RPC unavailable, trying direct Blueprint insert:", blueprintResult.error);
+    const insertResult = await client
+      .from(TABLE)
+      .insert({
+        first_name: payload.p_first_name,
+        email: payload.p_email,
+        newsletter_consent: payload.p_newsletter_consent,
+        consent_timestamp: payload.p_newsletter_consent ? new Date().toISOString() : null,
+        source: payload.p_source,
+        user_agent: payload.p_user_agent
+      })
+      .select("id")
+      .single();
+
+    if(!insertResult.error || insertResult.error.code === "23505") return insertResult.data;
+
+    console.warn("Blueprint table insert unavailable, using existing GodHealth lead flow:", insertResult.error);
+    const interestResult = await client.rpc("gh_register_interest", {
+      p_first_name: payload.p_first_name,
+      p_email: payload.p_email,
+      p_source: payload.p_source === "popup" ? "blueprint_popup" : "blueprint_section"
+    });
+
+    if(!interestResult.error) return interestResult.data;
+    throw interestResult.error;
+  }
+
   async function submitBlueprint(form){
     clearError(form);
     const data = new FormData(form);
@@ -87,7 +118,6 @@
     const honeypot = String(data.get("company") || "").trim();
     const newsletterConsent = data.get("newsletter_consent") === "true";
     const source = form.getAttribute("data-blueprint-source") === "popup" ? "popup" : "section";
-    const now = new Date().toISOString();
 
     if(honeypot) return;
     if(!firstName){ showError(form,"Please enter your first name."); return; }
@@ -112,8 +142,7 @@
         p_source:source,
         p_user_agent:navigator.userAgent || null
       };
-      const { error } = await client.rpc("submit_blueprint_lead", payload);
-      if(error) throw error;
+      await saveBlueprintLead(client, payload);
       localStorage.setItem(RATE_KEY, String(Date.now()));
       const holder = form.closest("[data-blueprint-holder]") || form.parentElement;
       if(holder){
