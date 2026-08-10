@@ -99,7 +99,7 @@ function validatePayload(payload: unknown): { lead: ReportLead; answers: ScanAns
   if (!firstName || !EMAIL_PATTERN.test(email) || !consent) throw new Error("INVALID_LEAD");
 
   const requestedId = cleanText(leadInput.id, 40);
-  if (!UUID_PATTERN.test(requestedId)) throw new Error("INVALID_LEAD");
+  if (requestedId && !UUID_PATTERN.test(requestedId)) throw new Error("INVALID_LEAD");
   return {
     lead: {
       id: requestedId,
@@ -174,14 +174,32 @@ Deno.serve(async (request: Request): Promise<Response> => {
     }
     const payload = JSON.parse(raw);
     const { lead, answers } = validatePayload(payload);
-    const model = buildReportModel(lead, answers);
-    const reportHtml = buildReportHtml(model);
-    const pdf = await renderPdf(reportHtml, requestId, model);
 
     const supabaseUrl = env("SUPABASE_URL");
     const supabase = createClient(supabaseUrl, secretKey(), {
       auth: { persistSession: false, autoRefreshToken: false },
     });
+
+    if (!lead.id) {
+      const { data: startData, error: startError } = await supabase.rpc("gh_start_scan", {
+        p_first_name: lead.first_name,
+        p_email: lead.email,
+        p_scan_privacy_consent: true,
+        p_scan_privacy_consent_timestamp: new Date().toISOString(),
+        p_marketing_consent: false,
+        p_marketing_consent_timestamp: null,
+        p_marketing_consent_source: null,
+        p_privacy_policy_version: "v1.0",
+      });
+      if (startError) throw startError;
+      const leadId = startData?.lead_id;
+      if (!leadId || !UUID_PATTERN.test(leadId)) throw new Error("Could not create lead for report.");
+      lead.id = leadId;
+    }
+
+    const model = buildReportModel(lead, answers);
+    const reportHtml = buildReportHtml(model);
+    const pdf = await renderPdf(reportHtml, requestId, model);
     const bucket = Deno.env.get("REPORT_BUCKET")?.trim() || "scan-reports";
     const reportPath = `${lead.id}/kingdom-vitality-report.pdf`;
 
