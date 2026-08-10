@@ -1,5 +1,4 @@
 (function(){
-  const POPUP_KEY = "godhealth_blueprint_popup_seen_v2";
   const RATE_KEY = "godhealth_blueprint_last_submit_v1";
   const TABLE = "blueprint_leads";
   const path = window.location.pathname.toLowerCase();
@@ -185,10 +184,9 @@
 
   function openPopup(){
     if(isBlockedPage) return;
-    if(localStorage.getItem(POPUP_KEY)) return;
+    if(popup && popup.classList.contains("is-open")) return;
     const overlay = buildPopup();
     if(!overlay) return;
-    localStorage.setItem(POPUP_KEY,"1");
     lastFocus = document.activeElement;
     overlay.classList.add("is-open");
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
@@ -209,36 +207,8 @@
   }
 
   function initPopupTriggers(){
-    if(isBlockedPage || localStorage.getItem(POPUP_KEY)) return;
-    const desktopQuery = window.matchMedia("(hover:hover) and (pointer:fine)");
-    const trigger = ()=>openPopup();
-    if(desktopQuery.matches){
-      let shown = false;
-      const desktopTrigger = ()=>{
-        if(shown) return;
-        shown = true;
-        trigger();
-      };
-      document.addEventListener("mouseout", event=>{
-        if(event.clientY <= 0 && !event.relatedTarget) desktopTrigger();
-      }, {once:true});
-      window.setTimeout(desktopTrigger, 30000);
-    } else {
-      let shown = false;
-      const mobileTrigger = ()=>{
-        if(shown) return;
-        shown = true;
-        trigger();
-        window.removeEventListener("scroll", onScroll);
-      };
-      const onScroll = ()=>{
-        const scrollable = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-        const depth = (window.scrollY || document.documentElement.scrollTop || 0) / scrollable;
-        if(depth >= .6) mobileTrigger();
-      };
-      window.addEventListener("scroll", onScroll, {passive:true});
-      window.setTimeout(mobileTrigger, 30000);
-    }
+    if(isBlockedPage) return;
+    window.setTimeout(openPopup, 30000);
   }
 
   document.addEventListener("keydown", event=>{
