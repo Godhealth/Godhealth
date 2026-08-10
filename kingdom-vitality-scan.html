@@ -1318,6 +1318,7 @@ function setupPostScanStrategyCall(){
   populateCountryCodes("postScanCC");
   const form = document.getElementById("postScanCallForm");
   const error = document.getElementById("postScanCallError");
+  const goToCalendly = ()=>{ window.location.href = STRATEGY_CALL_URL; };
   const openForm = ()=>{
     form.classList.add("open");
     form.setAttribute("aria-hidden","false");
@@ -1327,7 +1328,7 @@ function setupPostScanStrategyCall(){
     },80);
   };
   document.querySelectorAll("[data-open-post-scan-call]").forEach(button=>{
-    button.addEventListener("click",openForm);
+    button.addEventListener("click",goToCalendly);
   });
   form.addEventListener("submit",async event=>{
     event.preventDefault();
@@ -1369,10 +1370,7 @@ function setupPostScanStrategyCall(){
       });
       window.location.href = STRATEGY_CALL_URL;
     } catch(submitError) {
-      error.textContent = submitError.message || "We could not save your request. Please try again.";
-      error.classList.add("show");
-      submit.disabled = false;
-      submit.textContent = "Continue to Calendly";
+      window.location.href = STRATEGY_CALL_URL;
     }
   });
 }
