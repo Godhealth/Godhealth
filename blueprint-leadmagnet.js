@@ -1,5 +1,5 @@
 (function(){
-  const POPUP_KEY = "godhealth_blueprint_popup_seen_v1";
+  const POPUP_KEY = "godhealth_blueprint_popup_seen_v2";
   const RATE_KEY = "godhealth_blueprint_last_submit_v1";
   const TABLE = "blueprint_leads";
   const path = window.location.pathname.toLowerCase();
@@ -213,9 +213,16 @@
     const desktopQuery = window.matchMedia("(hover:hover) and (pointer:fine)");
     const trigger = ()=>openPopup();
     if(desktopQuery.matches){
+      let shown = false;
+      const desktopTrigger = ()=>{
+        if(shown) return;
+        shown = true;
+        trigger();
+      };
       document.addEventListener("mouseout", event=>{
-        if(event.clientY <= 0 && !event.relatedTarget) trigger();
+        if(event.clientY <= 0 && !event.relatedTarget) desktopTrigger();
       }, {once:true});
+      window.setTimeout(desktopTrigger, 45000);
     } else {
       let shown = false;
       const mobileTrigger = ()=>{
