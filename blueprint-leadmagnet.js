@@ -93,11 +93,9 @@
         consent_timestamp: payload.p_newsletter_consent ? new Date().toISOString() : null,
         source: payload.p_source,
         user_agent: payload.p_user_agent
-      })
-      .select("id")
-      .single();
+      });
 
-    if(!insertResult.error || insertResult.error.code === "23505") return insertResult.data;
+    if(!insertResult.error || insertResult.error.code === "23505") return true;
 
     console.warn("Blueprint table insert unavailable, using existing GodHealth lead flow:", insertResult.error);
     const interestResult = await client.rpc("gh_register_interest", {
