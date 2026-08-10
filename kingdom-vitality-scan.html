@@ -661,7 +661,16 @@ async function supabaseRpc(functionName,payload){
       state.current = 1;
       transitionTo(renderQuestion);
     } catch(error) {
-      showErr(error.message || "We could not start the scan. Please try again.");
+      console.warn("Scan start record could not be created yet. Continuing the scan and retrying before report generation.", error);
+      state.lead = {
+        id:null,
+        first_name:name,
+        email,
+        scan_privacy_consent:true,
+        marketing_consent:marketingConsent
+      };
+      state.current = 1;
+      transitionTo(renderQuestion);
     } finally {
       button.disabled = false;
       button.textContent = "Start My Free Scan Now";
@@ -1240,6 +1249,26 @@ function leakColor(leak){
 }
 
 /* ============================================================ FINISH & REPORT ============================================================ */
+async function ensureLeadForReport(){
+  if(state.lead && state.lead.id) return state.lead.id;
+  if(!state.lead || !state.lead.first_name || !state.lead.email) throw new Error("Missing lead details.");
+  const now = new Date().toISOString();
+  const result = await supabaseRpc("gh_start_scan",{
+    p_first_name:state.lead.first_name,
+    p_email:state.lead.email,
+    p_scan_privacy_consent:true,
+    p_scan_privacy_consent_timestamp:now,
+    p_marketing_consent:state.lead.marketing_consent === true,
+    p_marketing_consent_timestamp:state.lead.marketing_consent === true ? now : null,
+    p_marketing_consent_source:state.lead.marketing_consent === true ? "kingdom_vitality_scan" : null,
+    p_privacy_policy_version:"v1.0"
+  });
+  if(!result || !result.lead_id) throw new Error("Lead could not be created.");
+  state.lead.id = result.lead_id;
+  state.lead.scan_privacy_consent = true;
+  return state.lead.id;
+}
+
 async function requestSecurePdfReport(){
   const status = document.getElementById("pdfReportStatus");
   if(!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY){
@@ -1252,6 +1281,7 @@ async function requestSecurePdfReport(){
     + encodeURIComponent(REPORT_FUNCTION_NAME);
 
   try {
+    await ensureLeadForReport();
     const response = await fetch(endpoint,{
       method:"POST",
       headers:{
