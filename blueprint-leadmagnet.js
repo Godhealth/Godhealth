@@ -240,16 +240,22 @@
     window.setTimeout(openPopup, 30000);
   }
 
-  document.addEventListener("keydown", event=>{
-    if(event.key === "Escape" && popup && popup.classList.contains("is-open")) closePopup();
-    trapFocus(event);
-  });
-
-  document.addEventListener("DOMContentLoaded", ()=>{
+  function bootBlueprint(){
     document.querySelectorAll("[data-blueprint-section-form]").forEach(holder=>{
       if(!holder.innerHTML.trim()) holder.innerHTML = formMarkup("section");
     });
     bindForms(document);
     initPopupTriggers();
+  }
+
+  document.addEventListener("keydown", event=>{
+    if(event.key === "Escape" && popup && popup.classList.contains("is-open")) closePopup();
+    trapFocus(event);
   });
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", bootBlueprint, {once:true});
+  } else {
+    bootBlueprint();
+  }
 })();
