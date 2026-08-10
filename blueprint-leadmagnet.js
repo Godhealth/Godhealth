@@ -1,24 +1,42 @@
 (function(){
   const RATE_KEY = "godhealth_blueprint_last_submit_v1";
-  const TABLE = "blueprint_leads";
   const path = window.location.pathname.toLowerCase();
   const isBlockedPage = path.includes("kingdom-vitality-scan") || path.includes("thank");
   let popup;
   let lastFocus;
-  let supabaseClient;
 
   function config(){
     return (window.GODHEALTH_CONFIG && window.GODHEALTH_CONFIG.supabase) || {};
   }
 
-  function getClient(){
-    if(supabaseClient) return supabaseClient;
+  async function supabaseRpc(functionName,payload){
     const cfg = config();
-    if(!window.supabase || !cfg.url || !cfg.anonKey || cfg.url.includes("TODO") || cfg.anonKey.includes("TODO")){
+    if(!cfg.url || !cfg.anonKey || cfg.url.includes("TODO") || cfg.anonKey.includes("TODO")){
       throw new Error("Supabase is not configured yet.");
     }
-    supabaseClient = window.supabase.createClient(cfg.url, cfg.anonKey);
-    return supabaseClient;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    try {
+      const response = await fetch(
+        cfg.url.replace(/\/$/,"") + "/rest/v1/rpc/" + encodeURIComponent(functionName),
+        {
+          method:"POST",
+          signal:controller.signal,
+          headers:{
+            "Content-Type":"application/json",
+            "Accept":"application/json",
+            "apikey":cfg.anonKey,
+            "Authorization":"Bearer " + cfg.anonKey
+          },
+          body:JSON.stringify(payload)
+        }
+      );
+      const body = await response.json().catch(()=>({}));
+      if(!response.ok) throw new Error(body.message || body.error || "Supabase request failed.");
+      return body;
+    } finally {
+      clearTimeout(timeout);
+    }
   }
 
   function emailValid(email){
@@ -79,33 +97,12 @@
     }
   }
 
-  async function saveBlueprintLead(client,payload){
-    const blueprintResult = await client.rpc("submit_blueprint_lead", payload);
-    if(!blueprintResult.error) return blueprintResult.data;
-
-    console.warn("Blueprint RPC unavailable, trying direct Blueprint insert:", blueprintResult.error);
-    const insertResult = await client
-      .from(TABLE)
-      .insert({
-        first_name: payload.p_first_name,
-        email: payload.p_email,
-        newsletter_consent: payload.p_newsletter_consent,
-        consent_timestamp: payload.p_newsletter_consent ? new Date().toISOString() : null,
-        source: payload.p_source,
-        user_agent: payload.p_user_agent
-      });
-
-    if(!insertResult.error || insertResult.error.code === "23505") return true;
-
-    console.warn("Blueprint table insert unavailable, using existing GodHealth lead flow:", insertResult.error);
-    const interestResult = await client.rpc("gh_register_interest", {
+  async function saveBlueprintLead(payload){
+    return supabaseRpc("gh_register_interest", {
       p_first_name: payload.p_first_name,
       p_email: payload.p_email,
       p_source: payload.p_source === "popup" ? "blueprint_popup" : "blueprint_section"
     });
-
-    if(!interestResult.error) return interestResult.data;
-    throw interestResult.error;
   }
 
   async function submitBlueprint(form){
@@ -132,7 +129,6 @@
     if(button){ button.disabled = true; button.textContent = "Sending securely…"; }
 
     try {
-      const client = getClient();
       const payload = {
         p_first_name:firstName,
         p_email:email,
@@ -140,7 +136,7 @@
         p_source:source,
         p_user_agent:navigator.userAgent || null
       };
-      await saveBlueprintLead(client, payload);
+      await saveBlueprintLead(payload);
       localStorage.setItem(RATE_KEY, String(Date.now()));
       const holder = form.closest("[data-blueprint-holder]") || form.parentElement;
       if(holder){
