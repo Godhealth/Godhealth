@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blueprint-leadmagnet.css">
 <style>
   :root{--forest-deep:#04160e;--forest:#0a2417;--forest-soft:#0f3221;--gold-1:#b88a2e;--gold-2:#d9b45a;--gold-3:#f1d693;--gold-line:rgba(217,180,90,.32);--ink:#f7f3ea;--ink-soft:rgba(247,243,234,.72);--ink-mute:rgba(247,243,234,.48)}
   *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,sans-serif;background:radial-gradient(circle at 50% -10%,rgba(217,180,90,.12),transparent 35%),linear-gradient(180deg,var(--forest-deep),#061a10 42%,var(--forest-deep));color:var(--ink);line-height:1.6;overflow-x:hidden}body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,black,transparent 78%);opacity:.45}
@@ -131,5 +132,8 @@
   (function(){const hdr=document.getElementById("hdr"),toggle=document.getElementById("navToggle"),panel=document.getElementById("navPanel");if(!toggle||!hdr)return;const setOpen=open=>{hdr.classList.toggle("open",open);toggle.setAttribute("aria-expanded",open?"true":"false")};toggle.addEventListener("click",e=>{e.stopPropagation();setOpen(!hdr.classList.contains("open"))});if(panel)panel.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("click",e=>{if(hdr.classList.contains("open")&&!hdr.contains(e.target))setOpen(false)})})();
   try{const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>io.observe(el))}catch(e){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"))}
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/godhealth-config.js"></script>
+<script src="/blueprint-leadmagnet.js"></script>
 </body>
 </html>

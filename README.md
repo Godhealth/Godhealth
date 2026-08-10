@@ -21,3 +21,22 @@ Configure these server-side Edge Function secrets:
 
 Never add backend secret keys, external API bearer tokens or n8n webhook URLs
 to frontend files. n8n should consume unprocessed rows in `lead_events`.
+
+## GodHealth 7-Day Transformation Blueprint setup
+
+The homepage, coaching page and tribe page include the free Blueprint lead
+magnet popup. The homepage also includes the inline Blueprint section before
+the Tribe preview.
+
+Setup steps:
+
+1. Run `supabase/migrations/202608100001_blueprint_leads.sql` in Supabase.
+2. Confirm the public Supabase URL and anon/publishable key in
+   `godhealth-config.js`.
+3. Deploy the `send-blueprint-email` Edge Function or connect a Supabase
+   Database Webhook on `blueprint_leads` insert.
+4. In the email function/webhook, send the Blueprint PDF link to every lead.
+5. Add leads to the marketing list only when `newsletter_consent` is `true`.
+
+The frontend uses only the public anon/publishable key. Keep all email service
+keys and webhook secrets server-side.
