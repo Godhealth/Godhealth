@@ -51,8 +51,10 @@
   .gold-fill {
     background: linear-gradient(135deg, var(--gold-1), var(--gold-2) 55%, var(--gold-3));
     color: #2a1c05;
+    border: 1px solid rgba(255,236,174,0.72);
+    box-shadow: 0 22px 48px -24px rgba(217,180,90,0.95), 0 0 0 1px rgba(255,236,174,0.16), inset 0 1px 0 rgba(255,255,255,0.48), inset 0 -10px 20px rgba(92,59,4,0.12);
   }
-  .gold-fill:hover { filter: brightness(1.06); }
+  .gold-fill:hover { filter: brightness(1.06); box-shadow: 0 28px 58px -24px rgba(217,180,90,1), 0 0 34px -18px rgba(241,214,147,0.9), inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -10px 20px rgba(92,59,4,0.10); }
   .hairline { border: 1px solid var(--gold-line); }
 
   /* gold icon chips on the start page */
@@ -345,11 +347,9 @@
     <div class="text-center mb-7">
       <p class="gold-text tracking-[0.4em] text-[11px] sm:text-xs font-semibold mb-2">GODHEALTH</p>
       <p class="display italic mb-3" style="color:var(--gold-2); font-size:15px;">Vitality for the Kingdom</p>
-      <p class="gold-text text-[11px] font-semibold tracking-[0.22em] uppercase mb-3">The Only Method Of Its Kind In The World</p>
+      <p class="gold-text text-[11px] font-semibold tracking-[0.22em] mb-3">The only Biblical health scan of it's kind in the world.</p>
       <h1 class="display text-[30px] sm:text-5xl font-bold gold-text" style="line-height:1.18; padding-bottom:0.12em;">Take Your Free Kingdom Vitality Scan Now</h1>
       <p class="display italic text-[15px] sm:text-lg mt-4 max-w-lg mx-auto leading-snug" style="color: var(--ink-soft);">Discover exactly where your Body, Soul &amp; Spirit are out of alignment and receive your personalized roadmap in just 6 minutes.</p>
-      <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-md mx-auto mt-3" style="color: var(--ink);">Based on Biblical Wisdom &amp; Modern Health Science.</p>
-      <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-md mx-auto mt-3" style="color: var(--ink);">Most people who scan today move forward.</p>
     </div>
 
     <!-- benefits: gold icon chips -->
@@ -1335,7 +1335,10 @@ function setupPostScanStrategyCall(){
     },80);
   };
   document.querySelectorAll("[data-open-post-scan-call]").forEach(button=>{
-    button.addEventListener("click",goToCalendly);
+    button.addEventListener("click",event=>{
+      event.preventDefault();
+      openForm();
+    });
   });
   form.addEventListener("submit",async event=>{
     event.preventDefault();
@@ -1620,7 +1623,7 @@ function finishAssessment(skipDispatch){
 
       <p class="delivery-note">Your Kingdom Vitality Scan results have also been sent to your email.</p>
       <div class="text-center" style="margin-bottom:18px;">
-        <a href="${STRATEGY_CALL_URL}" class="gold-fill inline-block font-semibold text-[17px] px-8 py-4 rounded-2xl transition-all" style="box-shadow:0 20px 50px -20px rgba(217,180,90,.6);">Book Your GodHealth Strategy Call</a>
+        <a href="#postScanCallForm" data-open-post-scan-call class="gold-fill inline-block font-semibold text-[17px] px-8 py-4 rounded-2xl transition-all">Book Your GodHealth Strategy Call</a>
       </div>
       <form id="postScanCallForm" class="call-form" aria-hidden="true" novalidate>
         <h3>One final detail</h3>
@@ -1687,7 +1690,7 @@ function finishAssessment(skipDispatch){
       <section class="report-cta">
         <h3>Want help applying your results?</h3>
         <p>Book a complimentary GodHealth Strategy Call to discuss your report and explore whether personal guidance may be a good fit.</p>
-        <a href="${STRATEGY_CALL_URL}" class="gold-fill inline-block font-semibold text-[17px] px-10 py-4 rounded-2xl transition-all" style="box-shadow:0 20px 50px -20px rgba(217,180,90,.6);">Book My GodHealth Strategy Call</a>
+        <a href="#postScanCallForm" data-open-post-scan-call class="gold-fill inline-block font-semibold text-[17px] px-10 py-4 rounded-2xl transition-all">Book My GodHealth Strategy Call</a>
         <br>
         <a href="index.html" class="report-secondary">← Back to GodHealth</a>
       </section>

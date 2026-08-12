@@ -20,7 +20,7 @@
 .blueprint-privacy a{color:var(--gold-3);text-underline-offset:3px}
 .blueprint-error{display:none;color:#ffd6cd;background:rgba(170,50,35,.18);border:1px solid rgba(255,150,130,.24);border-radius:14px;padding:11px 13px}
 .blueprint-error.show{display:block}
-.blueprint-form .btn{width:100%;border:0}
+.blueprint-form .btn{width:100%;border-color:rgba(255,236,174,.72)}
 .blueprint-microcopy{text-align:center;color:rgba(247,243,234,.56);font-size:12.5px;font-weight:700}
 .blueprint-success{display:grid;gap:14px;text-align:center;place-items:center;padding:10px 0}
 .blueprint-success h3{color:var(--gold-3)}
