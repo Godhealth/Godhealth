@@ -78,7 +78,7 @@
       <div class="blueprint-success" tabindex="-1">
         <h3>Check Your Inbox!</h3>
         <p>Your 7-Day Transformation Blueprint is on its way. While you wait — discover exactly where to start:</p>
-        <a class="btn btn-gold" href="/kingdom-vitality-scan.html">Take The Free Kingdom Vitality Scan</a>
+        <a class="btn btn-gold" href="/kingdom-vitality-scan.html">Show Me My Free Roadmap</a>
       </div>`;
   }
 
@@ -173,6 +173,7 @@
         <p class="eyebrow">Free Download</p>
         <h2 id="blueprint-popup-title">Download the FREE GodHealth 7-Day Transformation Blueprint.</h2>
         <p class="lead" id="blueprint-popup-copy">A Biblical and science based Blueprint to more energy, fat loss, better sleep and a deeper walk with God in 7 days.</p>
+        <figure class="blueprint-popup-visual"><img src="/assets/godhealth-7-day-blueprint.jpg" alt="GodHealth 7-Day Transformation Blueprint cover"></figure>
         <div class="blueprint-card" data-blueprint-holder>${formMarkup("popup")}<p class="blueprint-microcopy" style="margin-top:12px">Free · Delivered to your inbox · Built on the Bible &amp; modern science</p></div>
       </div>`;
     document.body.appendChild(overlay);

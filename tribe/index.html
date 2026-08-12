@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/blueprint-leadmagnet.css?v=popup-blueprint-supabase-1">
+<link rel="stylesheet" href="/blueprint-leadmagnet.css?v=roadmap-cover-final-1">
 <style>
   :root{--forest-deep:#04160e;--forest:#0a2417;--forest-soft:#0f3221;--gold-1:#b88a2e;--gold-2:#d9b45a;--gold-3:#f1d693;--gold-line:rgba(217,180,90,.32);--ink:#f7f3ea;--ink-soft:rgba(247,243,234,.72);--ink-mute:rgba(247,243,234,.48)}
   *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,sans-serif;background:radial-gradient(circle at 50% -10%,rgba(217,180,90,.12),transparent 35%),linear-gradient(180deg,var(--forest-deep),#061a10 42%,var(--forest-deep));color:var(--ink);line-height:1.6;overflow-x:hidden}body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,black,transparent 78%);opacity:.45}
@@ -30,10 +30,10 @@
   <div class="wrap bar">
     <a href="/" class="brand-row"><div class="brandmark" role="img" aria-label="GodHealth logo"></div><span class="brand-name gold-text">GODHEALTH</span></a>
     <nav class="nav-links" aria-label="Main navigation"><a href="/kingdom-vitality-scan.html">The Scan</a><a href="/coaching">Coaching</a><a href="/tribe">Free Tribe</a><a href="/#testimonials">Testimonials</a><a href="/#faq">FAQ</a></nav>
-    <a class="btn btn-gold header-cta" href="/kingdom-vitality-scan.html">Take the Free Scan</a>
+    <a class="btn btn-gold header-cta" href="/kingdom-vitality-scan.html">Show Me My Free Roadmap</a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
   </div>
-  <nav class="nav-panel" id="navPanel" aria-label="Mobile navigation"><a class="nav-cta" href="/kingdom-vitality-scan.html">Take the Free Scan</a><a href="/coaching">Coaching</a><a href="/tribe">Free Tribe</a><a href="/#testimonials">Testimonials</a><a href="/#faq">FAQ</a></nav>
+  <nav class="nav-panel" id="navPanel" aria-label="Mobile navigation"><a class="nav-cta" href="/kingdom-vitality-scan.html">Show Me My Free Roadmap</a><a href="/coaching">Coaching</a><a href="/tribe">Free Tribe</a><a href="/#testimonials">Testimonials</a><a href="/#faq">FAQ</a></nav>
 </header>
 
 <main>
@@ -43,7 +43,7 @@
     <p class="lead reveal">Join the free GodHealth Tribe: a Christ-centered community for believers who want more energy, better habits, practical guidance and encouragement to keep growing — one faithful step at a time.</p>
     <div class="btn-row center reveal" style="margin-top:30px;">
       <a class="btn btn-gold btn-disabled" id="tribeJoinButton" href="#" aria-disabled="true">Join the Free GodHealth Tribe</a>
-      <a class="btn btn-outline" href="/kingdom-vitality-scan.html">Take the Free Kingdom Vitality Scan</a>
+      <a class="btn btn-gold" href="/kingdom-vitality-scan.html">Show Me My Free Roadmap</a>
     </div>
     <p class="trust-line reveal">Free to join. No pressure. Start where you are.</p>
     <p class="section-note reveal" id="tribeTodoNote">The free community link will be added soon.</p>
@@ -96,7 +96,7 @@
       <p class="eyebrow reveal">Your Pace. Your Next Step.</p>
       <h2 class="reveal" style="margin-top:12px;">Grow At Your Pace. Go Deeper <span class="gold-text">When You&rsquo;re Ready.</span></h2>
       <p class="lead reveal" style="margin-top:16px;">Some people join the Tribe to build momentum and learn the foundations. Others eventually decide they are ready for deeper structure, accountability and coaching. When that time comes, the GodHealth Transformation Journey is available through a Strategy Call.</p>
-      <div class="btn-row center reveal" style="margin-top:30px;"><a class="btn btn-gold" href="/coaching">Explore GodHealth Coaching</a><a class="btn btn-outline" href="/kingdom-vitality-scan.html">Take the Free Scan</a></div>
+      <div class="btn-row center reveal" style="margin-top:30px;"><a class="btn btn-gold" href="/coaching">Explore GodHealth Coaching</a><a class="btn btn-gold" href="/kingdom-vitality-scan.html">Show Me My Free Roadmap</a></div>
       <figure class="visual-card wide hero-visual reveal">
         <img src="../assets/godhealth-change-corner.jpg" alt="A sign on a wall saying a change may be just around the corner.">
         <figcaption>Your Next Step May Be Closer Than You Think</figcaption>
@@ -126,7 +126,7 @@
 </div>
 
 <script>
-  (function(){const widget=document.querySelector("[data-whatsapp-widget]");if(!widget)return;const toggle=widget.querySelector("[data-whatsapp-toggle]"),panel=widget.querySelector("[data-whatsapp-panel]"),close=widget.querySelector("[data-whatsapp-close]"),cta=widget.querySelector("[data-whatsapp-cta]"),storageKey="godhealth_whatsapp_widget_closed";const setOpen=(open,persist)=>{widget.classList.toggle("is-open",open);if(toggle)toggle.setAttribute("aria-expanded",open?"true":"false");if(panel)panel.setAttribute("aria-hidden",open?"false":"true");if(!open&&persist){try{sessionStorage.setItem(storageKey,"1")}catch(e){}}};if(toggle)toggle.addEventListener("click",()=>setOpen(!widget.classList.contains("is-open"),widget.classList.contains("is-open")));if(close)close.addEventListener("click",()=>{setOpen(false,true);if(toggle)toggle.focus({preventScroll:true})});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&widget.classList.contains("is-open")){setOpen(false,true);if(toggle)toggle.focus({preventScroll:true})}});if(cta)cta.addEventListener("click",()=>{const params={source:"floating_widget",page_path:window.location.pathname,button_text:"Send us a message"};if(typeof window.gtag==="function")window.gtag("event","whatsapp_contact_click",params);if(Array.isArray(window.dataLayer))window.dataLayer.push({event:"whatsapp_contact_click",...params})});window.setTimeout(()=>setOpen(true,false),10000)})();
+  (function(){const widget=document.querySelector("[data-whatsapp-widget]");if(!widget)return;const toggle=widget.querySelector("[data-whatsapp-toggle]"),panel=widget.querySelector("[data-whatsapp-panel]"),close=widget.querySelector("[data-whatsapp-close]"),cta=widget.querySelector("[data-whatsapp-cta]"),storageKey="godhealth_whatsapp_widget_closed";const setOpen=(open,persist)=>{widget.classList.toggle("is-open",open);if(toggle)toggle.setAttribute("aria-expanded",open?"true":"false");if(panel)panel.setAttribute("aria-hidden",open?"false":"true");if(!open&&persist){try{sessionStorage.setItem(storageKey,"1")}catch(e){}}};if(toggle)toggle.addEventListener("click",()=>setOpen(!widget.classList.contains("is-open"),widget.classList.contains("is-open")));if(close)close.addEventListener("click",()=>{setOpen(false,true);if(toggle)toggle.focus({preventScroll:true})});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&widget.classList.contains("is-open")){setOpen(false,true);if(toggle)toggle.focus({preventScroll:true})}});if(cta)cta.addEventListener("click",()=>{const params={source:"floating_widget",page_path:window.location.pathname,button_text:"Send us a message"};if(typeof window.gtag==="function")window.gtag("event","whatsapp_contact_click",params);if(Array.isArray(window.dataLayer))window.dataLayer.push({event:"whatsapp_contact_click",...params})});window.setTimeout(()=>setOpen(true,false),30000)})();
   const GODHEALTH_TRIBE_URL = "TODO_ADD_APPROVED_TRIBE_URL";
   (function(){const button=document.getElementById("tribeJoinButton");const note=document.getElementById("tribeTodoNote");if(button&&GODHEALTH_TRIBE_URL!=="TODO_ADD_APPROVED_TRIBE_URL"){button.href=GODHEALTH_TRIBE_URL;button.classList.remove("btn-disabled");button.removeAttribute("aria-disabled");if(note)note.style.display="none"}else if(button){button.addEventListener("click",e=>e.preventDefault())}})();
   (function(){const hdr=document.getElementById("hdr"),toggle=document.getElementById("navToggle"),panel=document.getElementById("navPanel");if(!toggle||!hdr)return;const setOpen=open=>{hdr.classList.toggle("open",open);toggle.setAttribute("aria-expanded",open?"true":"false")};toggle.addEventListener("click",e=>{e.stopPropagation();setOpen(!hdr.classList.contains("open"))});if(panel)panel.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setOpen(false)));document.addEventListener("click",e=>{if(hdr.classList.contains("open")&&!hdr.contains(e.target))setOpen(false)})})();
@@ -134,6 +134,6 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="/godhealth-config.js"></script>
-<script src="/blueprint-leadmagnet.js?v=popup-blueprint-supabase-1"></script>
+<script src="/blueprint-leadmagnet.js?v=roadmap-cover-final-1"></script>
 </body>
 </html>

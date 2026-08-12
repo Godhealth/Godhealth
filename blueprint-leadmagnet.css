@@ -5,7 +5,7 @@
 .blueprint-card>*{position:relative;z-index:1}
 .blueprint-form{display:grid;gap:15px;text-align:left}
 .blueprint-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.blueprint-field{display:grid;gap:7px;color:rgba(247,243,234,.76);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.blueprint-field{display:grid;gap:7px;color:rgba(247,243,234,.76);font-size:12px;font-weight:800;letter-spacing:.08em;line-height:1.35;text-transform:uppercase;overflow:visible}
 .blueprint-field input{width:100%;min-height:54px;border-radius:16px;border:1px solid rgba(217,180,90,.24);background:rgba(255,255,255,.07);color:var(--ink);font:inherit;font-size:15px;letter-spacing:0;text-transform:none;padding:14px 15px;outline:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.06);transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
 .blueprint-field input::placeholder{color:rgba(247,243,234,.38)}
 .blueprint-field input:focus{border-color:rgba(241,214,147,.68);background:rgba(255,255,255,.10);box-shadow:0 0 0 3px rgba(217,180,90,.13),inset 0 1px 0 rgba(255,255,255,.08)}
@@ -34,6 +34,8 @@
 .blueprint-popup .eyebrow{margin-bottom:12px}
 .blueprint-popup h2{padding-right:38px;color:var(--gold-3);font-size:clamp(31px,4.6vw,46px);line-height:1.03}
 .blueprint-popup .lead{margin-top:12px;color:rgba(247,243,234,.9);font-size:clamp(15px,2vw,18px);line-height:1.5}
+.blueprint-popup-visual{width:min(170px,46vw);margin:13px auto 0;padding:4px;border:1px solid rgba(241,214,147,.42);border-radius:18px;background:linear-gradient(135deg,rgba(241,214,147,.44),rgba(184,138,46,.12));box-shadow:0 20px 44px -32px rgba(0,0,0,.9)}
+.blueprint-popup-visual img{display:block;width:100%;aspect-ratio:3/4;height:auto;object-fit:contain;object-position:center;border-radius:14px;border:1px solid rgba(4,22,14,.45);background:#04160e}
 .blueprint-popup .blueprint-card{margin-top:18px;padding:0;border:0;background:transparent;box-shadow:none}
 .blueprint-popup .blueprint-card:before{display:none}
 body.blueprint-lock{overflow:hidden}
@@ -47,9 +49,11 @@ body.blueprint-lock{overflow:hidden}
   .blueprint-popup .eyebrow{margin-bottom:7px;font-size:10px}
   .blueprint-popup h2{padding-right:32px;font-size:29px;line-height:1.02}
   .blueprint-popup .lead{margin-top:8px;font-size:14px;line-height:1.38}
-  .blueprint-popup .blueprint-card{margin-top:13px}
+  .blueprint-popup-visual{width:104px;margin-top:8px;padding:3px;border-radius:14px}
+  .blueprint-popup-visual img{border-radius:11px}
+  .blueprint-popup .blueprint-card{margin-top:10px}
   .blueprint-form{gap:10px}
-  .blueprint-field{gap:5px;font-size:10px}
+  .blueprint-field{gap:5px;font-size:10px;line-height:1.4}
   .blueprint-field input{min-height:43px;border-radius:13px;padding:10px 12px;font-size:14px}
   .blueprint-insider{padding:11px;border-radius:15px}
   .blueprint-insider-title{margin-bottom:7px;font-size:10px}
@@ -63,6 +67,7 @@ body.blueprint-lock{overflow:hidden}
   .blueprint-popup{padding:18px 14px;border-radius:22px}
   .blueprint-popup h2{font-size:25px}
   .blueprint-popup .lead{font-size:13px;line-height:1.32}
+  .blueprint-popup-visual{width:86px}
   .blueprint-form{gap:8px}
   .blueprint-field input{min-height:40px;padding:9px 11px}
   .blueprint-insider{padding:9px}
@@ -71,3 +76,6 @@ body.blueprint-lock{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   .blueprint-popup-overlay,.blueprint-popup,.blueprint-field input{transition:none!important}
 }
+
+.whatsapp-fab{overflow:visible!important;border:0!important;box-shadow:none!important;background:transparent!important;padding:0!important}
+.whatsapp-fab img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;border-radius:0!important}
