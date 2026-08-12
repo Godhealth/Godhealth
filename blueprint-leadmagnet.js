@@ -171,8 +171,8 @@
       <div class="blueprint-popup" role="dialog" aria-modal="true" aria-labelledby="blueprint-popup-title" aria-describedby="blueprint-popup-copy">
         <button class="blueprint-popup-close" type="button" data-blueprint-close aria-label="Close blueprint popup">×</button>
         <p class="eyebrow">Free Download</p>
-        <h2 id="blueprint-popup-title">Not Ready For The Scan Yet? Start Here.</h2>
-        <p class="lead" id="blueprint-popup-copy">Download the free GodHealth 7-Day Transformation Blueprint — more energy, better sleep and a deeper walk with God in 7 days.</p>
+        <h2 id="blueprint-popup-title">Download the FREE GodHealth 7-Day Transformation Blueprint.</h2>
+        <p class="lead" id="blueprint-popup-copy">A Biblical and science based Blueprint to more energy, fat loss, better sleep and a deeper walk with God in 7 days.</p>
         <div class="blueprint-card" data-blueprint-holder>${formMarkup("popup")}<p class="blueprint-microcopy" style="margin-top:12px">Free · Delivered to your inbox · Built on the Bible &amp; modern science</p></div>
       </div>`;
     document.body.appendChild(overlay);
