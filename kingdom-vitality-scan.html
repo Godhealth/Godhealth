@@ -305,6 +305,25 @@
   .call-error.show{display:block;}
   .privacy-note{margin-top:14px;color:var(--ink-mute);font-size:11.5px;line-height:1.55;text-align:center;}
   .privacy-note a{color:var(--gold-2);text-decoration:underline;text-underline-offset:2px;}
+  .scan-whatsapp-widget{position:fixed;right:calc(24px + env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:80;display:none;justify-items:end;gap:12px;font-family:Inter,sans-serif;}
+  body.scan-report-visible .scan-whatsapp-widget{display:grid;}
+  .whatsapp-fab,.whatsapp-close{appearance:none;border:0;cursor:pointer;}
+  .whatsapp-fab{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:transparent;padding:0;overflow:visible;transition:transform .22s ease,filter .22s ease;}
+  .whatsapp-fab:hover{transform:translateY(-2px);filter:drop-shadow(0 14px 22px rgba(0,0,0,.45));}
+  .whatsapp-fab img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-radius:0;}
+  .whatsapp-panel{position:absolute;right:0;bottom:72px;width:min(326px,calc(100vw - 48px));padding:18px;border-radius:24px;background:radial-gradient(circle at 18% 0,rgba(217,180,90,.18),transparent 8rem),linear-gradient(180deg,rgba(15,50,33,.98),rgba(4,22,14,.98));border:1px solid rgba(217,180,90,.34);box-shadow:0 30px 78px -42px rgba(0,0,0,.98),0 0 0 1px rgba(255,255,255,.05),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px) scale(.985);transform-origin:right bottom;transition:opacity .28s ease,visibility .28s ease,transform .28s ease;}
+  .scan-whatsapp-widget.is-open .whatsapp-panel{opacity:1;visibility:visible;pointer-events:auto;transform:none;}
+  .whatsapp-panel-head{display:grid;grid-template-columns:58px 1fr auto;gap:14px;align-items:center;}
+  .whatsapp-status{width:58px;height:58px;border-radius:16px;padding:0;background:transparent;border:1px solid rgba(217,180,90,.42);box-shadow:0 16px 34px -24px rgba(0,0,0,.9);overflow:hidden;}
+  .whatsapp-status img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 22%;border:0;border-radius:15px;background:transparent;}
+  .whatsapp-title{margin:0;color:var(--gold-3);font-family:Inter,sans-serif;font-weight:900;font-size:20px;letter-spacing:-.015em;line-height:1.1;}
+  .whatsapp-close{width:44px;height:44px;margin:-9px -9px -9px 0;border-radius:14px;color:rgba(247,243,234,.70);background:transparent;font-size:21px;line-height:1;transition:background .2s ease,color .2s ease;}
+  .whatsapp-close:hover{background:rgba(217,180,90,.08);color:var(--gold-3);}
+  .whatsapp-panel p{margin:13px 0 0;color:rgba(247,243,234,.75);font-size:13px;line-height:1.5;}
+  .whatsapp-panel .whatsapp-note{margin-top:7px;color:rgba(247,243,234,.52);font-size:11.5px;}
+  .whatsapp-cta{display:flex;align-items:center;justify-content:center;min-height:46px;margin-top:16px;padding:12px 16px;border-radius:999px;color:#241802;text-decoration:none;font-weight:900;font-size:13px;background:linear-gradient(135deg,#fff1b8 0%,#d9b45a 46%,#b88a2e 100%);border:1px solid rgba(255,236,174,.62);box-shadow:0 16px 36px -24px rgba(217,180,90,.95),inset 0 1px 0 rgba(255,255,255,.48);transition:transform .2s ease,box-shadow .2s ease;}
+  .whatsapp-cta:hover{transform:translateY(-1px);box-shadow:0 22px 46px -24px rgba(217,180,90,1),inset 0 1px 0 rgba(255,255,255,.55);}
+  .whatsapp-fab:focus-visible,.whatsapp-close:focus-visible,.whatsapp-cta:focus-visible{outline:2px solid var(--gold-3);outline-offset:3px;}
   @media(max-width:560px){
     .result-top{gap:20px;}
     .overall-ring{width:176px;margin:0 auto;}
@@ -316,10 +335,35 @@
     .insight-grid{grid-template-columns:1fr;}
     .pillar-insight{padding:19px;}
     .day-item{grid-template-columns:48px 1fr;padding:13px;}
+    .scan-whatsapp-widget{right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));}
+    .whatsapp-fab{width:54px;height:54px;}
+    .whatsapp-panel{bottom:68px;width:calc(100vw - 32px);padding:16px;border-radius:22px;}
+    .whatsapp-panel-head{grid-template-columns:52px 1fr auto;gap:12px;}
+    .whatsapp-status{width:52px;height:52px;border-radius:15px;}
+    .whatsapp-status img{border-radius:14px;}
+    .whatsapp-title{font-size:18px;}
+    .whatsapp-cta,.whatsapp-close{min-height:44px;}
   }
+  @media(prefers-reduced-motion:reduce){.whatsapp-fab,.whatsapp-panel,.whatsapp-close,.whatsapp-cta{transition:none!important;}}
 </style>
 </head>
 <body class="min-h-screen">
+
+<div class="scan-whatsapp-widget" data-scan-whatsapp-widget>
+  <button class="whatsapp-fab" type="button" data-whatsapp-toggle aria-label="Open WhatsApp contact box" aria-expanded="false" aria-controls="godhealth-scan-whatsapp-panel">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="" aria-hidden="true">
+  </button>
+  <section class="whatsapp-panel" id="godhealth-scan-whatsapp-panel" data-whatsapp-panel role="dialog" aria-hidden="true" aria-labelledby="godhealth-scan-whatsapp-title">
+    <div class="whatsapp-panel-head">
+      <span class="whatsapp-status" aria-hidden="true"><img src="assets/whatsapp-contact-person.png" alt=""></span>
+      <h2 class="whatsapp-title" id="godhealth-scan-whatsapp-title">Have a question?</h2>
+      <button class="whatsapp-close" type="button" data-whatsapp-close aria-label="Close WhatsApp contact box">×</button>
+    </div>
+    <p>Feel free to message us. We&rsquo;re here to help.</p>
+    <p class="whatsapp-note">We reply as quickly as possible.</p>
+    <a class="whatsapp-cta" data-whatsapp-cta href="https://wa.me/31640739215?text=Hi%20GodHealth%21%20I%20have%20a%20question%20and%20would%20love%20some%20guidance." target="_blank" rel="noopener noreferrer">Send us a message →</a>
+  </section>
+</div>
 
 <!-- ===== CONFIG ===== -->
 <script>
@@ -333,6 +377,46 @@
   const SUPABASE_URL = "https://cqkcfoswyaxngbqrfums.supabase.co";
   const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_L9giIYxFXTWI3M4gFuiDEA_7tmU0xCe";
   const REPORT_FUNCTION_NAME = "complete-scan-report";
+</script>
+
+<script>
+  (function(){
+    const widget = document.querySelector("[data-scan-whatsapp-widget]");
+    if(!widget) return;
+    const toggle = widget.querySelector("[data-whatsapp-toggle]");
+    const panel = widget.querySelector("[data-whatsapp-panel]");
+    const close = widget.querySelector("[data-whatsapp-close]");
+    const cta = widget.querySelector("[data-whatsapp-cta]");
+    let autoStarted = false;
+    const setOpen = open => {
+      widget.classList.toggle("is-open", open);
+      if(toggle) toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if(panel) panel.setAttribute("aria-hidden", open ? "false" : "true");
+    };
+    if(toggle) toggle.addEventListener("click", () => setOpen(!widget.classList.contains("is-open")));
+    if(close) close.addEventListener("click", () => {
+      setOpen(false);
+      if(toggle) toggle.focus({preventScroll:true});
+    });
+    document.addEventListener("keydown", event => {
+      if(event.key === "Escape" && widget.classList.contains("is-open")){
+        setOpen(false);
+        if(toggle) toggle.focus({preventScroll:true});
+      }
+    });
+    if(cta) cta.addEventListener("click", () => {
+      const params = {source:"scan_result_widget", page_path:window.location.pathname, button_text:"Send us a message"};
+      if(typeof window.gtag === "function") window.gtag("event","whatsapp_contact_click",params);
+      if(Array.isArray(window.dataLayer)) window.dataLayer.push({event:"whatsapp_contact_click", ...params});
+    });
+    function startAutoOpen(){
+      if(autoStarted) return;
+      autoStarted = true;
+      window.setTimeout(() => setOpen(true), 30000);
+    }
+    if(document.body.classList.contains("scan-report-visible")) startAutoOpen();
+    window.addEventListener("godhealth:scan-report-visible", startAutoOpen, {once:true});
+  })();
 </script>
 
 <!-- ===== PROGRESS BAR ===== -->
@@ -1702,6 +1786,8 @@ function finishAssessment(skipDispatch){
   document.getElementById("quizContainer").innerHTML = "";
   document.querySelectorAll(".screen").forEach(screen=> screen.classList.remove("active"));
   report.classList.add("active");
+  document.body.classList.add("scan-report-visible");
+  window.dispatchEvent(new CustomEvent("godhealth:scan-report-visible"));
   window.scrollTo({top:0,behavior:"smooth"});
 
   const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

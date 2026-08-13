@@ -4,6 +4,7 @@
   const isBlockedPage = path.includes("kingdom-vitality-scan") || path.includes("thank");
   let popup;
   let lastFocus;
+  let blueprintPopupClosedAnnounced = false;
 
   function config(){
     return (window.GODHEALTH_CONFIG && window.GODHEALTH_CONFIG.supabase) || {};
@@ -78,8 +79,65 @@
       <div class="blueprint-success" tabindex="-1">
         <h3>Your Transformation Blueprint is on its way to your inbox!</h3>
         <p>And we have another gift for you: the FREE 6-minute Kingdom Vitality Scan. This scan reveals exactly where your Body, Soul or Spirit is holding you back — and gives you a personalized 7-day Biblical roadmap to more energy, fat loss and a deeper walk with God.</p>
+        <div class="blueprint-mini-report" data-blueprint-mini-report>
+          <div class="blueprint-mini-head">
+            <span class="blueprint-mini-brand">GodHealth Scan Preview</span>
+            <span class="blueprint-mini-badge">Short Preview</span>
+          </div>
+          <div class="blueprint-mini-score">
+            <div class="blueprint-mini-ring" data-blueprint-ring data-score="68" style="--score:0">
+              <div class="blueprint-mini-ring-inner">
+                <span>Overall Alignment</span>
+                <strong data-blueprint-count="68">0%</strong>
+              </div>
+            </div>
+          </div>
+          <div class="blueprint-mini-bars">
+            <div class="blueprint-mini-bar" data-score="61"><span>Body</span><div><i></i></div><b>0</b></div>
+            <div class="blueprint-mini-bar" data-score="54"><span>Soul</span><div><i></i></div><b>0</b></div>
+            <div class="blueprint-mini-bar strong" data-score="85"><span>Spirit</span><div><i></i></div><b>0</b></div>
+          </div>
+          <div class="blueprint-mini-gap">
+            <span>Primary Alignment Gap</span>
+            <p><strong>Soul</strong> — stress, discipline and daily rhythm need the first attention.</p>
+          </div>
+        </div>
         <a class="btn btn-gold" href="/kingdom-vitality-scan.html">Yes! I Want My Free Personalized Roadmap.</a>
       </div>`;
+  }
+
+  function animateMiniReport(root){
+    const report = root && root.querySelector("[data-blueprint-mini-report]");
+    if(!report || report.dataset.animated) return;
+    report.dataset.animated = "true";
+    const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const duration = reduced ? 1 : 1250;
+    const start = performance.now();
+    const ring = report.querySelector("[data-blueprint-ring]");
+    const ringTarget = Number(ring && ring.dataset.score) || 68;
+    const ringCount = report.querySelector("[data-blueprint-count]");
+    const bars = Array.from(report.querySelectorAll(".blueprint-mini-bar"));
+    function frame(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      if(ring){
+        const current = Math.round(ringTarget * eased);
+        ring.style.setProperty("--score", current);
+        if(ringCount) ringCount.textContent = current + "%";
+      }
+      bars.forEach((bar,index)=>{
+        const target = Number(bar.dataset.score) || 0;
+        const delayed = Math.max(0, Math.min(1, (progress - index * 0.08) / 0.82));
+        const barEased = 1 - Math.pow(1 - delayed, 3);
+        const value = Math.round(target * barEased);
+        const fill = bar.querySelector("i");
+        const number = bar.querySelector("b");
+        if(fill) fill.style.width = value + "%";
+        if(number) number.textContent = value;
+      });
+      if(progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
   }
 
   function showError(form,message){
@@ -148,10 +206,12 @@
         popupDialog.querySelector("[data-blueprint-close]").addEventListener("click", closePopup);
         const success = popupDialog.querySelector(".blueprint-success");
         if(success) success.focus({preventScroll:true});
+        animateMiniReport(popupDialog);
       } else if(holder){
         holder.innerHTML = successMarkup();
         const success = holder.querySelector(".blueprint-success");
         if(success) success.focus({preventScroll:true});
+        animateMiniReport(holder);
       }
     } catch(error) {
       console.error("Blueprint submission failed:", error);
@@ -231,11 +291,16 @@
 
   function closePopup(){
     if(!popup) return;
+    const wasOpen = popup.classList.contains("is-open");
     popup.classList.remove("is-open");
     document.body.classList.remove("blueprint-lock");
     document.body.style.paddingRight = "";
     if(lastFocus && typeof lastFocus.focus === "function"){
       try{ lastFocus.focus({preventScroll:true}); }catch(e){}
+    }
+    if(wasOpen && !blueprintPopupClosedAnnounced){
+      blueprintPopupClosedAnnounced = true;
+      window.dispatchEvent(new CustomEvent("godhealth:blueprint-popup-closed"));
     }
   }
 
