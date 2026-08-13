@@ -77,8 +77,8 @@
     return `
       <div class="blueprint-success" tabindex="-1">
         <h3>Check Your Inbox!</h3>
-        <p>Your 7-Day Transformation Blueprint is on its way. While you wait — discover exactly where to start:</p>
-        <a class="btn btn-gold" href="/kingdom-vitality-scan.html">Show Me My Free Roadmap</a>
+        <p>Your 7-Day Transformation Blueprint is on its way. While you wait, we have something better for you: Discover the FREE 6-minute Kingdom Vitality Scan. This scan reveals exactly where your Body, Soul or Spirit is holding you back — and gives you a personalized 7-day Biblical roadmap to more energy, fat loss and a deeper walk with God.</p>
+        <a class="btn btn-gold" href="/kingdom-vitality-scan.html">Yes! I Want My Free Personalized Roadmap.</a>
       </div>`;
   }
 
@@ -139,7 +139,16 @@
       await saveBlueprintLead(payload);
       localStorage.setItem(RATE_KEY, String(Date.now()));
       const holder = form.closest("[data-blueprint-holder]") || form.parentElement;
-      if(holder){
+      const popupDialog = form.closest(".blueprint-popup");
+      if(source === "popup" && popupDialog){
+        popupDialog.classList.add("blueprint-popup-success");
+        popupDialog.innerHTML = `
+          <button class="blueprint-popup-close" type="button" data-blueprint-close aria-label="Close blueprint popup">×</button>
+          ${successMarkup()}`;
+        popupDialog.querySelector("[data-blueprint-close]").addEventListener("click", closePopup);
+        const success = popupDialog.querySelector(".blueprint-success");
+        if(success) success.focus({preventScroll:true});
+      } else if(holder){
         holder.innerHTML = successMarkup();
         const success = holder.querySelector(".blueprint-success");
         if(success) success.focus({preventScroll:true});
