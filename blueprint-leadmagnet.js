@@ -76,8 +76,8 @@
   function successMarkup(){
     return `
       <div class="blueprint-success" tabindex="-1">
-        <h3>Check Your Inbox!</h3>
-        <p>Your 7-Day Transformation Blueprint is on its way. While you wait, we have something better for you: Discover the FREE 6-minute Kingdom Vitality Scan. This scan reveals exactly where your Body, Soul or Spirit is holding you back — and gives you a personalized 7-day Biblical roadmap to more energy, fat loss and a deeper walk with God.</p>
+        <h3>Your Transformation Blueprint is on its way to your inbox!</h3>
+        <p>And we have another gift for you: the FREE 6-minute Kingdom Vitality Scan. This scan reveals exactly where your Body, Soul or Spirit is holding you back — and gives you a personalized 7-day Biblical roadmap to more energy, fat loss and a deeper walk with God.</p>
         <a class="btn btn-gold" href="/kingdom-vitality-scan.html">Yes! I Want My Free Personalized Roadmap.</a>
       </div>`;
   }
