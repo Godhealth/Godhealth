@@ -20,9 +20,9 @@
     --ink: #f7f3ea;             /* warm white text */
     --ink-soft: rgba(247,243,234,0.72);
     --ink-mute: rgba(247,243,234,0.45);
-    --logo: url("godhealth-logo.png");
+    --logo: url("assets/godhealth-wordmark.png");
   }
-  .brandmark { background: var(--logo) center/contain no-repeat; aspect-ratio: 1 / 1; display: inline-block; }
+  .brandmark { background: var(--logo) center/contain no-repeat; width: min(220px, 72vw); height: 82px; display: inline-block; }
   * { -webkit-tap-highlight-color: transparent; }
   html { -webkit-text-size-adjust: 100%; background: var(--forest-deep); }
   body {
@@ -430,7 +430,7 @@
   <!-- ================= SCREEN 1: REGISTRATION ================= -->
   <section id="screen-reg" class="screen active">
     <div class="text-center mb-7">
-      <p class="gold-text tracking-[0.4em] text-[11px] sm:text-xs font-semibold mb-2">GODHEALTH</p>
+      <div class="brandmark" style="margin:0 auto 6px;" role="img" aria-label="GodHealth logo"></div>
       <p class="display italic mb-3" style="color:var(--gold-2); font-size:15px;">Vitality for the Kingdom</p>
       <h1 class="display text-[30px] sm:text-5xl font-bold gold-text" style="line-height:1.18; padding-bottom:0.12em;">Take Your Free Kingdom Vitality Scan Now</h1>
       <p class="display italic text-[15px] sm:text-lg mt-4 max-w-lg mx-auto leading-snug" style="color: var(--ink-soft);">Discover exactly where your Body, Soul &amp; Spirit are out of alignment and receive your personalized roadmap to more energy, fat loss and longevity in just 6 minutes.</p>
@@ -1695,7 +1695,7 @@ function finishAssessment(skipDispatch){
   report.innerHTML = `
     <div class="report-shell">
       <div class="text-center">
-        <div class="brandmark" style="width:72px;height:72px;margin:0 auto 12px;" role="img" aria-label="GodHealth logo"></div>
+        <div class="brandmark" style="margin:0 auto 12px;" role="img" aria-label="GodHealth logo"></div>
         <p class="gold-text text-[11px] font-semibold tracking-[0.22em] uppercase">Personal Alignment Report</p>
         <h2 class="display font-bold gold-text" style="font-size:clamp(28px,7vw,42px);line-height:1.1;margin-top:8px;">Your Kingdom Vitality Results</h2>
       </div>
