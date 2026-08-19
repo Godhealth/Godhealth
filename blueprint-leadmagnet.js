@@ -51,16 +51,20 @@
     style.textContent = `
       .blueprint-field{overflow:visible!important;display:grid!important;gap:0!important;line-height:1.35!important;position:relative!important;text-transform:none!important;letter-spacing:0!important}
       .blueprint-label{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+      .blueprint-popup .blueprint-form{gap:13px!important;padding:0 2px!important}
+      .blueprint-popup .blueprint-fields{grid-template-columns:1fr!important;gap:12px!important}
       .blueprint-field input[name="first_name"],
-      .blueprint-field input[name="email"]{box-sizing:border-box!important;display:block!important;width:100%!important;height:66px!important;min-height:66px!important;padding:0 28px!important;line-height:66px!important;font-size:16px!important;font-weight:600!important;text-indent:0!important;letter-spacing:0!important;text-transform:none!important;overflow:visible!important}
+      .blueprint-field input[name="email"]{box-sizing:border-box!important;display:block!important;width:100%!important;height:64px!important;min-height:64px!important;padding:0 28px!important;line-height:64px!important;font-size:16px!important;font-weight:600!important;text-indent:0!important;letter-spacing:0!important;text-transform:none!important;overflow:visible!important}
       .blueprint-field input[name="first_name"]::placeholder,
-      .blueprint-field input[name="email"]::placeholder{opacity:1!important;line-height:66px!important;color:rgba(247,243,234,.48)!important}
+      .blueprint-field input[name="email"]::placeholder{opacity:1!important;line-height:64px!important;color:rgba(247,243,234,.48)!important}
       @media(max-width:720px){
         .blueprint-popup-overlay{background:rgba(1,8,5,.95)!important}
+        .blueprint-popup .blueprint-form{gap:10px!important;padding:0!important}
+        .blueprint-popup .blueprint-fields{gap:10px!important}
         .blueprint-field input[name="first_name"],
-        .blueprint-field input[name="email"]{height:60px!important;min-height:60px!important;padding:0 26px!important;line-height:60px!important;font-size:15.5px!important}
+        .blueprint-field input[name="email"]{height:58px!important;min-height:58px!important;padding:0 22px!important;line-height:58px!important;font-size:15.5px!important}
         .blueprint-field input[name="first_name"]::placeholder,
-        .blueprint-field input[name="email"]::placeholder{line-height:60px!important}
+        .blueprint-field input[name="email"]::placeholder{line-height:58px!important}
       }
     `;
     document.head.appendChild(style);
@@ -91,8 +95,7 @@
         </div>
         <p class="blueprint-error" data-blueprint-error role="alert"></p>
         <button class="btn btn-gold" type="submit">Send Me The Free Blueprint</button>
-        ${source === "section" ? '<p class="blueprint-microcopy">Free · Delivered to your inbox</p>' : ""}
-        <p class="blueprint-privacy">By downloading you agree to our <a href="/privacy.html">Privacy Policy</a></p>
+        ${source === "section" ? '<p class="blueprint-microcopy">Free · Delivered to your inbox</p><p class="blueprint-privacy">By downloading you agree to our <a href="/privacy.html">Privacy Policy</a></p>' : ""}
       </form>`;
   }
 
@@ -265,7 +268,7 @@
         <h2 id="blueprint-popup-title">Download the FREE GodHealth 7-Day Transformation Blueprint.</h2>
         <p class="lead" id="blueprint-popup-copy">A Biblical and science based Blueprint to more energy, fat loss, better sleep and a deeper walk with God in 7 days.</p>
         <figure class="blueprint-popup-visual"><img src="/assets/godhealth-7-day-blueprint.jpg" alt="GodHealth 7-Day Transformation Blueprint cover"></figure>
-        <div class="blueprint-card" data-blueprint-holder>${formMarkup("popup")}<p class="blueprint-microcopy" style="margin-top:12px">Free · Delivered to your inbox · Built on the Bible &amp; modern science</p></div>
+        <div class="blueprint-card" data-blueprint-holder>${formMarkup("popup")}</div>
       </div>`;
     document.body.appendChild(overlay);
     forceBlueprintFieldVisibility();
