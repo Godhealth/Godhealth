@@ -117,3 +117,8 @@ body.blueprint-lock{overflow:hidden}
 
 .whatsapp-fab{overflow:visible!important;border:0!important;box-shadow:none!important;background:transparent!important;padding:0!important}
 .whatsapp-fab img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;border-radius:0!important}
+.blueprint-field{overflow:visible!important}
+.blueprint-label{display:block!important;padding-left:8px!important;line-height:1.4!important;white-space:nowrap!important;overflow:visible!important}
+.blueprint-field input[name="first_name"],.blueprint-field input[name="email"]{height:66px!important;min-height:66px!important;padding:0 28px!important;line-height:66px!important;overflow:visible!important}
+.blueprint-field input[name="first_name"]::placeholder,.blueprint-field input[name="email"]::placeholder{line-height:66px!important;opacity:1!important}
+@media(max-width:720px){.blueprint-field input[name="first_name"],.blueprint-field input[name="email"]{height:60px!important;min-height:60px!important;padding:0 26px!important;line-height:60px!important}.blueprint-field input[name="first_name"]::placeholder,.blueprint-field input[name="email"]::placeholder{line-height:60px!important}}

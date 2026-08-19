@@ -44,6 +44,28 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || "").trim());
   }
 
+  function forceBlueprintFieldVisibility(){
+    if(document.getElementById("godhealth-blueprint-field-visibility-fix")) return;
+    const style = document.createElement("style");
+    style.id = "godhealth-blueprint-field-visibility-fix";
+    style.textContent = `
+      .blueprint-field{overflow:visible!important;display:grid!important;gap:9px!important;line-height:1.35!important}
+      .blueprint-label{display:block!important;padding-left:8px!important;margin:0!important;line-height:1.4!important;overflow:visible!important;white-space:nowrap!important;clip-path:none!important}
+      .blueprint-field input[name="first_name"],
+      .blueprint-field input[name="email"]{box-sizing:border-box!important;display:block!important;width:100%!important;height:66px!important;min-height:66px!important;padding:0 28px!important;line-height:66px!important;font-size:16px!important;font-weight:600!important;text-indent:0!important;letter-spacing:0!important;text-transform:none!important;overflow:visible!important}
+      .blueprint-field input[name="first_name"]::placeholder,
+      .blueprint-field input[name="email"]::placeholder{opacity:1!important;line-height:66px!important;color:rgba(247,243,234,.48)!important}
+      @media(max-width:720px){
+        .blueprint-label{padding-left:8px!important}
+        .blueprint-field input[name="first_name"],
+        .blueprint-field input[name="email"]{height:60px!important;min-height:60px!important;padding:0 26px!important;line-height:60px!important;font-size:15.5px!important}
+        .blueprint-field input[name="first_name"]::placeholder,
+        .blueprint-field input[name="email"]::placeholder{line-height:60px!important}
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function formMarkup(source){
     const prefix = "blueprint-" + source;
     return `
@@ -246,6 +268,7 @@
         <div class="blueprint-card" data-blueprint-holder>${formMarkup("popup")}<p class="blueprint-microcopy" style="margin-top:12px">Free · Delivered to your inbox · Built on the Bible &amp; modern science</p></div>
       </div>`;
     document.body.appendChild(overlay);
+    forceBlueprintFieldVisibility();
     bindForms(overlay);
     popup = overlay;
 
@@ -310,6 +333,7 @@
   }
 
   function bootBlueprint(){
+    forceBlueprintFieldVisibility();
     document.querySelectorAll("[data-blueprint-section-form]").forEach(holder=>{
       if(!holder.innerHTML.trim()) holder.innerHTML = formMarkup("section");
     });
