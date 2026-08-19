@@ -49,10 +49,10 @@
     return `
       <form class="blueprint-form" data-blueprint-form data-blueprint-source="${source}" novalidate>
         <div class="blueprint-fields">
-          <label class="blueprint-field" for="${prefix}-first-name">First name
+          <label class="blueprint-field" for="${prefix}-first-name"><span class="blueprint-label">First name</span>
             <input id="${prefix}-first-name" name="first_name" type="text" autocomplete="given-name" required placeholder="First name">
           </label>
-          <label class="blueprint-field" for="${prefix}-email">Email
+          <label class="blueprint-field" for="${prefix}-email"><span class="blueprint-label">Email</span>
             <input id="${prefix}-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
           </label>
         </div>
