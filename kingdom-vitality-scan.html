@@ -32,6 +32,7 @@
     --logo: url("assets/godhealth-wordmark.png");
   }
   .brandmark { background: var(--logo) center/contain no-repeat; width: min(220px, 72vw); height: 82px; display: inline-block; }
+  .footer-brandmark { background: url("assets/godhealth-footer-logo.png") center/contain no-repeat; width:154px; height:116px; display:inline-block; }
   * { -webkit-tap-highlight-color: transparent; }
   html { -webkit-text-size-adjust: 100%; background: var(--forest-deep); }
   body {
@@ -1790,6 +1791,9 @@ function finishAssessment(skipDispatch){
 
       <div class="text-center mt-8">
         <button id="startOverBtn" class="text-sm transition-colors" style="color:var(--ink-mute);">Take the scan again</button>
+      </div>
+      <div class="text-center mt-8">
+        <div class="footer-brandmark" role="img" aria-label="GodHealth logo"></div>
       </div>
     </div>`;
 

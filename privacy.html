@@ -20,20 +20,21 @@
   <style>
     :root{--forest:#071d15;--green:#123c29;--gold:#c9a84c;--gold-light:#e5cf8a;--cream:#f7f3e8;--ink:#17251d;--muted:#5e6b63}
     *{box-sizing:border-box;margin:0;padding:0} body{background:var(--cream);color:var(--ink);font-family:Jost,sans-serif;font-weight:300;line-height:1.75}
-    header{padding:26px clamp(20px,6vw,76px);background:linear-gradient(145deg,var(--forest),var(--green));border-bottom:1px solid rgba(201,168,76,.35);display:flex;justify-content:space-between;align-items:center}
+    header{position:sticky;top:0;z-index:50;padding:0 clamp(20px,6vw,76px);height:84px;background:rgba(7,29,21,.76);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,.35);display:flex;justify-content:space-between;align-items:center}
     header a{color:var(--gold-light);font-family:Cinzel,serif;font-size:12px;letter-spacing:.12em;text-decoration:none;text-transform:uppercase}
-    .brand{font-family:Cinzel,serif;color:var(--gold-light);font-size:18px;letter-spacing:.18em}
+    .brandmark{width:220px;height:82px;background:url("assets/godhealth-wordmark.png") center/contain no-repeat}
+    .footer-logo{width:154px;height:116px;margin:0 auto 10px;background:url("assets/godhealth-footer-logo.png") center/contain no-repeat}
     main{max-width:850px;margin:0 auto;padding:clamp(48px,8vw,90px) 22px}
     .eyebrow{font-family:Cinzel,serif;color:#8f712a;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
     h1,h2{font-family:"Cormorant Garamond",serif;color:var(--green);line-height:1.12} h1{font-size:clamp(42px,8vw,70px);margin:10px 0 18px} h2{font-size:29px;margin:34px 0 10px}
     .intro{font-family:"Cormorant Garamond",serif;font-size:21px;color:var(--muted);max-width:720px}
     section{padding-bottom:8px;border-bottom:1px solid rgba(18,60,41,.12)} p,li{font-size:15px;color:var(--muted)} ul{padding-left:20px;margin:8px 0 14px} a{color:#745817}
     .contact{margin-top:38px;padding:24px;border:1px solid rgba(201,168,76,.35);background:#fff}
-    footer{text-align:center;padding:22px;background:var(--forest);color:rgba(255,255,255,.55);font-size:12px}
+    footer{text-align:center;padding:30px 22px;background:var(--forest);color:rgba(255,255,255,.55);font-size:12px}
   </style>
 </head>
 <body>
-  <header><div class="brand">GodHealth</div><a href="index.html">← Back to GodHealth</a></header>
+  <header><div class="brandmark" role="img" aria-label="GodHealth logo"></div><a href="index.html">← Back to GodHealth</a></header>
   <main>
     <div class="eyebrow">Privacy Policy · Version 1.0</div>
     <h1>Your privacy matters.</h1>
@@ -79,6 +80,6 @@
       <p>For privacy questions, consent changes or deletion requests, email <a href="mailto:info@godhealth.org">info@godhealth.org</a>.</p>
     </div>
   </main>
-  <footer>© GodHealth · Robin Kramps · The Netherlands</footer>
+  <footer><div class="footer-logo" role="img" aria-label="GodHealth logo"></div>© GodHealth · Robin Kramps · The Netherlands</footer>
 </body>
 </html>
