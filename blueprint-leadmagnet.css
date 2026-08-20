@@ -48,9 +48,11 @@
 .blueprint-mini-gap strong{color:#e3a365}
 .blueprint-popup-overlay{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:18px;background:rgba(1,8,5,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility .25s ease}
 .blueprint-popup-overlay.is-open{opacity:1;visibility:visible;pointer-events:auto}
-.blueprint-popup{position:relative;width:min(620px,100%);max-height:calc(100svh - 36px);overflow:visible;border:1px solid rgba(241,214,147,.38);border-radius:30px;background:radial-gradient(circle at 50% -16%,rgba(241,214,147,.24),transparent 17rem),linear-gradient(180deg,rgba(15,50,33,.99),rgba(4,22,14,.99));box-shadow:0 40px 100px -45px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.07),inset 0 1px 0 rgba(255,255,255,.1);padding:clamp(24px,4vw,38px);color:var(--ink);transform:translateY(10px) scale(.985);transition:transform .25s ease}
+.blueprint-popup{isolation:isolate;position:relative;width:min(620px,100%);max-height:calc(100svh - 36px);overflow:hidden;border:1px solid rgba(241,214,147,.42);border-radius:30px;background:radial-gradient(circle at 50% -16%,rgba(241,214,147,.24),transparent 17rem),linear-gradient(180deg,rgba(15,50,33,.99),rgba(4,22,14,.99));box-shadow:0 42px 104px -45px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.07),0 0 46px -28px rgba(217,180,90,.72),inset 0 1px 0 rgba(255,255,255,.1);padding:clamp(24px,4vw,38px);color:var(--ink);transform:translateY(10px) scale(.985);transition:transform .25s ease}
+.blueprint-popup:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 34%,rgba(217,180,90,.08));pointer-events:none}
+.blueprint-popup:after{content:"";position:absolute;left:18px;right:18px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,236,174,.78),transparent);pointer-events:none}
 .blueprint-popup-overlay.is-open .blueprint-popup{transform:none}
-.blueprint-popup-close{position:absolute;right:15px;top:15px;width:42px;height:42px;border:1px solid rgba(217,180,90,.18);border-radius:14px;background:rgba(217,180,90,.05);color:rgba(247,243,234,.72);font-size:24px;line-height:1;cursor:pointer;transition:.2s ease}
+.blueprint-popup-close{position:absolute;right:15px;top:15px;width:42px;height:42px;border:1px solid rgba(241,214,147,.28);border-radius:14px;background:linear-gradient(180deg,rgba(217,180,90,.12),rgba(217,180,90,.04));color:rgba(247,243,234,.78);font-size:24px;line-height:1;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.07);transition:.2s ease}
 .blueprint-popup-close:hover{color:var(--gold-3);border-color:rgba(217,180,90,.42);background:rgba(217,180,90,.10)}
 .blueprint-popup .eyebrow{margin-bottom:12px}
 .blueprint-popup h2{padding-right:38px;color:var(--gold-3);font-size:clamp(31px,4.6vw,46px);line-height:1.03}
@@ -61,7 +63,7 @@
 .blueprint-popup .blueprint-card:before{display:none}
 .blueprint-popup .blueprint-form{gap:13px;padding:0 2px}
 .blueprint-popup .blueprint-fields{grid-template-columns:1fr;gap:12px}
-.blueprint-popup .blueprint-field input{height:60px;min-height:60px;border-radius:19px;border-color:rgba(241,214,147,.3);background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.055));box-shadow:0 14px 30px -24px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.09)}
+.blueprint-popup .blueprint-field input{height:60px;min-height:60px;border-radius:19px;border-color:rgba(241,214,147,.32);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.055));box-shadow:0 14px 30px -24px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.1)}
 .blueprint-popup .blueprint-insider{padding:14px 15px;border-radius:20px;background:linear-gradient(180deg,rgba(217,180,90,.08),rgba(217,180,90,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.045)}
 .blueprint-popup .blueprint-form .btn{min-height:58px;border-radius:999px;font-size:15px;box-shadow:0 24px 46px -25px rgba(217,180,90,.98),inset 0 1px 0 rgba(255,255,255,.48)}
 body.blueprint-lock{overflow:hidden}
@@ -73,7 +75,7 @@ body.blueprint-lock{overflow:hidden}
   .blueprint-popup{width:min(430px,100%);max-height:calc(100svh - 18px);border-radius:24px;padding:20px 18px}
   .blueprint-popup-close{right:10px;top:10px;width:34px;height:34px;border-radius:12px;font-size:20px}
   .blueprint-popup .eyebrow{margin-bottom:7px;font-size:10px}
-  .blueprint-popup h2{padding-right:32px;font-size:29px;line-height:1.02}
+  .blueprint-popup h2{padding-right:32px;font-size:28px;line-height:1.02}
   .blueprint-popup .lead{margin-top:8px;font-size:14.5px;line-height:1.42}
   .blueprint-popup-visual{width:104px;margin-top:8px;padding:3px;border-radius:14px}
   .blueprint-popup-visual img{border-radius:11px}
