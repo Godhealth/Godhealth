@@ -67,7 +67,9 @@
   .btn-gold:hover{box-shadow:0 28px 58px -20px rgba(184,138,46,1),0 0 30px -16px rgba(241,214,147,.9),inset 0 1px 0 rgba(255,255,255,.62),inset 0 -10px 20px rgba(82,47,8,.16)}
   header.open .nav-panel .nav-cta,body.header-light header.open .nav-panel .nav-cta{color:#241802;border-bottom:0}
   .hero{min-height:auto;padding-top:clamp(58px,8vw,92px);padding-bottom:clamp(58px,8vw,92px)}
-  .hero h1{max-width:min(920px,100%);font-size:clamp(38px,6vw,72px)}
+  .hero h1{max-width:min(980px,100%);font-size:clamp(48px,8.5vw,92px);line-height:.98;letter-spacing:-.03em}
+  .hero-kicker{max-width:calc(100vw - 32px);margin:16px auto 0;color:var(--gold-2);font-size:clamp(8px,2vw,15px);font-weight:800;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+  @media(min-width:720px){.hero-kicker{font-size:14px;letter-spacing:.12em}}
   .hero .lead{max-width:min(820px,100%);font-size:clamp(16px,2vw,19px);line-height:1.62}
   .hero .btn-row{max-width:min(820px,100%)}
   .hero-scripture,.cta-sub{display:none}
@@ -97,7 +99,8 @@
 
 <main>
   <section class="hero wrap" id="top">
-    <h1 class="reveal gold-text">Christian, Struggling With Your Weight, Energy, Sleep, Or Your Walk With God? This Is For You.</h1>
+    <h1 class="reveal">Christ-Centered Health For <span class="gold-text">Body, Soul &amp; Spirit.</span></h1>
+    <p class="hero-kicker reveal">Ancient Biblical Wisdom + Modern Health Science + Elite Athlete Expertise</p>
     <div class="hero-video reveal">
       <video id="heroVideo" autoplay muted playsinline preload="auto" poster="godhealth-robin-intro-poster.jpg" disablepictureinpicture disableremoteplayback tabindex="0" role="button" aria-label="Pause video">
         <source src="godhealth-robin-intro.mp4" type="video/mp4">
