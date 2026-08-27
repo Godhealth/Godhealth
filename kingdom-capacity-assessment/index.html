@@ -248,9 +248,13 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       event.preventDefault();
       if(!state.supabase) return;
       const email = $("authEmail").value.trim();
+      const assessmentRedirectUrl = "https://www.godhealth.org/kingdom-capacity-assessment/";
       const { error } = await state.supabase.auth.signInWithOtp({
         email,
-        options:{ emailRedirectTo: location.origin + "/kingdom-capacity-assessment/" }
+        options:{
+          emailRedirectTo: assessmentRedirectUrl,
+          shouldCreateUser: true
+        }
       });
       $("authMessage").textContent = error ? error.message : "Check your inbox for your secure access link.";
     });
