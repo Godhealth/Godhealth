@@ -1,0 +1,2313 @@
+{
+  "schema_version": "2.0.0",
+  "assessment_definition": {
+    "product_name": "GodHealth Kingdom Capacity Assessment™",
+    "definition_version": "2.0.0",
+    "status": "implementation_candidate_expert_review_required",
+    "supersedes": "1.x 72-core architecture",
+    "comparison_compatible_with": [
+      "2.0.0"
+    ],
+    "answering_window": "Typical pattern over previous 14–28 days unless an item specifies a weekly target.",
+    "core_item_count": 36,
+    "deep_dive_bank_count": 24,
+    "coach_clarification_count": 12,
+    "max_auto_deep_dive_count": 12,
+    "baseline_flow": "6 safety gates + goal/context + 36 core + 0–12 adaptive deep-dive",
+    "week12_flow": "36 core by default; optional coach-enabled deep-dive after score snapshot",
+    "boundary": "Coaching and whole-person reflection instrument; not a medical, psychiatric, psychometric, pastoral, or spiritual diagnostic test."
+  },
+  "response_scale": [
+    {
+      "value": 0,
+      "label": "Not true / Never",
+      "meaning": "This is not currently part of my normal pattern."
+    },
+    {
+      "value": 1,
+      "label": "Rarely true",
+      "meaning": "This happens occasionally but is not dependable."
+    },
+    {
+      "value": 2,
+      "label": "Sometimes true",
+      "meaning": "This is present, but inconsistent or fragile."
+    },
+    {
+      "value": 3,
+      "label": "Mostly true",
+      "meaning": "This is usually present with some meaningful gaps."
+    },
+    {
+      "value": 4,
+      "label": "Consistently true",
+      "meaning": "This is a stable and dependable part of my current pattern."
+    }
+  ],
+  "domains": [
+    {
+      "code": "B1",
+      "pillar": "BODY",
+      "name": "Nutrition Quality & Eating Structure",
+      "scripture_refs": [
+        "1 Corinthians 10:31",
+        "Ecclesiastes 10:17",
+        "Proverbs 25:16"
+      ],
+      "core_question_ids": [
+        "B1.1",
+        "B1.3",
+        "B1.6"
+      ],
+      "deep_dive_question_ids": [
+        "B1.2",
+        "B1.4"
+      ],
+      "coach_clarification_question_ids": [
+        "B1.5"
+      ]
+    },
+    {
+      "code": "B2",
+      "pillar": "BODY",
+      "name": "Sleep & Circadian Recovery",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 127:2",
+        "Matthew 11:28-30"
+      ],
+      "core_question_ids": [
+        "B2.1",
+        "B2.2",
+        "B2.6"
+      ],
+      "deep_dive_question_ids": [
+        "B2.3",
+        "B2.5"
+      ],
+      "coach_clarification_question_ids": [
+        "B2.4"
+      ]
+    },
+    {
+      "code": "B3",
+      "pillar": "BODY",
+      "name": "Movement, Strength & Sedentary Balance",
+      "scripture_refs": [
+        "1 Timothy 4:8",
+        "1 Corinthians 9:24-27",
+        "1 Corinthians 6:20"
+      ],
+      "core_question_ids": [
+        "B3.1",
+        "B3.2",
+        "B3.6"
+      ],
+      "deep_dive_question_ids": [
+        "B3.3",
+        "B3.4"
+      ],
+      "coach_clarification_question_ids": [
+        "B3.5"
+      ]
+    },
+    {
+      "code": "B4",
+      "pillar": "BODY",
+      "name": "Energy, Recovery & Physical Readiness",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 103:14",
+        "1 Corinthians 6:19-20"
+      ],
+      "core_question_ids": [
+        "B4.1",
+        "B4.3",
+        "B4.5"
+      ],
+      "deep_dive_question_ids": [
+        "B4.2",
+        "B4.4"
+      ],
+      "coach_clarification_question_ids": [
+        "B4.6"
+      ]
+    },
+    {
+      "code": "S1",
+      "pillar": "SOUL",
+      "name": "Mental Flexibility & Thought Stewardship",
+      "scripture_refs": [
+        "Romans 12:2",
+        "Philippians 4:8",
+        "2 Corinthians 10:5"
+      ],
+      "core_question_ids": [
+        "S1.1",
+        "S1.4",
+        "S1.5"
+      ],
+      "deep_dive_question_ids": [
+        "S1.2",
+        "S1.3"
+      ],
+      "coach_clarification_question_ids": [
+        "S1.6"
+      ]
+    },
+    {
+      "code": "S2",
+      "pillar": "SOUL",
+      "name": "Emotional Regulation & Stress Resilience",
+      "scripture_refs": [
+        "Proverbs 4:23",
+        "Philippians 4:6-7",
+        "James 1:19-20",
+        "Proverbs 16:32"
+      ],
+      "core_question_ids": [
+        "S2.1",
+        "S2.2",
+        "S2.4"
+      ],
+      "deep_dive_question_ids": [
+        "S2.3",
+        "S2.5"
+      ],
+      "coach_clarification_question_ids": [
+        "S2.6"
+      ]
+    },
+    {
+      "code": "S3",
+      "pillar": "SOUL",
+      "name": "Habits, Discipline & Follow-Through",
+      "scripture_refs": [
+        "Galatians 5:22-23",
+        "James 1:22",
+        "1 Corinthians 9:24-27",
+        "Proverbs 25:28"
+      ],
+      "core_question_ids": [
+        "S3.1",
+        "S3.2",
+        "S3.5"
+      ],
+      "deep_dive_question_ids": [
+        "S3.3",
+        "S3.4"
+      ],
+      "coach_clarification_question_ids": [
+        "S3.6"
+      ]
+    },
+    {
+      "code": "S4",
+      "pillar": "SOUL",
+      "name": "Relationships, Support & Environment",
+      "scripture_refs": [
+        "Ecclesiastes 4:9-10",
+        "Proverbs 13:20",
+        "Hebrews 10:24-25",
+        "1 Corinthians 15:33"
+      ],
+      "core_question_ids": [
+        "S4.1",
+        "S4.2",
+        "S4.3"
+      ],
+      "deep_dive_question_ids": [
+        "S4.4",
+        "S4.5"
+      ],
+      "coach_clarification_question_ids": [
+        "S4.6"
+      ]
+    },
+    {
+      "code": "P1",
+      "pillar": "SPIRIT",
+      "name": "Scripture & Truth Alignment",
+      "scripture_refs": [
+        "Psalm 119:105",
+        "2 Timothy 3:16-17",
+        "John 8:31-32",
+        "Romans 12:2"
+      ],
+      "core_question_ids": [
+        "P1.1",
+        "P1.3",
+        "P1.6"
+      ],
+      "deep_dive_question_ids": [
+        "P1.2",
+        "P1.4"
+      ],
+      "coach_clarification_question_ids": [
+        "P1.5"
+      ]
+    },
+    {
+      "code": "P2",
+      "pillar": "SPIRIT",
+      "name": "Prayer, Dependence & Gratitude",
+      "scripture_refs": [
+        "1 Thessalonians 5:17-18",
+        "Philippians 4:6-7",
+        "James 1:5",
+        "John 15:5"
+      ],
+      "core_question_ids": [
+        "P2.1",
+        "P2.2",
+        "P2.5"
+      ],
+      "deep_dive_question_ids": [
+        "P2.3",
+        "P2.6"
+      ],
+      "coach_clarification_question_ids": [
+        "P2.4"
+      ]
+    },
+    {
+      "code": "P3",
+      "pillar": "SPIRIT",
+      "name": "Stewardship, Self-Control & Obedience",
+      "scripture_refs": [
+        "1 Corinthians 6:19-20",
+        "1 Corinthians 10:31",
+        "Galatians 5:22-23",
+        "James 1:22"
+      ],
+      "core_question_ids": [
+        "P3.1",
+        "P3.2",
+        "P3.6"
+      ],
+      "deep_dive_question_ids": [
+        "P3.3",
+        "P3.5"
+      ],
+      "coach_clarification_question_ids": [
+        "P3.4"
+      ]
+    },
+    {
+      "code": "P4",
+      "pillar": "SPIRIT",
+      "name": "Purpose, Calling & Christian Community",
+      "scripture_refs": [
+        "Ephesians 2:10",
+        "1 Peter 4:10",
+        "Hebrews 10:24-25",
+        "Colossians 3:23"
+      ],
+      "core_question_ids": [
+        "P4.1",
+        "P4.2",
+        "P4.4"
+      ],
+      "deep_dive_question_ids": [
+        "P4.3",
+        "P4.6"
+      ],
+      "coach_clarification_question_ids": [
+        "P4.5"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "B1.1",
+      "domain_code": "B1",
+      "pillar": "BODY",
+      "statement": "Most of my meals are built mainly from minimally processed foods rather than packaged convenience foods.",
+      "evidence_ids": [
+        "E05",
+        "E06",
+        "E07",
+        "E11"
+      ],
+      "evidence_note": "E05, E06, E07, E11",
+      "scripture_refs": [
+        "1 Corinthians 10:31",
+        "Ecclesiastes 10:17",
+        "Proverbs 25:16"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B2.1",
+      "domain_code": "B2",
+      "pillar": "BODY",
+      "statement": "I usually protect enough time in bed to obtain at least about 7 hours of sleep, unless a qualified professional has advised otherwise for my situation.",
+      "evidence_ids": [
+        "E03",
+        "E04"
+      ],
+      "evidence_note": "E03, E04",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 127:2",
+        "Matthew 11:28-30"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B3.1",
+      "domain_code": "B3",
+      "pillar": "BODY",
+      "statement": "In a typical week I achieve at least about 150 minutes of moderate-intensity activity (or an equivalent amount of vigorous activity), when medically appropriate.",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E08"
+      ],
+      "evidence_note": "E01, E02, E08",
+      "scripture_refs": [
+        "1 Timothy 4:8",
+        "1 Corinthians 9:24-27",
+        "1 Corinthians 6:20"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B4.1",
+      "domain_code": "B4",
+      "pillar": "BODY",
+      "statement": "I have enough physical energy for the responsibilities that matter most to me on most days.",
+      "evidence_ids": [
+        "E01",
+        "E03",
+        "E04",
+        "E08"
+      ],
+      "evidence_note": "E01, E03, E04, E08",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 103:14",
+        "1 Corinthians 6:19-20"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B1.2",
+      "domain_code": "B1",
+      "pillar": "BODY",
+      "statement": "I regularly eat vegetables, fruit, legumes/beans, whole grains, nuts/seeds, or other fibre-rich plant foods that fit my needs and tolerances.",
+      "evidence_ids": [
+        "E05",
+        "E06",
+        "E07",
+        "E11"
+      ],
+      "evidence_note": "E05, E06, E07, E11",
+      "scripture_refs": [
+        "1 Corinthians 10:31",
+        "Ecclesiastes 10:17",
+        "Proverbs 25:16"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B2.2",
+      "domain_code": "B2",
+      "pillar": "BODY",
+      "statement": "My bedtime and wake time are reasonably consistent across most days of the week.",
+      "evidence_ids": [
+        "E03",
+        "E04"
+      ],
+      "evidence_note": "E03, E04",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 127:2",
+        "Matthew 11:28-30"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B3.2",
+      "domain_code": "B3",
+      "pillar": "BODY",
+      "statement": "I perform muscle-strengthening exercise for the major muscle groups on at least two days in a typical week, when medically appropriate.",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E08"
+      ],
+      "evidence_note": "E01, E02, E08",
+      "scripture_refs": [
+        "1 Timothy 4:8",
+        "1 Corinthians 9:24-27",
+        "1 Corinthians 6:20"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B4.2",
+      "domain_code": "B4",
+      "pillar": "BODY",
+      "statement": "My energy is reasonably stable rather than repeatedly swinging between pushing hard and crashing.",
+      "evidence_ids": [
+        "E01",
+        "E03",
+        "E04",
+        "E08"
+      ],
+      "evidence_note": "E01, E03, E04, E08",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 103:14",
+        "1 Corinthians 6:19-20"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B1.3",
+      "domain_code": "B1",
+      "pillar": "BODY",
+      "statement": "My main meals have enough structure and nourishment that I am not routinely driven into impulsive eating by extreme hunger.",
+      "evidence_ids": [
+        "E05",
+        "E06",
+        "E07",
+        "E11"
+      ],
+      "evidence_note": "E05, E06, E07, E11",
+      "scripture_refs": [
+        "1 Corinthians 10:31",
+        "Ecclesiastes 10:17",
+        "Proverbs 25:16"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B2.3",
+      "domain_code": "B2",
+      "pillar": "BODY",
+      "statement": "I usually wake feeling sufficiently restored to begin the day.",
+      "evidence_ids": [
+        "E03",
+        "E04"
+      ],
+      "evidence_note": "E03, E04",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 127:2",
+        "Matthew 11:28-30"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B3.3",
+      "domain_code": "B3",
+      "pillar": "BODY",
+      "statement": "I move my body on most days instead of concentrating all activity into one or two days.",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E08"
+      ],
+      "evidence_note": "E01, E02, E08",
+      "scripture_refs": [
+        "1 Timothy 4:8",
+        "1 Corinthians 9:24-27",
+        "1 Corinthians 6:20"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B4.3",
+      "domain_code": "B4",
+      "pillar": "BODY",
+      "statement": "I generally recover between training sessions and demanding days.",
+      "evidence_ids": [
+        "E01",
+        "E03",
+        "E04",
+        "E08"
+      ],
+      "evidence_note": "E01, E03, E04, E08",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 103:14",
+        "1 Corinthians 6:19-20"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B1.4",
+      "domain_code": "B1",
+      "pillar": "BODY",
+      "statement": "Sugary drinks, sweets, fast food, and highly processed snack foods are occasional rather than the foundation of my diet.",
+      "evidence_ids": [
+        "E05",
+        "E06",
+        "E07",
+        "E11"
+      ],
+      "evidence_note": "E05, E06, E07, E11",
+      "scripture_refs": [
+        "1 Corinthians 10:31",
+        "Ecclesiastes 10:17",
+        "Proverbs 25:16"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B2.4",
+      "domain_code": "B2",
+      "pillar": "BODY",
+      "statement": "I have an evening routine that helps me transition from stimulation and work into sleep.",
+      "evidence_ids": [
+        "E03",
+        "E04"
+      ],
+      "evidence_note": "E03, E04",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 127:2",
+        "Matthew 11:28-30"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "B3.4",
+      "domain_code": "B3",
+      "pillar": "BODY",
+      "statement": "I regularly break up long periods of sitting with standing, walking, or other movement.",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E08"
+      ],
+      "evidence_note": "E01, E02, E08",
+      "scripture_refs": [
+        "1 Timothy 4:8",
+        "1 Corinthians 9:24-27",
+        "1 Corinthians 6:20"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B4.4",
+      "domain_code": "B4",
+      "pillar": "BODY",
+      "statement": "I adjust training, workload, food, and rest when my body is clearly showing signs of excessive strain.",
+      "evidence_ids": [
+        "E01",
+        "E03",
+        "E04",
+        "E08"
+      ],
+      "evidence_note": "E01, E03, E04, E08",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 103:14",
+        "1 Corinthians 6:19-20"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B1.5",
+      "domain_code": "B1",
+      "pillar": "BODY",
+      "statement": "I can make healthy food choices in normal life without needing an extreme, all-or-nothing diet.",
+      "evidence_ids": [
+        "E05",
+        "E06",
+        "E07",
+        "E11"
+      ],
+      "evidence_note": "E05, E06, E07, E11",
+      "scripture_refs": [
+        "1 Corinthians 10:31",
+        "Ecclesiastes 10:17",
+        "Proverbs 25:16"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "B2.5",
+      "domain_code": "B2",
+      "pillar": "BODY",
+      "statement": "I rarely sacrifice sleep unnecessarily for screens, work, entertainment, or poor planning.",
+      "evidence_ids": [
+        "E03",
+        "E04"
+      ],
+      "evidence_note": "E03, E04",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 127:2",
+        "Matthew 11:28-30"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B3.5",
+      "domain_code": "B3",
+      "pillar": "BODY",
+      "statement": "My training is progressive enough to build capacity but appropriate enough that I can recover from it.",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E08"
+      ],
+      "evidence_note": "E01, E02, E08",
+      "scripture_refs": [
+        "1 Timothy 4:8",
+        "1 Corinthians 9:24-27",
+        "1 Corinthians 6:20"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "B4.5",
+      "domain_code": "B4",
+      "pillar": "BODY",
+      "statement": "Persistent pain, dizziness, breathlessness, unexplained fatigue, or other physical symptoms do not regularly prevent me from functioning.",
+      "evidence_ids": [
+        "E01",
+        "E03",
+        "E04",
+        "E08"
+      ],
+      "evidence_note": "E01, E03, E04, E08",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 103:14",
+        "1 Corinthians 6:19-20"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B1.6",
+      "domain_code": "B1",
+      "pillar": "BODY",
+      "statement": "My relationship with food is generally purposeful and peaceful rather than dominated by guilt, chaos, restriction, or loss of control.",
+      "evidence_ids": [
+        "E05",
+        "E06",
+        "E07",
+        "E11"
+      ],
+      "evidence_note": "E05, E06, E07, E11",
+      "scripture_refs": [
+        "1 Corinthians 10:31",
+        "Ecclesiastes 10:17",
+        "Proverbs 25:16"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B2.6",
+      "domain_code": "B2",
+      "pillar": "BODY",
+      "statement": "Daytime sleepiness or fatigue does not regularly impair my focus, safety, work, training, or relationships.",
+      "evidence_ids": [
+        "E03",
+        "E04"
+      ],
+      "evidence_note": "E03, E04",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 127:2",
+        "Matthew 11:28-30"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B3.6",
+      "domain_code": "B3",
+      "pillar": "BODY",
+      "statement": "My current physical capacity supports ordinary work, family, ministry, and daily-life demands reasonably well.",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E08"
+      ],
+      "evidence_note": "E01, E02, E08",
+      "scripture_refs": [
+        "1 Timothy 4:8",
+        "1 Corinthians 9:24-27",
+        "1 Corinthians 6:20"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "B4.6",
+      "domain_code": "B4",
+      "pillar": "BODY",
+      "statement": "I seek appropriate professional assessment when a physical problem is persistent, severe, unexplained, or outside the scope of coaching.",
+      "evidence_ids": [
+        "E01",
+        "E03",
+        "E04",
+        "E08"
+      ],
+      "evidence_note": "E01, E03, E04, E08",
+      "scripture_refs": [
+        "Mark 6:31",
+        "Psalm 103:14",
+        "1 Corinthians 6:19-20"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "P1.1",
+      "domain_code": "P1",
+      "pillar": "SPIRIT",
+      "statement": "I engage with Scripture consistently enough that Biblical truth is shaping my decisions, not merely inspiring me occasionally.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "Psalm 119:105",
+        "2 Timothy 3:16-17",
+        "John 8:31-32",
+        "Romans 12:2"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P2.1",
+      "domain_code": "P2",
+      "pillar": "SPIRIT",
+      "statement": "Prayer is a regular part of my life rather than something I use only in crisis.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Thessalonians 5:17-18",
+        "Philippians 4:6-7",
+        "James 1:5",
+        "John 15:5"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P3.1",
+      "domain_code": "P3",
+      "pillar": "SPIRIT",
+      "statement": "I view caring for my body as stewardship of something entrusted to me, not as a way to earn God’s love or prove my worth.",
+      "evidence_ids": [
+        "E11",
+        "E18"
+      ],
+      "evidence_note": "E11, E18 (behavioural context only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Corinthians 6:19-20",
+        "1 Corinthians 10:31",
+        "Galatians 5:22-23",
+        "James 1:22"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P4.1",
+      "domain_code": "P4",
+      "pillar": "SPIRIT",
+      "statement": "I have a meaningful sense of the responsibilities, people, and work God has placed in front of me in this season.",
+      "evidence_ids": [
+        "E16",
+        "E19",
+        "E20",
+        "E21",
+        "E23"
+      ],
+      "evidence_note": "E16, E19, E20, E21, E23 (health associations are contextual; Scripture defines the theological construct)",
+      "scripture_refs": [
+        "Ephesians 2:10",
+        "1 Peter 4:10",
+        "Hebrews 10:24-25",
+        "Colossians 3:23"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P1.2",
+      "domain_code": "P1",
+      "pillar": "SPIRIT",
+      "statement": "I regularly examine my beliefs and thought patterns in light of Scripture.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "Psalm 119:105",
+        "2 Timothy 3:16-17",
+        "John 8:31-32",
+        "Romans 12:2"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P2.2",
+      "domain_code": "P2",
+      "pillar": "SPIRIT",
+      "statement": "I bring worry, health concerns, decisions, and burdens to God instead of carrying them entirely alone.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Thessalonians 5:17-18",
+        "Philippians 4:6-7",
+        "James 1:5",
+        "John 15:5"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P3.2",
+      "domain_code": "P3",
+      "pillar": "SPIRIT",
+      "statement": "My health decisions are increasingly governed by wisdom and self-control rather than impulse, fear, vanity, or obsession.",
+      "evidence_ids": [
+        "E11",
+        "E18"
+      ],
+      "evidence_note": "E11, E18 (behavioural context only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Corinthians 6:19-20",
+        "1 Corinthians 10:31",
+        "Galatians 5:22-23",
+        "James 1:22"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P4.2",
+      "domain_code": "P4",
+      "pillar": "SPIRIT",
+      "statement": "My pursuit of health is connected to service, stewardship, and calling rather than being an end in itself.",
+      "evidence_ids": [
+        "E16",
+        "E19",
+        "E20",
+        "E21",
+        "E23"
+      ],
+      "evidence_note": "E16, E19, E20, E21, E23 (health associations are contextual; Scripture defines the theological construct)",
+      "scripture_refs": [
+        "Ephesians 2:10",
+        "1 Peter 4:10",
+        "Hebrews 10:24-25",
+        "Colossians 3:23"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P1.3",
+      "domain_code": "P1",
+      "pillar": "SPIRIT",
+      "statement": "My identity is rooted more deeply in Christ than in my body, performance, productivity, health status, or other people’s approval.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "Psalm 119:105",
+        "2 Timothy 3:16-17",
+        "John 8:31-32",
+        "Romans 12:2"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P2.3",
+      "domain_code": "P2",
+      "pillar": "SPIRIT",
+      "statement": "Gratitude is a deliberate rhythm in my life, including during seasons that are difficult.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Thessalonians 5:17-18",
+        "Philippians 4:6-7",
+        "James 1:5",
+        "John 15:5"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P3.3",
+      "domain_code": "P3",
+      "pillar": "SPIRIT",
+      "statement": "I can pursue discipline without demanding perfection from myself.",
+      "evidence_ids": [
+        "E11",
+        "E18"
+      ],
+      "evidence_note": "E11, E18 (behavioural context only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Corinthians 6:19-20",
+        "1 Corinthians 10:31",
+        "Galatians 5:22-23",
+        "James 1:22"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P4.3",
+      "domain_code": "P4",
+      "pillar": "SPIRIT",
+      "statement": "I am actively using my gifts, time, or resources in ways that serve others.",
+      "evidence_ids": [
+        "E16",
+        "E19",
+        "E20",
+        "E21",
+        "E23"
+      ],
+      "evidence_note": "E16, E19, E20, E21, E23 (health associations are contextual; Scripture defines the theological construct)",
+      "scripture_refs": [
+        "Ephesians 2:10",
+        "1 Peter 4:10",
+        "Hebrews 10:24-25",
+        "Colossians 3:23"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P1.4",
+      "domain_code": "P1",
+      "pillar": "SPIRIT",
+      "statement": "When I hear a health claim described as “Biblical,” I am willing to examine whether Scripture actually teaches it in context.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "Psalm 119:105",
+        "2 Timothy 3:16-17",
+        "John 8:31-32",
+        "Romans 12:2"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P2.4",
+      "domain_code": "P2",
+      "pillar": "SPIRIT",
+      "statement": "I ask God for wisdom before major decisions and remain willing to change course.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Thessalonians 5:17-18",
+        "Philippians 4:6-7",
+        "James 1:5",
+        "John 15:5"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "P3.4",
+      "domain_code": "P3",
+      "pillar": "SPIRIT",
+      "statement": "When I become aware that a behaviour is unwise or misaligned, I am willing to respond with concrete change.",
+      "evidence_ids": [
+        "E11",
+        "E18"
+      ],
+      "evidence_note": "E11, E18 (behavioural context only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Corinthians 6:19-20",
+        "1 Corinthians 10:31",
+        "Galatians 5:22-23",
+        "James 1:22"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "P4.4",
+      "domain_code": "P4",
+      "pillar": "SPIRIT",
+      "statement": "I participate meaningfully in Christian community rather than trying to live the Christian life in isolation.",
+      "evidence_ids": [
+        "E16",
+        "E19",
+        "E20",
+        "E21",
+        "E23"
+      ],
+      "evidence_note": "E16, E19, E20, E21, E23 (health associations are contextual; Scripture defines the theological construct)",
+      "scripture_refs": [
+        "Ephesians 2:10",
+        "1 Peter 4:10",
+        "Hebrews 10:24-25",
+        "Colossians 3:23"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P1.5",
+      "domain_code": "P1",
+      "pillar": "SPIRIT",
+      "statement": "I can distinguish a clear Biblical principle from a personal preference, health theory, or cultural tradition.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "Psalm 119:105",
+        "2 Timothy 3:16-17",
+        "John 8:31-32",
+        "Romans 12:2"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "P2.5",
+      "domain_code": "P2",
+      "pillar": "SPIRIT",
+      "statement": "My dependence on God leads me toward faithful action rather than passivity or avoidance of appropriate help.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Thessalonians 5:17-18",
+        "Philippians 4:6-7",
+        "James 1:5",
+        "John 15:5"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P3.5",
+      "domain_code": "P3",
+      "pillar": "SPIRIT",
+      "statement": "I can receive appropriate rest without treating rest as laziness or feeling that I must always be productive.",
+      "evidence_ids": [
+        "E11",
+        "E18"
+      ],
+      "evidence_note": "E11, E18 (behavioural context only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Corinthians 6:19-20",
+        "1 Corinthians 10:31",
+        "Galatians 5:22-23",
+        "James 1:22"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P4.5",
+      "domain_code": "P4",
+      "pillar": "SPIRIT",
+      "statement": "I have people in my Christian community who can encourage, challenge, pray for, and support me.",
+      "evidence_ids": [
+        "E16",
+        "E19",
+        "E20",
+        "E21",
+        "E23"
+      ],
+      "evidence_note": "E16, E19, E20, E21, E23 (health associations are contextual; Scripture defines the theological construct)",
+      "scripture_refs": [
+        "Ephesians 2:10",
+        "1 Peter 4:10",
+        "Hebrews 10:24-25",
+        "Colossians 3:23"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "P1.6",
+      "domain_code": "P1",
+      "pillar": "SPIRIT",
+      "statement": "What I learn from Scripture is increasingly expressed in concrete action rather than remaining information only.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "Psalm 119:105",
+        "2 Timothy 3:16-17",
+        "John 8:31-32",
+        "Romans 12:2"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P2.6",
+      "domain_code": "P2",
+      "pillar": "SPIRIT",
+      "statement": "I regularly create quiet enough space to pray, reflect, listen, and reorient my attention toward God.",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "evidence_note": "E21, E22 (contextual only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Thessalonians 5:17-18",
+        "Philippians 4:6-7",
+        "James 1:5",
+        "John 15:5"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P3.6",
+      "domain_code": "P3",
+      "pillar": "SPIRIT",
+      "statement": "Health, food, training, appearance, and optimization occupy an appropriate place in my life rather than becoming idols.",
+      "evidence_ids": [
+        "E11",
+        "E18"
+      ],
+      "evidence_note": "E11, E18 (behavioural context only; Scripture is primary for this domain)",
+      "scripture_refs": [
+        "1 Corinthians 6:19-20",
+        "1 Corinthians 10:31",
+        "Galatians 5:22-23",
+        "James 1:22"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "P4.6",
+      "domain_code": "P4",
+      "pillar": "SPIRIT",
+      "statement": "My weekly schedule increasingly reflects what I say matters most spiritually, relationally, and vocationally.",
+      "evidence_ids": [
+        "E16",
+        "E19",
+        "E20",
+        "E21",
+        "E23"
+      ],
+      "evidence_note": "E16, E19, E20, E21, E23 (health associations are contextual; Scripture defines the theological construct)",
+      "scripture_refs": [
+        "Ephesians 2:10",
+        "1 Peter 4:10",
+        "Hebrews 10:24-25",
+        "Colossians 3:23"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S1.1",
+      "domain_code": "S1",
+      "pillar": "SOUL",
+      "statement": "When an unhelpful thought appears, I can notice it without automatically treating it as truth.",
+      "evidence_ids": [
+        "E09",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E09, E10, E18",
+      "scripture_refs": [
+        "Romans 12:2",
+        "Philippians 4:8",
+        "2 Corinthians 10:5"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S2.1",
+      "domain_code": "S2",
+      "pillar": "SOUL",
+      "statement": "I can usually identify what I am feeling instead of only reacting to the feeling.",
+      "evidence_ids": [
+        "E08",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E08, E10, E18",
+      "scripture_refs": [
+        "Proverbs 4:23",
+        "Philippians 4:6-7",
+        "James 1:19-20",
+        "Proverbs 16:32"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S3.1",
+      "domain_code": "S3",
+      "pillar": "SOUL",
+      "statement": "I know the few health actions that matter most right now instead of trying to change everything at once.",
+      "evidence_ids": [
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15"
+      ],
+      "evidence_note": "E11, E12, E13, E14, E15",
+      "scripture_refs": [
+        "Galatians 5:22-23",
+        "James 1:22",
+        "1 Corinthians 9:24-27",
+        "Proverbs 25:28"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S4.1",
+      "domain_code": "S4",
+      "pillar": "SOUL",
+      "statement": "I have at least one person with whom I can speak honestly about my struggles and progress.",
+      "evidence_ids": [
+        "E16",
+        "E17",
+        "E23"
+      ],
+      "evidence_note": "E16, E17, E23",
+      "scripture_refs": [
+        "Ecclesiastes 4:9-10",
+        "Proverbs 13:20",
+        "Hebrews 10:24-25",
+        "1 Corinthians 15:33"
+      ],
+      "question_role": "core",
+      "role_order": 1,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S1.2",
+      "domain_code": "S1",
+      "pillar": "SOUL",
+      "statement": "I can redirect my attention toward what matters when my mind becomes distracted or overwhelmed.",
+      "evidence_ids": [
+        "E09",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E09, E10, E18",
+      "scripture_refs": [
+        "Romans 12:2",
+        "Philippians 4:8",
+        "2 Corinthians 10:5"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S2.2",
+      "domain_code": "S2",
+      "pillar": "SOUL",
+      "statement": "When I am stressed, angry, anxious, disappointed, or lonely, I can pause before acting impulsively.",
+      "evidence_ids": [
+        "E08",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E08, E10, E18",
+      "scripture_refs": [
+        "Proverbs 4:23",
+        "Philippians 4:6-7",
+        "James 1:19-20",
+        "Proverbs 16:32"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S3.2",
+      "domain_code": "S3",
+      "pillar": "SOUL",
+      "statement": "I make specific plans for when, where, and how I will carry out important habits.",
+      "evidence_ids": [
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15"
+      ],
+      "evidence_note": "E11, E12, E13, E14, E15",
+      "scripture_refs": [
+        "Galatians 5:22-23",
+        "James 1:22",
+        "1 Corinthians 9:24-27",
+        "Proverbs 25:28"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S4.2",
+      "domain_code": "S4",
+      "pillar": "SOUL",
+      "statement": "The people closest to me generally support the healthy changes I am trying to make.",
+      "evidence_ids": [
+        "E16",
+        "E17",
+        "E23"
+      ],
+      "evidence_note": "E16, E17, E23",
+      "scripture_refs": [
+        "Ecclesiastes 4:9-10",
+        "Proverbs 13:20",
+        "Hebrews 10:24-25",
+        "1 Corinthians 15:33"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S1.3",
+      "domain_code": "S1",
+      "pillar": "SOUL",
+      "statement": "I can reframe setbacks in a constructive way instead of turning them into statements about my identity or worth.",
+      "evidence_ids": [
+        "E09",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E09, E10, E18",
+      "scripture_refs": [
+        "Romans 12:2",
+        "Philippians 4:8",
+        "2 Corinthians 10:5"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S2.3",
+      "domain_code": "S2",
+      "pillar": "SOUL",
+      "statement": "I have healthy ways to regulate stress that do not depend mainly on food, avoidance, scrolling, substances, or other numbing behaviours.",
+      "evidence_ids": [
+        "E08",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E08, E10, E18",
+      "scripture_refs": [
+        "Proverbs 4:23",
+        "Philippians 4:6-7",
+        "James 1:19-20",
+        "Proverbs 16:32"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S3.3",
+      "domain_code": "S3",
+      "pillar": "SOUL",
+      "statement": "My environment makes the right action easier (for example through preparation, cues, scheduling, or removing unnecessary friction).",
+      "evidence_ids": [
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15"
+      ],
+      "evidence_note": "E11, E12, E13, E14, E15",
+      "scripture_refs": [
+        "Galatians 5:22-23",
+        "James 1:22",
+        "1 Corinthians 9:24-27",
+        "Proverbs 25:28"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S4.3",
+      "domain_code": "S4",
+      "pillar": "SOUL",
+      "statement": "My home/work environment makes healthy choices reasonably accessible rather than constantly working against them.",
+      "evidence_ids": [
+        "E16",
+        "E17",
+        "E23"
+      ],
+      "evidence_note": "E16, E17, E23",
+      "scripture_refs": [
+        "Ecclesiastes 4:9-10",
+        "Proverbs 13:20",
+        "Hebrews 10:24-25",
+        "1 Corinthians 15:33"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S1.4",
+      "domain_code": "S1",
+      "pillar": "SOUL",
+      "statement": "I can take a wise next action even when motivation or emotion is not cooperating.",
+      "evidence_ids": [
+        "E09",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E09, E10, E18",
+      "scripture_refs": [
+        "Romans 12:2",
+        "Philippians 4:8",
+        "2 Corinthians 10:5"
+      ],
+      "question_role": "core",
+      "role_order": 2,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S2.4",
+      "domain_code": "S2",
+      "pillar": "SOUL",
+      "statement": "After a difficult event, I usually return to emotional steadiness within a reasonable period rather than remaining dysregulated for days.",
+      "evidence_ids": [
+        "E08",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E08, E10, E18",
+      "scripture_refs": [
+        "Proverbs 4:23",
+        "Philippians 4:6-7",
+        "James 1:19-20",
+        "Proverbs 16:32"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S3.4",
+      "domain_code": "S3",
+      "pillar": "SOUL",
+      "statement": "I track a small number of meaningful behaviours or outcomes often enough to learn from them.",
+      "evidence_ids": [
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15"
+      ],
+      "evidence_note": "E11, E12, E13, E14, E15",
+      "scripture_refs": [
+        "Galatians 5:22-23",
+        "James 1:22",
+        "1 Corinthians 9:24-27",
+        "Proverbs 25:28"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S4.4",
+      "domain_code": "S4",
+      "pillar": "SOUL",
+      "statement": "I have meaningful accountability rather than relying entirely on private motivation.",
+      "evidence_ids": [
+        "E16",
+        "E17",
+        "E23"
+      ],
+      "evidence_note": "E16, E17, E23",
+      "scripture_refs": [
+        "Ecclesiastes 4:9-10",
+        "Proverbs 13:20",
+        "Hebrews 10:24-25",
+        "1 Corinthians 15:33"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S1.5",
+      "domain_code": "S1",
+      "pillar": "SOUL",
+      "statement": "I can step out of rumination or repetitive negative thinking enough to re-engage with the present task.",
+      "evidence_ids": [
+        "E09",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E09, E10, E18",
+      "scripture_refs": [
+        "Romans 12:2",
+        "Philippians 4:8",
+        "2 Corinthians 10:5"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S2.5",
+      "domain_code": "S2",
+      "pillar": "SOUL",
+      "statement": "I can experience uncomfortable emotions without believing I must immediately eliminate or escape them.",
+      "evidence_ids": [
+        "E08",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E08, E10, E18",
+      "scripture_refs": [
+        "Proverbs 4:23",
+        "Philippians 4:6-7",
+        "James 1:19-20",
+        "Proverbs 16:32"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S3.5",
+      "domain_code": "S3",
+      "pillar": "SOUL",
+      "statement": "When I miss a habit or have a bad day, I usually return at the next useful opportunity instead of waiting for Monday or a perfect restart.",
+      "evidence_ids": [
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15"
+      ],
+      "evidence_note": "E11, E12, E13, E14, E15",
+      "scripture_refs": [
+        "Galatians 5:22-23",
+        "James 1:22",
+        "1 Corinthians 9:24-27",
+        "Proverbs 25:28"
+      ],
+      "question_role": "core",
+      "role_order": 3,
+      "include_in_core_score": true,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S4.5",
+      "domain_code": "S4",
+      "pillar": "SOUL",
+      "statement": "I set boundaries with relationships, schedules, media, or environments that repeatedly pull me away from what matters.",
+      "evidence_ids": [
+        "E16",
+        "E17",
+        "E23"
+      ],
+      "evidence_note": "E16, E17, E23",
+      "scripture_refs": [
+        "Ecclesiastes 4:9-10",
+        "Proverbs 13:20",
+        "Hebrews 10:24-25",
+        "1 Corinthians 15:33"
+      ],
+      "question_role": "deep_dive",
+      "role_order": 2,
+      "include_in_core_score": false,
+      "auto_client_visible": true,
+      "coach_only": false
+    },
+    {
+      "id": "S1.6",
+      "domain_code": "S1",
+      "pillar": "SOUL",
+      "statement": "My inner dialogue generally helps me move toward truth, responsibility, hope, and useful action rather than paralysis.",
+      "evidence_ids": [
+        "E09",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E09, E10, E18",
+      "scripture_refs": [
+        "Romans 12:2",
+        "Philippians 4:8",
+        "2 Corinthians 10:5"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "S2.6",
+      "domain_code": "S2",
+      "pillar": "SOUL",
+      "statement": "I can ask for appropriate support when stress or emotion exceeds what I can manage well alone.",
+      "evidence_ids": [
+        "E08",
+        "E10",
+        "E18"
+      ],
+      "evidence_note": "E08, E10, E18",
+      "scripture_refs": [
+        "Proverbs 4:23",
+        "Philippians 4:6-7",
+        "James 1:19-20",
+        "Proverbs 16:32"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "S3.6",
+      "domain_code": "S3",
+      "pillar": "SOUL",
+      "statement": "I follow through on important commitments even after the initial motivation has faded.",
+      "evidence_ids": [
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15"
+      ],
+      "evidence_note": "E11, E12, E13, E14, E15",
+      "scripture_refs": [
+        "Galatians 5:22-23",
+        "James 1:22",
+        "1 Corinthians 9:24-27",
+        "Proverbs 25:28"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    },
+    {
+      "id": "S4.6",
+      "domain_code": "S4",
+      "pillar": "SOUL",
+      "statement": "I intentionally spend time with people who strengthen wisdom, faithfulness, courage, and healthy action.",
+      "evidence_ids": [
+        "E16",
+        "E17",
+        "E23"
+      ],
+      "evidence_note": "E16, E17, E23",
+      "scripture_refs": [
+        "Ecclesiastes 4:9-10",
+        "Proverbs 13:20",
+        "Hebrews 10:24-25",
+        "1 Corinthians 15:33"
+      ],
+      "question_role": "coach_clarification",
+      "role_order": 1,
+      "include_in_core_score": false,
+      "auto_client_visible": false,
+      "coach_only": true
+    }
+  ],
+  "safety_gates": [
+    {
+      "id": "G1",
+      "question": "Has a qualified clinician told you to restrict exercise, fasting, weight loss, or major dietary changes?",
+      "if_yes": "Coach review before prescribing or progressing those behaviours.",
+      "action_code": "clinical_restriction"
+    },
+    {
+      "id": "G2",
+      "question": "Do you currently have unexplained chest pain, fainting, severe shortness of breath, rapidly worsening symptoms, or another condition that may make exercise unsafe?",
+      "if_yes": "Pause exercise programming and obtain appropriate medical clearance.",
+      "action_code": "physical_safety_review"
+    },
+    {
+      "id": "G3",
+      "question": "Are you pregnant, recently postpartum, recovering from surgery, or managing a medical condition that materially changes nutrition/training needs?",
+      "if_yes": "Individualize and involve appropriate clinical expertise where needed.",
+      "action_code": "special_context"
+    },
+    {
+      "id": "G4",
+      "question": "Do you have a current or recent eating disorder, purging behaviour, severe restriction, or recurrent loss-of-control eating that needs specialist support?",
+      "if_yes": "Do not treat this as a discipline problem; coordinate/referral to appropriately qualified care.",
+      "action_code": "eating_disorder_scope"
+    },
+    {
+      "id": "G5",
+      "question": "Are you currently in an acute mental-health crisis or do you need urgent mental-health support?",
+      "if_yes": "Stop the normal assessment path and direct the client to appropriate local urgent/crisis or professional support.",
+      "action_code": "mental_health_urgent"
+    },
+    {
+      "id": "G6",
+      "question": "Are you taking prescription medication or receiving active treatment that may materially affect energy, appetite, sleep, body weight, training tolerance, mood, or test results?",
+      "if_yes": "Record for coach/clinical context; never advise medication changes.",
+      "action_code": "medication_treatment_context"
+    }
+  ],
+  "interpretation_bands": [
+    {
+      "min": 0,
+      "max": 39,
+      "label": "Priority support",
+      "coach_stance": "Explore blockers, safety/context and one or two stabilizing actions. Do not overload."
+    },
+    {
+      "min": 40,
+      "max": 59,
+      "label": "Needs attention",
+      "coach_stance": "A meaningful gap is present; choose high-leverage actions and clarify obstacles."
+    },
+    {
+      "min": 60,
+      "max": 74,
+      "label": "Building",
+      "coach_stance": "Useful foundation with inconsistent areas; reinforce systems and progression."
+    },
+    {
+      "min": 75,
+      "max": 89,
+      "label": "Strong foundation",
+      "coach_stance": "Mostly dependable; optimize only where it serves the client’s calling and goals."
+    },
+    {
+      "min": 90,
+      "max": 100,
+      "label": "Consistently supported",
+      "coach_stance": "Do not chase perfection. Maintain, protect and redirect attention to the next meaningful constraint."
+    }
+  ],
+  "adaptive_deep_dive": {
+    "max_auto_deep_dive_questions": 12,
+    "trigger_rules": [
+      {
+        "id": "AD1",
+        "condition": "core_domain_score <= 59",
+        "assignment": "domain is eligible for both deep-dive questions"
+      },
+      {
+        "id": "AD2",
+        "condition": "60 <= core_domain_score <= 74 AND any core item <= 1",
+        "assignment": "domain is eligible for one deep-dive question"
+      },
+      {
+        "id": "AD3",
+        "condition": "core_domain_score >= 75",
+        "assignment": "no automatic deep-dive questions"
+      }
+    ],
+    "selection_algorithm": [
+      "Build the set of triggered domains using AD1/AD2.",
+      "Sort triggered domains by core_domain_score ascending, then primary-goal relevance descending, then domain code.",
+      "Pass 1: assign the first deep-dive item from every triggered domain in sorted order until the global cap is reached.",
+      "Pass 2: for AD1 domains only, assign the second deep-dive item in the same sorted order until the global cap is reached.",
+      "Never assign more than 12 automatic deep-dive questions.",
+      "Freeze the assignment set when the client enters Adaptive Deep Dive. If core answers are edited afterward, require explicit regeneration and preserve an audit event."
+    ],
+    "scoring_rule": "Deep-dive and coach-clarification responses never contribute to domain, pillar, or KCI scores in v2.",
+    "reassessment_rule": "Week-12 reassessment repeats the 36 Core questions only by default. Adaptive follow-up may be coach-enabled after the comparison snapshot, but it never changes the comparison scores."
+  },
+  "scoring": {
+    "domain_formula": "100 * sum(3 core values) / 12",
+    "display_rounding": "nearest integer; retain >=2 decimals internally",
+    "pillar_formula": "arithmetic mean of four core-domain scores",
+    "kci_formula": "arithmetic mean of Body, Soul, Spirit pillar scores",
+    "deep_dive_in_score": false,
+    "coach_clarification_in_score": false,
+    "missing_core_rule": "No score or submission until all 36 core items are answered, unless a coach-approved exemption exists.",
+    "exemption_rule": "If a coach-approved exemption removes one core item from a domain, normalize to remaining maximum. Require at least 2 scored core items; otherwise domain=insufficient_data and suppress pillar/KCI completeness."
+  },
+  "goal_mappings": {
+    "energy_capacity": {
+      "label": "More usable energy and physical capacity",
+      "primary": [
+        "B4",
+        "B2"
+      ],
+      "secondary": [
+        "B1",
+        "B3",
+        "S2"
+      ]
+    },
+    "weight_management": {
+      "label": "Sustainable body-weight management",
+      "primary": [
+        "B1",
+        "S3"
+      ],
+      "secondary": [
+        "B2",
+        "B3",
+        "S2",
+        "P3"
+      ]
+    },
+    "strength_fitness": {
+      "label": "Build strength and fitness",
+      "primary": [
+        "B3"
+      ],
+      "secondary": [
+        "B2",
+        "B4",
+        "S3"
+      ]
+    },
+    "sleep_recovery": {
+      "label": "Improve sleep and recovery",
+      "primary": [
+        "B2"
+      ],
+      "secondary": [
+        "B4",
+        "S2",
+        "S3"
+      ]
+    },
+    "nutrition_consistency": {
+      "label": "Build a sustainable nutrition pattern",
+      "primary": [
+        "B1",
+        "S3"
+      ],
+      "secondary": [
+        "S2",
+        "S4",
+        "P3"
+      ]
+    },
+    "food_freedom": {
+      "label": "Reduce food chaos, guilt or loss-of-control patterns",
+      "primary": [
+        "B1",
+        "S2"
+      ],
+      "secondary": [
+        "S1",
+        "S3",
+        "P3"
+      ]
+    },
+    "mental_clarity_focus": {
+      "label": "Improve mental clarity and focus",
+      "primary": [
+        "S1"
+      ],
+      "secondary": [
+        "B2",
+        "B4",
+        "S2"
+      ]
+    },
+    "stress_resilience": {
+      "label": "Build emotional resilience and healthier stress responses",
+      "primary": [
+        "S2"
+      ],
+      "secondary": [
+        "S1",
+        "B2",
+        "S4"
+      ]
+    },
+    "discipline_consistency": {
+      "label": "Improve discipline and follow-through",
+      "primary": [
+        "S3"
+      ],
+      "secondary": [
+        "S1",
+        "S4",
+        "P3"
+      ]
+    },
+    "relationships_support": {
+      "label": "Build stronger support and environment",
+      "primary": [
+        "S4"
+      ],
+      "secondary": [
+        "S3",
+        "P4"
+      ]
+    },
+    "spiritual_rhythms": {
+      "label": "Strengthen Scripture and prayer rhythms",
+      "primary": [
+        "P1",
+        "P2"
+      ],
+      "secondary": [
+        "P3",
+        "P4"
+      ]
+    },
+    "stewardship_alignment": {
+      "label": "Strengthen stewardship and self-control",
+      "primary": [
+        "P3"
+      ],
+      "secondary": [
+        "S3",
+        "B1",
+        "P1"
+      ]
+    },
+    "purpose_calling": {
+      "label": "Clarify purpose and build capacity for calling",
+      "primary": [
+        "P4"
+      ],
+      "secondary": [
+        "B4",
+        "S1",
+        "S4",
+        "P3"
+      ]
+    }
+  },
+  "leverage_rules": [
+    {
+      "id": "L01",
+      "candidate": "B2",
+      "trigger_any_below_60": [
+        "B4",
+        "S1",
+        "S2"
+      ],
+      "points": 20,
+      "reason": "Sleep/recovery is low while energy, focus or emotional resilience is also low."
+    },
+    {
+      "id": "L02",
+      "candidate": "S3",
+      "trigger_count_other_below_60": 2,
+      "points": 20,
+      "reason": "Follow-through is low while multiple other domains need attention; implementation may constrain progress across the plan."
+    },
+    {
+      "id": "L03",
+      "candidate": "B1",
+      "trigger_any_below_60": [
+        "B4",
+        "S3"
+      ],
+      "points": 15,
+      "reason": "Nutrition structure is low alongside physical readiness or follow-through."
+    },
+    {
+      "id": "L04",
+      "candidate": "S2",
+      "trigger_any_below_60": [
+        "B1",
+        "B2",
+        "S3"
+      ],
+      "points": 15,
+      "reason": "Stress/emotional regulation is low alongside nutrition, sleep or follow-through."
+    },
+    {
+      "id": "L05",
+      "candidate": "B3",
+      "trigger_any_below_60": [
+        "B4",
+        "S3"
+      ],
+      "points": 12,
+      "reason": "Movement/strength is low alongside physical readiness or follow-through."
+    },
+    {
+      "id": "L06",
+      "candidate": "S4",
+      "trigger_any_below_60": [
+        "S3",
+        "P4"
+      ],
+      "points": 12,
+      "reason": "Support/environment is low alongside follow-through or community/calling."
+    },
+    {
+      "id": "L07",
+      "candidate": "P3",
+      "trigger_any_below_60": [
+        "S3",
+        "B1"
+      ],
+      "points": 12,
+      "reason": "Stewardship/self-control is low alongside follow-through or nutrition structure."
+    },
+    {
+      "id": "L08",
+      "candidate": "P4",
+      "trigger_any_below_60": [
+        "S4",
+        "B4"
+      ],
+      "points": 10,
+      "reason": "Calling/community is low alongside support or usable physical capacity."
+    }
+  ],
+  "big3": {
+    "candidate_formula": "Need + CrossDomainLeverage + GoalRelevance + Readiness + CoachContextAdjustment",
+    "need": "40 * (1 - domain_score/100)",
+    "goal_relevance": "20 primary / 10 secondary / 0 none; cap 20",
+    "readiness": "0–10; domain readiness else general readiness else 5",
+    "coach_context_adjustment": "-10..+10 with reason code",
+    "coach_approval_required": true,
+    "client_publication": "Big 3 remain hidden until coach approval."
+  },
+  "spirit_score_disclaimer": "Spirit scores reflect reported rhythms and alignment in the constructs measured here. They do not measure salvation, holiness, spiritual maturity, God’s approval, or a person’s worth.",
+  "evidence_register": "GodHealth_Scientific_Evidence_Register_v1.docx",
+  "scripture_translation": "KJV"
+}

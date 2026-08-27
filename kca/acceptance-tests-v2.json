@@ -1,0 +1,131 @@
+{
+  "schema_version": "2.0.0",
+  "purpose": "Release-gate tests for the 36-Core + Adaptive Deep Dive architecture. Expected behavior is normative.",
+  "tests": [
+    {
+      "id": "T01",
+      "name": "Definition counts",
+      "assert": [
+        "12 domains",
+        "36 core",
+        "24 deep_dive",
+        "12 coach_clarification",
+        "6 safety gates"
+      ]
+    },
+    {
+      "id": "T02",
+      "name": "All core answers 4",
+      "input": "all 36 core=4",
+      "expect": "all domains=100, pillars=100, KCI=100, no auto deep-dive"
+    },
+    {
+      "id": "T03",
+      "name": "All core answers 0",
+      "input": "all 36 core=0",
+      "expect": "all domains=0, KCI=0, exactly 12 auto deep-dive questions using pass-1 broad coverage; one per domain; cap respected"
+    },
+    {
+      "id": "T04",
+      "name": "Single low domain gets two follow-ups",
+      "input": "B2 core=[0,0,0], all other core=4",
+      "expect": "B2=0; B2.3 and B2.5 assigned; no other deep-dive"
+    },
+    {
+      "id": "T05",
+      "name": "Needs-attention domain gets two follow-ups",
+      "input": "B2 core=[3,3,1]",
+      "expect": "B2=58.33 internal / 58 display; both B2 deep-dive items assigned"
+    },
+    {
+      "id": "T06",
+      "name": "Building without severe item gets no follow-up",
+      "input": "B2 core=[3,3,2]",
+      "expect": "B2=66.67; no B2 deep-dive because no core item <=1"
+    },
+    {
+      "id": "T07",
+      "name": "Building with severe item gets one follow-up",
+      "input": "B2 core=[4,3,1]",
+      "expect": "B2=66.67; exactly one B2 deep-dive item assigned (first by configured order)"
+    },
+    {
+      "id": "T08",
+      "name": "Strong foundation gets no auto follow-up",
+      "input": "B2 core=[4,4,1]",
+      "expect": "B2=75; no automatic B2 deep-dive"
+    },
+    {
+      "id": "T09",
+      "name": "Deep-dive does not change score",
+      "input": "B2 core=[3,3,1], deep-dive=[0,0]",
+      "expect": "B2 remains 58.33 internal / 58 display"
+    },
+    {
+      "id": "T10",
+      "name": "Coach clarification hidden",
+      "input": "any baseline",
+      "expect": "coach_clarification questions never appear automatically in client assessment; coach can view/use them"
+    },
+    {
+      "id": "T11",
+      "name": "Adaptive cap",
+      "input": "all domains <=59",
+      "expect": "no more than 12 automatic deep-dive questions; first-pass broad coverage happens before second questions"
+    },
+    {
+      "id": "T12",
+      "name": "Safety G4",
+      "input": "G4=YES",
+      "expect": "flag eating_disorder_scope; block fasting/caloric-restriction/weight-loss recommendations; require specialist/qualified-care workflow"
+    },
+    {
+      "id": "T13",
+      "name": "Safety G5",
+      "input": "G5=YES",
+      "expect": "flag mental_health_urgent; stop normal recommendation flow; only approved urgent-support routing is shown"
+    },
+    {
+      "id": "T14",
+      "name": "Big 3 approval gate",
+      "input": "scored baseline with candidate priorities",
+      "expect": "client cannot see Big 3 before coach approval"
+    },
+    {
+      "id": "T15",
+      "name": "Week-12 comparability",
+      "input": "week12 v2 run",
+      "expect": "exact same 36 core items score comparison; adaptive deep-dive off by default; baseline immutable"
+    },
+    {
+      "id": "T16",
+      "name": "Version immutability",
+      "input": "question wording edited after active v2 runs exist",
+      "expect": "new assessment-definition version created; historical run retains original wording/version"
+    },
+    {
+      "id": "T17",
+      "name": "Autosave",
+      "input": "client answers then refreshes after save confirmation",
+      "expect": "all confirmed answers and progress restored"
+    },
+    {
+      "id": "T18",
+      "name": "Analytics privacy",
+      "input": "inspect general analytics payloads",
+      "expect": "no raw answers, safety details, health context, prayer/scripture responses, or free-text constraints sent"
+    },
+    {
+      "id": "T19",
+      "name": "Spirit language boundary",
+      "input": "any Spirit score",
+      "expect": "no language infers weak/strong faith, salvation, holiness, worth, or God’s approval"
+    },
+    {
+      "id": "T20",
+      "name": "No diagnosis/root cause",
+      "input": "low scores and flags",
+      "expect": "automated output contains no diagnosis, disease prediction, root-cause claim, medication change, or treatment directive"
+    }
+  ]
+}
