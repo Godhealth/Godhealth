@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Coach Dashboard | GodHealth Kingdom Capacity Assessment</title>
+<meta name="description" content="Private GodHealth coach dashboard for reviewing Kingdom Capacity Assessment results.">
+<link rel="canonical" href="https://www.godhealth.org/coach-dashboard/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--forest-deep:#04160e;--forest:#0a2417;--forest-soft:#0f3221;--gold-1:#b88a2e;--gold-2:#d9b45a;--gold-3:#f1d693;--gold-line:rgba(217,180,90,.30);--ink:#f7f3ea;--ink-soft:rgba(247,243,234,.76);--ink-mute:rgba(247,243,234,.56);--cream:#fbf5e8;--cream-2:#f5ead4;--charcoal:#211b12;--danger:#d94d3a;--ok:#72d88b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% 0,rgba(217,180,90,.14),transparent 34rem),linear-gradient(180deg,var(--forest-deep),#03110b 62%,var(--forest-deep));color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}button,input,textarea{font:inherit}a{color:inherit}p,h1,h2,h3{margin:0}.wrap{width:min(1180px,calc(100% - 40px));margin:auto}.center{text-align:center}.gold-text{background:linear-gradient(135deg,#fff3b8,var(--gold-3),var(--gold-2),var(--gold-1));-webkit-background-clip:text;background-clip:text;color:transparent}.eyebrow{color:var(--gold-2);font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.display,h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:700;line-height:.98;letter-spacing:-.03em}h1{font-size:clamp(42px,7vw,82px)}h2{font-size:clamp(31px,4.5vw,54px)}h3{font-size:clamp(23px,2.6vw,32px)}.lead{font-size:clamp(16px,1.8vw,20px);color:var(--ink-soft);line-height:1.7}.muted{color:var(--ink-soft)}.small{font-size:13px;color:var(--ink-mute)}.section{padding:clamp(46px,7vw,78px) 0}.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+header{position:sticky;top:0;z-index:20;background:rgba(4,22,14,.90);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(217,180,90,.14)}.bar{height:82px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-family:"Cormorant Garamond",serif;font-size:clamp(30px,3.6vw,42px);font-weight:700;letter-spacing:.03em;text-decoration:none;background:linear-gradient(135deg,#fff3b8 0%,#f1d693 28%,#d9b45a 58%,#b88a2e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 24px rgba(217,180,90,.28)}.nav{display:flex;align-items:center;gap:18px}.nav a{font-size:13px;text-decoration:none;color:var(--ink-soft)}.nav a:hover{color:var(--gold-3)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:16px 28px;border-radius:999px;text-decoration:none;font-weight:900;font-size:13px;letter-spacing:.05em;text-transform:uppercase;border:1px solid transparent;transition:.22s ease;cursor:pointer}.btn-gold{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff1b8 0%,#eac75f 32%,#b1781d 68%,#f6dc86 100%);color:#241802;box-shadow:0 22px 46px -18px rgba(184,138,46,.95),inset 0 1px 0 rgba(255,255,255,.56),inset 0 -10px 20px rgba(82,47,8,.18)}.btn-gold:before{content:"";position:absolute;inset:-1px auto -1px -45%;width:34%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.56),transparent);transform:skewX(-18deg);transition:.55s ease}.btn-gold:hover:before{left:112%}.btn:hover{transform:translateY(-2px)}.btn-outline{background:rgba(217,180,90,.07);color:var(--ink);border-color:var(--gold-line)}.btn-danger{background:rgba(217,77,58,.12);border-color:rgba(217,77,58,.42);color:#ffd7d0}.btn-row{display:flex;gap:12px;flex-wrap:wrap}
+.card{border:1px solid var(--gold-line);border-radius:26px;background:linear-gradient(180deg,rgba(15,50,33,.96),rgba(8,30,19,.96));box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 32px 74px -48px rgba(0,0,0,.78)}.card-pad{padding:clamp(20px,3vw,34px)}.cream-card{background:linear-gradient(180deg,#fffdf8,#fbf4e7);color:var(--charcoal);border-color:rgba(184,138,46,.25);box-shadow:0 24px 58px -44px rgba(34,28,18,.55),inset 0 1px 0 rgba(255,255,255,.85)}.cream-card .muted,.cream-card .small{color:rgba(33,27,18,.68)}
+.auth-shell{display:grid;grid-template-columns:1.08fr .92fr;gap:26px;align-items:center}.auth-box{margin-top:24px;display:grid;gap:13px}.form-field{display:grid;gap:8px}.form-field label{color:var(--gold-3);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.input,.textarea{width:100%;border:1px solid rgba(217,180,90,.28);border-radius:18px;background:rgba(3,17,10,.66);color:var(--ink);padding:15px 16px;outline:none}.textarea{min-height:104px;resize:vertical}.input:focus,.textarea:focus{border-color:rgba(241,214,147,.75);box-shadow:0 0 0 4px rgba(217,180,90,.12)}
+.stat{padding:18px;border-radius:22px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.06)}.stat strong{display:block;font-size:28px;line-height:1;font-weight:950;color:var(--gold-3)}.stat span{display:block;margin-top:8px;color:var(--ink-soft);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.dash-layout{display:grid;grid-template-columns:360px 1fr;gap:22px;align-items:start}.run-list{display:grid;gap:12px;max-height:calc(100vh - 190px);overflow:auto;padding-right:4px;position:sticky;top:104px}.run-card{width:100%;text-align:left;padding:16px;border:1px solid rgba(217,180,90,.22);border-radius:20px;background:linear-gradient(180deg,rgba(217,180,90,.075),rgba(217,180,90,.035));color:var(--ink);cursor:pointer;transition:.2s ease}.run-card:hover,.run-card.active{border-color:rgba(241,214,147,.65);transform:translateY(-1px);box-shadow:0 18px 38px -30px rgba(217,180,90,.8)}.run-card strong{display:block;font-size:14px}.run-meta{display:flex;justify-content:space-between;gap:10px;margin-top:9px;color:var(--ink-mute);font-size:12px}.pill{display:inline-flex;align-items:center;justify-content:center;min-height:28px;padding:6px 10px;border-radius:999px;background:rgba(217,180,90,.08);border:1px solid rgba(217,180,90,.23);color:var(--gold-3);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.pill.ok{color:#d8ffe1;border-color:rgba(114,216,139,.35);background:rgba(114,216,139,.08)}.pill.warn{color:#ffd7d0;border-color:rgba(217,77,58,.42);background:rgba(217,77,58,.10)}
+.score-layout{display:grid;grid-template-columns:280px 1fr;gap:22px;align-items:center}.score-ring{position:relative;width:min(250px,100%);aspect-ratio:1;margin:auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold-3) calc(var(--score,0)*1%),rgba(217,180,90,.15) 0);box-shadow:0 0 0 1px rgba(241,214,147,.32),0 26px 54px -34px rgba(0,0,0,.9),inset 0 0 34px rgba(4,22,14,.88)}.score-ring:before{content:"";position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle at 50% 18%,rgba(217,180,90,.13),transparent 44%),linear-gradient(180deg,var(--forest-soft),var(--forest-deep));box-shadow:inset 0 0 0 1px rgba(241,214,147,.26)}.score-ring-inner{position:relative;text-align:center}.score-ring strong{display:block;font-size:52px;line-height:1;font-weight:950;color:var(--gold-3)}.score-ring span{display:block;margin-top:8px;font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.score-bars{display:grid;gap:12px}.score-row{padding:14px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.055)}.score-row-head{display:flex;justify-content:space-between;gap:12px;font-weight:900}.bar-track{height:10px;border-radius:999px;background:rgba(255,255,255,.10);margin-top:10px;overflow:hidden}.bar-fill{height:100%;width:var(--pct,0%);border-radius:999px;background:linear-gradient(90deg,var(--gold-1),var(--gold-3))}
+.detail-stack{display:grid;gap:18px}.domain-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.domain-card{padding:14px;border-radius:17px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.045)}.domain-card strong{display:block;color:var(--gold-3)}.domain-score{margin-top:5px;color:var(--ink-soft);font-size:13px}.response-group{display:grid;gap:10px}.response-item{padding:14px;border-radius:16px;background:rgba(3,17,10,.42);border:1px solid rgba(217,180,90,.16)}.response-item strong{display:block;color:var(--gold-3);font-size:13px}.response-item p{margin-top:6px;color:var(--ink-soft);font-size:13px}.answer{margin-top:8px;display:inline-flex;border-radius:999px;border:1px solid rgba(217,180,90,.25);padding:6px 10px;color:var(--ink);font-size:12px;font-weight:800;background:rgba(217,180,90,.06)}
+.candidate-grid{display:grid;gap:12px}.candidate-item{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.candidate-item input{margin-top:5px;accent-color:var(--gold-2)}.empty{padding:34px;border-radius:24px;border:1px dashed rgba(217,180,90,.36);text-align:center;color:var(--ink-soft)}.hidden{display:none!important}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}.loading{opacity:.7;pointer-events:none}
+footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90,.14);text-align:center}
+@media(max-width:960px){.auth-shell,.dash-layout,.score-layout,.g2,.g3,.g4,.domain-grid{grid-template-columns:1fr}.run-list{position:static;max-height:none;padding-right:0}.nav{display:none}.btn{width:100%}.bar{height:76px}}@media(max-width:560px){.wrap{width:min(100% - 28px,1180px)}h1{font-size:38px}.section{padding:40px 0}.card-pad{padding:19px}.score-ring{width:226px}.score-ring strong{font-size:46px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/" aria-label="GodHealth home">GodHealth</a>
+    <nav class="nav" aria-label="Coach dashboard navigation">
+      <a href="/">Home</a>
+      <a href="/kingdom-capacity-assessment/">Assessment</a>
+      <a href="/coaching/">Coaching</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="authSection">
+    <div class="wrap auth-shell">
+      <div class="reveal">
+        <p class="eyebrow">Private Coach Area</p>
+        <h1>Kingdom Capacity <span class="gold-text">Coach Dashboard</span></h1>
+        <p class="lead" style="margin-top:22px">Review participant assessments, safety routing, score snapshots, adaptive deep dive answers and coach-only clarification prompts.</p>
+        <p class="small" style="margin-top:14px">This page is private and hidden from Google. Only approved GodHealth coach accounts can open participant data.</p>
+      </div>
+      <div class="card card-pad reveal" id="authCard">
+        <p class="eyebrow">Secure login</p>
+        <h3 style="margin-top:8px">Sign in with your coach email.</h3>
+        <p class="muted" style="margin-top:12px">GodHealth will send you a secure login link. No password needed.</p>
+        <form class="auth-box" id="authForm">
+          <div class="form-field">
+            <label for="authEmail">Email address</label>
+            <input class="input" id="authEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+          </div>
+          <button class="btn btn-gold" type="submit">Send Coach Login Link</button>
+          <p class="small" id="authMessage">Use the email that has been added as a GodHealth coach in Supabase.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hidden" id="notCoachSection">
+    <div class="wrap">
+      <div class="card card-pad center">
+        <p class="eyebrow">Signed in</p>
+        <h2>Coach access is not enabled yet.</h2>
+        <p class="lead" style="margin-top:14px">You are signed in as <span id="signedInEmail"></span>, but this account has not been added as a GodHealth coach.</p>
+        <p class="muted" style="margin-top:12px">Add this email to the <strong>kca_coaches</strong> table in Supabase, then refresh this page.</p>
+        <div class="btn-row" style="margin-top:22px;justify-content:center">
+          <button class="btn btn-gold" id="refreshAccessBtn" type="button">Check Again</button>
+          <button class="btn btn-outline" id="logoutBtnA" type="button">Sign Out</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hidden" id="dashboardSection">
+    <div class="wrap">
+      <div class="btn-row" style="justify-content:space-between;align-items:center;margin-bottom:18px">
+        <div>
+          <p class="eyebrow">Coach Dashboard</p>
+          <h2>Participant Results</h2>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-outline" id="refreshBtn" type="button">Refresh</button>
+          <button class="btn btn-outline" id="logoutBtnB" type="button">Sign Out</button>
+        </div>
+      </div>
+
+      <div class="grid g4" id="statsGrid" style="margin-bottom:22px"></div>
+
+      <div class="dash-layout">
+        <aside class="run-list" id="runList" aria-label="Assessment runs"></aside>
+        <section class="detail-stack" id="detailMount">
+          <div class="empty">Select a participant to view the full assessment report.</div>
+        </section>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Founder:</strong> Robin Kramps</p>
+    <p><strong>Contact Email:</strong> info@godhealth.org</p>
+    <p><strong>Contact Phone:</strong> +31 6 50267137</p>
+    <p><strong>KVK Number:</strong> 93064578</p>
+  </div>
+</footer>
+
+<script src="/godhealth-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/kca/engine.js"></script>
+<script>
+(function(){
+  const state = {
+    supabase:null,
+    session:null,
+    isCoach:false,
+    definition:null,
+    runs:[],
+    selectedRunId:null
+  };
+  const $ = id => document.getElementById(id);
+  const scaleLabels = ["Not true / Never", "Rarely true", "Sometimes true", "Mostly true", "Consistently true"];
+
+  function escapeHtml(value){
+    return String(value == null ? "" : value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[char]));
+  }
+
+  function initSupabase(){
+    const cfg = window.GODHEALTH_CONFIG && window.GODHEALTH_CONFIG.supabase;
+    if(!cfg || !window.supabase) return null;
+    return window.supabase.createClient(cfg.url, cfg.anonKey);
+  }
+
+  function dateLabel(value){
+    if(!value) return "No date";
+    try{
+      return new Intl.DateTimeFormat("en-GB",{ dateStyle:"medium", timeStyle:"short" }).format(new Date(value));
+    }catch(_err){
+      return String(value);
+    }
+  }
+
+  function pct(value){
+    const number = Number(value);
+    return Number.isFinite(number) ? Math.round(number) : 0;
+  }
+
+  function pillForStatus(status){
+    const safe = escapeHtml(status || "draft");
+    const cls = status === "published" ? "ok" : "";
+    return `<span class="pill ${cls}">${safe}</span>`;
+  }
+
+  function getPillars(snapshot){
+    return (snapshot && snapshot.pillar_scores) || {};
+  }
+
+  function getKci(snapshot){
+    return pct(snapshot && snapshot.kci && snapshot.kci.display);
+  }
+
+  function getDomains(snapshot){
+    return Object.values((snapshot && snapshot.domain_scores) || {}).filter(item => item && item.status === "complete");
+  }
+
+  function getPrimaryGap(snapshot){
+    const domains = getDomains(snapshot).sort((a,b) => Number(a.internal) - Number(b.internal));
+    return domains[0] || null;
+  }
+
+  function questionMap(){
+    const byId = new Map();
+    for(const gate of state.definition.safety_gates || []){
+      byId.set(gate.id, { id:gate.id, pillar:"SAFETY", domain_code:"SAFETY", prompt:gate.prompt || gate.if_yes || gate.id, question_role:"safety_gate" });
+    }
+    for(const question of state.definition.questions || []) byId.set(question.id, question);
+    return byId;
+  }
+
+  function domainName(code){
+    const domain = (state.definition.domains || []).find(item => item.code === code);
+    return domain ? `${domain.code} · ${domain.name}` : code;
+  }
+
+  function answerLabel(response){
+    if(response.answer_text) return response.answer_text;
+    if(Number.isInteger(response.answer_value)) return `${response.answer_value} — ${scaleLabels[response.answer_value] || "Answer"}`;
+    return "No answer";
+  }
+
+  function show(section){
+    ["authSection","notCoachSection","dashboardSection"].forEach(id => $(id).classList.add("hidden"));
+    $(section).classList.remove("hidden");
+  }
+
+  function setMessage(text, danger){
+    const el = $("authMessage");
+    el.textContent = text;
+    el.style.color = danger ? "#ffd7d0" : "";
+  }
+
+  function renderStats(){
+    const total = state.runs.length;
+    const submitted = state.runs.filter(run => run.status === "submitted" || run.status === "safety_paused").length;
+    const published = state.runs.filter(run => run.status === "published").length;
+    const flagged = state.runs.filter(run => run.safety_flags && run.safety_flags.has_flags).length;
+    const completeScores = state.runs.map(run => getKci(run.score_snapshot)).filter(Boolean);
+    const average = completeScores.length ? Math.round(completeScores.reduce((sum,item) => sum + item, 0) / completeScores.length) : 0;
+    $("statsGrid").innerHTML = [
+      ["Total Runs", total],
+      ["Awaiting Review", submitted],
+      ["Published", published],
+      ["Average KCI", average ? average + "%" : "—"],
+      ["Safety Flagged", flagged]
+    ].map(([label,value]) => `<div class="stat"><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></div>`).join("");
+  }
+
+  function renderRunList(){
+    if(!state.runs.length){
+      $("runList").innerHTML = `<div class="empty">No submitted KCA assessments yet.</div>`;
+      return;
+    }
+    $("runList").innerHTML = state.runs.map(run => {
+      const pillars = getPillars(run.score_snapshot);
+      const gap = getPrimaryGap(run.score_snapshot);
+      return `
+        <button class="run-card ${run.id === state.selectedRunId ? "active" : ""}" type="button" data-run-id="${escapeHtml(run.id)}">
+          <strong>${escapeHtml(run.client_email || "Unknown participant")}</strong>
+          <div class="run-meta"><span>${dateLabel(run.submitted_at || run.created_at)}</span>${pillForStatus(run.status)}</div>
+          <div class="run-meta"><span>KCI ${getKci(run.score_snapshot) || "—"}%</span><span>B ${pct(pillars.BODY && pillars.BODY.display)} · S ${pct(pillars.SOUL && pillars.SOUL.display)} · Sp ${pct(pillars.SPIRIT && pillars.SPIRIT.display)}</span></div>
+          <p class="small" style="margin-top:8px">Gap: ${escapeHtml(gap ? `${gap.domain_code} · ${gap.name}` : "Not calculated")}</p>
+        </button>
+      `;
+    }).join("");
+    document.querySelectorAll(".run-card").forEach(button => {
+      button.addEventListener("click", () => loadDetail(button.dataset.runId));
+    });
+  }
+
+  function renderOverview(detail){
+    const snapshot = detail.run.score_snapshot || {};
+    const pillars = getPillars(snapshot);
+    const kci = getKci(snapshot);
+    const gap = getPrimaryGap(snapshot);
+    return `
+      <div class="card card-pad">
+        <div class="score-layout">
+          <div class="score-ring" style="--score:${kci}"><div class="score-ring-inner"><strong>${kci || "—"}%</strong><span>Overall Alignment</span></div></div>
+          <div>
+            <p class="eyebrow">${escapeHtml(detail.client.email || "Participant")}</p>
+            <h2 style="margin-top:8px">Assessment Snapshot</h2>
+            <p class="muted" style="margin-top:12px">Submitted: ${dateLabel(detail.run.submitted_at || detail.run.created_at)}</p>
+            <div class="btn-row" style="margin-top:14px">${pillForStatus(detail.run.status)} ${detail.run.safety_flags && detail.run.safety_flags.has_flags ? '<span class="pill warn">Safety Flag</span>' : '<span class="pill ok">No Safety Stop</span>'}</div>
+            <div class="score-bars" style="margin-top:18px">
+              ${scoreBar("Body", pct(pillars.BODY && pillars.BODY.display))}
+              ${scoreBar("Soul", pct(pillars.SOUL && pillars.SOUL.display))}
+              ${scoreBar("Spirit", pct(pillars.SPIRIT && pillars.SPIRIT.display))}
+            </div>
+            <div class="domain-card" style="margin-top:16px">
+              <strong>Primary Alignment Gap</strong>
+              <p class="domain-score">${escapeHtml(gap ? `${gap.domain_code} · ${gap.name} — ${gap.display}%` : "Not available")}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function scoreBar(label, value){
+    const safe = pct(value);
+    return `
+      <div class="score-row">
+        <div class="score-row-head"><span>${escapeHtml(label)}</span><span>${safe || "—"}</span></div>
+        <div class="bar-track"><div class="bar-fill" style="--pct:${safe}%"></div></div>
+      </div>
+    `;
+  }
+
+  function renderDomains(snapshot){
+    const domains = getDomains(snapshot).sort((a,b) => a.domain_code.localeCompare(b.domain_code));
+    return `
+      <div class="card card-pad">
+        <p class="eyebrow">Domain Scores</p>
+        <h3 style="margin-top:8px">Body, Soul & Spirit detail.</h3>
+        <div class="domain-grid" style="margin-top:18px">
+          ${domains.map(domain => `
+            <div class="domain-card">
+              <strong>${escapeHtml(domain.domain_code)} · ${escapeHtml(domain.name)}</strong>
+              <p class="domain-score">${escapeHtml(domain.pillar)} · ${pct(domain.display)}%</p>
+              <div class="bar-track"><div class="bar-fill" style="--pct:${pct(domain.display)}%"></div></div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderSafety(detail){
+    const safety = detail.run.safety_flags || {};
+    return `
+      <div class="card card-pad ${safety.has_flags ? "alert" : ""}">
+        <p class="eyebrow">Safety Routing</p>
+        <h3 style="margin-top:8px">${safety.has_flags ? "Safety attention required." : "No safety stop reported."}</h3>
+        <p class="muted" style="margin-top:12px">${safety.has_flags ? "Review these flags carefully before coaching recommendations are finalized." : "Normal coaching review can continue."}</p>
+        ${(safety.flags || []).length ? `<div class="response-group" style="margin-top:16px">${safety.flags.map(flag => `<div class="response-item"><strong>${escapeHtml(flag.gate_id)} · ${escapeHtml(flag.action_code)}</strong><p>${escapeHtml(flag.message)}</p></div>`).join("")}</div>` : ""}
+        ${(safety.restrictions || []).length ? `<p class="small" style="margin-top:14px">Restrictions: ${escapeHtml(safety.restrictions.join(", "))}</p>` : ""}
+      </div>
+    `;
+  }
+
+  function renderBig3(detail){
+    const publication = detail.publication;
+    const existing = publication && publication.approved_big3;
+    const candidates = existing || (detail.run.big3_candidates && detail.run.big3_candidates.candidates) || [];
+    return `
+      <div class="card card-pad">
+        <p class="eyebrow">Coach Big 3</p>
+        <h3 style="margin-top:8px">${existing ? "Published priorities." : "Candidate priorities awaiting coach approval."}</h3>
+        <p class="muted" style="margin-top:12px">${existing ? "These Big 3 priorities are available for the participant experience." : "Select up to three priorities. These are not client-visible until you publish them."}</p>
+        <div class="candidate-grid" style="margin-top:18px">
+          ${candidates.length ? candidates.map((candidate,index) => renderCandidate(candidate,index,Boolean(existing))).join("") : `<div class="empty">No Big 3 candidates available.</div>`}
+        </div>
+        ${existing ? `<p class="small" style="margin-top:12px">Published: ${dateLabel(publication.created_at)}</p>` : `
+          <div class="form-field" style="margin-top:18px">
+            <label for="coachReason">Coach note</label>
+            <textarea class="textarea" id="coachReason" placeholder="Why these Big 3 are the right priorities for this participant.">Coach reviewed inside the GodHealth KCA Coach Dashboard.</textarea>
+          </div>
+          <div class="btn-row" style="margin-top:18px">
+            <button class="btn btn-gold" id="publishBig3Btn" type="button">Publish Selected Big 3</button>
+          </div>
+        `}
+      </div>
+    `;
+  }
+
+  function renderCandidate(candidate,index,published){
+    const checked = index < 3 ? "checked" : "";
+    const domain = candidate.domain_code || "";
+    const name = candidate.name || domainName(domain);
+    const score = Number.isFinite(candidate.priority_score) ? `Priority ${Math.round(candidate.priority_score)}` : "";
+    if(published){
+      return `
+        <div class="candidate-item">
+          <span class="pill ok">#${escapeHtml(candidate.rank || index + 1)}</span>
+          <div>
+            <strong>${escapeHtml(domainName(domain))}</strong>
+            <p class="muted" style="margin-top:8px">${escapeHtml(candidate.action || "Coach-approved next step.")}</p>
+            <p class="small" style="margin-top:6px">${escapeHtml(candidate.success_measure || "")}</p>
+          </div>
+        </div>
+      `;
+    }
+    return `
+      <label class="candidate-item">
+        <input type="checkbox" class="big3-check" value="${escapeHtml(domain)}" data-name="${escapeHtml(name)}" ${checked}>
+        <span>
+          <strong>${escapeHtml(domainName(domain))}</strong>
+          <p class="muted" style="margin-top:8px">${escapeHtml(score)} ${candidate.eligible === false ? "· Not eligible because of safety routing" : ""}</p>
+          ${(candidate.transparent_reasons || []).length ? `<p class="small" style="margin-top:6px">${escapeHtml(candidate.transparent_reasons.join(" "))}</p>` : ""}
+        </span>
+      </label>
+    `;
+  }
+
+  function renderResponses(detail){
+    const map = questionMap();
+    const groups = { safety_gate:[], core:[], deep_dive:[] };
+    for(const response of detail.responses || []){
+      if(!groups[response.question_role]) groups[response.question_role] = [];
+      groups[response.question_role].push(response);
+    }
+    const coachQuestions = (state.definition.questions || []).filter(question => question.question_role === "coach_clarification");
+    return `
+      <div class="card card-pad">
+        <p class="eyebrow">Participant Answers</p>
+        <h3 style="margin-top:8px">Safety, Core and Deep Dive responses.</h3>
+        ${responseGroupHtml("Safety Gates", groups.safety_gate, map)}
+        ${responseGroupHtml("36 Core Answers", groups.core, map)}
+        ${responseGroupHtml("Adaptive Deep Dive", groups.deep_dive, map)}
+      </div>
+      <div class="card card-pad">
+        <p class="eyebrow">Coach-only clarification</p>
+        <h3 style="margin-top:8px">Questions to use in the Strategy Call.</h3>
+        <div class="response-group" style="margin-top:16px">
+          ${coachQuestions.map(question => `<div class="response-item"><strong>${escapeHtml(question.id)} · ${escapeHtml(domainName(question.domain_code))}</strong><p>${escapeHtml(question.prompt)}</p></div>`).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function responseGroupHtml(title,responses,map){
+    return `
+      <div style="margin-top:22px">
+        <p class="eyebrow">${escapeHtml(title)}</p>
+        <div class="response-group" style="margin-top:12px">
+          ${responses.length ? responses.map(response => {
+            const question = map.get(response.question_id) || {};
+            return `<div class="response-item"><strong>${escapeHtml(response.question_id)} · ${escapeHtml(domainName(question.domain_code || response.question_role))}</strong><p>${escapeHtml(question.prompt || "Question text unavailable")}</p><span class="answer">${escapeHtml(answerLabel(response))}</span></div>`;
+          }).join("") : `<div class="empty">No ${escapeHtml(title.toLowerCase())} found.</div>`}
+        </div>
+      </div>
+    `;
+  }
+
+  async function checkAuth(){
+    if(!state.supabase){
+      setMessage("Supabase configuration could not be loaded.", true);
+      show("authSection");
+      return;
+    }
+    const { data } = await state.supabase.auth.getSession();
+    state.session = data.session;
+    if(!state.session){
+      show("authSection");
+      return;
+    }
+    await checkCoachAccess();
+  }
+
+  async function checkCoachAccess(){
+    const { data, error } = await state.supabase.rpc("kca_is_coach");
+    if(error){
+      $("signedInEmail").textContent = state.session.user.email || "this email";
+      show("notCoachSection");
+      return;
+    }
+    state.isCoach = Boolean(data);
+    if(!state.isCoach){
+      $("signedInEmail").textContent = state.session.user.email || "this email";
+      show("notCoachSection");
+      return;
+    }
+    show("dashboardSection");
+    await loadRuns();
+  }
+
+  async function loadRuns(){
+    document.body.classList.add("loading");
+    const { data, error } = await state.supabase.rpc("kca_coach_dashboard_runs");
+    document.body.classList.remove("loading");
+    if(error){
+      $("detailMount").innerHTML = `<div class="card card-pad alert"><h3>Could not load dashboard.</h3><p class="muted" style="margin-top:12px">${escapeHtml(error.message)}</p></div>`;
+      return;
+    }
+    state.runs = Array.isArray(data) ? data : [];
+    renderStats();
+    renderRunList();
+    if(state.runs.length && !state.selectedRunId) loadDetail(state.runs[0].id);
+  }
+
+  async function loadDetail(runId){
+    state.selectedRunId = runId;
+    renderRunList();
+    $("detailMount").innerHTML = `<div class="empty">Loading participant report...</div>`;
+    const { data, error } = await state.supabase.rpc("kca_coach_dashboard_run_detail", { p_run_id:runId });
+    if(error){
+      $("detailMount").innerHTML = `<div class="card card-pad alert"><h3>Could not open report.</h3><p class="muted" style="margin-top:12px">${escapeHtml(error.message)}</p></div>`;
+      return;
+    }
+    $("detailMount").innerHTML = renderOverview(data) + renderSafety(data) + renderBig3(data) + renderDomains(data.run.score_snapshot || {}) + renderResponses(data);
+    const publishBtn = $("publishBig3Btn");
+    if(publishBtn) publishBtn.addEventListener("click", () => publishBig3(runId));
+  }
+
+  async function publishBig3(runId){
+    const selected = Array.from(document.querySelectorAll(".big3-check:checked")).slice(0,3);
+    if(selected.length !== 3){
+      alert("Please select exactly 3 Big 3 priorities before publishing.");
+      return;
+    }
+    const approved = selected.map((input,index) => ({
+      rank:index + 1,
+      domain_code:input.value,
+      action:"Coach-reviewed next step to be finalized inside the GodHealth coaching journey.",
+      success_measure:"Reviewed with coach and translated into a practical weekly target.",
+      coach_reason:"coach_dashboard_approval"
+    }));
+    const reason = $("coachReason") ? $("coachReason").value : "Coach reviewed inside the GodHealth KCA Coach Dashboard.";
+    const button = $("publishBig3Btn");
+    button.disabled = true;
+    button.textContent = "Publishing...";
+    const { error } = await state.supabase.rpc("kca_coach_publish_big3", {
+      p_run_id:runId,
+      p_approved_big3:approved,
+      p_coach_reason:reason
+    });
+    button.disabled = false;
+    button.textContent = "Publish Selected Big 3";
+    if(error){
+      alert("Publishing failed: " + error.message);
+      return;
+    }
+    await loadRuns();
+    await loadDetail(runId);
+  }
+
+  function bind(){
+    $("authForm").addEventListener("submit", async event => {
+      event.preventDefault();
+      const email = $("authEmail").value.trim();
+      if(!email) return;
+      const redirect = location.hostname === "localhost" || location.hostname === "127.0.0.1"
+        ? location.origin + "/coach-dashboard/"
+        : "https://www.godhealth.org/coach-dashboard/";
+      const { error } = await state.supabase.auth.signInWithOtp({
+        email,
+        options:{ emailRedirectTo:redirect, shouldCreateUser:true }
+      });
+      if(error){
+        setMessage("Login link could not be sent: " + error.message, true);
+        return;
+      }
+      setMessage("Check your inbox for the secure coach login link.", false);
+    });
+    $("refreshAccessBtn").addEventListener("click", checkCoachAccess);
+    $("refreshBtn").addEventListener("click", loadRuns);
+    [$("logoutBtnA"), $("logoutBtnB")].forEach(button => button.addEventListener("click", async () => {
+      await state.supabase.auth.signOut();
+      state.session = null;
+      state.isCoach = false;
+      show("authSection");
+    }));
+  }
+
+  function reveal(){
+    requestAnimationFrame(() => document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible")));
+  }
+
+  async function init(){
+    state.supabase = initSupabase();
+    try{
+      state.definition = await fetch("/kca/config-v2.json").then(res => {
+        if(!res.ok) throw new Error("KCA definition could not be loaded.");
+        return res.json();
+      });
+    }catch(error){
+      state.definition = { questions:[], safety_gates:[], domains:[] };
+      setMessage(error.message, true);
+    }
+    bind();
+    await checkAuth();
+    reveal();
+  }
+
+  init().catch(error => {
+    console.error(error);
+    setMessage(error.message || "Something went wrong.", true);
+    show("authSection");
+    reveal();
+  });
+})();
+</script>
+</body>
+</html>
