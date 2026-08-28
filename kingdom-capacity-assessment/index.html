@@ -370,49 +370,54 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     const assigned = state.assignment ? state.assignment.assigned_question_ids : [];
     const validation = KCA.validateSubmission(state.definition, state.core_answers, assigned, state.deep_dive_answers);
     if(!validation.valid){ alert("Please answer all required deep-dive questions before submitting."); return; }
+    const submitButton = $("submitBtn");
+    submitButton.disabled = true;
+    submitButton.textContent = "Saving...";
     state.safety_route = state.safety_route || KCA.routeSafety(state.definition, state.safety_answers);
     state.score_snapshot = state.score_snapshot || KCA.scoreAssessment(state.definition, state.core_answers);
     state.candidates = KCA.generateBig3Candidates(state.definition, state.score_snapshot, state.context, state.safety_route);
-    await saveRunToSupabase();
-    saveProgress();
-    renderResult(false);
-    showScreen("result");
+    try{
+      await saveRunToSupabase();
+      saveProgress();
+      renderResult(false);
+      showScreen("result");
+    }catch(error){
+      alert("We could not save your assessment yet. Please make sure you are signed in and try again. Details: " + (error && error.message ? error.message : "Unknown save error"));
+    }finally{
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit Assessment";
+    }
   }
 
   async function saveRunToSupabase(){
-    if(!state.supabase || state.demo) return;
+    if(state.demo) return;
+    if(!state.supabase) throw new Error("Supabase configuration is missing.");
     const { data } = await state.supabase.auth.getSession();
     const user = data && data.session && data.session.user;
-    if(!user) return;
-    const payload = {
-      user_id:user.id,
-      definition_version:state.definition.assessment_definition.definition_version,
-      status:"submitted",
-      assessment_type:"baseline",
-      safety_flags:state.safety_route,
-      context:state.context,
-      score_snapshot:state.score_snapshot,
-      adaptive_assignment:state.assignment,
-      big3_candidates:state.candidates,
-      submitted_at:new Date().toISOString()
-    };
-    const result = await state.supabase.from("kca_assessment_runs").insert(payload).select("id").single();
-    if(result && result.data) state.run_id = result.data.id;
-    if(result && result.error) console.warn("KCA Supabase save skipped:", result.error.message);
-    if(state.run_id){
-      const responseRows = [];
-      Object.entries(state.safety_answers || {}).forEach(([question_id, answer_text]) => {
-        responseRows.push({ run_id:state.run_id, user_id:user.id, question_id, question_role:"safety_gate", answer_text });
-      });
-      Object.entries(state.core_answers || {}).forEach(([question_id, answer_value]) => {
-        responseRows.push({ run_id:state.run_id, user_id:user.id, question_id, question_role:"core", answer_value });
-      });
-      Object.entries(state.deep_dive_answers || {}).forEach(([question_id, answer_value]) => {
-        responseRows.push({ run_id:state.run_id, user_id:user.id, question_id, question_role:"deep_dive", answer_value });
-      });
-      const responseResult = await state.supabase.from("kca_responses").insert(responseRows);
-      if(responseResult && responseResult.error) console.warn("KCA response save skipped:", responseResult.error.message);
-    }
+    if(!user) throw new Error("You are not signed in.");
+    const responseRows = [];
+    Object.entries(state.safety_answers || {}).forEach(([question_id, answer_text]) => {
+      responseRows.push({ question_id, question_role:"safety_gate", answer_text });
+    });
+    Object.entries(state.core_answers || {}).forEach(([question_id, answer_value]) => {
+      responseRows.push({ question_id, question_role:"core", answer_value });
+    });
+    Object.entries(state.deep_dive_answers || {}).forEach(([question_id, answer_value]) => {
+      responseRows.push({ question_id, question_role:"deep_dive", answer_value });
+    });
+    const result = await state.supabase.rpc("kca_submit_assessment", {
+      p_definition_version:state.definition.assessment_definition.definition_version,
+      p_assessment_type:"baseline",
+      p_context:state.context,
+      p_safety_flags:state.safety_route,
+      p_adaptive_assignment:state.assignment || {},
+      p_score_snapshot:state.score_snapshot,
+      p_big3_candidates:state.candidates,
+      p_responses:responseRows
+    });
+    if(result && result.error) throw result.error;
+    state.run_id = result && result.data && result.data.run_id;
+    if(!state.run_id) throw new Error("Supabase did not return a run ID.");
   }
 
   function showScreen(name){
