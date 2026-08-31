@@ -1,0 +1,186 @@
+{
+  "version": "3.0.0",
+  "tests": [
+    {
+      "id": "AT01",
+      "test": "Unauthenticated visitor cannot access assessment/intake/questions/results/API data.",
+      "expected": "redirect/access denied; no payload leak"
+    },
+    {
+      "id": "AT02",
+      "test": "Config contains exactly 24 capacity core items.",
+      "expected": 24
+    },
+    {
+      "id": "AT03",
+      "test": "Each of 12 domains contains exactly 2 scored core items.",
+      "expected": "2/domain"
+    },
+    {
+      "id": "AT04",
+      "test": "No automatic deep-dive questions are shown in V3.",
+      "expected": 0
+    },
+    {
+      "id": "AT05",
+      "test": "Coach clarifiers never change domain/pillar/KCI scores.",
+      "expected": true
+    },
+    {
+      "id": "AT06",
+      "test": "Personal intake responses never change Capacity scores.",
+      "expected": true
+    },
+    {
+      "id": "AT07",
+      "test": "Domain scoring for responses 4 and 2 equals 75.",
+      "expected": 75
+    },
+    {
+      "id": "AT08",
+      "test": "Mifflin male: 35y, 180cm, 90kg.",
+      "expected_REE_kcal": 1855
+    },
+    {
+      "id": "AT09",
+      "test": "Mifflin female: 40y, 165cm, 70kg.",
+      "expected_REE_kcal": 1370.25
+    },
+    {
+      "id": "AT10",
+      "test": "Male example REE 1855 with PAL 1.6.",
+      "expected_TDEE_mid_kcal": 2968
+    },
+    {
+      "id": "AT11",
+      "test": "Initial TDEE UI displays estimate/range and uncertainty, not exact metabolism.",
+      "expected": true
+    },
+    {
+      "id": "AT12",
+      "test": "Any clinical safety gate blocks autonomous calorie/fasting/training prescription as configured.",
+      "expected": "coach/clinical review required"
+    },
+    {
+      "id": "AT13",
+      "test": "Age <18 blocks Personalized Calorie Index.",
+      "expected": "no auto energy target"
+    },
+    {
+      "id": "AT14",
+      "test": "BMI <18.5 + weight-loss goal blocks calorie deficit.",
+      "expected": "no auto deficit"
+    },
+    {
+      "id": "AT15",
+      "test": "Calculated target <1200 kcal/day is not auto-published.",
+      "expected": "specialist review required"
+    },
+    {
+      "id": "AT16",
+      "test": "Weight-loss target starts within 10-20% deficit only after coach approval.",
+      "expected": true
+    },
+    {
+      "id": "AT17",
+      "test": "Maintenance/recomp output defaults around TDEE ±5%.",
+      "expected": true
+    },
+    {
+      "id": "AT18",
+      "test": "Resistance-trained healthy adult gets protein logic within 1.4-2.0 g/kg/day when appropriate.",
+      "expected": true
+    },
+    {
+      "id": "AT19",
+      "test": "Kidney/relevant medical condition prevents automated high-protein target.",
+      "expected": "clinical review"
+    },
+    {
+      "id": "AT20",
+      "test": "Nutrition plan surfaces WHO fruit/veg >=400g, fibre >=25g, free sugar <10%, sat fat <10%, trans fat <1%, salt <5g/day as guidance/benchmarks.",
+      "expected": true
+    },
+    {
+      "id": "AT21",
+      "test": "Hydration UI labels EFSA 2.0/2.5 L as total water including food + beverages, not mandatory plain water.",
+      "expected": true
+    },
+    {
+      "id": "AT22",
+      "test": "Sweat-rate module calculates (pre-post+fluid-urine)/hours correctly.",
+      "example": "80.0-79.2+0.5-0 over 1h",
+      "expected_L_per_h": 1.3
+    },
+    {
+      "id": "AT23",
+      "test": "Adult sleep plan uses 7-9h as general target range and flags apnea symptoms for medical assessment.",
+      "expected": true
+    },
+    {
+      "id": "AT24",
+      "test": "Novice with 0 strength days and limited recovery is not assigned 4 hard workouts/week.",
+      "expected": "typically 2 simple full-body sessions"
+    },
+    {
+      "id": "AT25",
+      "test": "Training plan respects available days, time, equipment, injuries and dislikes.",
+      "expected": true
+    },
+    {
+      "id": "AT26",
+      "test": "Fasting uninterested -> no fasting recommendation.",
+      "expected": true
+    },
+    {
+      "id": "AT27",
+      "test": "Eating-disorder risk/pregnancy/relevant medication -> fasting blocked.",
+      "expected": true
+    },
+    {
+      "id": "AT28",
+      "test": "Sauna/cold are never selected as Big 3 ahead of unmet foundational sleep/nutrition/activity needs.",
+      "expected": true
+    },
+    {
+      "id": "AT29",
+      "test": "Plan generator produces exactly 3 candidate Big 3 priorities with rationale, weekly action and fallback action.",
+      "expected": 3
+    },
+    {
+      "id": "AT30",
+      "test": "Client cannot see generated plan until coach approves.",
+      "expected": true
+    },
+    {
+      "id": "AT31",
+      "test": "14-day calorie calibration requires >=8 usable morning weights and adherence data.",
+      "expected": true
+    },
+    {
+      "id": "AT32",
+      "test": "One-day weight change never triggers calorie adjustment.",
+      "expected": true
+    },
+    {
+      "id": "AT33",
+      "test": "Week-12 reassessment repeats exact same 24 Capacity Core version as baseline for comparison.",
+      "expected": true
+    },
+    {
+      "id": "AT34",
+      "test": "Historical assessment/plan versions are immutable.",
+      "expected": true
+    },
+    {
+      "id": "AT35",
+      "test": "Religious/spiritual and health data are protected as sensitive data with role-based access and data minimisation.",
+      "expected": true
+    },
+    {
+      "id": "AT36",
+      "test": "No diagnostic labels are generated from Capacity scores or intake answers.",
+      "expected": true
+    }
+  ]
+}

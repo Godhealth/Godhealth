@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>GodHealth Kingdom Capacity Assessment v2 | GodHealth</title>
-<meta name="description" content="Secure GodHealth Kingdom Capacity Assessment v2 for Body, Soul and Spirit coaching clarity.">
+<title>GodHealth Kingdom Capacity Assessment v3 | GodHealth</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Secure premium GodHealth Kingdom Capacity Assessment v3 for Body, Soul and Spirit coaching clarity.">
 <link rel="canonical" href="https://www.godhealth.org/kingdom-capacity-assessment/">
-<meta property="og:title" content="GodHealth Kingdom Capacity Assessment v2">
+<meta property="og:title" content="GodHealth Kingdom Capacity Assessment v3">
 <meta property="og:description" content="A premium authenticated GodHealth assessment for Body, Soul and Spirit coaching clarity.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.godhealth.org/kingdom-capacity-assessment/">
@@ -51,9 +52,9 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     <div class="wrap hero-shell">
       <div class="reveal">
         <p class="eyebrow">Premium Assessment</p>
-        <h1>Kingdom Capacity Assessment <span class="gold-text">v2</span></h1>
+        <h1>Kingdom Capacity Assessment <span class="gold-text">v3</span></h1>
         <p class="lead" style="margin-top:22px">A secure GodHealth assessment for Body, Soul and Spirit. Built for coaching clarity, safety routing and coach-reviewed next steps.</p>
-        <span class="version-pill" id="versionPill">Version 2.0.0</span>
+        <span class="version-pill" id="versionPill">Version 3.0.0</span>
       </div>
       <div class="card card-pad hero-panel reveal" id="authPanel">
         <p class="eyebrow">Secure access</p>
@@ -65,7 +66,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
             <input class="input" id="authEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
           </div>
           <button class="btn btn-gold" type="submit">Send Secure Access Link</button>
-          <p class="small" id="authMessage">Local demo/testing: add <strong>?demo=1</strong> to the URL.</p>
+          <p class="small" id="authMessage">Use the email GodHealth activated for premium KCA access.</p>
         </form>
       </div>
       <div class="card card-pad hero-panel reveal hidden" id="startPanel">
@@ -83,7 +84,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   <section class="section hidden" id="app">
     <div class="wrap">
       <div class="progress-wrap">
-        <div class="progress-meta"><span id="progressLabel">Step 1 of 5</span><span id="progressPercent">0%</span></div>
+        <div class="progress-meta"><span id="progressLabel">Step 1 of 4</span><span id="progressPercent">0%</span></div>
         <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
       </div>
       <div class="tabs" id="tabs" aria-hidden="true"></div>
@@ -122,33 +123,33 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
             <span>I understand this is a coaching assessment, not medical care. I agree that GodHealth may process my answers for assessment and coaching review.</span>
           </label>
           <div class="btn-row" style="margin-top:22px">
-            <button class="btn btn-gold" id="toCoreBtn" type="button">Continue To Core Questions</button>
+            <button class="btn btn-gold" id="toCoreBtn" type="button">Continue To Personal Intake</button>
           </div>
         </div>
       </section>
 
       <section class="screen" id="screenCore">
         <div class="card card-pad" style="margin-top:26px">
-          <p class="eyebrow">36-question core</p>
-          <h2>Kingdom Capacity Core.</h2>
-          <p class="lead" style="margin-top:14px">These 36 answers are the only answers used for scoring.</p>
+          <p class="eyebrow">Personal intake</p>
+          <h2>Your personal context.</h2>
+          <p class="lead" style="margin-top:14px">Your intake helps your coach personalize the plan. It does not change your Capacity Core score.</p>
           <div id="coreQuestions"></div>
           <div class="btn-row" style="margin-top:24px">
             <button class="btn btn-outline" data-back="intro" type="button">Back</button>
-            <button class="btn btn-gold" id="finishCoreBtn" type="button">Generate Deep Dive</button>
+            <button class="btn btn-gold" id="finishCoreBtn" type="button">Continue To 24 Core Questions</button>
           </div>
         </div>
       </section>
 
       <section class="screen" id="screenDeep">
         <div class="card card-pad" style="margin-top:26px">
-          <p class="eyebrow">Adaptive deep dive</p>
-          <h2>Your follow-up questions.</h2>
-          <p class="lead" id="deepIntro" style="margin-top:14px">These answers give context to the coach. They never change your score.</p>
+          <p class="eyebrow">24-question core</p>
+          <h2>Kingdom Capacity Core.</h2>
+          <p class="lead" id="deepIntro" style="margin-top:14px">These 24 answers create your Body, Soul and Spirit score.</p>
           <div id="deepQuestions"></div>
           <div class="btn-row" style="margin-top:24px">
             <button class="btn btn-outline" data-back="core" type="button">Back</button>
-            <button class="btn btn-gold" id="submitBtn" type="button">Submit Assessment</button>
+            <button class="btn btn-gold" id="submitBtn" type="button">Submit For Coach Review</button>
           </div>
         </div>
       </section>
@@ -171,32 +172,24 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
 <script src="/godhealth-config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/kca/engine.js"></script>
+<script src="/kca/personalization-engine-v3.js"></script>
 <script>
 (function(){
-  const KCA = window.GodHealthKCAEngine;
+  const KCA = window.KCA_V3;
   const state = {
     definition:null,
     session:null,
-    demo:new URLSearchParams(location.search).get("demo") === "1",
-    coach:new URLSearchParams(location.search).get("coach") === "1",
-    safety_answers:{},
-    context:{ client_name:"", primary_goal:"energy_capacity", supporting_goals:[], general_readiness:7 },
-    core_answers:{},
-    deep_dive_answers:{},
-    assignment:null,
-    score_snapshot:null,
-    safety_route:null,
-    candidates:null,
-    publication:null,
-    personal_report:null,
     supabase:null,
-    run_id:null
+    safety_answers:{},
+    intake:{},
+    core_answers:{},
+    consent:{ accepted:false, full_name:"" },
+    latest:null,
+    runResult:null
   };
-  const storageKey = "godhealth:kca:v2:progress";
   const $ = id => document.getElementById(id);
-  const scaleLabels = ["Not true / Never", "Rarely true", "Sometimes true", "Mostly true", "Consistently true"];
-  const steps = { intro:1, core:2, deep:3, result:5 };
+  const scaleLabels = (KCA && KCA.SCALE_LABELS) || ["Not true right now","Rarely true","Sometimes true","Mostly true","Consistently true"];
+  const steps = { intro:1, core:2, deep:3, result:4 };
 
   function escapeHtml(value){
     return String(value == null ? "" : value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[char]));
@@ -208,44 +201,52 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return window.supabase.createClient(cfg.url, cfg.anonKey);
   }
 
-  async function init(){
-    state.definition = await fetch("/kca/config-v2.json").then(res => {
-      if(!res.ok) throw new Error("KCA definition could not be loaded.");
-      return res.json();
-    });
-    KCA.assertDefinition(state.definition);
-    $("versionPill").textContent = "Version " + state.definition.assessment_definition.definition_version;
-    renderGoals();
-    renderSafety();
-    renderTabs();
-    state.supabase = initSupabase();
-    await checkAuth();
-    reveal();
-    bind();
-  }
-
-  async function checkAuth(){
-    if(state.demo){
-      showStart({ email:"demo@godhealth.org" });
-      return;
-    }
-    if(!state.supabase){
-      $("authMessage").textContent = "Supabase configuration was not found. Ask GodHealth for access.";
-      return;
-    }
-    const { data } = await state.supabase.auth.getSession();
-    if(data && data.session){
-      state.session = data.session;
-      showStart(data.session.user);
-    }
+  function setAuthMessage(message, danger){
+    const el = $("authMessage");
+    if(el){ el.textContent = message; el.style.color = danger ? "#ffd7d0" : ""; }
   }
 
   function showStart(user){
     $("authPanel").classList.add("hidden");
     $("startPanel").classList.remove("hidden");
-    if(user && user.email){
-      $("startPanel").querySelector(".muted").textContent = "Signed in as " + user.email + ". Your progress can now be saved securely.";
+    const p = $("startPanel").querySelector(".muted");
+    if(p && user && user.email) p.textContent = "Signed in as " + user.email + ". This premium V3 assessment is ready.";
+  }
+
+  function showAccessRequired(message){
+    $("authPanel").classList.remove("hidden");
+    $("startPanel").classList.add("hidden");
+    setAuthMessage(message || "Your account is signed in, but premium assessment access is not enabled yet.", true);
+  }
+
+  async function loadDefinition(){
+    const { data, error } = await state.supabase.rpc("kca_v3_get_definition");
+    if(error) throw error;
+    state.definition = data;
+    KCA.assertDefinition(state.definition);
+    $("versionPill").textContent = "Version " + (state.definition.schema_version || "3.0.0");
+  }
+
+  async function checkAuth(){
+    if(!state.supabase){
+      setAuthMessage("Supabase configuration was not found. Ask GodHealth for access.", true);
+      return;
     }
+    const { data } = await state.supabase.auth.getSession();
+    state.session = data && data.session;
+    if(!state.session) return;
+    try{
+      await loadDefinition();
+      await loadLatest();
+      showStart(state.session.user);
+    }catch(error){
+      showAccessRequired(error.message || "Premium assessment access is not enabled yet.");
+    }
+  }
+
+  async function loadLatest(){
+    const { data, error } = await state.supabase.rpc("kca_v3_my_latest");
+    if(!error && data) state.latest = data;
   }
 
   function bind(){
@@ -253,468 +254,363 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       event.preventDefault();
       if(!state.supabase) return;
       const email = $("authEmail").value.trim();
-      const assessmentRedirectUrl = "https://www.godhealth.org/kingdom-capacity-assessment/";
+      const assessmentRedirectUrl = location.hostname === "localhost" || location.hostname === "127.0.0.1"
+        ? location.origin + "/kingdom-capacity-assessment/"
+        : "https://www.godhealth.org/kingdom-capacity-assessment/";
       const { error } = await state.supabase.auth.signInWithOtp({
         email,
-        options:{
-          emailRedirectTo: assessmentRedirectUrl,
-          shouldCreateUser: true
-        }
+        options:{ emailRedirectTo: assessmentRedirectUrl, shouldCreateUser: false }
       });
-      $("authMessage").textContent = error ? error.message : "Check your inbox for your secure access link.";
+      setAuthMessage(error ? "Login link could not be sent: " + error.message : "Check your inbox for your secure access link.", Boolean(error));
     });
-    $("beginBtn").addEventListener("click", () => {
+    $("beginBtn").addEventListener("click", async () => {
+      if(!state.definition){
+        try{ await loadDefinition(); }catch(error){ showAccessRequired(error.message); return; }
+      }
+      renderIntro();
+      renderTabs();
       $("app").classList.remove("hidden");
-      window.scrollTo({ top:$("app").offsetTop - 40, behavior:"smooth" });
       showScreen("intro");
+      $("app").scrollIntoView({ behavior:"smooth", block:"start" });
     });
-    $("restoreBtn").addEventListener("click", restoreProgress);
+    $("restoreBtn").addEventListener("click", async () => {
+      await loadLatest();
+      if(state.latest && state.latest.run){
+        renderResultFromServer(state.latest);
+        $("app").classList.remove("hidden");
+        showScreen("result");
+      }else if(state.latest && state.latest.draft){
+        Object.assign(state, state.latest.draft);
+        renderIntro();
+        $("app").classList.remove("hidden");
+        showScreen("intro");
+      }else{
+        alert("No saved V3 assessment progress found yet.");
+      }
+    });
     $("toCoreBtn").addEventListener("click", () => {
       if(!readIntro()) return;
-      const route = KCA.routeSafety(state.definition, state.safety_answers);
-      state.safety_route = route;
-      saveProgress();
-      if(route.stop_normal_recommendation_flow){
-        state.score_snapshot = null;
-        renderResult(true);
-        showScreen("result");
-      } else {
-        renderQuestions("coreQuestions", KCA.coreQuestions(state.definition), "core_answers");
-        showScreen("core");
-      }
+      renderIntake();
+      saveDraft();
+      showScreen("core");
     });
     $("finishCoreBtn").addEventListener("click", () => {
-      const missing = KCA.validateSubmission(state.definition, state.core_answers, [], {}).missing_core;
-      if(missing.length){ alert("Please answer all 36 core questions before continuing."); return; }
-      state.score_snapshot = KCA.scoreAssessment(state.definition, state.core_answers);
-      state.assignment = KCA.assignAdaptiveDeepDive(state.definition, state.core_answers, state.context);
-      const questions = state.assignment.assigned_question_ids.map(id => state.definition.questions.find(q => q.id === id)).filter(Boolean);
-      if(!questions.length){
-        $("deepIntro").textContent = "No extra deep-dive questions were assigned. Your core snapshot is ready.";
-        $("deepQuestions").innerHTML = '<div class="question-card success"><strong>No adaptive deep dive needed.</strong><p class="muted" style="margin-top:8px">Your core answers gave enough structure for this first snapshot.</p></div>';
-      } else {
-        $("deepIntro").textContent = "These " + questions.length + " follow-up answers give context to the coach. They never change your score.";
-        renderQuestions("deepQuestions", questions, "deep_dive_answers");
-      }
-      saveProgress();
+      if(!readIntake()) return;
+      renderCore();
+      saveDraft();
       showScreen("deep");
     });
     $("submitBtn").addEventListener("click", submitAssessment);
     document.querySelectorAll("[data-back]").forEach(button => button.addEventListener("click", () => showScreen(button.dataset.back)));
     document.addEventListener("change", event => {
       if(event.target.matches("[data-answer]")){
-        state[event.target.dataset.bucket][event.target.name] = Number(event.target.value);
-        saveProgress();
+        state.core_answers[event.target.name] = Number(event.target.value);
+        saveDraft();
+      }
+      if(event.target.matches("[data-intake]")){
+        readIntake(false);
+        saveDraft();
       }
     });
   }
 
-  function renderGoals(){
-    const options = Object.entries(state.definition.goal_mappings || {}).map(([key, goal]) => `<option value="${escapeHtml(key)}">${escapeHtml(goal.label)}</option>`).join("");
-    $("primaryGoal").innerHTML = options;
-    $("supportingGoals").innerHTML = options;
+  function renderTabs(){
+    $("tabs").innerHTML = ["Consent", "Personal Intake", "24 Core", "Coach Review"].map((name, index) => `<span class="tab" data-step="${index + 1}">${name}</span>`).join("");
+  }
+
+  function renderIntro(){
+    const card = $("screenIntro").querySelector(".card");
+    card.innerHTML = `
+      <p class="eyebrow">Before you start</p>
+      <h2>Consent and safety first.</h2>
+      <p class="lead" style="margin-top:14px">This premium assessment gives coaching clarity. It is educational and does not diagnose, treat, or replace qualified medical or mental-health support.</p>
+      <div class="form-field" style="margin-top:22px">
+        <label for="clientName">Full name</label>
+        <input class="input" id="clientName" name="client_name" type="text" autocomplete="name" required placeholder="Your full name" value="${escapeHtml(state.consent.full_name || state.intake.full_name || "")}">
+      </div>
+      <div class="safety-list" id="safetyList"></div>
+      <label class="question-card" style="display:flex;gap:12px;align-items:flex-start;margin-top:22px">
+        <input id="consent" type="checkbox" style="margin-top:6px;accent-color:var(--gold-2)" ${state.consent.accepted ? "checked" : ""}>
+        <span>I understand this is a private GodHealth coaching assessment. I agree that GodHealth may process my answers for assessment, safety routing and coach review.</span>
+      </label>
+      <div class="btn-row" style="margin-top:22px">
+        <button class="btn btn-gold" id="toCoreBtn" type="button">Continue To Personal Intake</button>
+      </div>`;
+    renderSafety();
+    $("toCoreBtn").addEventListener("click", () => {
+      if(!readIntro()) return;
+      renderIntake();
+      saveDraft();
+      showScreen("core");
+    });
   }
 
   function renderSafety(){
-    $("safetyList").innerHTML = state.definition.safety_gates.map(gate => `
-      <div class="question-card">
-        <strong>${escapeHtml(gate.question)}</strong>
+    const mount = $("safetyList");
+    mount.innerHTML = (state.definition.safety_gates || []).map(gate => {
+      const val = state.safety_answers[gate.id] || "no";
+      return `<div class="question-card">
+        <strong>${escapeHtml(gate.question || gate.prompt || gate.if_yes || gate.id)}</strong>
         <div class="yesno">
-          <label><input type="radio" name="${escapeHtml(gate.id)}" value="no" checked> No</label>
-          <label><input type="radio" name="${escapeHtml(gate.id)}" value="yes"> Yes</label>
+          <label><input type="radio" name="${escapeHtml(gate.id)}" value="no" ${val !== "yes" ? "checked" : ""}> No</label>
+          <label><input type="radio" name="${escapeHtml(gate.id)}" value="yes" ${val === "yes" ? "checked" : ""}> Yes</label>
         </div>
-      </div>
-    `).join("");
-  }
-
-  function renderTabs(){
-    $("tabs").innerHTML = ["Safety", "Core", "Deep Dive", "Coach Review", "Dashboard"].map((name, index) => `<span class="tab" data-step="${index + 1}">${name}</span>`).join("");
+      </div>`;
+    }).join("");
   }
 
   function readIntro(){
-    if(!$("consent").checked){ alert("Please confirm the coaching assessment consent before continuing."); return false; }
-    const clientName = ($("clientName").value || "").trim();
-    if(!clientName){ alert("Please enter your full name before continuing."); $("clientName").focus(); return false; }
-    state.safety_answers = Object.fromEntries(state.definition.safety_gates.map(gate => {
+    const name = ($("clientName").value || "").trim();
+    if(!name){ alert("Please enter your full name before continuing."); $("clientName").focus(); return false; }
+    if(!$("consent").checked){ alert("Please confirm the assessment consent before continuing."); return false; }
+    state.consent = { accepted:true, full_name:name, accepted_at:new Date().toISOString(), version:"3.0.0" };
+    state.intake.full_name = name;
+    state.safety_answers = Object.fromEntries((state.definition.safety_gates || []).map(gate => {
       const checked = document.querySelector(`input[name="${gate.id}"]:checked`);
       return [gate.id, checked ? checked.value : "no"];
     }));
-    state.context.client_name = clientName;
-    state.context.primary_goal = $("primaryGoal").value;
-    state.context.supporting_goals = Array.from($("supportingGoals").selectedOptions).map(option => option.value).filter(value => value !== state.context.primary_goal);
-    state.context.general_readiness = Number($("readiness").value);
     return true;
   }
 
-  function renderQuestions(mountId, questions, bucket){
+  function visibleIntakeFields(){
+    return (state.definition.personal_transformation_intake || []).filter(field => shouldShowField(field));
+  }
+
+  function shouldShowField(field){
+    if(!field.show_if) return true;
+    const dep = field.show_if.field || field.show_if.id;
+    const expected = field.show_if.equals || field.show_if.value || field.show_if.includes;
+    const actual = state.intake[dep];
+    if(Array.isArray(actual)) return actual.includes(expected);
+    if(Array.isArray(expected)) return expected.includes(actual);
+    return String(actual) === String(expected);
+  }
+
+  function renderIntake(){
+    const screen = $("screenCore");
+    screen.querySelector(".card").innerHTML = `
+      <p class="eyebrow">Adaptive intake</p>
+      <h2>Your personal context.</h2>
+      <p class="lead" style="margin-top:14px">These answers help your coach understand your body, lifestyle, goals, capacity and constraints. They do not change your Capacity Core score.</p>
+      <div id="intakeFields" class="grid g2" style="margin-top:24px"></div>
+      <div class="btn-row" style="margin-top:24px">
+        <button class="btn btn-outline" data-back="intro" type="button">Back</button>
+        <button class="btn btn-gold" id="finishCoreBtn" type="button">Continue To 24 Core Questions</button>
+      </div>`;
+    renderIntakeFields();
+    screen.querySelector("[data-back]").addEventListener("click", () => showScreen("intro"));
+    $("finishCoreBtn").addEventListener("click", () => {
+      if(!readIntake()) return;
+      renderCore();
+      saveDraft();
+      showScreen("deep");
+    });
+  }
+
+  function renderIntakeFields(){
+    const fields = visibleIntakeFields();
+    $("intakeFields").innerHTML = fields.map(fieldHtml).join("");
+  }
+
+  function fieldHtml(field){
+    const value = state.intake[field.id];
+    const label = `${escapeHtml(field.label || field.id)}${field.required ? " *" : ""}`;
+    const attrs = `data-intake id="${escapeHtml(field.id)}" name="${escapeHtml(field.id)}" ${field.required ? "required" : ""}`;
+    if(field.type === "single_select"){
+      return `<div class="form-field"><label for="${escapeHtml(field.id)}">${label}</label><select class="select" ${attrs}><option value="">Select...</option>${(field.options || []).map(opt => `<option value="${escapeHtml(opt)}" ${String(value || "") === String(opt) ? "selected" : ""}>${escapeHtml(opt)}</option>`).join("")}</select></div>`;
+    }
+    if(field.type === "multi_select"){
+      const values = Array.isArray(value) ? value : [];
+      return `<div class="form-field"><label for="${escapeHtml(field.id)}">${label}</label><select class="select" ${attrs} multiple size="4">${(field.options || []).map(opt => `<option value="${escapeHtml(opt)}" ${values.includes(opt) ? "selected" : ""}>${escapeHtml(opt)}</option>`).join("")}</select><p class="small">Hold Command/Control to select more than one.</p></div>`;
+    }
+    if(field.type === "textarea" || field.type === "long_text"){
+      return `<div class="form-field" style="grid-column:1/-1"><label for="${escapeHtml(field.id)}">${label}</label><textarea class="textarea" ${attrs} placeholder="Your answer">${escapeHtml(value || "")}</textarea></div>`;
+    }
+    const inputType = field.type === "integer" || field.type === "decimal" || field.type === "number" ? "number" : "text";
+    const step = field.type === "decimal" ? " step=\"0.1\"" : "";
+    return `<div class="form-field"><label for="${escapeHtml(field.id)}">${label}</label><input class="input" type="${inputType}"${step} ${attrs} value="${escapeHtml(value || "")}" placeholder="${escapeHtml(field.placeholder || "")}"></div>`;
+  }
+
+  function readIntake(validate = true){
+    const fields = visibleIntakeFields();
+    for(const field of fields){
+      const el = document.getElementById(field.id);
+      if(!el) continue;
+      let value;
+      if(el.tagName === "SELECT" && el.multiple) value = Array.from(el.selectedOptions).map(option => option.value);
+      else value = el.value;
+      if((field.type === "integer" || field.type === "decimal" || field.type === "number") && value !== "") value = Number(value);
+      if(validate && field.required && (value === "" || value == null || (Array.isArray(value) && !value.length))){
+        alert("Please complete: " + (field.label || field.id));
+        el.focus();
+        return false;
+      }
+      state.intake[field.id] = value;
+    }
+    return true;
+  }
+
+  function renderCore(){
+    const screen = $("screenDeep");
+    screen.querySelector(".card").innerHTML = `
+      <p class="eyebrow">24-question core</p>
+      <h2>Kingdom Capacity Core.</h2>
+      <p class="lead" style="margin-top:14px">These 24 answers create your Body, Soul and Spirit score. Answer honestly; this is for clarity, not shame.</p>
+      <div id="coreQuestions"></div>
+      <div class="btn-row" style="margin-top:24px">
+        <button class="btn btn-outline" data-back="core" type="button">Back</button>
+        <button class="btn btn-gold" id="submitBtn" type="button">Submit For Coach Review</button>
+      </div>`;
+    renderQuestions("coreQuestions", KCA.coreQuestions(state.definition));
+    screen.querySelector("[data-back]").addEventListener("click", () => showScreen("core"));
+    $("submitBtn").addEventListener("click", submitAssessment);
+  }
+
+  function renderQuestions(mountId, questions){
     const byDomain = {};
     questions.forEach(question => {
       byDomain[question.domain_code] = byDomain[question.domain_code] || [];
       byDomain[question.domain_code].push(question);
     });
     $(mountId).innerHTML = Object.entries(byDomain).map(([domainCode, items]) => {
-      const domain = state.definition.domains.find(item => item.code === domainCode);
+      const domain = (state.definition.domains || []).find(item => item.code === domainCode) || { name:domainCode, pillar:items[0] && items[0].pillar || "" };
       return `<div class="question-domain">
-        <div class="domain-head"><h3>${escapeHtml(domain.name)}</h3><p>${escapeHtml(domain.pillar)} · ${escapeHtml(domain.code)}</p></div>
-        ${items.map(questionHtml(bucket)).join("")}
+        <div class="domain-head"><h3>${escapeHtml(domain.name)}</h3><p>${escapeHtml(domain.pillar || "")} · ${escapeHtml(domainCode)}</p></div>
+        ${items.map(questionHtml).join("")}
       </div>`;
     }).join("");
   }
 
-  function questionHtml(bucket){
-    return question => `<fieldset class="question-card">
+  function questionHtml(question){
+    return `<fieldset class="question-card">
       <legend>${escapeHtml(question.statement)}</legend>
       <div class="scale">
         ${scaleLabels.map((label, value) => {
-          const id = `${bucket}-${question.id}-${value}`.replace(/[^a-zA-Z0-9_-]/g, "-");
-          const checked = state[bucket][question.id] === value ? "checked" : "";
-          return `<span><input data-answer data-bucket="${bucket}" id="${id}" name="${escapeHtml(question.id)}" value="${value}" type="radio" ${checked}><label for="${id}"><span class="scale-number">${value}</span><span class="scale-text">${escapeHtml(label)}</span></label></span>`;
+          const id = `core-${question.id}-${value}`.replace(/[^a-zA-Z0-9_-]/g, "-");
+          const checked = state.core_answers[question.id] === value ? "checked" : "";
+          return `<span><input data-answer id="${id}" name="${escapeHtml(question.id)}" value="${value}" type="radio" ${checked}><label for="${id}"><span class="scale-number">${value}</span><span class="scale-text">${escapeHtml(label)}</span></label></span>`;
         }).join("")}
       </div>
     </fieldset>`;
   }
 
   async function submitAssessment(){
-    const assigned = state.assignment ? state.assignment.assigned_question_ids : [];
-    const validation = KCA.validateSubmission(state.definition, state.core_answers, assigned, state.deep_dive_answers);
-    if(!validation.valid){ alert("Please answer all required deep-dive questions before submitting."); return; }
-    const submitButton = $("submitBtn");
-    submitButton.disabled = true;
-    submitButton.textContent = "Saving...";
-    state.safety_route = state.safety_route || KCA.routeSafety(state.definition, state.safety_answers);
-    state.score_snapshot = state.score_snapshot || KCA.scoreAssessment(state.definition, state.core_answers);
-    state.candidates = KCA.generateBig3Candidates(state.definition, state.score_snapshot, state.context, state.safety_route);
-    state.personal_report = buildPersonalReport();
-    state.context.personal_report = state.personal_report;
     try{
-      await saveRunToSupabase();
-      saveProgress();
-      renderResult(false);
+      const missing = KCA.coreQuestions(state.definition).filter(q => state.core_answers[q.id] === undefined).map(q => q.id);
+      if(missing.length){ alert("Please answer all 24 core questions before submitting."); return; }
+      const button = $("submitBtn");
+      button.disabled = true;
+      button.textContent = "Saving...";
+      const { data, error } = await state.supabase.rpc("kca_v3_submit_assessment", {
+        p_intake: state.intake,
+        p_safety_answers: state.safety_answers,
+        p_responses: state.core_answers,
+        p_consent: state.consent
+      });
+      if(error) throw error;
+      state.runResult = data;
+      renderResultFromServer(data);
       showScreen("result");
     }catch(error){
-      alert("We could not save your assessment yet. Please make sure you are signed in and try again. Details: " + (error && error.message ? error.message : "Unknown save error"));
+      alert("We could not save your assessment yet. Please try again or contact GodHealth. Details: " + (error.message || "Unknown error"));
     }finally{
-      submitButton.disabled = false;
-      submitButton.textContent = "Submit Assessment";
+      const button = $("submitBtn");
+      if(button){ button.disabled = false; button.textContent = "Submit For Coach Review"; }
     }
   }
 
-  async function saveRunToSupabase(){
-    if(state.demo) return;
-    if(!state.supabase) throw new Error("Supabase configuration is missing.");
-    const { data } = await state.supabase.auth.getSession();
-    const user = data && data.session && data.session.user;
-    if(!user) throw new Error("You are not signed in.");
-    const responseRows = [];
-    Object.entries(state.safety_answers || {}).forEach(([question_id, answer_text]) => {
-      responseRows.push({ question_id, question_role:"safety_gate", answer_text });
-    });
-    Object.entries(state.core_answers || {}).forEach(([question_id, answer_value]) => {
-      responseRows.push({ question_id, question_role:"core", answer_value });
-    });
-    Object.entries(state.deep_dive_answers || {}).forEach(([question_id, answer_value]) => {
-      responseRows.push({ question_id, question_role:"deep_dive", answer_value });
-    });
-    const result = await state.supabase.rpc("kca_submit_assessment", {
-      p_definition_version:state.definition.assessment_definition.definition_version,
-      p_assessment_type:"baseline",
-      p_context:state.context,
-      p_safety_flags:state.safety_route,
-      p_adaptive_assignment:state.assignment || {},
-      p_score_snapshot:state.score_snapshot,
-      p_big3_candidates:state.candidates,
-      p_responses:responseRows
-    });
-    if(result && result.error) throw result.error;
-    state.run_id = result && result.data && result.data.run_id;
-    if(!state.run_id) throw new Error("Supabase did not return a run ID.");
+  async function saveDraft(){
+    if(!state.supabase || !state.session) return;
+    const draft = { safety_answers:state.safety_answers, intake:state.intake, core_answers:state.core_answers, consent:state.consent };
+    state.supabase.rpc("kca_v3_save_draft", { p_draft:draft });
+  }
+
+  function getSnapshot(payload){
+    if(payload && payload.score_snapshot) return payload.score_snapshot;
+    if(payload && payload.run && payload.run.score_snapshot) return payload.run.score_snapshot;
+    return null;
+  }
+
+  function renderResultFromServer(payload){
+    const snapshot = getSnapshot(payload);
+    const safety = payload && (payload.safety_route || (payload.run && payload.run.safety_flags)) || {};
+    const approvedPlan = normalizeApprovedPlan(payload);
+    if(safety.stop_normal_recommendation_flow){
+      $("resultMount").innerHTML = `<div class="card card-pad alert"><p class="eyebrow">Safety first</p><h2>Pause the normal assessment path.</h2><p class="lead" style="margin-top:14px">Based on your safety answer, this is not the right moment for normal coaching recommendations. Please seek appropriate urgent, local or professional support before continuing.</p></div>`;
+      return;
+    }
+    if(!snapshot){
+      $("resultMount").innerHTML = `<div class="card card-pad"><h2>Your assessment is saved.</h2><p class="lead" style="margin-top:14px">Your coach-reviewed plan will appear here after review.</p></div>`;
+      return;
+    }
+    const pillars = snapshot.pillar_scores || {};
+    const domains = Object.values(snapshot.domain_scores || {}).sort((a,b) => String(a.domain_code).localeCompare(String(b.domain_code)));
+    const gap = domains.slice().sort((a,b) => Number(a.internal) - Number(b.internal))[0];
+    const kci = Math.round(snapshot.kci && snapshot.kci.display || 0);
+    $("resultMount").innerHTML = `<div class="card card-pad">
+      <p class="eyebrow">Results dashboard</p>
+      <h2>Your Kingdom Capacity Snapshot.</h2>
+      <p class="lead" style="margin-top:14px">Your score snapshot is ready. Your personalized roadmap is being reviewed by your GodHealth coach before it becomes visible.</p>
+      <div class="score-layout" style="margin-top:28px">
+        <div>
+          <div class="score-ring" style="--score:${kci}"><div class="score-ring-inner"><strong>${kci}%</strong><span>Overall KCI</span></div></div>
+          <p class="small center" style="margin-top:14px">KCI is the average of Body, Soul and Spirit.</p>
+        </div>
+        <div class="score-bars">
+          ${["BODY","SOUL","SPIRIT"].map(name => scoreBar(name, pillars[name] && pillars[name].display)).join("")}
+        </div>
+      </div>
+      <div class="grid g2" style="margin-top:24px">
+        <div class="cream-card card-pad"><p class="eyebrow">Primary Alignment Gap</p><h3 style="margin-top:8px">${escapeHtml(gap ? `${gap.domain_code} · ${gap.domain_name || gap.name}` : "Coach review")}</h3><p class="muted" style="margin-top:10px">This is a coaching signal from your answers, not a diagnosis.</p></div>
+        <div class="cream-card card-pad"><p class="eyebrow">Coach Review</p><h3 style="margin-top:8px">Your roadmap is locked for review.</h3><p class="muted" style="margin-top:10px">Your GodHealth coach checks your answers before personal recommendations are released.</p></div>
+      </div>
+      <div style="margin-top:24px"><h3>Domain scores</h3><div class="score-bars" style="margin-top:14px">${domains.map(d => scoreBar(`${d.domain_code} · ${d.domain_name || d.name}`, d.display)).join("")}</div></div>
+      ${approvedPlan ? renderApprovedPlan(approvedPlan) : `<div class="card card-pad locked" style="margin-top:24px"><p class="eyebrow">Plan locked</p><h3 style="margin-top:8px">Your coach-approved plan is not published yet.</h3><p class="muted" style="margin-top:10px">You will see your Big 3 and personal roadmap here after coach approval.</p></div>`}
+    </div>`;
+    requestAnimationFrame(() => document.querySelectorAll(".bar-fill").forEach(fill => fill.style.width = fill.dataset.width + "%"));
+  }
+
+  function scoreBar(label, value){
+    const safe = Math.round(Number(value) || 0);
+    return `<div class="score-row"><div class="score-row-head"><span>${escapeHtml(label)}</span><span>${safe}</span></div><div class="bar-track"><div class="bar-fill" data-width="${safe}"></div></div></div>`;
+  }
+
+  function normalizeApprovedPlan(payload){
+    if(!payload || !payload.approved_plan) return null;
+    const row = payload.approved_plan;
+    const base = row.plan || row;
+    const plan = Object.assign({}, base);
+    if(!Array.isArray(plan.weeks) && Array.isArray(payload.approved_weeks)){
+      plan.weeks = payload.approved_weeks.map(week => {
+        const targets = week.targets || {};
+        return {
+          week: week.week_number,
+          phase: week.phase || targets.phase || `Week ${week.week_number || ""}`.trim(),
+          purpose: targets.purpose || targets.note || targets.summary || "",
+          focus: targets.focus || (Array.isArray(targets.actions) ? targets.actions.join(" · ") : ""),
+          fallback: week.fallback || targets.fallback || ""
+        };
+      });
+    }
+    return plan;
+  }
+
+  function renderApprovedPlan(plan){
+    const cleanPlan = plan && (plan.plan || plan) || {};
+    const big3 = cleanPlan.big3 || cleanPlan.priorities || [];
+    const weeks = cleanPlan.weeks || [];
+    return `<div class="card card-pad success" style="margin-top:24px"><p class="eyebrow">Coach-approved plan</p><h3>Your roadmap is ready.</h3>${big3.length ? `<div class="grid g3" style="margin-top:18px">${big3.slice(0,3).map((item,index) => `<div class="candidate-item" style="display:block"><span class="pill ok">#${index+1}</span><h3 style="margin-top:10px">${escapeHtml(item.title || item.name || item.domain_code)}</h3><p class="muted" style="margin-top:8px">${escapeHtml(item.action || item.reason || "Coach-approved priority.")}</p></div>`).join("")}</div>` : ""}${weeks.length ? `<div class="plan-grid" style="margin-top:18px">${weeks.slice(0,12).map((w,index) => `<div class="plan-day"><span>${index+1}</span><div><strong>${escapeHtml(w.phase || w.title || `Week ${index+1}`)}</strong><p class="muted" style="margin-top:6px">${escapeHtml(w.purpose || w.focus || "")}</p></div></div>`).join("")}</div>` : ""}</div>`;
   }
 
   function showScreen(name){
     document.querySelectorAll(".screen").forEach(item => item.classList.remove("active"));
     $("screen" + name.charAt(0).toUpperCase() + name.slice(1)).classList.add("active");
     const step = steps[name] || 1;
-    const percent = Math.round((step / 5) * 100);
-    $("progressLabel").textContent = "Step " + step + " of 5";
+    const percent = Math.round((step / 4) * 100);
+    $("progressLabel").textContent = "Step " + step + " of 4";
     $("progressPercent").textContent = percent + "%";
     $("progressFill").style.width = percent + "%";
     document.querySelectorAll(".tab").forEach(item => item.classList.toggle("active", Number(item.dataset.step) <= step));
-  }
-
-  function domainByCode(code){
-    return (state.definition.domains || []).find(domain => domain.code === code) || { code, name:code, pillar:"" };
-  }
-
-  function scoreForDomain(code){
-    const score = state.score_snapshot && state.score_snapshot.domain_scores && state.score_snapshot.domain_scores[code];
-    return score ? Number(score.display) : 0;
-  }
-
-  function safetyBlocksNormalPlan(){
-    const restrictions = state.safety_route && state.safety_route.restrictions || [];
-    return restrictions.includes("specialist_or_qualified_care_workflow_required") || restrictions.includes("no_weight_loss_recommendations");
-  }
-
-  function actionForDomain(domainCode){
-    const domain = domainByCode(domainCode);
-    const lower = (domain.name || "").toLowerCase();
-    const safeWeightLanguage = safetyBlocksNormalPlan();
-    if(domain.pillar === "BODY" && lower.includes("food")){
-      return safeWeightLanguage ? "Create one calm, nourishing meal rhythm that supports stability without restriction." : "Build one simple nutrition structure around real food, protein, fibre and consistent meal timing.";
-    }
-    if(domain.pillar === "BODY" && lower.includes("sleep")) return "Protect your evening rhythm so your body can recover before tomorrow begins.";
-    if(domain.pillar === "BODY" && lower.includes("movement")) return "Start with low-friction daily movement before adding intensity.";
-    if(domain.pillar === "BODY") return "Choose one body-stewardship action that supports energy, recovery and sustainable capacity.";
-    if(domain.pillar === "SPIRIT" && lower.includes("scripture")) return "Anchor your first quiet moment in Scripture before your phone shapes your attention.";
-    if(domain.pillar === "SPIRIT" && lower.includes("prayer")) return "Use a short prayer rhythm to bring burdens to God before carrying them alone.";
-    if(domain.pillar === "SPIRIT") return "Reconnect your health choices to worship, stewardship and daily surrender to Jesus.";
-    if(lower.includes("stress") || lower.includes("emotion")) return "Practice one pause before reacting, eating, scrolling or avoiding.";
-    if(lower.includes("habit") || lower.includes("follow")) return "Reduce the plan to one concrete next action you can repeat even when motivation is low.";
-    return "Bring structure to your inner life through one small, repeatable action that creates alignment.";
-  }
-
-  function insightForDomain(domainCode){
-    const domain = domainByCode(domainCode);
-    const score = scoreForDomain(domainCode);
-    const name = domain.name || domainCode;
-    if(score < 45) return `${name} is currently a major constraint. Start gently, keep the next step small, and build rhythm before intensity.`;
-    if(score < 65) return `${name} needs focused attention. You have a workable foundation, but this area may be quietly pulling the others down.`;
-    if(score < 80) return `${name} is developing. Keep strengthening this area with consistency, structure and wise accountability.`;
-    return `${name} looks like a strong foundation. Use this strength to support the lower-scoring areas.`;
-  }
-
-  function buildAutoBig3(){
-    const raw = state.candidates && state.candidates.candidates || [];
-    return raw.filter(candidate => candidate.eligible !== false).slice(0,3).map((candidate,index) => ({
-      rank:index + 1,
-      domain_code:candidate.domain_code,
-      pillar:candidate.pillar,
-      name:candidate.name,
-      score:scoreForDomain(candidate.domain_code),
-      priority_score:Math.round(Number(candidate.priority_score) || 0),
-      insight:insightForDomain(candidate.domain_code),
-      action:actionForDomain(candidate.domain_code),
-      success_measure:"Repeat the next step for 7 days, then review what changed with your GodHealth coach."
-    }));
-  }
-
-  function buildPlanDays(big3){
-    const primary = big3[0] || {};
-    const second = big3[1] || {};
-    const third = big3[2] || {};
-    const primaryName = primary.name || "your main Alignment Gap";
-    return [
-      { title:"Anchor Your Morning", focus:"Spirit", action:"Spend 10 quiet minutes with God before your phone. Read one short passage and ask: “Lord, what is one faithful step today?”" },
-      { title:"Move Before You Think", focus:"Body", action:"Take a 10-minute walk outside or do gentle movement within one hour of waking, if this is appropriate for you." },
-      { title:"Simplify One Meal", focus:"Body", action:safetyBlocksNormalPlan() ? "Build one calm meal from simple, nourishing foods and eat without rushing." : "Build one meal from real food, enough protein, colourful plants and water. Keep it simple." },
-      { title:"Pause Before Reaction", focus:"Soul", action:"When stress rises, pause for 90 seconds. Breathe slowly, name what you feel, and choose your next action instead of reacting." },
-      { title:"Strengthen The Gap", focus:"Big 3", action:`Give focused attention to ${primaryName}. ${primary.action || "Choose one small action that moves this area toward alignment."}` },
-      { title:"Connect The Three", focus:"Body · Soul · Spirit", action:`Pair one physical action with one spiritual action. Example: walk while praying, or prepare food with gratitude. Include ${second.name || "another growth area"} and ${third.name || "your third priority"}.` },
-      { title:"Reflect And Recommit", focus:"Integration", action:"Write down what improved, what was difficult, and one next step to repeat. Progress starts with awareness and faithful repetition." }
-    ];
-  }
-
-  function buildPersonalReport(){
-    const client = KCA.clientResults(state.definition, state.score_snapshot, state.publication);
-    const big3 = buildAutoBig3();
-    return {
-      generated_at:new Date().toISOString(),
-      client_name:state.context.client_name || "",
-      kci:client.kci,
-      body:client.body,
-      soul:client.soul,
-      spirit:client.spirit,
-      alignment_gap:client.alignment_gap,
-      strong_foundations:client.strong_foundations,
-      big3,
-      plan:buildPlanDays(big3),
-      scripture:client.scripture_for_reflection || [],
-      disclaimer:client.disclaimer
-    };
-  }
-
-  function renderBig3Cards(report){
-    const big3 = report.big3 || [];
-    return `<div class="card card-pad" style="margin-top:24px">
-      <p class="eyebrow">Your Big 3</p>
-      <h3 style="margin-top:8px">Your first priorities are ready.</h3>
-      <p class="muted" style="margin-top:10px">These are automatically generated from your answers and designed for coach review. They are practical coaching signals, not a diagnosis.</p>
-      <div class="grid g3" style="margin-top:18px">
-        ${big3.length ? big3.map(item => `
-          <div class="candidate-item" style="display:block">
-            <span class="pill">#${item.rank} · ${escapeHtml(item.pillar)}</span>
-            <h3 style="margin-top:12px">${escapeHtml(item.name)}</h3>
-            <p class="small" style="margin-top:8px">${escapeHtml(item.domain_code)} · Score ${escapeHtml(item.score)} · Priority ${escapeHtml(item.priority_score)}</p>
-            <p class="muted" style="margin-top:12px">${escapeHtml(item.insight)}</p>
-            <div class="report-note" style="margin-top:12px"><strong>Next step:</strong> ${escapeHtml(item.action)}</div>
-          </div>
-        `).join("") : `<div class="empty">No Big 3 priorities were generated because safety routing paused the normal recommendation flow.</div>`}
-      </div>
-    </div>`;
-  }
-
-  function renderPlan(report){
-    const plan = report.plan || [];
-    return `<div class="card card-pad" style="margin-top:24px">
-      <p class="eyebrow">Personalized Plan</p>
-      <h3 style="margin-top:8px">Your 7-day Alignment Roadmap.</h3>
-      <p class="muted" style="margin-top:10px">This roadmap is built from your assessment pattern across Body, Soul and Spirit. Keep every step simple, wise and realistic.</p>
-      <div class="plan-grid" style="margin-top:18px">
-        ${plan.map((day,index) => `
-          <div class="plan-day">
-            <span>${index + 1}</span>
-            <div>
-              <strong>${escapeHtml(day.title)} · ${escapeHtml(day.focus)}</strong>
-              <p class="muted" style="margin-top:6px">${escapeHtml(day.action)}</p>
-            </div>
-          </div>
-        `).join("")}
-      </div>
-    </div>`;
-  }
-
-  function renderScripture(report){
-    const scripture = Array.isArray(report.scripture) ? report.scripture.slice(0,2) : [];
-    if(!scripture.length) return "";
-    return `<div class="cream-card card-pad" style="margin-top:24px">
-      <p class="eyebrow">Scripture For Reflection</p>
-      <h3 style="margin-top:8px">Bring this into practice.</h3>
-      ${scripture.map(item => `<p class="muted" style="margin-top:12px">${escapeHtml(item.reference || "")}: ${escapeHtml(item.text || item)}</p>`).join("")}
-      <p class="muted" style="margin-top:12px">Practice: read it slowly, pray it honestly, and choose one action today that agrees with it.</p>
-    </div>`;
-  }
-
-  function renderResult(urgentOnly){
-    if(urgentOnly){
-      $("resultMount").innerHTML = `<div class="card card-pad alert">
-        <p class="eyebrow">Safety first</p>
-        <h2>Pause the normal assessment path.</h2>
-        <p class="lead" style="margin-top:14px">Based on your safety answer, this is not the right moment for normal coaching recommendations. Please seek appropriate urgent, local or professional support before continuing.</p>
-      </div>`;
-      return;
-    }
-    const client = KCA.clientResults(state.definition, state.score_snapshot, state.publication);
-    state.personal_report = state.personal_report || buildPersonalReport();
-    state.context.personal_report = state.personal_report;
-    const pillars = [
-      ["BODY", client.body],
-      ["SOUL", client.soul],
-      ["SPIRIT", client.spirit]
-    ];
-    const domainCards = Object.values(state.score_snapshot.domain_scores).map(score => `
-      <div class="score-row">
-        <div class="score-row-head"><span>${escapeHtml(score.domain_code)} · ${escapeHtml(score.name)}</span><span>${score.display}</span></div>
-        <div class="bar-track"><div class="bar-fill" data-width="${score.display}"></div></div>
-        <p class="small" style="margin-top:8px">${escapeHtml((KCA.getBand(state.definition, score.display) || {}).label || "")}</p>
-      </div>
-    `).join("");
-    $("resultMount").innerHTML = `<div class="card card-pad">
-      <p class="eyebrow">Results dashboard</p>
-      <h2>Your Kingdom Capacity Snapshot.</h2>
-      <p class="lead" style="margin-top:14px">${escapeHtml(client.disclaimer)}</p>
-      <div class="score-layout" style="margin-top:28px">
-        <div>
-          <div class="score-ring" style="--score:${client.kci}"><div class="score-ring-inner"><strong>${client.kci}%</strong><span>Overall KCI</span></div></div>
-          <p class="small center" style="margin-top:14px">KCI is the average of Body, Soul and Spirit.</p>
-        </div>
-        <div class="score-bars">
-          ${pillars.map(([name, value]) => `<div class="score-row"><div class="score-row-head"><span>${name}</span><span>${value}</span></div><div class="bar-track"><div class="bar-fill" data-width="${value}"></div></div></div>`).join("")}
-        </div>
-      </div>
-      <div class="grid g2" style="margin-top:24px">
-        <div class="cream-card card-pad">
-          <p class="eyebrow">Alignment Gap</p>
-          <h3 style="margin-top:8px">${escapeHtml(client.alignment_gap.name)}</h3>
-          <p class="muted" style="margin-top:10px">This is your current lowest-scoring domain for coach review. It is not a diagnosis or a statement about your worth.</p>
-        </div>
-        <div class="cream-card card-pad">
-          <p class="eyebrow">Strong foundations</p>
-          <h3 style="margin-top:8px">${client.strong_foundations.map(item => escapeHtml(item.domain_code)).join(" · ")}</h3>
-          <p class="muted" style="margin-top:10px">${client.strong_foundations.map(item => escapeHtml(item.name)).join(", ")}</p>
-        </div>
-      </div>
-      <div style="margin-top:24px">
-        <h3>Domain scores</h3>
-        <div class="score-bars" style="margin-top:14px">${domainCards}</div>
-      </div>
-      ${renderBig3Cards(state.personal_report)}
-      ${renderPlan(state.personal_report)}
-      ${renderScripture(state.personal_report)}
-      ${coachPanel()}
-    </div>`;
-    requestAnimationFrame(() => document.querySelectorAll(".bar-fill").forEach(fill => fill.style.width = fill.dataset.width + "%"));
-  }
-
-  function coachPanel(){
-    if(!state.coach || !state.candidates) return "";
-    const coachQuestions = KCA.coachClarificationQuestions(state.definition).map(question => `
-      <div class="question-card">
-        <strong>${escapeHtml(question.domain_code)} · ${escapeHtml(question.statement)}</strong>
-        <textarea class="textarea" placeholder="Coach-only note. Not shown automatically to client."></textarea>
-      </div>`).join("");
-    const candidates = state.candidates.candidates.map(candidate => `
-      <div class="candidate-item">
-        <strong>${escapeHtml(candidate.domain_code)} · ${escapeHtml(candidate.name)}</strong>
-        <p class="small">Priority score: ${candidate.priority_score} · Eligible: ${candidate.eligible ? "yes" : "no"}</p>
-        <p class="small">Need ${candidate.components.need}, leverage ${candidate.components.cross_domain_leverage}, goal ${candidate.components.goal_relevance}, readiness ${candidate.components.readiness}</p>
-      </div>`).join("");
-    return `<div class="card card-pad" style="margin-top:24px">
-      <p class="eyebrow">Coach-only review</p>
-      <h3>Clarification prompts and Big 3 candidates.</h3>
-      <p class="muted" style="margin-top:10px">This panel appears only in coach mode. The candidate now sees an automatic Big 3 and plan immediately; coach approval can still refine the official coaching priorities.</p>
-      <div class="grid g2" style="margin-top:20px">
-        <div><h3>Coach prompts</h3>${coachQuestions}</div>
-        <div><h3>Candidate priorities</h3><div class="candidate" style="margin-top:12px">${candidates}</div><button class="btn btn-gold" type="button" style="margin-top:18px" onclick="window.publishKcaBig3()">Approve Top 3</button></div>
-      </div>
-    </div>`;
-  }
-
-  window.publishKcaBig3 = function(){
-    const approvals = (state.candidates.candidates || []).filter(item => item.eligible).slice(0,3).map(item => ({
-      domain_code:item.domain_code,
-      action:"Coach-reviewed next step to be finalized inside GodHealth coaching.",
-      success_measure:"Reviewed with coach and translated into a practical weekly target.",
-      coach_reason:"Top candidate after KCA v2 scoring and safety review."
-    }));
-    state.publication = KCA.approveBig3(state.candidates, approvals);
-    saveProgress();
-    renderResult(false);
-  };
-
-  function saveProgress(){
-    localStorage.setItem(storageKey, JSON.stringify({
-      safety_answers:state.safety_answers,
-      context:state.context,
-      core_answers:state.core_answers,
-      deep_dive_answers:state.deep_dive_answers,
-      assignment:state.assignment,
-      score_snapshot:state.score_snapshot,
-      safety_route:state.safety_route,
-      candidates:state.candidates,
-      publication:state.publication,
-      personal_report:state.personal_report
-    }));
-  }
-
-  function restoreProgress(){
-    const raw = localStorage.getItem(storageKey);
-    if(!raw){ alert("No saved KCA progress found on this device."); return; }
-    Object.assign(state, JSON.parse(raw));
-    if($("clientName") && state.context && state.context.client_name) $("clientName").value = state.context.client_name;
-    $("app").classList.remove("hidden");
-    if(state.score_snapshot){
-      renderResult(false);
-      showScreen("result");
-    } else if(state.assignment){
-      const questions = state.assignment.assigned_question_ids.map(id => state.definition.questions.find(q => q.id === id)).filter(Boolean);
-      renderQuestions("deepQuestions", questions, "deep_dive_answers");
-      showScreen("deep");
-    } else if(Object.keys(state.core_answers || {}).length){
-      renderQuestions("coreQuestions", KCA.coreQuestions(state.definition), "core_answers");
-      showScreen("core");
-    } else {
-      showScreen("intro");
-    }
   }
 
   function reveal(){
@@ -722,6 +618,14 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       if(entry.isIntersecting) entry.target.classList.add("visible");
     }), { threshold:.12 });
     document.querySelectorAll(".reveal").forEach(item => observer.observe(item));
+  }
+
+  async function init(){
+    if(!KCA) throw new Error("KCA V3 engine could not be loaded.");
+    state.supabase = initSupabase();
+    bind();
+    await checkAuth();
+    reveal();
   }
 
   init().catch(error => {

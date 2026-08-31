@@ -46,7 +46,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       <div class="reveal">
         <p class="eyebrow">Private Coach Area</p>
         <h1>Kingdom Capacity <span class="gold-text">Coach Dashboard</span></h1>
-        <p class="lead" style="margin-top:22px">Review participant assessments, safety routing, score snapshots, adaptive deep dive answers and coach-only clarification prompts.</p>
+        <p class="lead" style="margin-top:22px">Review participant assessments, safety routing, score snapshots, personal intake, raw answers, safety routing, draft plans and coach-only clarification prompts.</p>
         <p class="small" style="margin-top:14px">This page is private and hidden from Google. Only approved GodHealth coach accounts can open participant data.</p>
       </div>
       <div class="card card-pad reveal" id="authCard">
@@ -85,7 +85,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       <div class="btn-row" style="justify-content:space-between;align-items:center;margin-bottom:18px">
         <div>
           <p class="eyebrow">Coach Dashboard</p>
-          <h2>Participant Results</h2>
+          <h2>Kingdom Capacity Reports</h2>
         </div>
         <div class="btn-row">
           <button class="btn btn-outline" id="refreshBtn" type="button">Refresh</button>
@@ -98,7 +98,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       <div class="dash-layout">
         <aside class="run-list" id="runList" aria-label="Assessment runs"></aside>
         <section class="detail-stack" id="detailMount">
-          <div class="empty">Select a participant to view the full assessment report.</div>
+          <div class="empty">Select a participant to view the full V3 assessment report, answers and draft plan.</div>
         </section>
       </div>
     </div>
@@ -116,7 +116,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
 <script src="/godhealth-config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/kca/engine.js"></script>
+<script src="/kca/personalization-engine-v3.js"></script>
 <script>
 (function(){
   const state = {
@@ -156,7 +156,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   function pillForStatus(status){
     const safe = escapeHtml(status || "draft");
-    const cls = status === "published" ? "ok" : "";
+    const cls = ["published","plan_approved","active","approved"].includes(status) ? "ok" : "";
     return `<span class="pill ${cls}">${safe}</span>`;
   }
 
@@ -187,20 +187,26 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return question.statement || question.question || question.prompt || question.if_yes || question.id || "Question text unavailable";
   }
 
+  function allDefinitionQuestions(){
+    if(!state.definition) return [];
+    return [
+      ...(state.definition.safety_gates || []).map(gate => ({ id:gate.id, pillar:"SAFETY", domain_code:"SAFETY", statement:gate.question || gate.prompt || gate.if_yes || gate.id, question_role:"safety_gate" })),
+      ...(state.definition.capacity_core || []),
+      ...(state.definition.coach_clarifiers || []),
+      ...(state.definition.questions || [])
+    ];
+  }
+
   function questionMap(){
     const byId = new Map();
-    for(const gate of state.definition.safety_gates || []){
-      byId.set(gate.id, { id:gate.id, pillar:"SAFETY", domain_code:"SAFETY", statement:gate.question || gate.prompt || gate.if_yes || gate.id, question_role:"safety_gate" });
-    }
-    for(const question of state.definition.questions || []) byId.set(question.id, question);
+    for(const question of allDefinitionQuestions()) byId.set(question.id, question);
     return byId;
   }
 
   function questionOrderMap(){
     const byId = new Map();
     let index = 0;
-    for(const gate of state.definition.safety_gates || []) byId.set(gate.id, index++);
-    for(const question of state.definition.questions || []) byId.set(question.id, index++);
+    for(const question of allDefinitionQuestions()) byId.set(question.id, index++);
     return byId;
   }
 
@@ -216,38 +222,31 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   }
 
   function buildAutoReport(detail){
-    const context = detail.run.context || {};
-    if(context.personal_report && context.personal_report.big3) return context.personal_report;
+    const engineRun = detail.engine_run || {};
+    const plan = engineRun.generated_plan || {};
     const snapshot = detail.run.score_snapshot || {};
-    const candidates = detail.run.big3_candidates || {};
     const domains = getDomains(snapshot);
     const lowest = getPrimaryGap(snapshot);
-    const strong = domains.slice().sort((a,b) => b.internal - a.internal).slice(0,3);
-    const big3 = (candidates.candidates || []).filter(candidate => candidate.eligible !== false).slice(0,3).map((candidate,index) => ({
-      rank:index + 1,
-      domain_code:candidate.domain_code,
-      pillar:candidate.pillar,
-      name:candidate.name,
-      score:pct(snapshot.domain_scores && snapshot.domain_scores[candidate.domain_code] && snapshot.domain_scores[candidate.domain_code].display),
-      priority_score:Math.round(Number(candidate.priority_score) || 0),
-      insight:insightForDomain(snapshot, candidate.domain_code),
-      action:actionForDomain(candidate.domain_code),
-      success_measure:"Repeat the next step for 7 days, then review what changed with your GodHealth coach."
-    }));
+    const big3 = plan.big3 || plan.priorities || [];
+    const weeks = plan.weeks || [];
     const pillars = getPillars(snapshot);
     return {
-      generated_at:detail.run.submitted_at || detail.run.created_at,
+      generated_at:engineRun.created_at || detail.run.submitted_at || detail.run.created_at,
       client_name:clientName(detail),
       kci:getKci(snapshot),
       body:pct(pillars.BODY && pillars.BODY.display),
       soul:pct(pillars.SOUL && pillars.SOUL.display),
       spirit:pct(pillars.SPIRIT && pillars.SPIRIT.display),
-      alignment_gap:lowest ? { domain_code:lowest.domain_code, name:lowest.name, score:lowest.display } : null,
-      strong_foundations:strong.map(item => ({ domain_code:item.domain_code, name:item.name, score:item.display })),
+      alignment_gap:lowest ? { domain_code:lowest.domain_code, name:lowest.name || lowest.domain_name, score:lowest.display } : null,
+      strong_foundations:domains.slice().sort((a,b) => b.internal - a.internal).slice(0,3).map(item => ({ domain_code:item.domain_code, name:item.name || item.domain_name, score:item.display })),
       big3,
-      plan:buildPlanDays(big3),
-      scripture:lowest && window.GodHealthKCAEngine ? window.GodHealthKCAEngine.scriptureForDomain(state.definition, lowest.domain_code) : [],
-      disclaimer:"These scores summarize reported patterns in this assessment. They are educational coaching signals, not medical care, a treatment plan, or a statement about identity in Christ."
+      plan:weeks,
+      energy_profile:detail.energy_profile || plan.energy_profile || {},
+      nutrition:plan.nutrition || {},
+      training:plan.training || {},
+      recovery:plan.recovery || {},
+      draft_status:engineRun.status || plan.coach_approval_status || "draft_requires_coach_approval",
+      disclaimer:"This is a coach-only draft generated from the participant’s submitted answers. Review, edit and approve before anything personal is published to the client."
     };
   }
 
@@ -305,7 +304,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   function renderStats(){
     const total = state.runs.length;
     const submitted = state.runs.filter(run => run.status === "submitted" || run.status === "safety_paused").length;
-    const published = state.runs.filter(run => run.status === "published").length;
+    const published = state.runs.filter(run => ["published","plan_approved","active","approved"].includes(run.status)).length;
     const flagged = state.runs.filter(run => run.safety_flags && run.safety_flags.has_flags).length;
     const completeScores = state.runs.map(run => getKci(run.score_snapshot)).filter(Boolean);
     const average = completeScores.length ? Math.round(completeScores.reduce((sum,item) => sum + item, 0) / completeScores.length) : 0;
@@ -333,7 +332,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
           <p class="small" style="margin-top:5px">${escapeHtml(run.client_email || "No email available")}</p>
           <div class="run-meta"><span>${dateLabel(run.submitted_at || run.created_at)}</span>${pillForStatus(run.status)}</div>
           <div class="run-meta"><span>KCI ${getKci(run.score_snapshot) || "—"}%</span><span>B ${pct(pillars.BODY && pillars.BODY.display)} · S ${pct(pillars.SOUL && pillars.SOUL.display)} · Sp ${pct(pillars.SPIRIT && pillars.SPIRIT.display)}</span></div>
-          <p class="small" style="margin-top:8px">Gap: ${escapeHtml(gap ? `${gap.domain_code} · ${gap.name}` : "Not calculated")}</p>
+          <p class="small" style="margin-top:8px">Gap: ${escapeHtml(gap ? `${gap.domain_code} · ${gap.domain_name || gap.name}` : "Not calculated")}</p>
         </button>
       `;
     }).join("");
@@ -365,7 +364,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
             </div>
             <div class="domain-card" style="margin-top:16px">
               <strong>Primary Alignment Gap</strong>
-              <p class="domain-score">${escapeHtml(gap ? `${gap.domain_code} · ${gap.name} — ${gap.display}%` : "Not available")}</p>
+              <p class="domain-score">${escapeHtml(gap ? `${gap.domain_code} · ${gap.domain_name || gap.name} — ${gap.display}%` : "Not available")}</p>
             </div>
           </div>
         </div>
@@ -392,7 +391,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         <div class="domain-grid" style="margin-top:18px">
           ${domains.map(domain => `
             <div class="domain-card">
-              <strong>${escapeHtml(domain.domain_code)} · ${escapeHtml(domain.name)}</strong>
+              <strong>${escapeHtml(domain.domain_code)} · ${escapeHtml(domain.domain_name || domain.name)}</strong>
               <p class="domain-score">${escapeHtml(domain.pillar)} · ${pct(domain.display)}%</p>
               <div class="bar-track"><div class="bar-fill" style="--pct:${pct(domain.display)}%"></div></div>
             </div>
@@ -416,24 +415,24 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   }
 
   function renderBig3(detail){
-    const publication = detail.publication;
-    const existing = publication && publication.approved_big3;
-    const candidates = existing || (detail.run.big3_candidates && detail.run.big3_candidates.candidates) || [];
+    const report = buildAutoReport(detail);
+    const approved = detail.approved_plan && detail.approved_plan.plan;
+    const candidates = approved && (approved.big3 || approved.priorities) || report.big3 || [];
     return `
       <div class="card card-pad">
-        <p class="eyebrow">Coach Big 3</p>
-        <h3 style="margin-top:8px">${existing ? "Published priorities." : "Automatic priorities shown to candidate."}</h3>
-        <p class="muted" style="margin-top:12px">${existing ? "These Big 3 priorities have been coach-approved." : "The candidate sees an automatic Big 3 immediately. You can still select and publish the official coach-reviewed Big 3."}</p>
+        <p class="eyebrow">Coach Review</p>
+        <h3 style="margin-top:8px">Big 3 and plan approval.</h3>
+        <p class="muted" style="margin-top:12px">V3 keeps the personal Big 3 and full plan locked for the client until a GodHealth coach approves it.</p>
         <div class="candidate-grid" style="margin-top:18px">
-          ${candidates.length ? candidates.map((candidate,index) => renderCandidate(candidate,index,Boolean(existing))).join("") : `<div class="empty">No Big 3 candidates available.</div>`}
+          ${candidates.length ? candidates.slice(0,3).map((candidate,index) => renderCandidate(candidate,index,Boolean(approved))).join("") : `<div class="empty">No draft Big 3 priorities available.</div>`}
         </div>
-        ${existing ? `<p class="small" style="margin-top:12px">Published: ${dateLabel(publication.created_at)}</p>` : `
+        ${approved ? `<p class="small" style="margin-top:12px">Approved plan is already published for this participant.</p>` : `
           <div class="form-field" style="margin-top:18px">
             <label for="coachReason">Coach note</label>
-            <textarea class="textarea" id="coachReason" placeholder="Why these Big 3 are the right priorities for this participant.">Coach reviewed inside the GodHealth KCA Coach Dashboard.</textarea>
+            <textarea class="textarea" id="coachReason" placeholder="What did you review or adjust before approval?">Coach reviewed and approved the V3 personal plan inside the GodHealth Coach Dashboard.</textarea>
           </div>
           <div class="btn-row" style="margin-top:18px">
-            <button class="btn btn-gold" id="publishBig3Btn" type="button">Publish Selected Big 3</button>
+            <button class="btn btn-gold" id="publishBig3Btn" type="button">Approve Client Plan</button>
           </div>
         `}
       </div>
@@ -441,70 +440,56 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   }
 
   function renderCandidate(candidate,index,published){
-    const checked = index < 3 ? "checked" : "";
+    const title = candidate.title || candidate.name || candidate.domain_code || `Priority ${index + 1}`;
     const domain = candidate.domain_code || "";
-    const name = candidate.name || domainName(domain);
-    const score = Number.isFinite(candidate.priority_score) ? `Priority ${Math.round(candidate.priority_score)}` : "";
-    if(published){
-      return `
-        <div class="candidate-item">
-          <span class="pill ok">#${escapeHtml(candidate.rank || index + 1)}</span>
-          <div>
-            <strong>${escapeHtml(domainName(domain))}</strong>
-            <p class="muted" style="margin-top:8px">${escapeHtml(candidate.action || "Coach-approved next step.")}</p>
-            <p class="small" style="margin-top:6px">${escapeHtml(candidate.success_measure || "")}</p>
-          </div>
-        </div>
-      `;
-    }
+    const pillar = candidate.pillar || "";
     return `
-      <label class="candidate-item">
-        <input type="checkbox" class="big3-check" value="${escapeHtml(domain)}" data-name="${escapeHtml(name)}" ${checked}>
-        <span>
-          <strong>${escapeHtml(domainName(domain))}</strong>
-          <p class="muted" style="margin-top:8px">${escapeHtml(score)} ${candidate.eligible === false ? "· Not eligible because of safety routing" : ""}</p>
-          ${(candidate.transparent_reasons || []).length ? `<p class="small" style="margin-top:6px">${escapeHtml(candidate.transparent_reasons.join(" "))}</p>` : ""}
-        </span>
-      </label>
-    `;
+      <div class="candidate-item" style="display:block">
+        <span class="pill ${published ? "ok" : ""}">#${escapeHtml(candidate.rank || index + 1)} ${pillar ? "· " + escapeHtml(pillar) : ""}</span>
+        <h3 style="margin-top:12px">${escapeHtml(title)}</h3>
+        ${domain ? `<p class="small" style="margin-top:8px">${escapeHtml(domainName(domain))}</p>` : ""}
+        <p class="muted" style="margin-top:10px">${escapeHtml(candidate.action || candidate.reason || candidate.description || "Coach-review priority generated by the plan engine.")}</p>
+      </div>`;
   }
 
   function renderAutoReport(detail){
     const report = buildAutoReport(detail);
     const big3 = report.big3 || [];
     const plan = report.plan || [];
-    const scripture = Array.isArray(report.scripture) ? report.scripture.slice(0,2) : [];
+    const energy = report.energy_profile || {};
     return `
       <div class="card card-pad">
-        <p class="eyebrow">Automatic Candidate Report</p>
-        <h3 style="margin-top:8px">Personalized plan shown to the participant.</h3>
-        <p class="muted" style="margin-top:12px">This report is generated from the participant’s own answers, score snapshot and Big 3 candidate logic. Use it as the coaching starting point.</p>
+        <p class="eyebrow">Automatic Draft Report</p>
+        <h3 style="margin-top:8px">Personalized plan draft for coach review.</h3>
+        <p class="muted" style="margin-top:12px">${escapeHtml(report.disclaimer)}</p>
         <div class="grid g3" style="margin-top:18px">
-          ${big3.length ? big3.map(item => `
+          ${big3.length ? big3.slice(0,3).map((item,index) => `
             <div class="candidate-item" style="display:block">
-              <span class="pill">#${escapeHtml(item.rank)} · ${escapeHtml(item.pillar || "")}</span>
-              <h3 style="margin-top:12px">${escapeHtml(item.name || domainName(item.domain_code))}</h3>
-              <p class="small" style="margin-top:8px">${escapeHtml(item.domain_code)} · Score ${escapeHtml(item.score)} · Priority ${escapeHtml(item.priority_score)}</p>
-              <p class="muted" style="margin-top:12px">${escapeHtml(item.insight || "")}</p>
-              <div class="report-note" style="margin-top:12px"><strong>Next step:</strong> ${escapeHtml(item.action || "")}</div>
+              <span class="pill">#${escapeHtml(item.rank || index + 1)} · ${escapeHtml(item.pillar || "Priority")}</span>
+              <h3 style="margin-top:12px">${escapeHtml(item.title || item.name || item.domain_code || "Priority")}</h3>
+              <p class="muted" style="margin-top:12px">${escapeHtml(item.reason || item.action || "Generated from the lowest-capacity domains and client context.")}</p>
             </div>
           `).join("") : `<div class="empty">No automatic Big 3 could be generated for this run.</div>`}
         </div>
+        <div class="grid g3" style="margin-top:18px">
+          <div class="report-note"><strong>Energy profile:</strong><br>${escapeHtml(energy.estimated_TDEE_range_kcal ? `${energy.estimated_TDEE_range_kcal.low}-${energy.estimated_TDEE_range_kcal.high} kcal estimated TDEE range` : "Not calculated / coach review needed")}</div>
+          <div class="report-note"><strong>Nutrition:</strong><br>${escapeHtml(report.nutrition && report.nutrition.protein_target ? JSON.stringify(report.nutrition.protein_target) : "Coach review required")}</div>
+          <div class="report-note"><strong>Training:</strong><br>${escapeHtml(report.training && report.training.exercise_template || "Coach review required")}</div>
+        </div>
         <div style="margin-top:24px">
-          <p class="eyebrow">Personalized 7-day Roadmap</p>
+          <p class="eyebrow">12-week draft structure</p>
           <div class="plan-grid" style="margin-top:12px">
-            ${plan.map((day,index) => `
+            ${plan.length ? plan.map((week,index) => `
               <div class="plan-day">
-                <span>${index + 1}</span>
+                <span>${escapeHtml(week.week || week.week_number || index + 1)}</span>
                 <div>
-                  <strong>${escapeHtml(day.title)} · ${escapeHtml(day.focus)}</strong>
-                  <p class="muted" style="margin-top:6px">${escapeHtml(day.action)}</p>
+                  <strong>${escapeHtml(week.phase || week.title || `Week ${index + 1}`)} · ${escapeHtml(week.purpose || "")}</strong>
+                  <p class="muted" style="margin-top:6px">${escapeHtml(Array.isArray(week.focus) ? week.focus.join(" · ") : (week.focus || week.bad_week_fallback || ""))}</p>
                 </div>
               </div>
-            `).join("")}
+            `).join("") : `<div class="empty">No 12-week draft has been generated for this run.</div>`}
           </div>
         </div>
-        ${scripture.length ? `<div class="cream-card card-pad" style="margin-top:24px"><p class="eyebrow">Scripture For Reflection</p>${scripture.map(item => `<p class="muted" style="margin-top:10px">${escapeHtml(item.reference || "")}: ${escapeHtml(item.text || item)}</p>`).join("")}</div>` : ""}
       </div>
     `;
   }
@@ -517,14 +502,14 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       if(!groups[response.question_role]) groups[response.question_role] = [];
       groups[response.question_role].push(response);
     }
-    const coachQuestions = (state.definition.questions || []).filter(question => question.question_role === "coach_clarification");
+    const coachQuestions = (detail.coach_clarifiers || state.definition.coach_clarifiers || []);
     return `
       <div class="card card-pad">
         <p class="eyebrow">Participant Answers</p>
-        <h3 style="margin-top:8px">Safety, Core and Deep Dive responses.</h3>
+        <h3 style="margin-top:8px">Safety, Intake and 24 Core responses.</h3>
         ${responseGroupHtml("Safety Gates", groups.safety_gate, map, order)}
-        ${responseGroupHtml("36 Core Answers", groups.core, map, order)}
-        ${responseGroupHtml("Adaptive Deep Dive", groups.deep_dive, map, order)}
+        ${renderIntake(detail)}
+        ${responseGroupHtml("24 Core Answers", groups.core, map, order)}
       </div>
       <div class="card card-pad">
         <p class="eyebrow">Coach-only clarification</p>
@@ -534,6 +519,23 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         </div>
       </div>
     `;
+  }
+
+  function renderIntake(detail){
+    const intake = detail.intake && detail.intake.intake || {};
+    const fields = state.definition.personal_transformation_intake || [];
+    const rows = Object.entries(intake).filter(([key]) => key !== "full_name");
+    return `
+      <div style="margin-top:22px">
+        <p class="eyebrow">Personal Intake</p>
+        <div class="response-group" style="margin-top:12px">
+          ${rows.length ? rows.map(([key,value]) => {
+            const field = fields.find(item => item.id === key) || { label:key };
+            const display = Array.isArray(value) ? value.join(", ") : value;
+            return `<div class="response-item"><strong>${escapeHtml(key)} · ${escapeHtml(field.label || key)}</strong><span class="answer">${escapeHtml(display)}</span></div>`;
+          }).join("") : `<div class="empty">No personal intake found.</div>`}
+        </div>
+      </div>`;
   }
 
   function responseGroupHtml(title,responses,map,order){
@@ -606,37 +608,41 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       $("detailMount").innerHTML = `<div class="card card-pad alert"><h3>Could not open report.</h3><p class="muted" style="margin-top:12px">${escapeHtml(error.message)}</p></div>`;
       return;
     }
+    if(data.definition) state.definition = data.definition;
+    window.__currentKcaDetail = data;
     $("detailMount").innerHTML = renderOverview(data) + renderSafety(data) + renderAutoReport(data) + renderBig3(data) + renderDomains(data.run.score_snapshot || {}) + renderResponses(data);
     const publishBtn = $("publishBig3Btn");
     if(publishBtn) publishBtn.addEventListener("click", () => publishBig3(runId));
   }
 
   async function publishBig3(runId){
-    const selected = Array.from(document.querySelectorAll(".big3-check:checked")).slice(0,3);
-    if(selected.length !== 3){
-      alert("Please select exactly 3 Big 3 priorities before publishing.");
+    const detail = window.__currentKcaDetail;
+    if(!detail || !detail.engine_run || !detail.engine_run.id){
+      alert("No V3 plan draft found for this participant yet.");
       return;
     }
-    const approved = selected.map((input,index) => ({
-      rank:index + 1,
-      domain_code:input.value,
-      action:"Coach-reviewed next step to be finalized inside the GodHealth coaching journey.",
-      success_measure:"Reviewed with coach and translated into a practical weekly target.",
-      coach_reason:"coach_dashboard_approval"
-    }));
-    const reason = $("coachReason") ? $("coachReason").value : "Coach reviewed inside the GodHealth KCA Coach Dashboard.";
+    const report = buildAutoReport(detail);
+    const plan = (detail.engine_run && detail.engine_run.generated_plan) || {
+      big3: report.big3 || [],
+      weeks: report.plan || [],
+      energy_profile: report.energy_profile || {},
+      nutrition: report.nutrition || {},
+      training: report.training || {},
+      recovery: report.recovery || {}
+    };
+    const reason = $("coachReason") ? $("coachReason").value : "Coach reviewed and approved the V3 personal plan.";
     const button = $("publishBig3Btn");
     button.disabled = true;
-    button.textContent = "Publishing...";
-    const { error } = await state.supabase.rpc("kca_coach_publish_big3", {
-      p_run_id:runId,
-      p_approved_big3:approved,
-      p_coach_reason:reason
+    button.textContent = "Approving...";
+    const { error } = await state.supabase.rpc("kca_v3_approve_plan", {
+      p_engine_run_id: detail.engine_run.id,
+      p_plan: plan,
+      p_coach_notes: reason
     });
     button.disabled = false;
-    button.textContent = "Publish Selected Big 3";
+    button.textContent = "Approve Client Plan";
     if(error){
-      alert("Publishing failed: " + error.message);
+      alert("Approval failed: " + error.message);
       return;
     }
     await loadRuns();
@@ -677,15 +683,6 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   async function init(){
     state.supabase = initSupabase();
-    try{
-      state.definition = await fetch("/kca/config-v2.json").then(res => {
-        if(!res.ok) throw new Error("KCA definition could not be loaded.");
-        return res.json();
-      });
-    }catch(error){
-      state.definition = { questions:[], safety_gates:[], domains:[] };
-      setMessage(error.message, true);
-    }
     bind();
     await checkAuth();
     reveal();
