@@ -22,7 +22,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(4,22,14,.90);backdrop-fi
 .score-layout{display:grid;grid-template-columns:280px 1fr;gap:22px;align-items:center}.score-ring{position:relative;width:min(250px,100%);aspect-ratio:1;margin:auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold-3) calc(var(--score,0)*1%),rgba(217,180,90,.15) 0);box-shadow:0 0 0 1px rgba(241,214,147,.32),0 26px 54px -34px rgba(0,0,0,.9),inset 0 0 34px rgba(4,22,14,.88)}.score-ring:before{content:"";position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle at 50% 18%,rgba(217,180,90,.13),transparent 44%),linear-gradient(180deg,var(--forest-soft),var(--forest-deep));box-shadow:inset 0 0 0 1px rgba(241,214,147,.26)}.score-ring-inner{position:relative;text-align:center}.score-ring strong{display:block;font-size:52px;line-height:1;font-weight:950;color:var(--gold-3)}.score-ring span{display:block;margin-top:8px;font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
 .score-bars{display:grid;gap:12px}.score-row{padding:14px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.055)}.score-row-head{display:flex;justify-content:space-between;gap:12px;font-weight:900}.bar-track{height:10px;border-radius:999px;background:rgba(255,255,255,.10);margin-top:10px;overflow:hidden}.bar-fill{height:100%;width:var(--pct,0%);border-radius:999px;background:linear-gradient(90deg,var(--gold-1),var(--gold-3))}
 .detail-stack{display:grid;gap:18px}.domain-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.domain-card{padding:14px;border-radius:17px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.045)}.domain-card strong{display:block;color:var(--gold-3)}.domain-score{margin-top:5px;color:var(--ink-soft);font-size:13px}.response-group{display:grid;gap:10px}.response-item{padding:14px;border-radius:16px;background:rgba(3,17,10,.42);border:1px solid rgba(217,180,90,.16)}.response-item strong{display:block;color:var(--gold-3);font-size:13px}.response-item p{margin-top:6px;color:var(--ink-soft);font-size:13px}.answer{margin-top:8px;display:inline-flex;border-radius:999px;border:1px solid rgba(217,180,90,.25);padding:6px 10px;color:var(--ink);font-size:12px;font-weight:800;background:rgba(217,180,90,.06)}
-.candidate-grid{display:grid;gap:12px}.candidate-item{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.candidate-item input{margin-top:5px;accent-color:var(--gold-2)}.empty{padding:34px;border-radius:24px;border:1px dashed rgba(217,180,90,.36);text-align:center;color:var(--ink-soft)}.hidden{display:none!important}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}.loading{opacity:.7;pointer-events:none}
+.candidate-grid{display:grid;gap:12px}.candidate-item{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.candidate-item input{margin-top:5px;accent-color:var(--gold-2)}.plan-grid{display:grid;gap:12px}.plan-day{display:grid;grid-template-columns:auto 1fr;gap:13px;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-day span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;font-weight:950}.report-note{padding:14px 16px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.06);color:var(--ink-soft)}.empty{padding:34px;border-radius:24px;border:1px dashed rgba(217,180,90,.36);text-align:center;color:var(--ink-soft)}.hidden{display:none!important}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}.loading{opacity:.7;pointer-events:none}
 footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90,.14);text-align:center}
 @media(max-width:960px){.auth-shell,.dash-layout,.score-layout,.g2,.g3,.g4,.domain-grid{grid-template-columns:1fr}.run-list{position:static;max-height:none;padding-right:0}.nav{display:none}.btn{width:100%}.bar{height:76px}}@media(max-width:560px){.wrap{width:min(100% - 28px,1180px)}h1{font-size:38px}.section{padding:40px 0}.card-pad{padding:19px}.score-ring{width:226px}.score-ring strong{font-size:46px}}
 </style>
@@ -177,12 +177,30 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return domains[0] || null;
   }
 
+  function clientName(detail){
+    const context = detail && detail.run && detail.run.context || {};
+    return context.client_name || context.full_name || context.name || "Unknown participant";
+  }
+
+  function questionText(question){
+    if(!question) return "Question text unavailable";
+    return question.statement || question.question || question.prompt || question.if_yes || question.id || "Question text unavailable";
+  }
+
   function questionMap(){
     const byId = new Map();
     for(const gate of state.definition.safety_gates || []){
-      byId.set(gate.id, { id:gate.id, pillar:"SAFETY", domain_code:"SAFETY", prompt:gate.prompt || gate.if_yes || gate.id, question_role:"safety_gate" });
+      byId.set(gate.id, { id:gate.id, pillar:"SAFETY", domain_code:"SAFETY", statement:gate.question || gate.prompt || gate.if_yes || gate.id, question_role:"safety_gate" });
     }
     for(const question of state.definition.questions || []) byId.set(question.id, question);
+    return byId;
+  }
+
+  function questionOrderMap(){
+    const byId = new Map();
+    let index = 0;
+    for(const gate of state.definition.safety_gates || []) byId.set(gate.id, index++);
+    for(const question of state.definition.questions || []) byId.set(question.id, index++);
     return byId;
   }
 
@@ -195,6 +213,82 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     if(response.answer_text) return response.answer_text;
     if(Number.isInteger(response.answer_value)) return `${response.answer_value} — ${scaleLabels[response.answer_value] || "Answer"}`;
     return "No answer";
+  }
+
+  function buildAutoReport(detail){
+    const context = detail.run.context || {};
+    if(context.personal_report && context.personal_report.big3) return context.personal_report;
+    const snapshot = detail.run.score_snapshot || {};
+    const candidates = detail.run.big3_candidates || {};
+    const domains = getDomains(snapshot);
+    const lowest = getPrimaryGap(snapshot);
+    const strong = domains.slice().sort((a,b) => b.internal - a.internal).slice(0,3);
+    const big3 = (candidates.candidates || []).filter(candidate => candidate.eligible !== false).slice(0,3).map((candidate,index) => ({
+      rank:index + 1,
+      domain_code:candidate.domain_code,
+      pillar:candidate.pillar,
+      name:candidate.name,
+      score:pct(snapshot.domain_scores && snapshot.domain_scores[candidate.domain_code] && snapshot.domain_scores[candidate.domain_code].display),
+      priority_score:Math.round(Number(candidate.priority_score) || 0),
+      insight:insightForDomain(snapshot, candidate.domain_code),
+      action:actionForDomain(candidate.domain_code),
+      success_measure:"Repeat the next step for 7 days, then review what changed with your GodHealth coach."
+    }));
+    const pillars = getPillars(snapshot);
+    return {
+      generated_at:detail.run.submitted_at || detail.run.created_at,
+      client_name:clientName(detail),
+      kci:getKci(snapshot),
+      body:pct(pillars.BODY && pillars.BODY.display),
+      soul:pct(pillars.SOUL && pillars.SOUL.display),
+      spirit:pct(pillars.SPIRIT && pillars.SPIRIT.display),
+      alignment_gap:lowest ? { domain_code:lowest.domain_code, name:lowest.name, score:lowest.display } : null,
+      strong_foundations:strong.map(item => ({ domain_code:item.domain_code, name:item.name, score:item.display })),
+      big3,
+      plan:buildPlanDays(big3),
+      scripture:lowest && window.GodHealthKCAEngine ? window.GodHealthKCAEngine.scriptureForDomain(state.definition, lowest.domain_code) : [],
+      disclaimer:"These scores summarize reported patterns in this assessment. They are educational coaching signals, not medical care, a treatment plan, or a statement about identity in Christ."
+    };
+  }
+
+  function insightForDomain(snapshot, domainCode){
+    const domainScore = snapshot.domain_scores && snapshot.domain_scores[domainCode];
+    const score = pct(domainScore && domainScore.display);
+    const name = domainScore && domainScore.name || domainName(domainCode);
+    if(score < 45) return `${name} is currently a major constraint. Start gently, keep the next step small, and build rhythm before intensity.`;
+    if(score < 65) return `${name} needs focused attention. This area may be quietly pulling the other areas down.`;
+    if(score < 80) return `${name} is developing. Keep strengthening this with consistency, structure and wise accountability.`;
+    return `${name} looks like a strong foundation. Use this strength to support the lower-scoring areas.`;
+  }
+
+  function actionForDomain(domainCode){
+    const domain = (state.definition.domains || []).find(item => item.code === domainCode) || {};
+    const lower = (domain.name || "").toLowerCase();
+    if(domain.pillar === "BODY" && lower.includes("food")) return "Build one simple nutrition structure around real food, protein, fibre and consistent meal timing.";
+    if(domain.pillar === "BODY" && lower.includes("sleep")) return "Protect the evening rhythm so the body can recover before tomorrow begins.";
+    if(domain.pillar === "BODY" && lower.includes("movement")) return "Start with low-friction daily movement before adding intensity.";
+    if(domain.pillar === "BODY") return "Choose one body-stewardship action that supports energy, recovery and sustainable capacity.";
+    if(domain.pillar === "SPIRIT" && lower.includes("scripture")) return "Anchor the first quiet moment in Scripture before the phone shapes attention.";
+    if(domain.pillar === "SPIRIT" && lower.includes("prayer")) return "Use a short prayer rhythm to bring burdens to God before carrying them alone.";
+    if(domain.pillar === "SPIRIT") return "Reconnect health choices to worship, stewardship and daily surrender to Jesus.";
+    if(lower.includes("stress") || lower.includes("emotion")) return "Practice one pause before reacting, eating, scrolling or avoiding.";
+    if(lower.includes("habit") || lower.includes("follow")) return "Reduce the plan to one concrete next action that can be repeated when motivation is low.";
+    return "Bring structure to the inner life through one small, repeatable action that creates alignment.";
+  }
+
+  function buildPlanDays(big3){
+    const primary = big3[0] || {};
+    const second = big3[1] || {};
+    const third = big3[2] || {};
+    return [
+      { title:"Anchor The Morning", focus:"Spirit", action:"10 quiet minutes with God before the phone. Read one short passage and choose one faithful step." },
+      { title:"Move Before Pressure Builds", focus:"Body", action:"10 minutes of walking or gentle movement early in the day, when appropriate." },
+      { title:"Simplify One Meal", focus:"Body", action:"One simple real-food meal with enough protein, plants and water. No perfection needed." },
+      { title:"Pause Before Reaction", focus:"Soul", action:"When stress rises, breathe slowly, name the emotion, and choose the next wise action." },
+      { title:"Strengthen The Gap", focus:"Big 3", action:`Focus on ${primary.name || "the primary gap"}. ${primary.action || "Choose one small action that moves this area toward alignment."}` },
+      { title:"Connect The Three", focus:"Body · Soul · Spirit", action:`Pair a physical action with a spiritual action. Include ${second.name || "the second priority"} and ${third.name || "the third priority"} in the week review.` },
+      { title:"Reflect And Recommit", focus:"Integration", action:"Write what improved, what was difficult, and what should continue next week." }
+    ];
   }
 
   function show(section){
@@ -232,9 +326,11 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     $("runList").innerHTML = state.runs.map(run => {
       const pillars = getPillars(run.score_snapshot);
       const gap = getPrimaryGap(run.score_snapshot);
+      const name = (run.context && (run.context.client_name || run.context.full_name || run.context.name)) || "Unknown participant";
       return `
         <button class="run-card ${run.id === state.selectedRunId ? "active" : ""}" type="button" data-run-id="${escapeHtml(run.id)}">
-          <strong>${escapeHtml(run.client_email || "Unknown participant")}</strong>
+          <strong>${escapeHtml(name)}</strong>
+          <p class="small" style="margin-top:5px">${escapeHtml(run.client_email || "No email available")}</p>
           <div class="run-meta"><span>${dateLabel(run.submitted_at || run.created_at)}</span>${pillForStatus(run.status)}</div>
           <div class="run-meta"><span>KCI ${getKci(run.score_snapshot) || "—"}%</span><span>B ${pct(pillars.BODY && pillars.BODY.display)} · S ${pct(pillars.SOUL && pillars.SOUL.display)} · Sp ${pct(pillars.SPIRIT && pillars.SPIRIT.display)}</span></div>
           <p class="small" style="margin-top:8px">Gap: ${escapeHtml(gap ? `${gap.domain_code} · ${gap.name}` : "Not calculated")}</p>
@@ -251,14 +347,16 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     const pillars = getPillars(snapshot);
     const kci = getKci(snapshot);
     const gap = getPrimaryGap(snapshot);
+    const name = clientName(detail);
     return `
       <div class="card card-pad">
         <div class="score-layout">
           <div class="score-ring" style="--score:${kci}"><div class="score-ring-inner"><strong>${kci || "—"}%</strong><span>Overall Alignment</span></div></div>
           <div>
             <p class="eyebrow">${escapeHtml(detail.client.email || "Participant")}</p>
-            <h2 style="margin-top:8px">Assessment Snapshot</h2>
+            <h2 style="margin-top:8px">${escapeHtml(name)}</h2>
             <p class="muted" style="margin-top:12px">Submitted: ${dateLabel(detail.run.submitted_at || detail.run.created_at)}</p>
+            <p class="muted" style="margin-top:8px">Email: ${escapeHtml(detail.client.email || "No email available")} · Responses: ${escapeHtml((detail.responses || []).length)}</p>
             <div class="btn-row" style="margin-top:14px">${pillForStatus(detail.run.status)} ${detail.run.safety_flags && detail.run.safety_flags.has_flags ? '<span class="pill warn">Safety Flag</span>' : '<span class="pill ok">No Safety Stop</span>'}</div>
             <div class="score-bars" style="margin-top:18px">
               ${scoreBar("Body", pct(pillars.BODY && pillars.BODY.display))}
@@ -324,8 +422,8 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return `
       <div class="card card-pad">
         <p class="eyebrow">Coach Big 3</p>
-        <h3 style="margin-top:8px">${existing ? "Published priorities." : "Candidate priorities awaiting coach approval."}</h3>
-        <p class="muted" style="margin-top:12px">${existing ? "These Big 3 priorities are available for the participant experience." : "Select up to three priorities. These are not client-visible until you publish them."}</p>
+        <h3 style="margin-top:8px">${existing ? "Published priorities." : "Automatic priorities shown to candidate."}</h3>
+        <p class="muted" style="margin-top:12px">${existing ? "These Big 3 priorities have been coach-approved." : "The candidate sees an automatic Big 3 immediately. You can still select and publish the official coach-reviewed Big 3."}</p>
         <div class="candidate-grid" style="margin-top:18px">
           ${candidates.length ? candidates.map((candidate,index) => renderCandidate(candidate,index,Boolean(existing))).join("") : `<div class="empty">No Big 3 candidates available.</div>`}
         </div>
@@ -371,8 +469,49 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     `;
   }
 
+  function renderAutoReport(detail){
+    const report = buildAutoReport(detail);
+    const big3 = report.big3 || [];
+    const plan = report.plan || [];
+    const scripture = Array.isArray(report.scripture) ? report.scripture.slice(0,2) : [];
+    return `
+      <div class="card card-pad">
+        <p class="eyebrow">Automatic Candidate Report</p>
+        <h3 style="margin-top:8px">Personalized plan shown to the participant.</h3>
+        <p class="muted" style="margin-top:12px">This report is generated from the participant’s own answers, score snapshot and Big 3 candidate logic. Use it as the coaching starting point.</p>
+        <div class="grid g3" style="margin-top:18px">
+          ${big3.length ? big3.map(item => `
+            <div class="candidate-item" style="display:block">
+              <span class="pill">#${escapeHtml(item.rank)} · ${escapeHtml(item.pillar || "")}</span>
+              <h3 style="margin-top:12px">${escapeHtml(item.name || domainName(item.domain_code))}</h3>
+              <p class="small" style="margin-top:8px">${escapeHtml(item.domain_code)} · Score ${escapeHtml(item.score)} · Priority ${escapeHtml(item.priority_score)}</p>
+              <p class="muted" style="margin-top:12px">${escapeHtml(item.insight || "")}</p>
+              <div class="report-note" style="margin-top:12px"><strong>Next step:</strong> ${escapeHtml(item.action || "")}</div>
+            </div>
+          `).join("") : `<div class="empty">No automatic Big 3 could be generated for this run.</div>`}
+        </div>
+        <div style="margin-top:24px">
+          <p class="eyebrow">Personalized 7-day Roadmap</p>
+          <div class="plan-grid" style="margin-top:12px">
+            ${plan.map((day,index) => `
+              <div class="plan-day">
+                <span>${index + 1}</span>
+                <div>
+                  <strong>${escapeHtml(day.title)} · ${escapeHtml(day.focus)}</strong>
+                  <p class="muted" style="margin-top:6px">${escapeHtml(day.action)}</p>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+        ${scripture.length ? `<div class="cream-card card-pad" style="margin-top:24px"><p class="eyebrow">Scripture For Reflection</p>${scripture.map(item => `<p class="muted" style="margin-top:10px">${escapeHtml(item.reference || "")}: ${escapeHtml(item.text || item)}</p>`).join("")}</div>` : ""}
+      </div>
+    `;
+  }
+
   function renderResponses(detail){
     const map = questionMap();
+    const order = questionOrderMap();
     const groups = { safety_gate:[], core:[], deep_dive:[] };
     for(const response of detail.responses || []){
       if(!groups[response.question_role]) groups[response.question_role] = [];
@@ -383,28 +522,29 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       <div class="card card-pad">
         <p class="eyebrow">Participant Answers</p>
         <h3 style="margin-top:8px">Safety, Core and Deep Dive responses.</h3>
-        ${responseGroupHtml("Safety Gates", groups.safety_gate, map)}
-        ${responseGroupHtml("36 Core Answers", groups.core, map)}
-        ${responseGroupHtml("Adaptive Deep Dive", groups.deep_dive, map)}
+        ${responseGroupHtml("Safety Gates", groups.safety_gate, map, order)}
+        ${responseGroupHtml("36 Core Answers", groups.core, map, order)}
+        ${responseGroupHtml("Adaptive Deep Dive", groups.deep_dive, map, order)}
       </div>
       <div class="card card-pad">
         <p class="eyebrow">Coach-only clarification</p>
         <h3 style="margin-top:8px">Questions to use in the Strategy Call.</h3>
         <div class="response-group" style="margin-top:16px">
-          ${coachQuestions.map(question => `<div class="response-item"><strong>${escapeHtml(question.id)} · ${escapeHtml(domainName(question.domain_code))}</strong><p>${escapeHtml(question.prompt)}</p></div>`).join("")}
+          ${coachQuestions.map(question => `<div class="response-item"><strong>${escapeHtml(question.id)} · ${escapeHtml(domainName(question.domain_code))}</strong><p>${escapeHtml(questionText(question))}</p></div>`).join("")}
         </div>
       </div>
     `;
   }
 
-  function responseGroupHtml(title,responses,map){
+  function responseGroupHtml(title,responses,map,order){
+    const sorted = responses.slice().sort((a,b) => (order.get(a.question_id) ?? 9999) - (order.get(b.question_id) ?? 9999));
     return `
       <div style="margin-top:22px">
         <p class="eyebrow">${escapeHtml(title)}</p>
         <div class="response-group" style="margin-top:12px">
-          ${responses.length ? responses.map(response => {
+          ${sorted.length ? sorted.map(response => {
             const question = map.get(response.question_id) || {};
-            return `<div class="response-item"><strong>${escapeHtml(response.question_id)} · ${escapeHtml(domainName(question.domain_code || response.question_role))}</strong><p>${escapeHtml(question.prompt || "Question text unavailable")}</p><span class="answer">${escapeHtml(answerLabel(response))}</span></div>`;
+            return `<div class="response-item"><strong>${escapeHtml(response.question_id)} · ${escapeHtml(domainName(question.domain_code || response.question_role))}</strong><p>${escapeHtml(questionText(question))}</p><span class="answer">${escapeHtml(answerLabel(response))}</span></div>`;
           }).join("") : `<div class="empty">No ${escapeHtml(title.toLowerCase())} found.</div>`}
         </div>
       </div>
@@ -466,7 +606,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       $("detailMount").innerHTML = `<div class="card card-pad alert"><h3>Could not open report.</h3><p class="muted" style="margin-top:12px">${escapeHtml(error.message)}</p></div>`;
       return;
     }
-    $("detailMount").innerHTML = renderOverview(data) + renderSafety(data) + renderBig3(data) + renderDomains(data.run.score_snapshot || {}) + renderResponses(data);
+    $("detailMount").innerHTML = renderOverview(data) + renderSafety(data) + renderAutoReport(data) + renderBig3(data) + renderDomains(data.run.score_snapshot || {}) + renderResponses(data);
     const publishBtn = $("publishBig3Btn");
     if(publishBtn) publishBtn.addEventListener("click", () => publishBig3(runId));
   }

@@ -28,7 +28,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(4,22,14,.86);backdrop-fi
 .screen{display:none}.screen.active{display:block}.question-domain{margin-top:22px}.domain-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:12px}.domain-head p{color:var(--gold-3);font-weight:900;font-size:12px;letter-spacing:.14em;text-transform:uppercase}.question-card{padding:22px;border-radius:22px;border:1px solid rgba(217,180,90,.24);background:linear-gradient(180deg,rgba(217,180,90,.075),rgba(217,180,90,.035));margin-top:14px}.question-card legend{display:block;width:100%;padding:0 2px 16px;font-size:clamp(16px,1.7vw,19px);font-weight:850;line-height:1.48;color:var(--ink);letter-spacing:-.01em}.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.scale input{position:absolute;opacity:0;pointer-events:none}.scale label{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:82px;padding:13px 10px;border:1px solid rgba(217,180,90,.24);border-radius:17px;background:linear-gradient(180deg,rgba(8,30,19,.92),rgba(4,22,14,.82));color:var(--ink-soft);cursor:pointer;text-align:center;font-size:11.5px;font-weight:800;line-height:1.22;box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease}.scale label:hover{transform:translateY(-1px);border-color:rgba(241,214,147,.48);box-shadow:0 14px 30px -25px rgba(217,180,90,.65),inset 0 1px 0 rgba(255,255,255,.06)}.scale-number{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(217,180,90,.10);border:1px solid rgba(217,180,90,.30);color:var(--gold-3);font-weight:950;font-size:13px;line-height:1}.scale-text{display:block;max-width:118px}.scale input:focus-visible+label{outline:3px solid rgba(241,214,147,.38);outline-offset:3px}.scale input:checked+label{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.84);box-shadow:0 18px 36px -22px rgba(217,180,90,.95),inset 0 1px 0 rgba(255,255,255,.55)}.scale input:checked+label .scale-number{background:rgba(36,24,2,.14);border-color:rgba(36,24,2,.22);color:#241802}.scale input:checked+label .scale-text{color:#241802}
 .safety-list{display:grid;gap:12px;margin-top:22px}.yesno{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.yesno label{min-width:90px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;border:1px solid rgba(217,180,90,.26);border-radius:999px;background:rgba(217,180,90,.06);font-weight:800;cursor:pointer}.yesno input{accent-color:var(--gold-2)}
 .score-layout{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}.score-ring{position:relative;width:min(260px,100%);aspect-ratio:1;margin:auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold-3) calc(var(--score,0)*1%),rgba(217,180,90,.15) 0);box-shadow:0 0 0 1px rgba(241,214,147,.32),0 26px 54px -34px rgba(0,0,0,.9),inset 0 0 34px rgba(4,22,14,.88)}.score-ring:before{content:"";position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle at 50% 18%,rgba(217,180,90,.13),transparent 44%),linear-gradient(180deg,var(--forest-soft),var(--forest-deep));box-shadow:inset 0 0 0 1px rgba(241,214,147,.26)}.score-ring-inner{position:relative;text-align:center}.score-ring strong{display:block;font-size:54px;line-height:1;font-weight:900;color:var(--gold-3)}.score-ring span{display:block;margin-top:8px;font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}.score-bars{display:grid;gap:14px}.score-row{padding:16px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.055)}.score-row-head{display:flex;justify-content:space-between;gap:12px;font-weight:900}.bar-track{height:10px;border-radius:999px;background:rgba(255,255,255,.10);margin-top:10px;overflow:hidden}.bar-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--gold-1),var(--gold-3));transition:width .8s cubic-bezier(.2,.7,.2,1)}
-.candidate{display:grid;gap:10px}.candidate-item{padding:16px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.locked{display:grid;place-items:center;text-align:center;min-height:170px;border-style:dashed}.alert{border-color:rgba(217,77,58,.46);background:linear-gradient(180deg,rgba(79,19,14,.78),rgba(48,14,10,.78));color:#ffe0dc}.success{border-color:rgba(84,184,111,.38);background:linear-gradient(180deg,rgba(17,70,38,.78),rgba(8,42,23,.78))}
+.candidate{display:grid;gap:10px}.candidate-item{padding:16px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-grid{display:grid;gap:12px}.plan-day{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:start;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-day span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;font-weight:950;box-shadow:0 12px 24px -16px rgba(217,180,90,.9)}.report-note{padding:14px 16px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.06);color:var(--ink-soft)}.locked{display:grid;place-items:center;text-align:center;min-height:170px;border-style:dashed}.alert{border-color:rgba(217,77,58,.46);background:linear-gradient(180deg,rgba(79,19,14,.78),rgba(48,14,10,.78));color:#ffe0dc}.success{border-color:rgba(84,184,111,.38);background:linear-gradient(180deg,rgba(17,70,38,.78),rgba(8,42,23,.78))}
 footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90,.14);text-align:center}.hidden{display:none!important}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
 @media(max-width:880px){.hero-shell,.score-layout,.g2,.g3{grid-template-columns:1fr}.nav{display:none}.scale{grid-template-columns:1fr}.scale label{min-height:62px;flex-direction:row;justify-content:flex-start;text-align:left;padding:14px 15px}.scale-text{max-width:none}.domain-head{display:block}.btn{width:100%}.bar{height:76px}.score-ring{width:230px}}@media(max-width:560px){.wrap{width:min(100% - 28px,1120px)}h1{font-size:38px}.section,.hero{padding:42px 0}.card-pad{padding:20px}.question-card{padding:17px}.question-card legend{font-size:16px;padding-bottom:14px}.brand{font-size:30px}.score-ring strong{font-size:46px}}
 </style>
@@ -94,6 +94,10 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
           <h2>Safety, goals and consent.</h2>
           <p class="lead" style="margin-top:14px">This assessment is educational and coaching-oriented. It does not diagnose, treat or replace qualified medical or mental-health support.</p>
           <div class="safety-list" id="safetyList"></div>
+          <div class="form-field" style="margin-top:22px">
+            <label for="clientName">Full name</label>
+            <input class="input" id="clientName" name="client_name" type="text" autocomplete="name" required placeholder="Your full name">
+          </div>
           <div class="grid g2" style="margin-top:22px">
             <div class="form-field">
               <label for="primaryGoal">Primary goal</label>
@@ -177,7 +181,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     demo:new URLSearchParams(location.search).get("demo") === "1",
     coach:new URLSearchParams(location.search).get("coach") === "1",
     safety_answers:{},
-    context:{ primary_goal:"energy_capacity", supporting_goals:[], general_readiness:7 },
+    context:{ client_name:"", primary_goal:"energy_capacity", supporting_goals:[], general_readiness:7 },
     core_answers:{},
     deep_dive_answers:{},
     assignment:null,
@@ -185,6 +189,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     safety_route:null,
     candidates:null,
     publication:null,
+    personal_report:null,
     supabase:null,
     run_id:null
   };
@@ -328,10 +333,13 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   function readIntro(){
     if(!$("consent").checked){ alert("Please confirm the coaching assessment consent before continuing."); return false; }
+    const clientName = ($("clientName").value || "").trim();
+    if(!clientName){ alert("Please enter your full name before continuing."); $("clientName").focus(); return false; }
     state.safety_answers = Object.fromEntries(state.definition.safety_gates.map(gate => {
       const checked = document.querySelector(`input[name="${gate.id}"]:checked`);
       return [gate.id, checked ? checked.value : "no"];
     }));
+    state.context.client_name = clientName;
     state.context.primary_goal = $("primaryGoal").value;
     state.context.supporting_goals = Array.from($("supportingGoals").selectedOptions).map(option => option.value).filter(value => value !== state.context.primary_goal);
     state.context.general_readiness = Number($("readiness").value);
@@ -376,6 +384,8 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     state.safety_route = state.safety_route || KCA.routeSafety(state.definition, state.safety_answers);
     state.score_snapshot = state.score_snapshot || KCA.scoreAssessment(state.definition, state.core_answers);
     state.candidates = KCA.generateBig3Candidates(state.definition, state.score_snapshot, state.context, state.safety_route);
+    state.personal_report = buildPersonalReport();
+    state.context.personal_report = state.personal_report;
     try{
       await saveRunToSupabase();
       saveProgress();
@@ -431,6 +441,149 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     document.querySelectorAll(".tab").forEach(item => item.classList.toggle("active", Number(item.dataset.step) <= step));
   }
 
+  function domainByCode(code){
+    return (state.definition.domains || []).find(domain => domain.code === code) || { code, name:code, pillar:"" };
+  }
+
+  function scoreForDomain(code){
+    const score = state.score_snapshot && state.score_snapshot.domain_scores && state.score_snapshot.domain_scores[code];
+    return score ? Number(score.display) : 0;
+  }
+
+  function safetyBlocksNormalPlan(){
+    const restrictions = state.safety_route && state.safety_route.restrictions || [];
+    return restrictions.includes("specialist_or_qualified_care_workflow_required") || restrictions.includes("no_weight_loss_recommendations");
+  }
+
+  function actionForDomain(domainCode){
+    const domain = domainByCode(domainCode);
+    const lower = (domain.name || "").toLowerCase();
+    const safeWeightLanguage = safetyBlocksNormalPlan();
+    if(domain.pillar === "BODY" && lower.includes("food")){
+      return safeWeightLanguage ? "Create one calm, nourishing meal rhythm that supports stability without restriction." : "Build one simple nutrition structure around real food, protein, fibre and consistent meal timing.";
+    }
+    if(domain.pillar === "BODY" && lower.includes("sleep")) return "Protect your evening rhythm so your body can recover before tomorrow begins.";
+    if(domain.pillar === "BODY" && lower.includes("movement")) return "Start with low-friction daily movement before adding intensity.";
+    if(domain.pillar === "BODY") return "Choose one body-stewardship action that supports energy, recovery and sustainable capacity.";
+    if(domain.pillar === "SPIRIT" && lower.includes("scripture")) return "Anchor your first quiet moment in Scripture before your phone shapes your attention.";
+    if(domain.pillar === "SPIRIT" && lower.includes("prayer")) return "Use a short prayer rhythm to bring burdens to God before carrying them alone.";
+    if(domain.pillar === "SPIRIT") return "Reconnect your health choices to worship, stewardship and daily surrender to Jesus.";
+    if(lower.includes("stress") || lower.includes("emotion")) return "Practice one pause before reacting, eating, scrolling or avoiding.";
+    if(lower.includes("habit") || lower.includes("follow")) return "Reduce the plan to one concrete next action you can repeat even when motivation is low.";
+    return "Bring structure to your inner life through one small, repeatable action that creates alignment.";
+  }
+
+  function insightForDomain(domainCode){
+    const domain = domainByCode(domainCode);
+    const score = scoreForDomain(domainCode);
+    const name = domain.name || domainCode;
+    if(score < 45) return `${name} is currently a major constraint. Start gently, keep the next step small, and build rhythm before intensity.`;
+    if(score < 65) return `${name} needs focused attention. You have a workable foundation, but this area may be quietly pulling the others down.`;
+    if(score < 80) return `${name} is developing. Keep strengthening this area with consistency, structure and wise accountability.`;
+    return `${name} looks like a strong foundation. Use this strength to support the lower-scoring areas.`;
+  }
+
+  function buildAutoBig3(){
+    const raw = state.candidates && state.candidates.candidates || [];
+    return raw.filter(candidate => candidate.eligible !== false).slice(0,3).map((candidate,index) => ({
+      rank:index + 1,
+      domain_code:candidate.domain_code,
+      pillar:candidate.pillar,
+      name:candidate.name,
+      score:scoreForDomain(candidate.domain_code),
+      priority_score:Math.round(Number(candidate.priority_score) || 0),
+      insight:insightForDomain(candidate.domain_code),
+      action:actionForDomain(candidate.domain_code),
+      success_measure:"Repeat the next step for 7 days, then review what changed with your GodHealth coach."
+    }));
+  }
+
+  function buildPlanDays(big3){
+    const primary = big3[0] || {};
+    const second = big3[1] || {};
+    const third = big3[2] || {};
+    const primaryName = primary.name || "your main Alignment Gap";
+    return [
+      { title:"Anchor Your Morning", focus:"Spirit", action:"Spend 10 quiet minutes with God before your phone. Read one short passage and ask: “Lord, what is one faithful step today?”" },
+      { title:"Move Before You Think", focus:"Body", action:"Take a 10-minute walk outside or do gentle movement within one hour of waking, if this is appropriate for you." },
+      { title:"Simplify One Meal", focus:"Body", action:safetyBlocksNormalPlan() ? "Build one calm meal from simple, nourishing foods and eat without rushing." : "Build one meal from real food, enough protein, colourful plants and water. Keep it simple." },
+      { title:"Pause Before Reaction", focus:"Soul", action:"When stress rises, pause for 90 seconds. Breathe slowly, name what you feel, and choose your next action instead of reacting." },
+      { title:"Strengthen The Gap", focus:"Big 3", action:`Give focused attention to ${primaryName}. ${primary.action || "Choose one small action that moves this area toward alignment."}` },
+      { title:"Connect The Three", focus:"Body · Soul · Spirit", action:`Pair one physical action with one spiritual action. Example: walk while praying, or prepare food with gratitude. Include ${second.name || "another growth area"} and ${third.name || "your third priority"}.` },
+      { title:"Reflect And Recommit", focus:"Integration", action:"Write down what improved, what was difficult, and one next step to repeat. Progress starts with awareness and faithful repetition." }
+    ];
+  }
+
+  function buildPersonalReport(){
+    const client = KCA.clientResults(state.definition, state.score_snapshot, state.publication);
+    const big3 = buildAutoBig3();
+    return {
+      generated_at:new Date().toISOString(),
+      client_name:state.context.client_name || "",
+      kci:client.kci,
+      body:client.body,
+      soul:client.soul,
+      spirit:client.spirit,
+      alignment_gap:client.alignment_gap,
+      strong_foundations:client.strong_foundations,
+      big3,
+      plan:buildPlanDays(big3),
+      scripture:client.scripture_for_reflection || [],
+      disclaimer:client.disclaimer
+    };
+  }
+
+  function renderBig3Cards(report){
+    const big3 = report.big3 || [];
+    return `<div class="card card-pad" style="margin-top:24px">
+      <p class="eyebrow">Your Big 3</p>
+      <h3 style="margin-top:8px">Your first priorities are ready.</h3>
+      <p class="muted" style="margin-top:10px">These are automatically generated from your answers and designed for coach review. They are practical coaching signals, not a diagnosis.</p>
+      <div class="grid g3" style="margin-top:18px">
+        ${big3.length ? big3.map(item => `
+          <div class="candidate-item" style="display:block">
+            <span class="pill">#${item.rank} · ${escapeHtml(item.pillar)}</span>
+            <h3 style="margin-top:12px">${escapeHtml(item.name)}</h3>
+            <p class="small" style="margin-top:8px">${escapeHtml(item.domain_code)} · Score ${escapeHtml(item.score)} · Priority ${escapeHtml(item.priority_score)}</p>
+            <p class="muted" style="margin-top:12px">${escapeHtml(item.insight)}</p>
+            <div class="report-note" style="margin-top:12px"><strong>Next step:</strong> ${escapeHtml(item.action)}</div>
+          </div>
+        `).join("") : `<div class="empty">No Big 3 priorities were generated because safety routing paused the normal recommendation flow.</div>`}
+      </div>
+    </div>`;
+  }
+
+  function renderPlan(report){
+    const plan = report.plan || [];
+    return `<div class="card card-pad" style="margin-top:24px">
+      <p class="eyebrow">Personalized Plan</p>
+      <h3 style="margin-top:8px">Your 7-day Alignment Roadmap.</h3>
+      <p class="muted" style="margin-top:10px">This roadmap is built from your assessment pattern across Body, Soul and Spirit. Keep every step simple, wise and realistic.</p>
+      <div class="plan-grid" style="margin-top:18px">
+        ${plan.map((day,index) => `
+          <div class="plan-day">
+            <span>${index + 1}</span>
+            <div>
+              <strong>${escapeHtml(day.title)} · ${escapeHtml(day.focus)}</strong>
+              <p class="muted" style="margin-top:6px">${escapeHtml(day.action)}</p>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>`;
+  }
+
+  function renderScripture(report){
+    const scripture = Array.isArray(report.scripture) ? report.scripture.slice(0,2) : [];
+    if(!scripture.length) return "";
+    return `<div class="cream-card card-pad" style="margin-top:24px">
+      <p class="eyebrow">Scripture For Reflection</p>
+      <h3 style="margin-top:8px">Bring this into practice.</h3>
+      ${scripture.map(item => `<p class="muted" style="margin-top:12px">${escapeHtml(item.reference || "")}: ${escapeHtml(item.text || item)}</p>`).join("")}
+      <p class="muted" style="margin-top:12px">Practice: read it slowly, pray it honestly, and choose one action today that agrees with it.</p>
+    </div>`;
+  }
+
   function renderResult(urgentOnly){
     if(urgentOnly){
       $("resultMount").innerHTML = `<div class="card card-pad alert">
@@ -441,6 +594,8 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       return;
     }
     const client = KCA.clientResults(state.definition, state.score_snapshot, state.publication);
+    state.personal_report = state.personal_report || buildPersonalReport();
+    state.context.personal_report = state.personal_report;
     const pillars = [
       ["BODY", client.body],
       ["SOUL", client.soul],
@@ -482,11 +637,9 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         <h3>Domain scores</h3>
         <div class="score-bars" style="margin-top:14px">${domainCards}</div>
       </div>
-      <div class="card card-pad locked" style="margin-top:24px">
-        <p class="eyebrow">Coach-reviewed Big 3</p>
-        <h3>${client.big3_locked ? "Locked until coach approval" : "Your Big 3 is ready"}</h3>
-        <p class="muted" style="margin-top:10px">${client.big3_locked ? "Your top priorities are intentionally hidden until a GodHealth coach reviews the full context." : escapeHtml(client.big3.map(item => item.domain_code).join(" · "))}</p>
-      </div>
+      ${renderBig3Cards(state.personal_report)}
+      ${renderPlan(state.personal_report)}
+      ${renderScripture(state.personal_report)}
       ${coachPanel()}
     </div>`;
     requestAnimationFrame(() => document.querySelectorAll(".bar-fill").forEach(fill => fill.style.width = fill.dataset.width + "%"));
@@ -508,7 +661,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return `<div class="card card-pad" style="margin-top:24px">
       <p class="eyebrow">Coach-only review</p>
       <h3>Clarification prompts and Big 3 candidates.</h3>
-      <p class="muted" style="margin-top:10px">This panel appears only in coach mode. Candidate priorities remain hidden from the client until publication.</p>
+      <p class="muted" style="margin-top:10px">This panel appears only in coach mode. The candidate now sees an automatic Big 3 and plan immediately; coach approval can still refine the official coaching priorities.</p>
       <div class="grid g2" style="margin-top:20px">
         <div><h3>Coach prompts</h3>${coachQuestions}</div>
         <div><h3>Candidate priorities</h3><div class="candidate" style="margin-top:12px">${candidates}</div><button class="btn btn-gold" type="button" style="margin-top:18px" onclick="window.publishKcaBig3()">Approve Top 3</button></div>
@@ -538,7 +691,8 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       score_snapshot:state.score_snapshot,
       safety_route:state.safety_route,
       candidates:state.candidates,
-      publication:state.publication
+      publication:state.publication,
+      personal_report:state.personal_report
     }));
   }
 
@@ -546,6 +700,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     const raw = localStorage.getItem(storageKey);
     if(!raw){ alert("No saved KCA progress found on this device."); return; }
     Object.assign(state, JSON.parse(raw));
+    if($("clientName") && state.context && state.context.client_name) $("clientName").value = state.context.client_name;
     $("app").classList.remove("hidden");
     if(state.score_snapshot){
       renderResult(false);
