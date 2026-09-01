@@ -93,6 +93,24 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         </div>
       </div>
 
+      <div class="card card-pad reveal" style="margin-bottom:22px">
+        <div class="grid g2" style="align-items:end">
+          <div>
+            <p class="eyebrow">Client Access</p>
+            <h3 style="margin-top:8px">Add Client Access</h3>
+            <p class="muted" style="margin-top:12px">Activate premium Kingdom Capacity access for a client after they have requested or opened their GodHealth login link once.</p>
+          </div>
+          <form class="auth-box" id="clientAccessForm" style="margin-top:0">
+            <div class="form-field">
+              <label for="clientAccessEmail">Client email address</label>
+              <input class="input" id="clientAccessEmail" name="client_email" type="email" autocomplete="email" required placeholder="client@example.com">
+            </div>
+            <button class="btn btn-gold" type="submit">Activate KCA Access</button>
+            <p class="small" id="clientAccessMessage">The client must have requested/opened a GodHealth login link once first.</p>
+          </form>
+        </div>
+      </div>
+
       <div class="grid g4" id="statsGrid" style="margin-bottom:22px"></div>
 
       <div class="dash-layout">
@@ -297,6 +315,13 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   function setMessage(text, danger){
     const el = $("authMessage");
+    el.textContent = text;
+    el.style.color = danger ? "#ffd7d0" : "";
+  }
+
+  function setClientAccessMessage(text, danger){
+    const el = $("clientAccessMessage");
+    if(!el) return;
     el.textContent = text;
     el.style.color = danger ? "#ffd7d0" : "";
   }
@@ -599,6 +624,41 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     if(state.runs.length && !state.selectedRunId) loadDetail(state.runs[0].id);
   }
 
+  async function grantClientAccess(event){
+    event.preventDefault();
+    const form = event.currentTarget;
+    const emailInput = $("clientAccessEmail");
+    const button = form.querySelector("button[type='submit']");
+    const email = emailInput.value.trim().toLowerCase();
+    if(!email) return;
+
+    button.disabled = true;
+    button.textContent = "Activating...";
+    setClientAccessMessage("Checking this client account...", false);
+
+    const { data, error } = await state.supabase.rpc("kca_grant_client_access", {
+      p_client_email:email,
+      p_assessment_version:"3.0.0"
+    });
+
+    button.disabled = false;
+    button.textContent = "Activate KCA Access";
+
+    if(error){
+      setClientAccessMessage("Could not activate access: " + error.message, true);
+      return;
+    }
+
+    if(data && data.ok === false){
+      setClientAccessMessage(data.message || "Client not found yet. Ask the client to open the secure login link first, then try again.", true);
+      return;
+    }
+
+    setClientAccessMessage(`Access activated for ${email}. They can now submit the assessment.`, false);
+    emailInput.value = "";
+    await loadRuns();
+  }
+
   async function loadDetail(runId){
     state.selectedRunId = runId;
     renderRunList();
@@ -669,6 +729,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     });
     $("refreshAccessBtn").addEventListener("click", checkCoachAccess);
     $("refreshBtn").addEventListener("click", loadRuns);
+    $("clientAccessForm").addEventListener("submit", grantClientAccess);
     [$("logoutBtnA"), $("logoutBtnB")].forEach(button => button.addEventListener("click", async () => {
       await state.supabase.auth.signOut();
       state.session = null;
