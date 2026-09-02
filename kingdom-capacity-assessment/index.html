@@ -416,6 +416,14 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     const value = state.intake[field.id];
     const label = `${escapeHtml(field.label || field.id)}${field.required ? " *" : ""}`;
     const attrs = `data-intake id="${escapeHtml(field.id)}" name="${escapeHtml(field.id)}" ${field.required ? "required" : ""}`;
+    if(field.type === "scale_0_10"){
+      const selectedValue = value !== "" && value != null && Number.isFinite(Number(value)) ? Number(value) : "";
+      const options = Array.from({ length: 11 }, (_, index) => {
+        const helper = index === 0 ? " — very low" : index === 10 ? " — very high" : "";
+        return `<option value="${index}" ${selectedValue === index ? "selected" : ""}>${index}${helper}</option>`;
+      }).join("");
+      return `<div class="form-field"><label for="${escapeHtml(field.id)}">${label}</label><select class="select" ${attrs}><option value="">Choose 0-10...</option>${options}</select></div>`;
+    }
     if(field.type === "single_select"){
       return `<div class="form-field"><label for="${escapeHtml(field.id)}">${label}</label><select class="select" ${attrs}><option value="">Select...</option>${(field.options || []).map(opt => `<option value="${escapeHtml(opt)}" ${String(value || "") === String(opt) ? "selected" : ""}>${escapeHtml(opt)}</option>`).join("")}</select></div>`;
     }
@@ -439,7 +447,13 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       let value;
       if(el.tagName === "SELECT" && el.multiple) value = Array.from(el.selectedOptions).map(option => option.value);
       else value = el.value;
-      if((field.type === "integer" || field.type === "decimal" || field.type === "number") && value !== "") value = Number(value);
+      if(typeof value === "string") value = value.trim();
+      if((field.type === "integer" || field.type === "decimal" || field.type === "number" || field.type === "scale_0_10") && value !== "") value = Number(value);
+      if(field.type === "scale_0_10" && value !== "" && (!Number.isFinite(value) || value < 0 || value > 10)){
+        alert("Please choose a number from 0 to 10 for: " + (field.label || field.id));
+        el.focus();
+        return false;
+      }
       if(validate && field.required && (value === "" || value == null || (Array.isArray(value) && !value.length))){
         alert("Please complete: " + (field.label || field.id));
         el.focus();
@@ -448,6 +462,35 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       state.intake[field.id] = value;
     }
     return true;
+  }
+
+  function normalizeScaleValue(value){
+    if(value === "" || value == null) return "";
+    const number = Number(value);
+    if(Number.isFinite(number)) return Math.min(10, Math.max(0, number));
+    const text = String(value).trim().toLowerCase();
+    if(!text) return "";
+    if(text.includes("not") || text.includes("poor") || text.includes("low")) return 2;
+    if(text.includes("very") || text.includes("excellent") || text.includes("high")) return 10;
+    if(text.includes("good") || text.includes("restorative") || text.includes("supportive")) return 8;
+    if(text.includes("moderate") || text.includes("average") || text.includes("some")) return 5;
+    return 5;
+  }
+
+  function normalizeStoredIntakeValues(){
+    (state.definition.personal_transformation_intake || []).forEach(field => {
+      if(!(field.id in state.intake)) return;
+      const value = state.intake[field.id];
+      if(field.type === "scale_0_10"){
+        state.intake[field.id] = normalizeScaleValue(value);
+        return;
+      }
+      if(field.type === "integer" || field.type === "decimal" || field.type === "number"){
+        if(value === "" || value == null) return;
+        const number = Number(value);
+        state.intake[field.id] = Number.isFinite(number) ? number : "";
+      }
+    });
   }
 
   function renderCore(){
@@ -496,6 +539,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   async function submitAssessment(){
     try{
+      normalizeStoredIntakeValues();
       const missing = KCA.coreQuestions(state.definition).filter(q => state.core_answers[q.id] === undefined).map(q => q.id);
       if(missing.length){ alert("Please answer all 24 core questions before submitting."); return; }
       const button = $("submitBtn");
