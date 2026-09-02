@@ -234,14 +234,19 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   }
 
   function answerLabel(response){
+    const numericValue = Number(response.answer_value);
+    if(Number.isInteger(numericValue)) return `${numericValue} — ${scaleLabels[numericValue] || "Answer"}`;
+    if(response.display_answer) return response.display_answer;
     if(response.answer_text) return response.answer_text;
-    if(Number.isInteger(response.answer_value)) return `${response.answer_value} — ${scaleLabels[response.answer_value] || "Answer"}`;
     return "No answer";
   }
 
   function buildAutoReport(detail){
     const engineRun = detail.engine_run || {};
-    const plan = engineRun.generated_plan || {};
+    const plan = engineRun.plan_draft || engineRun.generated_plan || {};
+    const energyProfile = detail.energy_profile
+      ? (detail.energy_profile.profile || detail.energy_profile)
+      : (plan.energy_profile || {});
     const snapshot = detail.run.score_snapshot || {};
     const domains = getDomains(snapshot);
     const lowest = getPrimaryGap(snapshot);
@@ -259,7 +264,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       strong_foundations:domains.slice().sort((a,b) => b.internal - a.internal).slice(0,3).map(item => ({ domain_code:item.domain_code, name:item.name || item.domain_name, score:item.display })),
       big3,
       plan:weeks,
-      energy_profile:detail.energy_profile || plan.energy_profile || {},
+      energy_profile:energyProfile || {},
       nutrition:plan.nutrition || {},
       training:plan.training || {},
       recovery:plan.recovery || {},
@@ -682,7 +687,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       return;
     }
     const report = buildAutoReport(detail);
-    const plan = (detail.engine_run && detail.engine_run.generated_plan) || {
+    const plan = (detail.engine_run && (detail.engine_run.plan_draft || detail.engine_run.generated_plan)) || {
       big3: report.big3 || [],
       weeks: report.plan || [],
       energy_profile: report.energy_profile || {},
