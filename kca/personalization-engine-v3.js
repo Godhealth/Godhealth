@@ -178,10 +178,18 @@
 
   function mifflinStJeor({ age, sex, height_cm, weight_kg }){
     const a = Number(age), h = Number(height_cm), w = Number(weight_kg);
+    const gender = normalizeGender(sex);
     if(!Number.isFinite(a) || !Number.isFinite(h) || !Number.isFinite(w)) return null;
-    if(String(sex).toLowerCase() === "male") return round2(10 * w + 6.25 * h - 5 * a + 5);
-    if(String(sex).toLowerCase() === "female") return round2(10 * w + 6.25 * h - 5 * a - 161);
+    if(gender === "male") return round2(10 * w + 6.25 * h - 5 * a + 5);
+    if(gender === "female") return round2(10 * w + 6.25 * h - 5 * a - 161);
     return null;
+  }
+
+  function normalizeGender(value){
+    const text = String(value || "").trim().toLowerCase();
+    if(text === "man" || text === "male") return "male";
+    if(text === "woman" || text === "female") return "female";
+    return text;
   }
 
   function inferPal(intake){
@@ -224,7 +232,11 @@
     const sex = valueOf(intake, "PR2");
     const height = Number(valueOf(intake, "PR3"));
     const weight = Number(valueOf(intake, "PR4"));
+    const targetWeight = Number(valueOf(intake, "GL5"));
     const goal = String(valueOf(intake, "GL1") || "").toLowerCase();
+    const targetDirection = Number.isFinite(targetWeight) && targetWeight > 0 && Number.isFinite(weight) && weight > 0
+      ? targetWeight < weight - 1 ? "fat_loss" : targetWeight > weight + 1 ? "weight_gain" : "maintenance"
+      : null;
     const ree = mifflinStJeor({ age, sex, height_cm: height, weight_kg: weight });
     const pal = inferPal(intake);
     const midpoint = ree ? Math.round(ree * pal.value) : null;
@@ -247,9 +259,9 @@
 
     let goalRange = null;
     if(midpoint && hardBlocks.length === 0){
-      if(goal === "fat loss"){
+      if(goal === "fat loss" || targetDirection === "fat_loss"){
         goalRange = { low: Math.round(midpoint * 0.80), high: Math.round(midpoint * 0.90), approval_required: true };
-      }else if(goal === "strength/muscle gain"){
+      }else if(goal === "strength/muscle gain" || targetDirection === "weight_gain"){
         goalRange = { low: Math.round(midpoint * 1.05), high: Math.round(midpoint * 1.10), approval_required: true };
       }else{
         goalRange = { low: Math.round(midpoint * 0.95), high: Math.round(midpoint * 1.05), approval_required: true };
@@ -265,6 +277,10 @@
       proposed_activity_factor: pal,
       estimated_TDEE_range_kcal: tdeeRange,
       goal_calorie_range_kcal: goalRange,
+      target_weight_kg: Number.isFinite(targetWeight) && targetWeight > 0 ? targetWeight : null,
+      target_weight_direction: targetDirection,
+      weight_change_context_kg: Number.isFinite(targetWeight) && targetWeight > 0 && Number.isFinite(weight) && weight > 0 ? round2(targetWeight - weight) : null,
+      target_weight_note: "Target weight informs the coaching direction and calorie range estimate; coach approval is still required.",
       confidence: hardBlocks.length ? "coach/clinical review required" : "estimated — coach approval required",
       calibration_status: "requires 14 days, at least 8 morning weights, and adherence context before adjustment",
       hard_blocks: hardBlocks,
@@ -333,7 +349,7 @@
   }
 
   function buildRecovery(intake){
-    const sex = String(valueOf(intake, "PR2") || "").toLowerCase();
+    const sex = normalizeGender(valueOf(intake, "PR2"));
     const sleepHours = Number(valueOf(intake, "SL1") || 0);
     const apnea = String(valueOf(intake, "SL5") || "").toLowerCase();
     return {

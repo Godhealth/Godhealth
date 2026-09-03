@@ -487,6 +487,29 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     const big3 = report.big3 || [];
     const plan = report.plan || [];
     const energy = report.energy_profile || {};
+    const tdee = energy.estimated_TDEE_range_kcal || energy.tdee_range || {};
+    const ree = energy.estimated_REE_kcal || energy.ree_estimate || energy.ree;
+    const goalCalories = energy.goal_calorie_range_kcal || energy.goal_calorie_range || {};
+    const tdeeText = tdee && tdee.low && tdee.high
+      ? `${tdee.low}-${tdee.high} kcal estimated TDEE range`
+      : "Not calculated / coach review needed";
+    const goalText = goalCalories && goalCalories.low && goalCalories.high
+      ? `${goalCalories.low}-${goalCalories.high} kcal suggested starting range`
+      : "Not generated / coach review needed";
+    const protein = report.nutrition && report.nutrition.protein_target;
+    const proteinText = protein && typeof protein === "object"
+      ? `${protein.low_g || "—"}-${protein.high_g || "—"}g protein target range`
+      : (protein || "Coach review required");
+    const targetWeight = energy.target_weight_kg || (report.summary && report.summary.target_weight_kg);
+    const targetDirection = energy.target_weight_direction
+      ? String(energy.target_weight_direction).replace(/_/g, " ")
+      : "";
+    const targetContext = energy.weight_change_context_kg
+      ? ` (${Number(energy.weight_change_context_kg) > 0 ? "+" : ""}${energy.weight_change_context_kg} kg from current)`
+      : "";
+    const targetText = targetWeight
+      ? `${targetWeight} kg${targetContext}${targetDirection ? " · " + targetDirection : ""}`
+      : "Not provided";
     return `
       <div class="card card-pad">
         <p class="eyebrow">Automatic Draft Report</p>
@@ -502,9 +525,13 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
           `).join("") : `<div class="empty">No automatic Big 3 could be generated for this run.</div>`}
         </div>
         <div class="grid g3" style="margin-top:18px">
-          <div class="report-note"><strong>Energy profile:</strong><br>${escapeHtml(energy.estimated_TDEE_range_kcal ? `${energy.estimated_TDEE_range_kcal.low}-${energy.estimated_TDEE_range_kcal.high} kcal estimated TDEE range` : "Not calculated / coach review needed")}</div>
-          <div class="report-note"><strong>Nutrition:</strong><br>${escapeHtml(report.nutrition && report.nutrition.protein_target ? JSON.stringify(report.nutrition.protein_target) : "Coach review required")}</div>
+          <div class="report-note"><strong>REE estimate:</strong><br>${escapeHtml(ree ? `${ree} kcal estimated resting energy` : "Not calculated / coach review needed")}</div>
+          <div class="report-note"><strong>TDEE range:</strong><br>${escapeHtml(tdeeText)}</div>
+          <div class="report-note"><strong>Goal calorie range:</strong><br>${escapeHtml(goalText)}</div>
+          <div class="report-note"><strong>Target weight:</strong><br>${escapeHtml(targetText)}</div>
+          <div class="report-note"><strong>Nutrition:</strong><br>${escapeHtml(proteinText)}</div>
           <div class="report-note"><strong>Training:</strong><br>${escapeHtml(report.training && report.training.exercise_template || "Coach review required")}</div>
+          <div class="report-note"><strong>Recovery:</strong><br>${escapeHtml(report.recovery && report.recovery.sleep_target || "Coach review required")}</div>
         </div>
         <div style="margin-top:24px">
           <p class="eyebrow">12-week draft structure</p>
@@ -554,7 +581,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   function renderIntake(detail){
     const intake = detail.intake && detail.intake.intake || {};
     const fields = state.definition.personal_transformation_intake || [];
-    const rows = Object.entries(intake).filter(([key]) => key !== "full_name");
+    const rows = Object.entries(intake);
     return `
       <div style="margin-top:22px">
         <p class="eyebrow">Personal Intake</p>
