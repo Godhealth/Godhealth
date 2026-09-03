@@ -85,17 +85,13 @@ Deno.serve(async (req) => {
   }
 
   const coachUser = userData.user;
-  const { data: coach, error: coachError } = await admin
-    .from("kca_coaches")
-    .select("user_id, role")
-    .eq("user_id", coachUser.id)
-    .maybeSingle();
+  const { data: isCoach, error: coachError } = await coachClient.rpc("kca_is_coach");
 
   if (coachError) {
     return json({ ok: false, message: coachError.message });
   }
 
-  if (!coach) {
+  if (!isCoach) {
     return json({ ok: false, message: "This account is not enabled as a GodHealth coach." });
   }
 
