@@ -266,7 +266,14 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         email,
         options:{ emailRedirectTo: assessmentRedirectUrl, shouldCreateUser: false }
       });
-      setAuthMessage(error ? "Login link could not be sent: " + error.message : "Check your inbox for your secure access link.", Boolean(error));
+      if(error){
+        const message = /signup|signups|otp/i.test(error.message || "")
+          ? "This email is not activated for the Kingdom Capacity Assessment yet. Please contact GodHealth so we can activate your secure access."
+          : "Login link could not be sent: " + error.message;
+        setAuthMessage(message, true);
+        return;
+      }
+      setAuthMessage("Check your inbox for your secure access link.", false);
     });
     $("beginBtn").addEventListener("click", async () => {
       if(!state.definition){

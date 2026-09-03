@@ -1,2 +1,5 @@
 [functions.complete-scan-report]
 verify_jwt = false
+
+[functions.kca-invite-client]
+verify_jwt = false
