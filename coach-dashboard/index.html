@@ -351,6 +351,20 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     }
   }
 
+  async function getFunctionErrorMessage(error){
+    if(!error) return "";
+    try{
+      if(error.context && typeof error.context.json === "function"){
+        const body = await error.context.json();
+        return body && (body.message || body.error || body.msg) ? String(body.message || body.error || body.msg) : "";
+      }
+      if(error.context && typeof error.context.text === "function"){
+        return await error.context.text();
+      }
+    }catch(_error){}
+    return error.message || "";
+  }
+
   function renderStats(){
     const total = state.runs.length;
     const submitted = state.runs.filter(run => run.status === "submitted" || run.status === "safety_paused").length;
@@ -705,7 +719,8 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     button.textContent = "Invite + Activate Client";
 
     if(error){
-      setClientAccessMessage("Could not invite this client yet: " + error.message, true);
+      const detail = await getFunctionErrorMessage(error);
+      setClientAccessMessage("Could not invite this client yet: " + (detail || error.message), true);
       return;
     }
 

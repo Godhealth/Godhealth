@@ -48,7 +48,7 @@ Deno.serve(async (req) => {
   }
 
   if (req.method !== "POST") {
-    return json({ ok: false, message: "Method not allowed." }, 405);
+    return json({ ok: false, message: "Method not allowed." });
   }
 
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
@@ -61,14 +61,13 @@ Deno.serve(async (req) => {
         ok: false,
         message:
           "Supabase function is missing required environment variables. Check SUPABASE_URL, SUPABASE_ANON_KEY and SUPABASE_SERVICE_ROLE_KEY.",
-      },
-      500,
+      }
     );
   }
 
   const authorization = req.headers.get("Authorization") || "";
   if (!authorization.startsWith("Bearer ")) {
-    return json({ ok: false, message: "Coach login is required." }, 401);
+    return json({ ok: false, message: "Coach login is required. Sign out, sign in again, then invite the client." });
   }
 
   const coachClient = createClient(supabaseUrl, anonKey, {
@@ -82,7 +81,7 @@ Deno.serve(async (req) => {
 
   const { data: userData, error: userError } = await coachClient.auth.getUser();
   if (userError || !userData.user) {
-    return json({ ok: false, message: "Coach login could not be verified." }, 401);
+    return json({ ok: false, message: "Coach login could not be verified. Sign out, sign in again, then invite the client." });
   }
 
   const coachUser = userData.user;
@@ -93,18 +92,18 @@ Deno.serve(async (req) => {
     .maybeSingle();
 
   if (coachError) {
-    return json({ ok: false, message: coachError.message }, 500);
+    return json({ ok: false, message: coachError.message });
   }
 
   if (!coach) {
-    return json({ ok: false, message: "This account is not enabled as a GodHealth coach." }, 403);
+    return json({ ok: false, message: "This account is not enabled as a GodHealth coach." });
   }
 
   let payload: Record<string, unknown> = {};
   try {
     payload = await req.json();
   } catch (_error) {
-    return json({ ok: false, message: "Invalid request body." }, 400);
+    return json({ ok: false, message: "Invalid request body." });
   }
 
   const email = normalizeEmail(payload.email);
@@ -114,7 +113,7 @@ Deno.serve(async (req) => {
     "https://www.godhealth.org/kingdom-capacity-assessment/";
 
   if (!isValidEmail(email)) {
-    return json({ ok: false, message: "Enter a valid client email address." }, 400);
+    return json({ ok: false, message: "Enter a valid client email address." });
   }
 
   try {
@@ -135,7 +134,7 @@ Deno.serve(async (req) => {
     }
 
     if (!clientUser) {
-      return json({ ok: false, message: "Client account could not be created." }, 500);
+      return json({ ok: false, message: "Client account could not be created." });
     }
 
     const { error: entitlementError } = await admin
@@ -200,8 +199,7 @@ Deno.serve(async (req) => {
       {
         ok: false,
         message: error instanceof Error ? error.message : "Client access could not be created.",
-      },
-      400,
+      }
     );
   }
 });
