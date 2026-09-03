@@ -195,6 +195,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   const $ = id => document.getElementById(id);
   const scaleLabels = (KCA && KCA.SCALE_LABELS) || ["Not true right now","Rarely true","Sometimes true","Mostly true","Consistently true"];
   const steps = { intro:1, core:2, deep:3, result:4 };
+  const LOCAL_DRAFT_KEY = "godhealth_kca_v3_local_draft";
 
   function escapeHtml(value){
     return String(value == null ? "" : value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[char]));
@@ -203,7 +204,14 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   function initSupabase(){
     const cfg = window.GODHEALTH_CONFIG && window.GODHEALTH_CONFIG.supabase;
     if(!cfg || !window.supabase) return null;
-    return window.supabase.createClient(cfg.url, cfg.anonKey);
+    return window.supabase.createClient(cfg.url, cfg.anonKey, {
+      auth:{
+        persistSession:true,
+        autoRefreshToken:true,
+        detectSessionInUrl:true,
+        storageKey:"godhealth-kca-v3-auth"
+      }
+    });
   }
 
   function setAuthMessage(message, danger){
@@ -224,6 +232,63 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     setAuthMessage(message || "Your account is signed in, but premium assessment access is not enabled yet.", true);
   }
 
+  function draftPayload(){
+    return {
+      safety_answers:state.safety_answers || {},
+      intake:state.intake || {},
+      core_answers:state.core_answers || {},
+      consent:state.consent || { accepted:false, full_name:"" },
+      saved_at:new Date().toISOString()
+    };
+  }
+
+  function saveLocalDraft(){
+    try{
+      window.localStorage.setItem(LOCAL_DRAFT_KEY, JSON.stringify(draftPayload()));
+    }catch(_error){}
+  }
+
+  function restoreLocalDraft(){
+    try{
+      const raw = window.localStorage.getItem(LOCAL_DRAFT_KEY);
+      if(!raw) return;
+      const draft = JSON.parse(raw);
+      if(draft && typeof draft === "object"){
+        state.safety_answers = draft.safety_answers || state.safety_answers;
+        state.intake = draft.intake || state.intake;
+        state.core_answers = draft.core_answers || state.core_answers;
+        state.consent = draft.consent || state.consent;
+      }
+    }catch(_error){}
+  }
+
+  function clearLocalDraft(){
+    try{ window.localStorage.removeItem(LOCAL_DRAFT_KEY); }catch(_error){}
+  }
+
+  async function ensureSession(){
+    if(!state.supabase) return null;
+    const params = new URLSearchParams(window.location.search);
+    if(params.has("code")){
+      const { error } = await state.supabase.auth.exchangeCodeForSession(params.get("code"));
+      if(!error){
+        params.delete("code");
+        const cleanUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}${window.location.hash || ""}`;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    }
+    const { data } = await state.supabase.auth.getSession();
+    state.session = data && data.session ? data.session : null;
+    if(state.session) return state.session;
+    try{
+      const refreshed = await state.supabase.auth.refreshSession();
+      state.session = refreshed.data && refreshed.data.session ? refreshed.data.session : null;
+    }catch(_error){
+      state.session = null;
+    }
+    return state.session;
+  }
+
   async function loadDefinition(){
     const { data, error } = await state.supabase.rpc("kca_v3_get_definition");
     if(error) throw error;
@@ -237,8 +302,8 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       setAuthMessage("Supabase configuration was not found. Ask GodHealth for access.", true);
       return;
     }
-    const { data } = await state.supabase.auth.getSession();
-    state.session = data && data.session;
+    restoreLocalDraft();
+    state.session = await ensureSession();
     if(!state.session) return;
     try{
       await loadDefinition();
@@ -259,6 +324,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       event.preventDefault();
       if(!state.supabase) return;
       const email = $("authEmail").value.trim();
+      try{ window.localStorage.setItem("godhealth_kca_v3_last_email", email); }catch(_error){}
       const assessmentRedirectUrl = location.hostname === "localhost" || location.hostname === "127.0.0.1"
         ? location.origin + "/kingdom-capacity-assessment/"
         : "https://www.godhealth.org/kingdom-capacity-assessment/";
@@ -596,6 +662,12 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   async function submitAssessment(){
     try{
+      saveLocalDraft();
+      const session = await ensureSession();
+      if(!session){
+        alert("Your secure login session expired before saving. Your answers are saved in this browser. Please open your secure assessment link again, then press Submit For Coach Review.");
+        return;
+      }
       normalizeStoredIntakeValues();
       const missing = KCA.coreQuestions(state.definition).filter(q => state.core_answers[q.id] === undefined).map(q => q.id);
       if(missing.length){ alert("Please answer all 24 core questions before submitting."); return; }
@@ -610,6 +682,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       });
       if(error) throw error;
       state.runResult = data;
+      clearLocalDraft();
       renderResultFromServer(data);
       showScreen("result");
     }catch(error){
@@ -621,9 +694,9 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   }
 
   async function saveDraft(){
+    saveLocalDraft();
     if(!state.supabase || !state.session) return;
-    const draft = { safety_answers:state.safety_answers, intake:state.intake, core_answers:state.core_answers, consent:state.consent };
-    state.supabase.rpc("kca_v3_save_draft", { p_draft:draft });
+    state.supabase.rpc("kca_v3_save_draft", { p_draft:draftPayload() });
   }
 
   function getSnapshot(payload){
@@ -724,6 +797,11 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   async function init(){
     if(!KCA) throw new Error("KCA V3 engine could not be loaded.");
     state.supabase = initSupabase();
+    if(state.supabase){
+      state.supabase.auth.onAuthStateChange((_event, session) => {
+        state.session = session || null;
+      });
+    }
     bind();
     await checkAuth();
     reveal();
