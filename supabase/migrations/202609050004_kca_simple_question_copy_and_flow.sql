@@ -4,20 +4,20 @@
 
 do $$
 declare
-  v_definition_id uuid;
+  v_definition_version text;
   v_definition jsonb;
   v_new_intake jsonb;
   v_new_core jsonb;
 begin
-  select id, definition
-  into v_definition_id, v_definition
+  select definition_version, definition
+  into v_definition_version, v_definition
   from public.kca_assessment_definitions
   where definition_version = '3.0.0'
     and retired_at is null
   order by created_at desc
   limit 1;
 
-  if v_definition_id is null then
+  if v_definition_version is null then
     return;
   end if;
 
@@ -153,5 +153,6 @@ begin
       true
     ),
     change_reason = 'V3 simple English question copy with existing scoring, safety and personalization preserved.'
-  where id = v_definition_id;
+  where definition_version = v_definition_version
+    and retired_at is null;
 end $$;
