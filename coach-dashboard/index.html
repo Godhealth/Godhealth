@@ -159,6 +159,11 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return String(value == null ? "" : value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[char]));
   }
 
+  function normalizeRunId(value){
+    const text = String(value || "").trim();
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(text) ? text : "";
+  }
+
   function initSupabase(){
     const cfg = window.GODHEALTH_CONFIG && window.GODHEALTH_CONFIG.supabase;
     if(!cfg || !window.supabase) return null;
@@ -613,7 +618,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   }
 
   function renderTwelveWeekPlanDownload(detail){
-    const runId = detail && detail.run && detail.run.id || "";
+    const runId = normalizeRunId(detail && detail.run && detail.run.id || state.selectedRunId || "");
     const existing = detail && detail.run && detail.run.twelve_week_plan_pdf_generated_at;
     return `
       <div class="card card-pad">
@@ -818,8 +823,10 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       button.disabled = true;
       button.textContent = "Preparing PDF...";
       if(message) message.textContent = "Building the private GodHealth PDF...";
+      const runId = normalizeRunId(button.dataset.runId || state.selectedRunId || "");
+      if(!runId) throw new Error("This participant report is missing a valid assessment ID. Please refresh the dashboard and open the participant again.");
       const { data, error } = await state.supabase.functions.invoke("kca-12-week-plan-report", {
-        body:{ run_id:button.dataset.runId }
+        body:{ run_id:runId }
       });
       if(error){
         const detail = await getFunctionErrorMessage(error);

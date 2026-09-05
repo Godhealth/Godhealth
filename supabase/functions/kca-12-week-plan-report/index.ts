@@ -9,7 +9,7 @@ import {
 
 const MAX_REQUEST_BYTES = 16 * 1024;
 const MAX_PDF_BYTES = 12 * 1024 * 1024;
-const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{12}$/i;
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const PAGE = { width: 595.28, height: 841.89 };
 const C = {
   forest: rgb(0.025, 0.105, 0.075),
@@ -536,7 +536,7 @@ Deno.serve(async (request: Request): Promise<Response> => {
     const raw = await request.text();
     if (new TextEncoder().encode(raw).byteLength > MAX_REQUEST_BYTES) return json(request, { error: "Request too large." }, 413);
     const payload = raw ? JSON.parse(raw) : {};
-    const requestedRunId = cleanText(payload?.run_id, 80);
+    const requestedRunId = cleanText(payload?.run_id || payload?.id || payload?.run?.id, 80);
     if (requestedRunId && !UUID_PATTERN.test(requestedRunId)) throw new Error("INVALID_RUN_ID");
 
     const supabaseUrl = env("SUPABASE_URL");

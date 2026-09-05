@@ -993,7 +993,12 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   function runIdFromPayload(payload){
     if(!payload) return "";
-    return payload.run_id || payload.id || (payload.run && payload.run.id) || "";
+    return normalizeRunId(payload.run_id || payload.id || (payload.run && payload.run.id) || "");
+  }
+
+  function normalizeRunId(value){
+    const text = String(value || "").trim();
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(text) ? text : "";
   }
 
   function submittedIntake(payload){
@@ -1131,9 +1136,10 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       button.disabled = true;
       button.textContent = "Preparing PDF...";
       if(message) message.textContent = "Building your private GodHealth PDF...";
-      const runId = button.dataset.runId || runIdFromPayload(state.runResult || state.latest || {});
+      const runId = normalizeRunId(button.dataset.runId) || runIdFromPayload(state.runResult || state.latest || {});
+      const body = runId ? { run_id:runId } : {};
       const { data, error } = await state.supabase.functions.invoke("kca-12-week-plan-report", {
-        body:{ run_id:runId || undefined }
+        body
       });
       if(error){
         const detail = await functionErrorMessage(error);
