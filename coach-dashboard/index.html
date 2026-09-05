@@ -261,8 +261,18 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return String(value);
   }
 
+  function getIntakePayload(detail){
+    const directIntake = detail && detail.intake && detail.intake.intake;
+    if(directIntake && typeof directIntake === "object" && Object.keys(directIntake).length) return directIntake;
+    const snapshotIntake = detail && detail.engine_run && detail.engine_run.input_snapshot && detail.engine_run.input_snapshot.intake;
+    if(snapshotIntake && typeof snapshotIntake === "object" && Object.keys(snapshotIntake).length) return snapshotIntake;
+    const runContext = detail && detail.run && detail.run.context;
+    if(runContext && typeof runContext === "object") return runContext;
+    return {};
+  }
+
   function intakeRows(detail){
-    const intake = detail && detail.intake && detail.intake.intake || {};
+    const intake = getIntakePayload(detail);
     const fields = state.definition && state.definition.personal_transformation_intake || [];
     const used = new Set();
     const rows = fields.map(field => {

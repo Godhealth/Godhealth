@@ -707,7 +707,12 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   function submittedIntake(payload){
     const fromPayload = payload && payload.intake && payload.intake.intake;
-    return fromPayload && typeof fromPayload === "object" ? fromPayload : state.intake || {};
+    if(fromPayload && typeof fromPayload === "object" && Object.keys(fromPayload).length) return fromPayload;
+    const fromSnapshot = payload && payload.engine_run && payload.engine_run.input_snapshot && payload.engine_run.input_snapshot.intake;
+    if(fromSnapshot && typeof fromSnapshot === "object" && Object.keys(fromSnapshot).length) return fromSnapshot;
+    const fromRun = payload && payload.run && payload.run.context;
+    if(fromRun && typeof fromRun === "object" && Object.keys(fromRun).length) return fromRun;
+    return state.intake || {};
   }
 
   function intakeFieldRows(intake){
