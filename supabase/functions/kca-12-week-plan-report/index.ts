@@ -193,7 +193,152 @@ function answerRows(detail: Detail): { label: string; value: string }[] {
     const value = valueText(intake[key]);
     if (value) rows.push({ label: key.replace(/_/g, " "), value });
   });
-  return rows.slice(0, 28);
+  return rows;
+}
+
+function allDefinitionQuestions(detail: Detail): Record<string, any>[] {
+  const definition = detail.definition || {};
+  return [
+    ...(definition.safety_gates || []).map((gate: any) => ({
+      ...gate,
+      domain_code: "SAFETY",
+      pillar: "SAFETY",
+      question_role: "safety_gate",
+      statement: gate.question || gate.prompt || gate.if_yes || gate.id,
+    })),
+    ...(definition.capacity_core || []),
+    ...(definition.coach_clarifiers || []),
+    ...(definition.questions || []),
+  ];
+}
+
+function questionMap(detail: Detail): Map<string, Record<string, any>> {
+  const map = new Map<string, Record<string, any>>();
+  allDefinitionQuestions(detail).forEach((question) => {
+    if (question?.id) map.set(question.id, question);
+  });
+  return map;
+}
+
+function questionOrderMap(detail: Detail): Map<string, number> {
+  const map = new Map<string, number>();
+  allDefinitionQuestions(detail).forEach((question, index) => {
+    if (question?.id) map.set(question.id, index);
+  });
+  return map;
+}
+
+function domainLabel(detail: Detail, code: string): string {
+  const domain = (detail.definition?.domains || []).find((item: any) => item.code === code);
+  return domain ? `${domain.code} - ${domain.name}` : code;
+}
+
+function questionText(detail: Detail, response: Record<string, any>): string {
+  const question = questionMap(detail).get(response.question_id) || {};
+  return cleanText(
+    question.statement || question.question || question.prompt || response.question_text || response.answer_text || response.question_id,
+    900,
+  );
+}
+
+function scaleLabel(detail: Detail, value: unknown): string {
+  const numeric = Number(value);
+  const scale = detail.definition?.response_scale || [];
+  const match = scale.find((item: any) => Number(item.value) === numeric);
+  return match?.label || ["Not true / Never", "Rarely true", "Sometimes true", "Mostly true", "Consistently true"][numeric] || "Answer";
+}
+
+function responseAnswerLabel(detail: Detail, response: Record<string, any>): string {
+  const value = response.answer_value;
+  if (value !== null && value !== undefined && value !== "" && response.question_role === "core") {
+    return `${valueText(value)} - ${scaleLabel(detail, value)}`;
+  }
+  if (response.display_answer) return valueText(response.display_answer);
+  const text = cleanText(response.answer_text || "", 700);
+  if (text.includes(" - ")) return text.split(" - ")[0].trim();
+  if (text.includes(" — ")) return text.split(" — ")[0].trim();
+  if (text) return text;
+  if (value !== null && value !== undefined && value !== "") return valueText(value);
+  return "No answer";
+}
+
+function sortedResponses(detail: Detail, role: string): Record<string, any>[] {
+  const order = questionOrderMap(detail);
+  return detail.responses
+    .filter((response) => response.question_role === role)
+    .sort((a, b) => (order.get(a.question_id) ?? 9999) - (order.get(b.question_id) ?? 9999));
+}
+
+function pickIntake(intake: Record<string, any>, keys: string[]): string {
+  for (const key of keys) {
+    const value = valueText(intake[key]);
+    if (value) return value;
+  }
+  return "";
+}
+
+function personalContextRows(detail: Detail): { label: string; value: string }[] {
+  const intake = intakeAnswers(detail);
+  const energy = energyProfile(detail);
+  const goalRange = energy.goal_calorie_range_kcal || energy.goal_calorie_range || {};
+  const tdee = energy.estimated_TDEE_range_kcal || energy.tdee_range || {};
+  const rows = [
+    { label: "Primary goal", value: pickIntake(intake, ["GO1", "primary_goal", "goal", "main_goal"]) },
+    { label: "Current weight", value: pickIntake(intake, ["BD4", "current_weight_kg", "weight_kg", "current_weight"]) },
+    { label: "Target weight", value: pickIntake(intake, ["BD4_TARGET", "target_weight_kg", "target_weight", "goal_weight"]) },
+    { label: "Work hours each week", value: pickIntake(intake, ["EN8", "work_hours_per_week", "work_hours"]) },
+    { label: "Sleep pattern", value: pickIntake(intake, ["SL1", "average_sleep", "sleep_hours"]) },
+    { label: "Blue screens before bed", value: pickIntake(intake, ["SL7", "blue_screens_before_bed"]) },
+    { label: "Weekly schedule constraints", value: pickIntake(intake, ["EN5", "schedule_constraints", "time_windows"]) },
+    { label: "Routine usually collapses through", value: pickIntake(intake, ["EN7", "routine_collapse"]) },
+    { label: "Training availability", value: pickIntake(intake, ["TR3", "training_days_available", "TR5", "workout_time"]) },
+    { label: "Available equipment", value: pickIntake(intake, ["TR6", "equipment"]) },
+    { label: "Food pattern to respect", value: pickIntake(intake, ["NU8", "nutrition_struggles", "NU9", "food_preferences"]) },
+    { label: "Spiritual rhythm to strengthen", value: pickIntake(intake, ["SS2", "spiritual_rhythm"]) },
+  ];
+  if (goalRange.low && goalRange.high) rows.splice(3, 0, { label: "Estimated starting calorie range", value: `${goalRange.low}-${goalRange.high} kcal (coach-reviewed starting point)` });
+  if (tdee.low && tdee.high) rows.splice(3, 0, { label: "Estimated energy need", value: `${tdee.low}-${tdee.high} kcal (estimate, not exact metabolism)` });
+  return rows.filter((row) => row.value);
+}
+
+function scoreLevel(score: number): string {
+  if (score >= 80) return "strong";
+  if (score >= 65) return "developing";
+  if (score >= 50) return "fragile";
+  return "needs first attention";
+}
+
+function pillarFocusText(detail: Detail, pillar: "BODY" | "SOUL" | "SPIRIT"): string {
+  const score = scoreOfPillar(detail, pillar);
+  const level = scoreLevel(score);
+  const intake = intakeAnswers(detail);
+  if (pillar === "BODY") {
+    const sleep = pickIntake(intake, ["SL1", "SL6"]);
+    const training = pickIntake(intake, ["TR3", "TR5", "TR6"]);
+    const nutrition = pickIntake(intake, ["NU8", "NU9", "NU10"]);
+    return `Body is currently ${level} (${score}). Start with sleep rhythm, protein/whole-food structure and repeatable movement. ${sleep ? `Sleep signal: ${sleep}. ` : ""}${training ? `Training context: ${training}. ` : ""}${nutrition ? `Nutrition context: ${nutrition}.` : ""}`;
+  }
+  if (pillar === "SOUL") {
+    const stress = pickIntake(intake, ["SS1", "EN7", "EN2"]);
+    return `Soul is currently ${level} (${score}). Your plan should reduce friction, protect simple routines and create a comeback path after stress. ${stress ? `Main pattern to watch: ${stress}.` : ""}`;
+  }
+  const rhythm = pickIntake(intake, ["SS2"]);
+  return `Spirit is currently ${level} (${score}). Keep health connected to worship: Scripture before noise, honest prayer and one daily act of stewardship. ${rhythm ? `Rhythm to strengthen: ${rhythm}.` : ""}`;
+}
+
+function personalizedPlanLevers(detail: Detail): { title: string; body: string }[] {
+  const gap = primaryGap(detail);
+  const intake = intakeAnswers(detail);
+  const levers = [
+    { title: "Primary focus", body: gap ? `${gap.domain_name || gap.name || gap.domain_code} is your first capacity signal. Begin there before adding complexity.` : "Start with coach review of your intake, capacity scores and weekly constraints." },
+    { title: "Body lever", body: pillarFocusText(detail, "BODY") },
+    { title: "Soul lever", body: pillarFocusText(detail, "SOUL") },
+    { title: "Spirit lever", body: pillarFocusText(detail, "SPIRIT") },
+  ];
+  const routineCollapse = pickIntake(intake, ["EN7", "routine_collapse"]);
+  if (routineCollapse) levers.push({ title: "Fallback plan", body: `When your routine collapses through ${routineCollapse}, return to the smallest next step: one real-food meal, one walk, one prayer, one protected bedtime.` });
+  if (hasSafetyPause(detail)) levers.unshift({ title: "Safety routing", body: "Your answers include safety context. Do not treat this as a willpower issue. Let a GodHealth coach review before progressing calories, fasting or training." });
+  return levers;
 }
 
 function planDraft(detail: Detail): Record<string, any> {
@@ -367,6 +512,122 @@ function bar(page: PDFPage, fonts: Fonts, x: number, y: number, label: string, v
   page.drawRectangle({ x, y: y - 15, width: Math.max(4, width * Math.min(100, Math.max(0, value)) / 100), height: 8, color: C.gold2 });
 }
 
+function divider(page: PDFPage, x: number, y: number, width: number): void {
+  page.drawRectangle({ x, y, width, height: 0.7, color: C.gold, opacity: 0.82 });
+}
+
+function scoreRing(page: PDFPage, fonts: Fonts, x: number, y: number, value: number, label: string): void {
+  page.drawCircle({ x, y, size: 67, color: C.dark, opacity: 0.62 });
+  page.drawCircle({ x, y, size: 67, borderColor: C.gold, borderWidth: 1.5 });
+  page.drawCircle({ x, y, size: 55, borderColor: C.gold2, borderWidth: 0.8, opacity: 0.88 });
+  page.drawCircle({ x, y, size: 42, color: C.panel, opacity: 0.9 });
+  const score = `${Math.max(0, Math.min(100, value))}%`;
+  page.drawText(score, {
+    x: x - fonts.serifBold.widthOfTextAtSize(score, 31) / 2,
+    y: y - 3,
+    font: fonts.serifBold,
+    size: 31,
+    color: C.gold2,
+  });
+  const labelText = ascii(label).toUpperCase();
+  page.drawText(labelText, {
+    x: x - fonts.sansBold.widthOfTextAtSize(labelText, 7) / 2,
+    y: y - 24,
+    font: fonts.sansBold,
+    size: 7,
+    color: C.muted,
+  });
+}
+
+function rowHeight(text: string, font: PDFFont, size: number, maxWidth: number, lineHeight: number, maxLines: number): number {
+  return Math.min(wrap(text, font, size, maxWidth).length, maxLines) * lineHeight;
+}
+
+function detailCard(
+  page: PDFPage,
+  fonts: Fonts,
+  y: number,
+  heading: string,
+  body: string,
+  options: { maxLines?: number; minHeight?: number; primary?: boolean } = {},
+): number {
+  const maxLines = options.maxLines ?? 5;
+  const bodyHeight = rowHeight(body, fonts.sans, 8.7, PAGE.width - 132, 11.6, maxLines);
+  const height = Math.max(options.minHeight ?? 68, 38 + bodyHeight);
+  card(page, 48, y, PAGE.width - 96, height, options.primary);
+  page.drawText(ascii(heading).toUpperCase(), { x: 66, y: y - 20, font: fonts.sansBold, size: 8, color: C.gold2 });
+  drawText(page, body, 66, y - 39, { font: fonts.sans, size: 8.7, color: C.cream, maxWidth: PAGE.width - 132, lineHeight: 11.6, maxLines });
+  return y - height - 13;
+}
+
+function renderKeyValuePages(
+  pdf: PDFDocument,
+  fonts: Fonts,
+  rows: { label: string; value: string }[],
+  eyebrow: string,
+  heading: string,
+  emptyText: string,
+): void {
+  let page = basePage(pdf, fonts, pdf.getPageCount() + 1);
+  let y = title(page, fonts, eyebrow, heading);
+  if (!rows.length) {
+    drawText(page, emptyText, 48, y, { font: fonts.sans, size: 11, color: C.cream, maxWidth: 500 });
+    return;
+  }
+  rows.forEach((row) => {
+    const label = cleanText(row.label, 220);
+    const value = cleanText(row.value, 950);
+    const valueLines = Math.min(wrap(value, fonts.sans, 8.4, 470).length, 4);
+    const height = Math.max(54, 31 + valueLines * 10.8);
+    if (y - height < 62) {
+      page = basePage(pdf, fonts, pdf.getPageCount() + 1);
+      y = title(page, fonts, eyebrow, "Continued", 775);
+    }
+    card(page, 48, y, PAGE.width - 96, height);
+    drawText(page, label, 64, y - 17, { font: fonts.sansBold, size: 8, color: C.gold2, maxWidth: 470, maxLines: 1 });
+    drawText(page, value, 64, y - 34, { font: fonts.sans, size: 8.4, color: C.cream, maxWidth: 470, lineHeight: 10.8, maxLines: 4 });
+    y -= height + 10;
+  });
+}
+
+function renderResponsePages(
+  pdf: PDFDocument,
+  fonts: Fonts,
+  detail: Detail,
+  responses: Record<string, any>[],
+  eyebrow: string,
+  heading: string,
+  emptyText: string,
+): void {
+  let page = basePage(pdf, fonts, pdf.getPageCount() + 1);
+  let y = title(page, fonts, eyebrow, heading);
+  if (!responses.length) {
+    drawText(page, emptyText, 48, y, { font: fonts.sans, size: 11, color: C.cream, maxWidth: 500 });
+    return;
+  }
+  responses.forEach((response, index) => {
+    const question = questionText(detail, response);
+    const answer = responseAnswerLabel(detail, response);
+    const questionMeta = questionMap(detail).get(response.question_id) || {};
+    const meta = questionMeta.domain_code ? domainLabel(detail, questionMeta.domain_code) : response.question_role;
+    const height = Math.max(
+      72,
+      45 +
+        rowHeight(question, fonts.sans, 8.1, 455, 10.7, 3) +
+        rowHeight(answer, fonts.sansBold, 8.5, 455, 11, 2),
+    );
+    if (y - height < 62) {
+      page = basePage(pdf, fonts, pdf.getPageCount() + 1);
+      y = title(page, fonts, eyebrow, "Continued", 775);
+    }
+    card(page, 48, y, PAGE.width - 96, height);
+    page.drawText(`${index + 1}. ${ascii(response.question_id)} - ${ascii(meta)}`, { x: 62, y: y - 17, font: fonts.sansBold, size: 7.8, color: C.gold2 });
+    const afterQuestion = drawText(page, question, 62, y - 33, { font: fonts.sans, size: 8.1, color: C.cream, maxWidth: 455, lineHeight: 10.7, maxLines: 3 });
+    drawText(page, `Answer: ${answer}`, 62, afterQuestion - 5, { font: fonts.sansBold, size: 8.5, color: C.gold2, maxWidth: 455, lineHeight: 11, maxLines: 2 });
+    y -= height + 10;
+  });
+}
+
 async function buildPdf(detail: Detail): Promise<Uint8Array> {
   const pdf = await PDFDocument.create();
   const fonts: Fonts = {
@@ -378,7 +639,8 @@ async function buildPdf(detail: Detail): Promise<Uint8Array> {
   const gap = primaryGap(detail);
   const priorities = big3(detail);
   const intake = answerRows(detail);
-  const coreResponses = detail.responses.filter((response) => response.question_role === "core");
+  const safetyResponses = sortedResponses(detail, "safety_gate");
+  const coreResponses = sortedResponses(detail, "core");
   const safePaused = hasSafetyPause(detail);
   const clientName = detail.client.name || "GodHealth Client";
 
@@ -388,14 +650,15 @@ async function buildPdf(detail: Detail): Promise<Uint8Array> {
   drawText(page, "Personal 12-Week Transformation Plan", 48, 700, { font: fonts.serifBold, size: 38, color: C.gold2, maxWidth: 470, lineHeight: 41 });
   drawText(page, `Prepared for ${clientName}`, 48, 594, { font: fonts.sansBold, size: 13, color: C.cream, maxWidth: 450 });
   drawText(page, "Built from your Kingdom Capacity Assessment answers: intake, safety gates, Body, Soul and Spirit scores, and your lowest capacity signals.", 48, 565, { font: fonts.sans, size: 10, color: C.cream, maxWidth: 460, lineHeight: 14 });
-  metricCard(page, fonts, 48, 476, "Overall KCI", `${kci(detail)}%`);
-  metricCard(page, fonts, 178, 476, "Body", String(scoreOfPillar(detail, "BODY")));
-  metricCard(page, fonts, 308, 476, "Soul", String(scoreOfPillar(detail, "SOUL")));
-  metricCard(page, fonts, 438, 476, "Spirit", String(scoreOfPillar(detail, "SPIRIT")));
+  scoreRing(page, fonts, 120, 448, kci(detail), "Overall KCI");
+  metricCard(page, fonts, 224, 476, "Body", String(scoreOfPillar(detail, "BODY")));
+  metricCard(page, fonts, 354, 476, "Soul", String(scoreOfPillar(detail, "SOUL")));
+  metricCard(page, fonts, 224, 382, "Spirit", String(scoreOfPillar(detail, "SPIRIT")));
+  metricCard(page, fonts, 354, 382, "Primary Gap", gap?.domain_code || "Review");
   drawText(page, safePaused
     ? "Safety note: your assessment includes answers that require careful review before normal recommendations. Use this document as preparation for a GodHealth conversation."
     : "This is educational coaching guidance, not medical care. Use it with wisdom, prayer and coach review.",
-    48, 342, { font: fonts.sansBold, size: 11, color: safePaused ? C.gold2 : C.cream, maxWidth: 500, lineHeight: 15 });
+    48, 292, { font: fonts.sansBold, size: 11, color: safePaused ? C.gold2 : C.cream, maxWidth: 500, lineHeight: 15 });
 
   page = basePage(pdf, fonts, 2);
   let y = title(page, fonts, "Capacity snapshot", "Where your plan begins");
@@ -418,22 +681,41 @@ async function buildPdf(detail: Detail): Promise<Uint8Array> {
   y = insightCard(page, fonts, y, "Sleep and recovery", sleepText(detail));
   insightCard(page, fonts, y, "Spirit rhythm", spiritText(detail));
 
-  page = basePage(pdf, fonts, 3);
-  y = title(page, fonts, "Personal intake", "The context you gave GodHealth");
-  if (!intake.length) {
-    drawText(page, "No personal intake answers were found for this run.", 48, y, { font: fonts.sans, size: 11, color: C.cream, maxWidth: 500 });
-  } else {
-    intake.slice(0, 18).forEach((row) => {
-      if (y < 95) {
-        page = basePage(pdf, fonts, pdf.getPageCount() + 1);
-        y = title(page, fonts, "Personal intake", "Continued", 775);
-      }
-      card(page, 48, y, PAGE.width - 96, 55);
-      drawText(page, row.label, 64, y - 17, { font: fonts.sansBold, size: 8, color: C.gold2, maxWidth: 470, maxLines: 1 });
-      drawText(page, row.value, 64, y - 34, { font: fonts.sans, size: 8.4, color: C.cream, maxWidth: 470, lineHeight: 10.8, maxLines: 2 });
-      y -= 66;
-    });
-  }
+  page = basePage(pdf, fonts, pdf.getPageCount() + 1);
+  y = title(page, fonts, "Personal strategy", "Built from your actual answers");
+  drawText(page, "These are the most important levers GodHealth should consider first. They are generated from your intake, safety answers, core scores and lowest capacity signals.", 48, y, {
+    font: fonts.sans,
+    size: 10,
+    color: C.cream,
+    maxWidth: 500,
+    lineHeight: 13.5,
+  });
+  y -= 54;
+  personalizedPlanLevers(detail).forEach((lever, index) => {
+    if (y < 108) {
+      page = basePage(pdf, fonts, pdf.getPageCount() + 1);
+      y = title(page, fonts, "Personal strategy", "Continued", 775);
+    }
+    y = detailCard(page, fonts, y, `${index + 1}. ${lever.title}`, lever.body, { primary: index === 0, maxLines: 5, minHeight: 74 });
+  });
+
+  renderKeyValuePages(
+    pdf,
+    fonts,
+    personalContextRows(detail),
+    "Personal context",
+    "High-signal answers used for personalization",
+    "No high-signal personal context was found for this run.",
+  );
+
+  renderKeyValuePages(
+    pdf,
+    fonts,
+    intake,
+    "Complete intake",
+    "Every intake answer submitted",
+    "No personal intake answers were found for this run.",
+  );
 
   const weeks = phaseWeeks(detail);
   page = basePage(pdf, fonts, pdf.getPageCount() + 1);
@@ -451,26 +733,40 @@ async function buildPdf(detail: Detail): Promise<Uint8Array> {
     y -= 96;
   });
 
-  page = basePage(pdf, fonts, pdf.getPageCount() + 1);
-  y = title(page, fonts, "Core answers", "24 capacity responses used for scoring");
-  coreResponses.slice(0, 24).forEach((response, index) => {
-    if (y < 90) {
-      page = basePage(pdf, fonts, pdf.getPageCount() + 1);
-      y = title(page, fonts, "Core answers", "Continued", 775);
-    }
-    const answer = response.display_answer || response.answer_text || String(response.answer_value ?? "");
-    card(page, 48, y, PAGE.width - 96, 42);
-    page.drawText(`${index + 1}. ${ascii(response.question_id)}`, { x: 62, y: y - 17, font: fonts.sansBold, size: 8.2, color: C.gold2 });
-    drawText(page, `Answer: ${answer}`, 62, y - 31, { font: fonts.sans, size: 8.4, color: C.cream, maxWidth: 455, maxLines: 1 });
-    y -= 51;
-  });
+  renderResponsePages(
+    pdf,
+    fonts,
+    detail,
+    safetyResponses,
+    "Safety answers",
+    "Safety routing used before normal recommendations",
+    "No safety answers were found for this run.",
+  );
+
+  renderResponsePages(
+    pdf,
+    fonts,
+    detail,
+    coreResponses,
+    "24 core question scores",
+    "Every score used for Body, Soul and Spirit",
+    "No core question scores were found for this run.",
+  );
 
   page = basePage(pdf, fonts, pdf.getPageCount() + 1);
   y = title(page, fonts, "Next step", "Bring the plan into real life");
   y = insightCard(page, fonts, y, "First 7 days", "Choose one Body action, one Soul action and one Spirit action from week 1. Keep it small enough that you can repeat it even when motivation is low.");
   y = insightCard(page, fonts, y, "Coach review", "Use this PDF to prepare for your GodHealth Strategy Call or coaching conversation. Your coach can refine targets, safety notes and the Big 3.");
   y = insightCard(page, fonts, y, "Biblical foundation", '"What? know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own?" - 1 Corinthians 6:19 KJV');
-  drawText(page, "Evidence-informed note: nutrition, calorie and training guidance is estimated from your submitted answers and general evidence-based coaching principles. It is not a diagnosis, treatment plan or substitute for qualified medical care.", 48, y - 8, { font: fonts.sans, size: 8.8, color: C.muted, maxWidth: 500, lineHeight: 12 });
+  y = drawText(page, "Evidence-informed note: nutrition, calorie and training guidance is estimated from your submitted answers and general evidence-based coaching principles. It is not a diagnosis, treatment plan or substitute for qualified medical care.", 48, y - 8, { font: fonts.sans, size: 8.8, color: C.muted, maxWidth: 500, lineHeight: 12 });
+  divider(page, 48, y - 9, PAGE.width - 96);
+  drawText(page, "Evidence foundations used: Mifflin-St Jeor calorie estimation when eligible; WHO movement and nutrition baselines; adult 7-9 hour sleep opportunity; progressive resistance training principles; safety gates override normal automated recommendations.", 48, y - 27, {
+    font: fonts.sans,
+    size: 8.4,
+    color: C.muted,
+    maxWidth: 500,
+    lineHeight: 11.5,
+  });
 
   pdf.setTitle("GodHealth Personal 12-Week Transformation Plan");
   pdf.setAuthor("GodHealth");
