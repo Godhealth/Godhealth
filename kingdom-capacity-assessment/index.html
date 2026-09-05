@@ -26,12 +26,12 @@ header{position:sticky;top:0;z-index:20;background:rgba(4,22,14,.86);backdrop-fi
 .form-field{display:grid;gap:8px}.form-field label{color:var(--gold-3);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.input,.select,.textarea{width:100%;border:1px solid rgba(217,180,90,.28);border-radius:18px;background:rgba(3,17,10,.66);color:var(--ink);padding:15px 16px;outline:none}.textarea{min-height:112px;resize:vertical}.input:focus,.select:focus,.textarea:focus{border-color:rgba(241,214,147,.75);box-shadow:0 0 0 4px rgba(217,180,90,.12)}.cream-card .input,.cream-card .select,.cream-card .textarea{background:#fffdf8;color:var(--charcoal)}
 .progress-wrap{margin-top:26px}.progress-meta{display:flex;justify-content:space-between;gap:12px;color:var(--ink-soft);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.09em}.progress-track{height:10px;margin-top:10px;border-radius:999px;background:rgba(255,255,255,.10);overflow:hidden;border:1px solid rgba(217,180,90,.18)}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold-1),var(--gold-3));box-shadow:0 0 18px rgba(217,180,90,.42);transition:width .35s ease}
 .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.tab{border:1px solid rgba(217,180,90,.22);border-radius:999px;padding:10px 14px;background:rgba(217,180,90,.06);color:var(--ink-soft);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase}.tab.active{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802}
-.screen{display:none}.screen.active{display:block}.question-domain{margin-top:22px}.domain-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:12px}.domain-head p{color:var(--gold-3);font-weight:900;font-size:12px;letter-spacing:.14em;text-transform:uppercase}.question-card{position:relative;padding:24px;border-radius:24px;border:1px solid rgba(217,180,90,.26);background:linear-gradient(180deg,rgba(217,180,90,.09),rgba(217,180,90,.035));margin-top:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 20px 52px -46px rgba(0,0,0,.82)}.question-card legend{display:block;width:100%;padding:0 4px 18px;font-size:clamp(17px,1.75vw,20px);font-weight:850;line-height:1.45;color:var(--ink);letter-spacing:-.012em}.question-card legend:after{content:"";display:block;width:58px;height:1px;margin-top:14px;background:linear-gradient(90deg,var(--gold-3),transparent);opacity:.9}.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.scale input{position:absolute;opacity:0;pointer-events:none}.scale label{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:86px;padding:14px 10px;border:1px solid rgba(217,180,90,.24);border-radius:18px;background:linear-gradient(180deg,rgba(8,30,19,.94),rgba(4,22,14,.84));color:var(--ink-soft);cursor:pointer;text-align:center;font-size:11.5px;font-weight:800;line-height:1.22;box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease}.scale label:hover{transform:translateY(-1px);border-color:rgba(241,214,147,.48);box-shadow:0 14px 30px -25px rgba(217,180,90,.65),inset 0 1px 0 rgba(255,255,255,.06)}.scale-number{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(217,180,90,.10);border:1px solid rgba(217,180,90,.30);color:var(--gold-3);font-weight:950;font-size:13px;line-height:1}.scale-text{display:block;max-width:118px}.scale input:focus-visible+label{outline:3px solid rgba(241,214,147,.38);outline-offset:3px}.scale input:checked+label{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.84);box-shadow:0 18px 36px -22px rgba(217,180,90,.95),inset 0 1px 0 rgba(255,255,255,.55)}.scale input:checked+label .scale-number{background:rgba(36,24,2,.14);border-color:rgba(36,24,2,.22);color:#241802}.scale input:checked+label .scale-text{color:#241802}.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choice-pill{position:relative;display:flex;align-items:center;min-height:54px;padding:13px 15px;border:1px solid rgba(217,180,90,.25);border-radius:17px;background:linear-gradient(180deg,rgba(8,30,19,.90),rgba(4,22,14,.78));color:var(--ink-soft);font-weight:850;font-size:13px;line-height:1.25;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease}.choice-pill:hover{transform:translateY(-1px);border-color:rgba(241,214,147,.48);box-shadow:0 16px 34px -27px rgba(217,180,90,.72)}.choice-pill input{position:absolute;opacity:0;pointer-events:none}.choice-pill span{display:flex;align-items:center;gap:10px}.choice-pill span:before{content:"";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1px solid rgba(217,180,90,.42);background:rgba(217,180,90,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);flex:0 0 auto}.choice-pill input:checked+span:before{content:"✓";background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.82);font-size:12px;font-weight:950}.choice-pill:has(input:checked){background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.84);box-shadow:0 18px 36px -22px rgba(217,180,90,.95),inset 0 1px 0 rgba(255,255,255,.52)}
+.screen{display:none}.screen.active{display:block}.question-domain{margin-top:22px}.domain-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:12px}.domain-head p{color:var(--gold-3);font-weight:900;font-size:12px;letter-spacing:.14em;text-transform:uppercase}.assessment-question-shell{width:min(820px,100%);margin:24px auto 0}.question-step{display:flex;justify-content:space-between;gap:12px;margin:0 0 14px;color:var(--gold-3);font-size:12px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.question-helper{margin-top:10px;color:var(--ink-soft);font-size:14px}.wizard-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:24px}.wizard-actions .btn{min-width:190px}.question-card{position:relative;min-width:0;overflow:hidden;padding:24px;border-radius:24px;border:1px solid rgba(217,180,90,.26);background:linear-gradient(180deg,rgba(217,180,90,.09),rgba(217,180,90,.035));margin-top:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 20px 52px -46px rgba(0,0,0,.82)}.question-title{display:block;width:100%;padding:0 4px 18px;font-size:clamp(18px,1.95vw,23px);font-weight:850;line-height:1.38;color:var(--ink);letter-spacing:-.012em}.question-title:after{content:"";display:block;width:58px;height:1px;margin-top:14px;background:linear-gradient(90deg,var(--gold-3),transparent);opacity:.9}.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.scale input{position:absolute;opacity:0;pointer-events:none}.scale label{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:96px;padding:14px 10px;border:1px solid rgba(217,180,90,.24);border-radius:18px;background:linear-gradient(180deg,rgba(8,30,19,.94),rgba(4,22,14,.84));color:var(--ink-soft);cursor:pointer;text-align:center;font-size:11.5px;font-weight:800;line-height:1.22;box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease}.scale label:hover{transform:translateY(-1px);border-color:rgba(241,214,147,.48);box-shadow:0 14px 30px -25px rgba(217,180,90,.65),inset 0 1px 0 rgba(255,255,255,.06)}.scale-number{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(217,180,90,.10);border:1px solid rgba(217,180,90,.30);color:var(--gold-3);font-weight:950;font-size:13px;line-height:1}.scale-text{display:block;max-width:118px}.scale input:focus-visible+label{outline:3px solid rgba(241,214,147,.38);outline-offset:3px}.scale input:checked+label{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.84);box-shadow:0 18px 36px -22px rgba(217,180,90,.95),inset 0 1px 0 rgba(255,255,255,.55)}.scale input:checked+label .scale-number{background:rgba(36,24,2,.14);border-color:rgba(36,24,2,.22);color:#241802}.scale input:checked+label .scale-text{color:#241802}.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choice-pill{position:relative;display:flex;align-items:center;min-height:58px;padding:14px 15px;border:1px solid rgba(217,180,90,.25);border-radius:17px;background:linear-gradient(180deg,rgba(8,30,19,.90),rgba(4,22,14,.78));color:var(--ink-soft);font-weight:850;font-size:13px;line-height:1.25;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease}.choice-pill:hover{transform:translateY(-1px);border-color:rgba(241,214,147,.48);box-shadow:0 16px 34px -27px rgba(217,180,90,.72)}.choice-pill input{position:absolute;opacity:0;pointer-events:none}.choice-pill span{display:flex;align-items:center;gap:10px}.choice-pill span:before{content:"";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1px solid rgba(217,180,90,.42);background:rgba(217,180,90,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);flex:0 0 auto}.choice-pill input:checked+span:before{content:"✓";background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.82);font-size:12px;font-weight:950}.choice-pill:has(input:checked){background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.84);box-shadow:0 18px 36px -22px rgba(217,180,90,.95),inset 0 1px 0 rgba(255,255,255,.52)}
 .safety-list{display:grid;gap:12px;margin-top:22px}.yesno{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.yesno label{min-width:90px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;border:1px solid rgba(217,180,90,.26);border-radius:999px;background:rgba(217,180,90,.06);font-weight:800;cursor:pointer}.yesno input{accent-color:var(--gold-2)}
 .score-layout{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}.score-ring{position:relative;width:min(260px,100%);aspect-ratio:1;margin:auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold-3) calc(var(--score,0)*1%),rgba(217,180,90,.15) 0);box-shadow:0 0 0 1px rgba(241,214,147,.32),0 26px 54px -34px rgba(0,0,0,.9),inset 0 0 34px rgba(4,22,14,.88)}.score-ring:before{content:"";position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle at 50% 18%,rgba(217,180,90,.13),transparent 44%),linear-gradient(180deg,var(--forest-soft),var(--forest-deep));box-shadow:inset 0 0 0 1px rgba(241,214,147,.26)}.score-ring-inner{position:relative;text-align:center}.score-ring strong{display:block;font-size:54px;line-height:1;font-weight:900;color:var(--gold-3)}.score-ring span{display:block;margin-top:8px;font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}.score-bars{display:grid;gap:14px}.score-row{padding:16px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.055)}.score-row-head{display:flex;justify-content:space-between;gap:12px;font-weight:900}.bar-track{height:10px;border-radius:999px;background:rgba(255,255,255,.10);margin-top:10px;overflow:hidden}.bar-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--gold-1),var(--gold-3));transition:width .8s cubic-bezier(.2,.7,.2,1)}
 .candidate{display:grid;gap:10px}.candidate-item{padding:16px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-grid{display:grid;gap:12px}.plan-day{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:start;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-day span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;font-weight:950;box-shadow:0 12px 24px -16px rgba(217,180,90,.9)}.report-note{padding:14px 16px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.06);color:var(--ink-soft)}.intake-report{display:grid;gap:12px;margin-top:18px}.intake-report-item{padding:16px;border-radius:19px;border:1px solid rgba(217,180,90,.22);background:linear-gradient(180deg,rgba(217,180,90,.075),rgba(217,180,90,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.intake-report-item strong{display:block;color:var(--gold-3);font-size:13px;letter-spacing:.02em}.intake-report-item span{display:block;margin-top:8px;color:var(--ink);font-weight:800;line-height:1.45}.locked{display:grid;place-items:center;text-align:center;min-height:170px;border-style:dashed}.alert{border-color:rgba(217,77,58,.46);background:linear-gradient(180deg,rgba(79,19,14,.78),rgba(48,14,10,.78));color:#ffe0dc}.success{border-color:rgba(84,184,111,.38);background:linear-gradient(180deg,rgba(17,70,38,.78),rgba(8,42,23,.78))}
 footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90,.14);text-align:center}.hidden{display:none!important}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
-@media(max-width:880px){.hero-shell,.score-layout,.g2,.g3{grid-template-columns:1fr}.nav{display:none}.scale,.choice-grid{grid-template-columns:1fr}.scale label{min-height:62px;flex-direction:row;justify-content:flex-start;text-align:left;padding:14px 15px}.scale-text{max-width:none}.domain-head{display:block}.btn{width:100%}.bar{height:76px}.score-ring{width:230px}}@media(max-width:560px){.wrap{width:min(100% - 28px,1120px)}h1{font-size:38px}.section,.hero{padding:42px 0}.card-pad{padding:20px}.question-card{padding:18px}.question-card legend{font-size:16px;padding-bottom:14px}.brand{font-size:30px}.score-ring strong{font-size:46px}.choice-pill{min-height:50px;font-size:12.5px;padding:12px 13px}}
+@media(max-width:880px){.hero-shell,.score-layout,.g2,.g3{grid-template-columns:1fr}.nav{display:none}.scale,.choice-grid{grid-template-columns:1fr}.scale label{min-height:64px;flex-direction:row;justify-content:flex-start;text-align:left;padding:14px 15px}.scale-text{max-width:none}.domain-head{display:block}.btn{width:100%}.bar{height:76px}.score-ring{width:230px}.wizard-actions .btn{min-width:0}}@media(max-width:560px){.wrap{width:min(100% - 28px,1120px)}h1{font-size:38px}.section,.hero{padding:42px 0}.card-pad{padding:20px}.question-card{padding:18px}.question-title{font-size:17px;padding-bottom:14px}.brand{font-size:30px}.score-ring strong{font-size:46px}.choice-pill{min-height:50px;font-size:12.5px;padding:12px 13px}}
 /* Core assessment polish: keep every answer aligned inside its premium card. */
 .scale > span{display:block;min-width:0}
 .scale label{width:100%;height:100%}
@@ -188,6 +188,8 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     safety_answers:{},
     intake:{},
     core_answers:{},
+    intake_index:0,
+    core_index:0,
     consent:{ accepted:false, full_name:"" },
     latest:null,
     runResult:null
@@ -196,6 +198,104 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   const scaleLabels = (KCA && KCA.SCALE_LABELS) || ["Not true right now","Rarely true","Sometimes true","Mostly true","Consistently true"];
   const steps = { intro:1, core:2, deep:3, result:4 };
   const LOCAL_DRAFT_KEY = "godhealth_kca_v3_local_draft";
+  const simpleIntakeLabels = {
+    PR1:"How old are you?",
+    PR2:"Gender",
+    PR3:"How tall are you? (cm)",
+    PR4:"What is your current weight? (kg)",
+    PR5:"What is your waist size? (cm)",
+    PR6:"Do you know your body-fat percentage?",
+    PR7:"How active is your work?",
+    PR8:"How many steps do you usually take per day?",
+    PR9:"What makes your weekly schedule difficult?",
+    PR10:"How many hours do you work each week?",
+    GL1:"What is your main 12-week goal?",
+    GL2:"Choose up to two extra goals.",
+    GL3:"What would real success look like after 12 weeks?",
+    GL4:"Why does this goal matter to your life, family, service, or calling?",
+    GL5:"What is your goal weight? (kg)",
+    GL6:"When would you like to reach this goal?",
+    GL7:"How ready are you to change for the next 12 weeks?",
+    GL8:"What are your biggest limits right now?",
+    HI1:"What was your weight about 3 months ago? (kg)",
+    HI2:"What was your weight about 12 months ago? (kg)",
+    HI3:"What was your highest adult weight? (kg)",
+    HI4:"What have you tried before?",
+    HI5:"What helped you most before?",
+    HI6:"Why did past attempts stop or fail?",
+    HI7:"If you regained weight before, what caused it?",
+    HI8:"How comfortable are you with tracking calories or macros?",
+    NU1:"How many meals do you usually eat per day?",
+    NU2:"What time do you usually eat your first and last meal?",
+    NU3:"How much fruit and vegetables do you usually eat?",
+    NU4:"How often do you eat fibre-rich foods like whole grains, beans, nuts, or seeds?",
+    NU5:"How many main meals include a good protein source?",
+    NU6:"How often do you drink sugary drinks or fruit juice?",
+    NU7:"How often do you eat sweets, desserts, salty snacks, or processed snacks?",
+    NU8:"How often do you eat fast food, takeaway, or ready meals?",
+    NU9:"Do you drink alcohol? If yes, how much?",
+    NU10:"How much caffeine do you drink, and what is your latest usual time?",
+    NU11:"Any food preferences, allergies, intolerances, or restrictions?",
+    NU12:"Who buys and cooks your food, and how much time can you cook?",
+    NU13:"What is your food budget like?",
+    TR1:"How many days per week do you do strength training?",
+    TR2:"How many minutes of cardio do you do per week?",
+    TR3:"How much strength-training experience do you have?",
+    TR4:"How many training days are realistic each week?",
+    TR5:"How long can each workout realistically be?",
+    TR6:"What equipment do you have available?",
+    TR7:"What training styles do you enjoy?",
+    TR8:"What training styles do you dislike or will not do?",
+    TR9:"Any injuries, pain, movement limits, or exercises you should avoid?",
+    TR10:"What does your current training look like?",
+    SL1:"How many hours do you actually sleep per night?",
+    SL2:"What are your usual workday sleep and wake times?",
+    SL3:"What are your usual free-day sleep and wake times?",
+    SL4:"Do you work shifts or overnight?",
+    SL5:"Has anyone noticed loud snoring, choking, gasping, or breathing pauses while you sleep?",
+    SL6:"How rested do you feel after sleep?",
+    RC1:"Do you use sauna or passive heat?",
+    RC2:"Do you use cold showers, plunges, or cold-water immersion?",
+    FA1:"Are you interested in a simple fasting or time-restricted eating strategy?",
+    FA2:"What fasting styles have you tried before?",
+    FA3:"What happened when you fasted?",
+    FA4:"Why are you interested in fasting?",
+    EN1:"Who lives with you, and who is affected by your food or training routine?",
+    EN2:"How supportive are the people closest to you?",
+    EN3:"How often do work, church, family, or social events decide when or what you eat?",
+    EN4:"How often do you travel or sleep away from home?",
+    EN5:"What time windows do you have for training, meal prep, prayer, Scripture, and recovery?",
+    EN6:"Who can help keep you accountable?",
+    EN7:"What usually makes your routine fall apart?",
+    SS1:"What mental or emotional pattern most often gets in the way?",
+    SS2:"What spiritual rhythm do you most want to strengthen?"
+  };
+  const simpleCoreStatements = {
+    "B1.1":"Most of my meals are simple, real foods instead of packaged foods.",
+    "B1.6":"Food feels peaceful and purposeful, not full of guilt, chaos, restriction, or loss of control.",
+    "B2.1":"I usually give myself enough time to sleep about 7 hours or more.",
+    "B2.6":"Tiredness does not often hurt my focus, work, training, safety, or relationships.",
+    "B3.1":"I usually get enough weekly movement, like walking, cardio, or active work.",
+    "B3.2":"I train my muscles at least 2 days per week when my body allows it.",
+    "B4.1":"I have enough energy for the responsibilities that matter most.",
+    "B4.5":"Pain, dizziness, breathlessness, or unexplained fatigue do not often stop me from functioning.",
+    "S1.1":"I can notice an unhelpful thought without believing it right away.",
+    "S1.4":"I can take the next wise step even when I do not feel motivated.",
+    "S2.1":"I can usually name what I feel instead of only reacting.",
+    "S2.2":"When I feel stressed, angry, anxious, disappointed, or lonely, I can pause before I act.",
+    "S3.2":"I make clear plans for my important habits.",
+    "S3.5":"When I miss a habit, I usually restart at the next good moment instead of waiting for Monday.",
+    "S4.2":"The people closest to me usually support the healthy changes I want to make.",
+    "S4.3":"My home and work environment make healthy choices easier, not harder.",
+    "P1.1":"I read or hear Scripture often enough that God's truth shapes my choices.",
+    "P1.6":"I try to live out what I learn from Scripture.",
+    "P2.1":"Prayer is a regular part of my life, not only something I do in crisis.",
+    "P2.5":"Depending on God helps me take faithful action, not avoid responsibility.",
+    "P3.1":"I see caring for my body as stewardship of what God gave me.",
+    "P3.2":"My health choices are led more by wisdom and self-control than impulse, fear, vanity, or obsession.",
+    "P4.1":"I know the people, responsibilities, and work God has placed in front of me in this season.",
+    "P4.2":"My health has a bigger purpose: service, stewardship, and calling."
+  };
 
   function escapeHtml(value){
     return String(value == null ? "" : value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[char]));
@@ -384,15 +484,40 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       if(event.target.matches("[data-answer]")){
         state.core_answers[event.target.name] = Number(event.target.value);
         saveDraft();
+        window.setTimeout(() => {
+          if(!document.getElementById("screenDeep")?.classList.contains("active")) return;
+          if(state.core_index < coreQuestions().length - 1){
+            state.core_index += 1;
+            renderCurrentCoreQuestion();
+            saveDraft();
+          }
+        }, 220);
       }
       if(event.target.matches("[data-intake]")){
-        readIntake(false);
-        renderIntakeFields();
+        readCurrentIntake(false);
         saveDraft();
+        const field = currentIntakeField();
+        if(field && ["single_select", "scale_0_10", "boolean"].includes(field.type) && state.intake[field.id] !== "" && state.intake[field.id] != null){
+          window.setTimeout(() => {
+            if(!document.getElementById("screenCore")?.classList.contains("active")) return;
+            goToNextIntake();
+          }, 180);
+        }
+      }
+      if(event.target.matches("[data-intake-radio]")){
+        const group = event.target.closest("[role='radiogroup']");
+        group?.querySelectorAll(".choice-pill").forEach(pill => pill.classList.remove("is-selected"));
+        event.target.closest(".choice-pill")?.classList.add("is-selected");
+        readCurrentIntake(false);
+        saveDraft();
+        window.setTimeout(() => {
+          if(!document.getElementById("screenCore")?.classList.contains("active")) return;
+          goToNextIntake();
+        }, 180);
       }
       if(event.target.matches("[data-intake-option]")){
         event.target.closest(".choice-pill")?.classList.toggle("is-selected", event.target.checked);
-        readIntake(false);
+        readCurrentIntake(false);
         saveDraft();
       }
     });
@@ -460,6 +585,28 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return (state.definition.personal_transformation_intake || []).filter(field => shouldShowField(field));
   }
 
+  function simpleField(field){
+    return { ...field, label:simpleIntakeLabels[field.id] || field.label || field.id };
+  }
+
+  function visibleSimpleIntakeFields(){
+    return visibleIntakeFields().map(simpleField);
+  }
+
+  function currentIntakeField(){
+    const fields = visibleSimpleIntakeFields();
+    if(!fields.length) return null;
+    state.intake_index = Math.min(Math.max(Number(state.intake_index) || 0, 0), fields.length - 1);
+    return fields[state.intake_index];
+  }
+
+  function coreQuestions(){
+    return KCA.coreQuestions(state.definition).map(question => ({
+      ...question,
+      statement:simpleCoreStatements[question.id] || question.statement
+    }));
+  }
+
   function shouldShowField(field){
     if(!field.show_if) return true;
     if(typeof field.show_if === "string") return evaluateShowIf(field.show_if);
@@ -510,25 +657,37 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     screen.querySelector(".card").innerHTML = `
       <p class="eyebrow">Adaptive intake</p>
       <h2>Your personal context.</h2>
-      <p class="lead" style="margin-top:14px">These answers help your coach understand your body, lifestyle, goals, capacity and constraints. They do not change your Capacity Core score.</p>
-      <div id="intakeFields" class="grid g2" style="margin-top:24px"></div>
-      <div class="btn-row" style="margin-top:24px">
-        <button class="btn btn-outline" data-back="intro" type="button">Back</button>
-        <button class="btn btn-gold" id="finishCoreBtn" type="button">Continue To 24 Core Questions</button>
-      </div>`;
+      <p class="lead" style="margin-top:14px">One question at a time. Your answers help your coach understand your goals, lifestyle and current capacity.</p>
+      <div id="intakeFields"></div>`;
+    const firstMissing = visibleSimpleIntakeFields().findIndex(field => field.required && !hasReportValue(state.intake[field.id]));
+    if(firstMissing >= 0 && !(state.intake_index > 0)) state.intake_index = firstMissing;
     renderIntakeFields();
-    screen.querySelector("[data-back]").addEventListener("click", () => showScreen("intro"));
-    $("finishCoreBtn").addEventListener("click", () => {
-      if(!readIntake()) return;
-      renderCore();
-      saveDraft();
-      showScreen("deep");
-    });
   }
 
   function renderIntakeFields(){
-    const fields = visibleIntakeFields();
-    $("intakeFields").innerHTML = fields.map(fieldHtml).join("");
+    const fields = visibleSimpleIntakeFields();
+    const field = currentIntakeField();
+    const mount = $("intakeFields");
+    if(!mount) return;
+    if(!field){
+      mount.innerHTML = `<div class="assessment-question-shell"><div class="report-note">No personal intake questions are available yet.</div></div>`;
+      return;
+    }
+    mount.innerHTML = `
+      <div class="assessment-question-shell">
+        <div class="question-step"><span>Question ${state.intake_index + 1} of ${fields.length}</span><span>${escapeHtml((field.section || "intake").replace(/_/g, " "))}</span></div>
+        <div class="question-card">
+          ${fieldHtml(field)}
+          ${field.type === "multi_select" ? `<p class="question-helper">Choose every answer that applies, then press Next.</p>` : ""}
+          ${field.type === "text" || field.type === "long_text" || field.type === "textarea" || field.type === "integer" || field.type === "decimal" || field.type === "number" ? `<p class="question-helper">Type your answer, then press Next.</p>` : ""}
+        </div>
+        <div class="wizard-actions">
+          <button class="btn btn-outline" id="intakeBackBtn" type="button">${state.intake_index === 0 ? "Back To Safety" : "Previous Question"}</button>
+          <button class="btn btn-gold" id="intakeNextBtn" type="button">${state.intake_index === fields.length - 1 ? "Continue To 24 Core" : "Next Question"}</button>
+        </div>
+      </div>`;
+    $("intakeBackBtn").addEventListener("click", goToPreviousIntake);
+    $("intakeNextBtn").addEventListener("click", goToNextIntake);
   }
 
   function fieldHtml(field){
@@ -546,6 +705,16 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     if(field.type === "single_select"){
       return `<div class="form-field"><label for="${escapeHtml(field.id)}">${label}</label><select class="select" ${attrs}><option value="">Select...</option>${(field.options || []).map(opt => `<option value="${escapeHtml(opt)}" ${String(value || "") === String(opt) ? "selected" : ""}>${escapeHtml(opt)}</option>`).join("")}</select></div>`;
     }
+    if(field.type === "boolean"){
+      return `<div class="form-field"><label id="${escapeHtml(field.id)}-label">${label}</label><div class="choice-grid" data-intake id="${escapeHtml(field.id)}" name="${escapeHtml(field.id)}" role="radiogroup" aria-labelledby="${escapeHtml(field.id)}-label" tabindex="-1">
+        ${["No", "Yes"].map(option => {
+          const optionValue = option.toLowerCase();
+          const id = `${field.id}-${optionValue}`;
+          const checked = String(value || "") === optionValue || value === (optionValue === "yes");
+          return `<label class="choice-pill ${checked ? "is-selected" : ""}" for="${escapeHtml(id)}"><input data-intake-radio id="${escapeHtml(id)}" name="${escapeHtml(field.id)}" value="${optionValue}" type="radio" ${checked ? "checked" : ""}><span>${option}</span></label>`;
+        }).join("")}
+      </div></div>`;
+    }
     if(field.type === "multi_select"){
       const values = Array.isArray(value) ? value : [];
       return `<div class="form-field" style="grid-column:1/-1"><label id="${escapeHtml(field.id)}-label">${label}</label><div class="choice-grid" ${attrs} data-intake-multi role="group" aria-labelledby="${escapeHtml(field.id)}-label" tabindex="-1">${(field.options || []).map(opt => {
@@ -561,13 +730,18 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return `<div class="form-field"><label for="${escapeHtml(field.id)}">${label}</label><input class="input" type="${inputType}"${step} ${attrs} value="${escapeHtml(value || "")}" placeholder="${escapeHtml(field.placeholder || "")}"></div>`;
   }
 
-  function readIntake(validate = true){
-    const fields = visibleIntakeFields();
-    for(const field of fields){
+  function readCurrentIntake(validate = true){
+    const field = currentIntakeField();
+    if(!field) return true;
       const el = document.getElementById(field.id);
-      if(!el) continue;
+      if(!el) return true;
       let value;
       if(el.matches("[data-intake-multi]")) value = Array.from(el.querySelectorAll("input[type='checkbox']:checked")).map(option => option.value);
+      else if(el.matches("[role='radiogroup']")) {
+        const checked = el.querySelector("input[type='radio']:checked");
+        value = checked ? checked.value : "";
+        if(field.type === "boolean") value = value === "yes";
+      }
       else if(el.tagName === "SELECT" && el.multiple) value = Array.from(el.selectedOptions).map(option => option.value);
       else value = el.value;
       if(typeof value === "string") value = value.trim();
@@ -583,8 +757,61 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         return false;
       }
       state.intake[field.id] = value;
+    return true;
+  }
+
+  function readIntake(validate = true){
+    readCurrentIntake(false);
+    return validate ? validateStoredIntake() : true;
+  }
+
+  function validateStoredIntake(){
+    const fields = visibleSimpleIntakeFields();
+    for(let index = 0; index < fields.length; index += 1){
+      const field = fields[index];
+      const value = state.intake[field.id];
+      if(field.type === "scale_0_10" && value !== "" && value != null && (!Number.isFinite(Number(value)) || Number(value) < 0 || Number(value) > 10)){
+        alert("Please choose a number from 0 to 10 for: " + (field.label || field.id));
+        state.intake_index = index;
+        renderIntakeFields();
+        return false;
+      }
+      if(field.required && !hasReportValue(value)){
+        alert("Please complete: " + (field.label || field.id));
+        state.intake_index = index;
+        renderIntakeFields();
+        return false;
+      }
     }
     return true;
+  }
+
+  function goToNextIntake(){
+    if(!readCurrentIntake(true)) return;
+    const fields = visibleSimpleIntakeFields();
+    if(state.intake_index < fields.length - 1){
+      state.intake_index += 1;
+      renderIntakeFields();
+      saveDraft();
+      return;
+    }
+    if(!validateStoredIntake()) return;
+    state.core_index = 0;
+    renderCore();
+    saveDraft();
+    showScreen("deep");
+  }
+
+  function goToPreviousIntake(){
+    readCurrentIntake(false);
+    if(state.intake_index > 0){
+      state.intake_index -= 1;
+      renderIntakeFields();
+      saveDraft();
+      return;
+    }
+    saveDraft();
+    showScreen("intro");
   }
 
   function normalizeScaleValue(value){
@@ -621,15 +848,13 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     screen.querySelector(".card").innerHTML = `
       <p class="eyebrow">24-question core</p>
       <h2>Kingdom Capacity Core.</h2>
-      <p class="lead" style="margin-top:14px">These 24 answers create your Body, Soul and Spirit score. Answer honestly; this is for clarity, not shame.</p>
-      <div id="coreQuestions"></div>
-      <div class="btn-row" style="margin-top:24px">
-        <button class="btn btn-outline" data-back="core" type="button">Back</button>
-        <button class="btn btn-gold" id="submitBtn" type="button">Submit For Coach Review</button>
-      </div>`;
-    renderQuestions("coreQuestions", KCA.coreQuestions(state.definition));
-    screen.querySelector("[data-back]").addEventListener("click", () => showScreen("core"));
-    $("submitBtn").addEventListener("click", submitAssessment);
+      <p class="lead" style="margin-top:14px">One statement at a time. Answer honestly; this is for clarity, not shame.</p>
+      <div id="coreQuestions"></div>`;
+    const questions = coreQuestions();
+    const firstMissing = questions.findIndex(question => state.core_answers[question.id] === undefined);
+    if(firstMissing >= 0 && !(state.core_index > 0)) state.core_index = firstMissing;
+    state.core_index = Math.min(Math.max(Number(state.core_index) || 0, 0), Math.max(questions.length - 1, 0));
+    renderCurrentCoreQuestion();
   }
 
   function renderQuestions(mountId, questions){
@@ -647,9 +872,61 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     }).join("");
   }
 
+  function renderCurrentCoreQuestion(){
+    const questions = coreQuestions();
+    const mount = $("coreQuestions");
+    if(!mount) return;
+    const question = questions[state.core_index];
+    if(!question){
+      mount.innerHTML = `<div class="assessment-question-shell"><div class="report-note">No core questions are available yet.</div></div>`;
+      return;
+    }
+    const domain = (state.definition.domains || []).find(item => item.code === question.domain_code) || { name:question.domain_code, pillar:question.pillar || "" };
+    mount.innerHTML = `
+      <div class="assessment-question-shell">
+        <div class="question-step"><span>Question ${state.core_index + 1} of ${questions.length}</span><span>${escapeHtml(domain.pillar || "")} · ${escapeHtml(question.domain_code || "")}</span></div>
+        <div class="domain-head"><h3>${escapeHtml(domain.name || question.domain_code || "Core Question")}</h3><p>${escapeHtml(question.domain_code || "")}</p></div>
+        ${questionHtml(question)}
+        <div class="wizard-actions">
+          <button class="btn btn-outline" id="coreBackBtn" type="button">${state.core_index === 0 ? "Back To Intake" : "Previous Question"}</button>
+          ${state.core_index === questions.length - 1 ? `<button class="btn btn-gold" id="submitBtn" type="button">Submit For Coach Review</button>` : `<button class="btn btn-outline" id="coreNextBtn" type="button">Next Question</button>`}
+        </div>
+      </div>`;
+    $("coreBackBtn").addEventListener("click", goToPreviousCore);
+    const next = $("coreNextBtn");
+    if(next) next.addEventListener("click", goToNextCore);
+    const submit = $("submitBtn");
+    if(submit) submit.addEventListener("click", submitAssessment);
+  }
+
+  function goToNextCore(){
+    const questions = coreQuestions();
+    const question = questions[state.core_index];
+    if(question && state.core_answers[question.id] === undefined){
+      alert("Please choose an answer before continuing.");
+      return;
+    }
+    if(state.core_index < questions.length - 1){
+      state.core_index += 1;
+      renderCurrentCoreQuestion();
+      saveDraft();
+    }
+  }
+
+  function goToPreviousCore(){
+    if(state.core_index > 0){
+      state.core_index -= 1;
+      renderCurrentCoreQuestion();
+      saveDraft();
+      return;
+    }
+    saveDraft();
+    showScreen("core");
+  }
+
   function questionHtml(question){
     return `<fieldset class="question-card">
-      <legend>${escapeHtml(question.statement)}</legend>
+      <div class="question-title">${escapeHtml(question.statement)}</div>
       <div class="scale">
         ${scaleLabels.map((label, value) => {
           const id = `core-${question.id}-${value}`.replace(/[^a-zA-Z0-9_-]/g, "-");
@@ -669,8 +946,16 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         return;
       }
       normalizeStoredIntakeValues();
-      const missing = KCA.coreQuestions(state.definition).filter(q => state.core_answers[q.id] === undefined).map(q => q.id);
-      if(missing.length){ alert("Please answer all 24 core questions before submitting."); return; }
+      if(!validateStoredIntake()){ showScreen("core"); return; }
+      const missing = coreQuestions().filter(q => state.core_answers[q.id] === undefined).map(q => q.id);
+      if(missing.length){
+        const questions = coreQuestions();
+        const firstMissing = questions.findIndex(question => missing.includes(question.id));
+        state.core_index = Math.max(firstMissing, 0);
+        renderCore();
+        alert("Please answer all 24 core questions before submitting.");
+        return;
+      }
       const button = $("submitBtn");
       button.disabled = true;
       button.textContent = "Saving...";
