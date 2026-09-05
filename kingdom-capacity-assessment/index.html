@@ -29,7 +29,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(4,22,14,.86);backdrop-fi
 .screen{display:none}.screen.active{display:block}.question-domain{margin-top:22px}.domain-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:12px}.domain-head p{color:var(--gold-3);font-weight:900;font-size:12px;letter-spacing:.14em;text-transform:uppercase}.question-card{position:relative;padding:24px;border-radius:24px;border:1px solid rgba(217,180,90,.26);background:linear-gradient(180deg,rgba(217,180,90,.09),rgba(217,180,90,.035));margin-top:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 20px 52px -46px rgba(0,0,0,.82)}.question-card legend{display:block;width:100%;padding:0 4px 18px;font-size:clamp(17px,1.75vw,20px);font-weight:850;line-height:1.45;color:var(--ink);letter-spacing:-.012em}.question-card legend:after{content:"";display:block;width:58px;height:1px;margin-top:14px;background:linear-gradient(90deg,var(--gold-3),transparent);opacity:.9}.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.scale input{position:absolute;opacity:0;pointer-events:none}.scale label{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:86px;padding:14px 10px;border:1px solid rgba(217,180,90,.24);border-radius:18px;background:linear-gradient(180deg,rgba(8,30,19,.94),rgba(4,22,14,.84));color:var(--ink-soft);cursor:pointer;text-align:center;font-size:11.5px;font-weight:800;line-height:1.22;box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease}.scale label:hover{transform:translateY(-1px);border-color:rgba(241,214,147,.48);box-shadow:0 14px 30px -25px rgba(217,180,90,.65),inset 0 1px 0 rgba(255,255,255,.06)}.scale-number{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(217,180,90,.10);border:1px solid rgba(217,180,90,.30);color:var(--gold-3);font-weight:950;font-size:13px;line-height:1}.scale-text{display:block;max-width:118px}.scale input:focus-visible+label{outline:3px solid rgba(241,214,147,.38);outline-offset:3px}.scale input:checked+label{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.84);box-shadow:0 18px 36px -22px rgba(217,180,90,.95),inset 0 1px 0 rgba(255,255,255,.55)}.scale input:checked+label .scale-number{background:rgba(36,24,2,.14);border-color:rgba(36,24,2,.22);color:#241802}.scale input:checked+label .scale-text{color:#241802}.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choice-pill{position:relative;display:flex;align-items:center;min-height:54px;padding:13px 15px;border:1px solid rgba(217,180,90,.25);border-radius:17px;background:linear-gradient(180deg,rgba(8,30,19,.90),rgba(4,22,14,.78));color:var(--ink-soft);font-weight:850;font-size:13px;line-height:1.25;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease}.choice-pill:hover{transform:translateY(-1px);border-color:rgba(241,214,147,.48);box-shadow:0 16px 34px -27px rgba(217,180,90,.72)}.choice-pill input{position:absolute;opacity:0;pointer-events:none}.choice-pill span{display:flex;align-items:center;gap:10px}.choice-pill span:before{content:"";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1px solid rgba(217,180,90,.42);background:rgba(217,180,90,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);flex:0 0 auto}.choice-pill input:checked+span:before{content:"✓";background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.82);font-size:12px;font-weight:950}.choice-pill:has(input:checked){background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.84);box-shadow:0 18px 36px -22px rgba(217,180,90,.95),inset 0 1px 0 rgba(255,255,255,.52)}
 .safety-list{display:grid;gap:12px;margin-top:22px}.yesno{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.yesno label{min-width:90px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;border:1px solid rgba(217,180,90,.26);border-radius:999px;background:rgba(217,180,90,.06);font-weight:800;cursor:pointer}.yesno input{accent-color:var(--gold-2)}
 .score-layout{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}.score-ring{position:relative;width:min(260px,100%);aspect-ratio:1;margin:auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold-3) calc(var(--score,0)*1%),rgba(217,180,90,.15) 0);box-shadow:0 0 0 1px rgba(241,214,147,.32),0 26px 54px -34px rgba(0,0,0,.9),inset 0 0 34px rgba(4,22,14,.88)}.score-ring:before{content:"";position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle at 50% 18%,rgba(217,180,90,.13),transparent 44%),linear-gradient(180deg,var(--forest-soft),var(--forest-deep));box-shadow:inset 0 0 0 1px rgba(241,214,147,.26)}.score-ring-inner{position:relative;text-align:center}.score-ring strong{display:block;font-size:54px;line-height:1;font-weight:900;color:var(--gold-3)}.score-ring span{display:block;margin-top:8px;font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}.score-bars{display:grid;gap:14px}.score-row{padding:16px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.055)}.score-row-head{display:flex;justify-content:space-between;gap:12px;font-weight:900}.bar-track{height:10px;border-radius:999px;background:rgba(255,255,255,.10);margin-top:10px;overflow:hidden}.bar-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--gold-1),var(--gold-3));transition:width .8s cubic-bezier(.2,.7,.2,1)}
-.candidate{display:grid;gap:10px}.candidate-item{padding:16px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-grid{display:grid;gap:12px}.plan-day{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:start;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-day span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;font-weight:950;box-shadow:0 12px 24px -16px rgba(217,180,90,.9)}.report-note{padding:14px 16px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.06);color:var(--ink-soft)}.locked{display:grid;place-items:center;text-align:center;min-height:170px;border-style:dashed}.alert{border-color:rgba(217,77,58,.46);background:linear-gradient(180deg,rgba(79,19,14,.78),rgba(48,14,10,.78));color:#ffe0dc}.success{border-color:rgba(84,184,111,.38);background:linear-gradient(180deg,rgba(17,70,38,.78),rgba(8,42,23,.78))}
+.candidate{display:grid;gap:10px}.candidate-item{padding:16px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-grid{display:grid;gap:12px}.plan-day{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:start;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-day span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;font-weight:950;box-shadow:0 12px 24px -16px rgba(217,180,90,.9)}.report-note{padding:14px 16px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.06);color:var(--ink-soft)}.intake-report{display:grid;gap:12px;margin-top:18px}.intake-report-item{padding:16px;border-radius:19px;border:1px solid rgba(217,180,90,.22);background:linear-gradient(180deg,rgba(217,180,90,.075),rgba(217,180,90,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.intake-report-item strong{display:block;color:var(--gold-3);font-size:13px;letter-spacing:.02em}.intake-report-item span{display:block;margin-top:8px;color:var(--ink);font-weight:800;line-height:1.45}.locked{display:grid;place-items:center;text-align:center;min-height:170px;border-style:dashed}.alert{border-color:rgba(217,77,58,.46);background:linear-gradient(180deg,rgba(79,19,14,.78),rgba(48,14,10,.78));color:#ffe0dc}.success{border-color:rgba(84,184,111,.38);background:linear-gradient(180deg,rgba(17,70,38,.78),rgba(8,42,23,.78))}
 footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90,.14);text-align:center}.hidden{display:none!important}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
 @media(max-width:880px){.hero-shell,.score-layout,.g2,.g3{grid-template-columns:1fr}.nav{display:none}.scale,.choice-grid{grid-template-columns:1fr}.scale label{min-height:62px;flex-direction:row;justify-content:flex-start;text-align:left;padding:14px 15px}.scale-text{max-width:none}.domain-head{display:block}.btn{width:100%}.bar{height:76px}.score-ring{width:230px}}@media(max-width:560px){.wrap{width:min(100% - 28px,1120px)}h1{font-size:38px}.section,.hero{padding:42px 0}.card-pad{padding:20px}.question-card{padding:18px}.question-card legend{font-size:16px;padding-bottom:14px}.brand{font-size:30px}.score-ring strong{font-size:46px}.choice-pill{min-height:50px;font-size:12.5px;padding:12px 13px}}
 /* Core assessment polish: keep every answer aligned inside its premium card. */
@@ -705,6 +705,54 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return null;
   }
 
+  function submittedIntake(payload){
+    const fromPayload = payload && payload.intake && payload.intake.intake;
+    return fromPayload && typeof fromPayload === "object" ? fromPayload : state.intake || {};
+  }
+
+  function intakeFieldRows(intake){
+    const fields = state.definition && state.definition.personal_transformation_intake || [];
+    const used = new Set();
+    const rows = fields.map(field => {
+      used.add(field.id);
+      return {
+        id: field.id,
+        label: field.label || field.id,
+        value: intake[field.id]
+      };
+    }).filter(row => hasReportValue(row.value));
+    Object.keys(intake || {}).forEach(key => {
+      if(used.has(key) || !hasReportValue(intake[key])) return;
+      rows.push({ id:key, label:key.replace(/_/g, " "), value:intake[key] });
+    });
+    return rows;
+  }
+
+  function hasReportValue(value){
+    if(Array.isArray(value)) return value.length > 0;
+    if(value === null || value === undefined) return false;
+    return String(value).trim() !== "";
+  }
+
+  function reportValue(value){
+    if(Array.isArray(value)) return value.join(", ");
+    if(value === true) return "Yes";
+    if(value === false) return "No";
+    return String(value);
+  }
+
+  function renderClientIntakeReport(payload){
+    const rows = intakeFieldRows(submittedIntake(payload));
+    return `<div style="margin-top:24px">
+      <p class="eyebrow">Your Personal Intake Answers</p>
+      <h3 style="margin-top:8px">Your full intake is saved for review.</h3>
+      <p class="muted" style="margin-top:10px">These are the exact answers you gave before the Capacity Core. Your GodHealth coach can use this context to review your report with more precision.</p>
+      <div class="intake-report">
+        ${rows.length ? rows.map(row => `<div class="intake-report-item"><strong>${escapeHtml(row.label)}</strong><span>${escapeHtml(reportValue(row.value))}</span></div>`).join("") : `<div class="report-note">No personal intake answers were found for this result yet.</div>`}
+      </div>
+    </div>`;
+  }
+
   function renderResultFromServer(payload){
     const snapshot = getSnapshot(payload);
     const safety = payload && (payload.safety_route || (payload.run && payload.run.safety_flags)) || {};
@@ -736,10 +784,11 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       </div>
       <div class="grid g2" style="margin-top:24px">
         <div class="cream-card card-pad"><p class="eyebrow">Primary Alignment Gap</p><h3 style="margin-top:8px">${escapeHtml(gap ? `${gap.domain_code} · ${gap.domain_name || gap.name}` : "Coach review")}</h3><p class="muted" style="margin-top:10px">This is a coaching signal from your answers, not a diagnosis.</p></div>
-        <div class="cream-card card-pad"><p class="eyebrow">Coach Review</p><h3 style="margin-top:8px">Your roadmap is locked for review.</h3><p class="muted" style="margin-top:10px">Your GodHealth coach checks your answers before personal recommendations are released.</p></div>
+        <div class="cream-card card-pad"><p class="eyebrow">Coach Review</p><h3 style="margin-top:8px">Your report is saved for review.</h3><p class="muted" style="margin-top:10px">Your GodHealth coach can see your scores, intake answers and core answers in the coach dashboard.</p></div>
       </div>
+      ${renderClientIntakeReport(payload)}
       <div style="margin-top:24px"><h3>Domain scores</h3><div class="score-bars" style="margin-top:14px">${domains.map(d => scoreBar(`${d.domain_code} · ${d.domain_name || d.name}`, d.display)).join("")}</div></div>
-      ${approvedPlan ? renderApprovedPlan(approvedPlan) : `<div class="card card-pad locked" style="margin-top:24px"><p class="eyebrow">Plan locked</p><h3 style="margin-top:8px">Your coach-approved plan is not published yet.</h3><p class="muted" style="margin-top:10px">You will see your Big 3 and personal roadmap here after coach approval.</p></div>`}
+      ${approvedPlan ? renderApprovedPlan(approvedPlan) : `<div class="card card-pad locked" style="margin-top:24px"><p class="eyebrow">Coach report</p><h3 style="margin-top:8px">Your coach review is not published yet.</h3><p class="muted" style="margin-top:10px">Your GodHealth coach can now review your complete report and discuss the most important next steps with you.</p></div>`}
     </div>`;
     requestAnimationFrame(() => document.querySelectorAll(".bar-fill").forEach(fill => fill.style.width = fill.dataset.width + "%"));
   }
@@ -772,8 +821,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   function renderApprovedPlan(plan){
     const cleanPlan = plan && (plan.plan || plan) || {};
     const big3 = cleanPlan.big3 || cleanPlan.priorities || [];
-    const weeks = cleanPlan.weeks || [];
-    return `<div class="card card-pad success" style="margin-top:24px"><p class="eyebrow">Coach-approved plan</p><h3>Your roadmap is ready.</h3>${big3.length ? `<div class="grid g3" style="margin-top:18px">${big3.slice(0,3).map((item,index) => `<div class="candidate-item" style="display:block"><span class="pill ok">#${index+1}</span><h3 style="margin-top:10px">${escapeHtml(item.title || item.name || item.domain_code)}</h3><p class="muted" style="margin-top:8px">${escapeHtml(item.action || item.reason || "Coach-approved priority.")}</p></div>`).join("")}</div>` : ""}${weeks.length ? `<div class="plan-grid" style="margin-top:18px">${weeks.slice(0,12).map((w,index) => `<div class="plan-day"><span>${index+1}</span><div><strong>${escapeHtml(w.phase || w.title || `Week ${index+1}`)}</strong><p class="muted" style="margin-top:6px">${escapeHtml(w.purpose || w.focus || "")}</p></div></div>`).join("")}</div>` : ""}</div>`;
+    return `<div class="card card-pad success" style="margin-top:24px"><p class="eyebrow">Coach-approved report</p><h3>Your coach review is ready.</h3><p class="muted" style="margin-top:10px">These are the main coaching priorities your GodHealth coach can discuss with you.</p>${big3.length ? `<div class="grid g3" style="margin-top:18px">${big3.slice(0,3).map((item,index) => `<div class="candidate-item" style="display:block"><span class="pill ok">#${index+1}</span><h3 style="margin-top:10px">${escapeHtml(item.title || item.name || item.domain_code)}</h3><p class="muted" style="margin-top:8px">${escapeHtml(item.action || item.reason || "Coach-approved priority.")}</p></div>`).join("")}</div>` : ""}</div>`;
   }
 
   function showScreen(name){

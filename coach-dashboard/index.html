@@ -21,10 +21,10 @@ header{position:sticky;top:0;z-index:20;background:rgba(4,22,14,.90);backdrop-fi
 .dash-layout{display:grid;grid-template-columns:360px 1fr;gap:22px;align-items:start}.run-list{display:grid;gap:12px;max-height:calc(100vh - 190px);overflow:auto;padding-right:4px;position:sticky;top:104px}.run-card{width:100%;text-align:left;padding:16px;border:1px solid rgba(217,180,90,.22);border-radius:20px;background:linear-gradient(180deg,rgba(217,180,90,.075),rgba(217,180,90,.035));color:var(--ink);cursor:pointer;transition:.2s ease}.run-card:hover,.run-card.active{border-color:rgba(241,214,147,.65);transform:translateY(-1px);box-shadow:0 18px 38px -30px rgba(217,180,90,.8)}.run-card strong{display:block;font-size:14px}.run-meta{display:flex;justify-content:space-between;gap:10px;margin-top:9px;color:var(--ink-mute);font-size:12px}.pill{display:inline-flex;align-items:center;justify-content:center;min-height:28px;padding:6px 10px;border-radius:999px;background:rgba(217,180,90,.08);border:1px solid rgba(217,180,90,.23);color:var(--gold-3);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.pill.ok{color:#d8ffe1;border-color:rgba(114,216,139,.35);background:rgba(114,216,139,.08)}.pill.warn{color:#ffd7d0;border-color:rgba(217,77,58,.42);background:rgba(217,77,58,.10)}
 .score-layout{display:grid;grid-template-columns:280px 1fr;gap:22px;align-items:center}.score-ring{position:relative;width:min(250px,100%);aspect-ratio:1;margin:auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold-3) calc(var(--score,0)*1%),rgba(217,180,90,.15) 0);box-shadow:0 0 0 1px rgba(241,214,147,.32),0 26px 54px -34px rgba(0,0,0,.9),inset 0 0 34px rgba(4,22,14,.88)}.score-ring:before{content:"";position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle at 50% 18%,rgba(217,180,90,.13),transparent 44%),linear-gradient(180deg,var(--forest-soft),var(--forest-deep));box-shadow:inset 0 0 0 1px rgba(241,214,147,.26)}.score-ring-inner{position:relative;text-align:center}.score-ring strong{display:block;font-size:52px;line-height:1;font-weight:950;color:var(--gold-3)}.score-ring span{display:block;margin-top:8px;font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
 .score-bars{display:grid;gap:12px}.score-row{padding:14px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.055)}.score-row-head{display:flex;justify-content:space-between;gap:12px;font-weight:900}.bar-track{height:10px;border-radius:999px;background:rgba(255,255,255,.10);margin-top:10px;overflow:hidden}.bar-fill{height:100%;width:var(--pct,0%);border-radius:999px;background:linear-gradient(90deg,var(--gold-1),var(--gold-3))}
-.detail-stack{display:grid;gap:18px}.domain-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.domain-card{padding:14px;border-radius:17px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.045)}.domain-card strong{display:block;color:var(--gold-3)}.domain-score{margin-top:5px;color:var(--ink-soft);font-size:13px}.response-group{display:grid;gap:10px}.response-item{padding:14px;border-radius:16px;background:rgba(3,17,10,.42);border:1px solid rgba(217,180,90,.16)}.response-item strong{display:block;color:var(--gold-3);font-size:13px}.response-item p{margin-top:6px;color:var(--ink-soft);font-size:13px}.answer{margin-top:8px;display:inline-flex;border-radius:999px;border:1px solid rgba(217,180,90,.25);padding:6px 10px;color:var(--ink);font-size:12px;font-weight:800;background:rgba(217,180,90,.06)}
+.detail-stack{display:grid;gap:18px}.domain-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.domain-card{padding:14px;border-radius:17px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.045)}.domain-card strong{display:block;color:var(--gold-3)}.domain-score{margin-top:5px;color:var(--ink-soft);font-size:13px}.response-group{display:grid;gap:10px}.response-item{padding:14px;border-radius:16px;background:rgba(3,17,10,.42);border:1px solid rgba(217,180,90,.16)}.response-item strong{display:block;color:var(--gold-3);font-size:13px}.response-item p{margin-top:6px;color:var(--ink-soft);font-size:13px}.answer{margin-top:8px;display:inline-flex;border-radius:999px;border:1px solid rgba(217,180,90,.25);padding:6px 10px;color:var(--ink);font-size:12px;font-weight:800;background:rgba(217,180,90,.06)}.intake-report-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}.intake-report-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.intake-report-item{padding:16px;border-radius:19px;border:1px solid rgba(217,180,90,.22);background:linear-gradient(180deg,rgba(217,180,90,.075),rgba(217,180,90,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.intake-report-item strong{display:block;color:var(--gold-3);font-size:13px;line-height:1.35}.intake-report-item .answer{display:block;width:100%;border-radius:16px;white-space:normal;line-height:1.45}
 .candidate-grid{display:grid;gap:12px}.candidate-item{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.candidate-item input{margin-top:5px;accent-color:var(--gold-2)}.plan-grid{display:grid;gap:12px}.plan-day{display:grid;grid-template-columns:auto 1fr;gap:13px;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-day span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;font-weight:950}.report-note{padding:14px 16px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.06);color:var(--ink-soft)}.empty{padding:34px;border-radius:24px;border:1px dashed rgba(217,180,90,.36);text-align:center;color:var(--ink-soft)}.hidden{display:none!important}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}.loading{opacity:.7;pointer-events:none}
 footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90,.14);text-align:center}
-@media(max-width:960px){.auth-shell,.dash-layout,.score-layout,.g2,.g3,.g4,.domain-grid{grid-template-columns:1fr}.run-list{position:static;max-height:none;padding-right:0}.nav{display:none}.btn{width:100%}.bar{height:76px}}@media(max-width:560px){.wrap{width:min(100% - 28px,1180px)}h1{font-size:38px}.section{padding:40px 0}.card-pad{padding:19px}.score-ring{width:226px}.score-ring strong{font-size:46px}}
+@media(max-width:960px){.auth-shell,.dash-layout,.score-layout,.g2,.g3,.g4,.domain-grid,.intake-report-grid{grid-template-columns:1fr}.run-list{position:static;max-height:none;padding-right:0}.nav{display:none}.btn{width:100%}.bar{height:76px}}@media(max-width:560px){.wrap{width:min(100% - 28px,1180px)}h1{font-size:38px}.section{padding:40px 0}.card-pad{padding:19px}.score-ring{width:226px}.score-ring strong{font-size:46px}}
 </style>
 </head>
 <body>
@@ -246,6 +246,38 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     if(response.display_answer) return response.display_answer;
     if(response.answer_text) return response.answer_text;
     return "No answer";
+  }
+
+  function hasReportValue(value){
+    if(Array.isArray(value)) return value.length > 0;
+    if(value === null || value === undefined) return false;
+    return String(value).trim() !== "";
+  }
+
+  function reportValue(value){
+    if(Array.isArray(value)) return value.join(", ");
+    if(value === true) return "Yes";
+    if(value === false) return "No";
+    return String(value);
+  }
+
+  function intakeRows(detail){
+    const intake = detail && detail.intake && detail.intake.intake || {};
+    const fields = state.definition && state.definition.personal_transformation_intake || [];
+    const used = new Set();
+    const rows = fields.map(field => {
+      used.add(field.id);
+      return {
+        id: field.id,
+        label: field.label || field.id,
+        value: intake[field.id]
+      };
+    }).filter(row => hasReportValue(row.value));
+    Object.keys(intake || {}).forEach(key => {
+      if(used.has(key) || !hasReportValue(intake[key])) return;
+      rows.push({ id:key, label:key.replace(/_/g, " "), value:intake[key] });
+    });
+    return rows;
   }
 
   function buildAutoReport(detail){
@@ -485,8 +517,8 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return `
       <div class="card card-pad">
         <p class="eyebrow">Coach Review</p>
-        <h3 style="margin-top:8px">Big 3 and plan approval.</h3>
-        <p class="muted" style="margin-top:12px">V3 keeps the personal Big 3 and full plan locked for the client until a GodHealth coach approves it.</p>
+        <h3 style="margin-top:8px">Big 3 and report approval.</h3>
+        <p class="muted" style="margin-top:12px">V3 keeps the personal Big 3 locked for the client until a GodHealth coach reviews the full intake and core answers.</p>
         <div class="candidate-grid" style="margin-top:18px">
           ${candidates.length ? candidates.slice(0,3).map((candidate,index) => renderCandidate(candidate,index,Boolean(approved))).join("") : `<div class="empty">No draft Big 3 priorities available.</div>`}
         </div>
@@ -496,7 +528,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
             <textarea class="textarea" id="coachReason" placeholder="What did you review or adjust before approval?">Coach reviewed and approved the V3 personal plan inside the GodHealth Coach Dashboard.</textarea>
           </div>
           <div class="btn-row" style="margin-top:18px">
-            <button class="btn btn-gold" id="publishBig3Btn" type="button">Approve Client Plan</button>
+            <button class="btn btn-gold" id="publishBig3Btn" type="button">Approve Client Report</button>
           </div>
         `}
       </div>
@@ -519,7 +551,6 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   function renderAutoReport(detail){
     const report = buildAutoReport(detail);
     const big3 = report.big3 || [];
-    const plan = report.plan || [];
     const energy = report.energy_profile || {};
     const tdee = energy.estimated_TDEE_range_kcal || energy.tdee_range || {};
     const ree = energy.estimated_REE_kcal || energy.ree_estimate || energy.ree;
@@ -546,8 +577,8 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       : "Not provided";
     return `
       <div class="card card-pad">
-        <p class="eyebrow">Automatic Draft Report</p>
-        <h3 style="margin-top:8px">Personalized plan draft for coach review.</h3>
+        <p class="eyebrow">Automatic Assessment Report</p>
+        <h3 style="margin-top:8px">Personalized coaching signals for review.</h3>
         <p class="muted" style="margin-top:12px">${escapeHtml(report.disclaimer)}</p>
         <div class="grid g3" style="margin-top:18px">
           ${big3.length ? big3.slice(0,3).map((item,index) => `
@@ -567,19 +598,29 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
           <div class="report-note"><strong>Training:</strong><br>${escapeHtml(report.training && report.training.exercise_template || "Coach review required")}</div>
           <div class="report-note"><strong>Recovery:</strong><br>${escapeHtml(report.recovery && report.recovery.sleep_target || "Coach review required")}</div>
         </div>
-        <div style="margin-top:24px">
-          <p class="eyebrow">12-week draft structure</p>
-          <div class="plan-grid" style="margin-top:12px">
-            ${plan.length ? plan.map((week,index) => `
-              <div class="plan-day">
-                <span>${escapeHtml(week.week || week.week_number || index + 1)}</span>
-                <div>
-                  <strong>${escapeHtml(week.phase || week.title || `Week ${index + 1}`)} · ${escapeHtml(week.purpose || "")}</strong>
-                  <p class="muted" style="margin-top:6px">${escapeHtml(Array.isArray(week.focus) ? week.focus.join(" · ") : (week.focus || week.bad_week_fallback || ""))}</p>
-                </div>
-              </div>
-            `).join("") : `<div class="empty">No 12-week draft has been generated for this run.</div>`}
+      </div>
+    `;
+  }
+
+  function renderIntakeReport(detail){
+    const rows = intakeRows(detail);
+    return `
+      <div class="card card-pad">
+        <div class="intake-report-head">
+          <div>
+            <p class="eyebrow">Personal Intake Report</p>
+            <h3 style="margin-top:8px">Exact intake answers from ${escapeHtml(clientName(detail))}.</h3>
+            <p class="muted" style="margin-top:12px">This is the complete context the participant gave before answering the core capacity questions.</p>
           </div>
+          <span class="pill">${escapeHtml(rows.length)} answers</span>
+        </div>
+        <div class="intake-report-grid">
+          ${rows.length ? rows.map(row => `
+            <div class="intake-report-item">
+              <strong>${escapeHtml(row.id)} · ${escapeHtml(row.label)}</strong>
+              <span class="answer">${escapeHtml(reportValue(row.value))}</span>
+            </div>
+          `).join("") : `<div class="empty">No personal intake found for this participant.</div>`}
         </div>
       </div>
     `;
@@ -597,9 +638,8 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return `
       <div class="card card-pad">
         <p class="eyebrow">Participant Answers</p>
-        <h3 style="margin-top:8px">Safety, Intake and 24 Core responses.</h3>
+        <h3 style="margin-top:8px">Safety and 24 Core responses.</h3>
         ${responseGroupHtml("Safety Gates", groups.safety_gate, map, order)}
-        ${renderIntake(detail)}
         ${responseGroupHtml("24 Core Answers", groups.core, map, order)}
       </div>
       <div class="card card-pad">
@@ -613,20 +653,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   }
 
   function renderIntake(detail){
-    const intake = detail.intake && detail.intake.intake || {};
-    const fields = state.definition.personal_transformation_intake || [];
-    const rows = Object.entries(intake);
-    return `
-      <div style="margin-top:22px">
-        <p class="eyebrow">Personal Intake</p>
-        <div class="response-group" style="margin-top:12px">
-          ${rows.length ? rows.map(([key,value]) => {
-            const field = fields.find(item => item.id === key) || { label:key };
-            const display = Array.isArray(value) ? value.join(", ") : value;
-            return `<div class="response-item"><strong>${escapeHtml(key)} · ${escapeHtml(field.label || key)}</strong><span class="answer">${escapeHtml(display)}</span></div>`;
-          }).join("") : `<div class="empty">No personal intake found.</div>`}
-        </div>
-      </div>`;
+    return renderIntakeReport(detail);
   }
 
   function responseGroupHtml(title,responses,map,order){
@@ -750,7 +777,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     }
     if(data.definition) state.definition = data.definition;
     window.__currentKcaDetail = data;
-    $("detailMount").innerHTML = renderOverview(data) + renderSafety(data) + renderAutoReport(data) + renderBig3(data) + renderDomains(data.run.score_snapshot || {}) + renderResponses(data);
+    $("detailMount").innerHTML = renderOverview(data) + renderIntakeReport(data) + renderSafety(data) + renderAutoReport(data) + renderBig3(data) + renderDomains(data.run.score_snapshot || {}) + renderResponses(data);
     const publishBtn = $("publishBig3Btn");
     if(publishBtn) publishBtn.addEventListener("click", () => publishBig3(runId));
   }
