@@ -612,6 +612,23 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     `;
   }
 
+  function renderTwelveWeekPlanDownload(detail){
+    const runId = detail && detail.run && detail.run.id || "";
+    const existing = detail && detail.run && detail.run.twelve_week_plan_pdf_generated_at;
+    return `
+      <div class="card card-pad">
+        <p class="eyebrow">12-Week PDF Report</p>
+        <h3 style="margin-top:8px">Generate the client's personal GodHealth plan.</h3>
+        <p class="muted" style="margin-top:12px">Creates a private PDF from the intake answers, safety routing, Body/Soul/Spirit scores, 24 Core answers and automatic coaching signals. The current dashboard stays unchanged.</p>
+        ${existing ? `<p class="small" style="margin-top:10px">Last generated: ${escapeHtml(new Date(existing).toLocaleString())}</p>` : ""}
+        <div class="btn-row" style="margin-top:18px">
+          <button class="btn btn-gold" id="downloadCoachPlanPdfBtn" data-run-id="${escapeHtml(runId)}" type="button">Download 12-Week PDF</button>
+        </div>
+        <p class="small" id="downloadCoachPlanPdfMessage" style="margin-top:12px">A fresh private download link is created when you click.</p>
+      </div>
+    `;
+  }
+
   function renderIntakeReport(detail){
     const rows = intakeRows(detail);
     return `
@@ -787,9 +804,36 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     }
     if(data.definition) state.definition = data.definition;
     window.__currentKcaDetail = data;
-    $("detailMount").innerHTML = renderOverview(data) + renderIntakeReport(data) + renderSafety(data) + renderAutoReport(data) + renderBig3(data) + renderDomains(data.run.score_snapshot || {}) + renderResponses(data);
+    $("detailMount").innerHTML = renderOverview(data) + renderIntakeReport(data) + renderSafety(data) + renderAutoReport(data) + renderTwelveWeekPlanDownload(data) + renderBig3(data) + renderDomains(data.run.score_snapshot || {}) + renderResponses(data);
     const publishBtn = $("publishBig3Btn");
     if(publishBtn) publishBtn.addEventListener("click", () => publishBig3(runId));
+    const pdfBtn = $("downloadCoachPlanPdfBtn");
+    if(pdfBtn) pdfBtn.addEventListener("click", downloadCoachPlanPdf);
+  }
+
+  async function downloadCoachPlanPdf(event){
+    const button = event.currentTarget;
+    const message = $("downloadCoachPlanPdfMessage");
+    try{
+      button.disabled = true;
+      button.textContent = "Preparing PDF...";
+      if(message) message.textContent = "Building the private GodHealth PDF...";
+      const { data, error } = await state.supabase.functions.invoke("kca-12-week-plan-report", {
+        body:{ run_id:button.dataset.runId }
+      });
+      if(error){
+        const detail = await getFunctionErrorMessage(error);
+        throw new Error(detail || error.message || "Function error");
+      }
+      if(!data || !data.report_pdf_url) throw new Error("The PDF link was not returned.");
+      if(message) message.textContent = "Opening the PDF...";
+      window.location.href = data.report_pdf_url;
+    }catch(error){
+      if(message) message.textContent = "Could not create the PDF yet: " + (error.message || "Unknown error");
+    }finally{
+      button.disabled = false;
+      button.textContent = "Download 12-Week PDF";
+    }
   }
 
   async function publishBig3(runId){

@@ -991,6 +991,11 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return null;
   }
 
+  function runIdFromPayload(payload){
+    if(!payload) return "";
+    return payload.run_id || payload.id || (payload.run && payload.run.id) || "";
+  }
+
   function submittedIntake(payload){
     const fromPayload = payload && payload.intake && payload.intake.intake;
     if(fromPayload && typeof fromPayload === "object" && Object.keys(fromPayload).length) return fromPayload;
@@ -1044,6 +1049,33 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     </div>`;
   }
 
+  async function functionErrorMessage(error){
+    if(!error) return "";
+    try{
+      if(error.context && typeof error.context.json === "function"){
+        const body = await error.context.json();
+        return body && (body.message || body.error || body.msg) ? String(body.message || body.error || body.msg) : "";
+      }
+      if(error.context && typeof error.context.text === "function"){
+        return await error.context.text();
+      }
+    }catch(_error){}
+    return error.message || "";
+  }
+
+  function renderTwelveWeekPlanDownload(payload){
+    const runId = runIdFromPayload(payload);
+    return `<div class="card card-pad success" style="margin-top:24px">
+      <p class="eyebrow">Personal 12-Week Plan</p>
+      <h3 style="margin-top:8px">Download your GodHealth 12-week PDF.</h3>
+      <p class="muted" style="margin-top:10px">Generated from your intake, safety answers, Body/Soul/Spirit scores and 24 Core answers. This is educational, Biblical &amp; science-informed, and your GodHealth coach can refine it with you.</p>
+      <div class="btn-row" style="margin-top:18px">
+        <button class="btn btn-gold" id="downloadTwelveWeekPlanBtn" data-run-id="${escapeHtml(runId)}" type="button">Download My 12-Week Plan</button>
+      </div>
+      <p class="small" id="downloadTwelveWeekPlanMessage" style="margin-top:12px">Your private download link is created when you click.</p>
+    </div>`;
+  }
+
   function renderResultFromServer(payload){
     const snapshot = getSnapshot(payload);
     const safety = payload && (payload.safety_route || (payload.run && payload.run.safety_flags)) || {};
@@ -1078,10 +1110,44 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         <div class="cream-card card-pad"><p class="eyebrow">Coach Review</p><h3 style="margin-top:8px">Your report is saved for review.</h3><p class="muted" style="margin-top:10px">Your GodHealth coach can see your scores, intake answers and core answers in the coach dashboard.</p></div>
       </div>
       ${renderClientIntakeReport(payload)}
+      ${renderTwelveWeekPlanDownload(payload)}
       <div style="margin-top:24px"><h3>Domain scores</h3><div class="score-bars" style="margin-top:14px">${domains.map(d => scoreBar(`${d.domain_code} · ${d.domain_name || d.name}`, d.display)).join("")}</div></div>
       ${approvedPlan ? renderApprovedPlan(approvedPlan) : `<div class="card card-pad locked" style="margin-top:24px"><p class="eyebrow">Coach report</p><h3 style="margin-top:8px">Your coach review is not published yet.</h3><p class="muted" style="margin-top:10px">Your GodHealth coach can now review your complete report and discuss the most important next steps with you.</p></div>`}
     </div>`;
     requestAnimationFrame(() => document.querySelectorAll(".bar-fill").forEach(fill => fill.style.width = fill.dataset.width + "%"));
+    const planButton = $("downloadTwelveWeekPlanBtn");
+    if(planButton) planButton.addEventListener("click", downloadTwelveWeekPlan);
+  }
+
+  async function downloadTwelveWeekPlan(event){
+    const button = event.currentTarget;
+    const message = $("downloadTwelveWeekPlanMessage");
+    try{
+      const session = await ensureSession();
+      if(!session){
+        if(message) message.textContent = "Your secure login session expired. Please open your secure assessment link again.";
+        return;
+      }
+      button.disabled = true;
+      button.textContent = "Preparing PDF...";
+      if(message) message.textContent = "Building your private GodHealth PDF...";
+      const runId = button.dataset.runId || runIdFromPayload(state.runResult || state.latest || {});
+      const { data, error } = await state.supabase.functions.invoke("kca-12-week-plan-report", {
+        body:{ run_id:runId || undefined }
+      });
+      if(error){
+        const detail = await functionErrorMessage(error);
+        throw new Error(detail || error.message || "Function error");
+      }
+      if(!data || !data.report_pdf_url) throw new Error("The PDF link was not returned.");
+      if(message) message.textContent = "Opening your PDF...";
+      window.location.href = data.report_pdf_url;
+    }catch(error){
+      if(message) message.textContent = "We could not create your PDF yet. Please try again or contact GodHealth. Details: " + (error.message || "Unknown error");
+    }finally{
+      button.disabled = false;
+      button.textContent = "Download My 12-Week Plan";
+    }
   }
 
   function scoreBar(label, value){
