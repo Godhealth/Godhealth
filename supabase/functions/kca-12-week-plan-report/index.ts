@@ -405,6 +405,265 @@ function spiritText(detail: Detail): string {
   return "Connect every health action to stewardship. Your body is not a project for vanity; it is a temple for kingdom purpose.";
 }
 
+function includesAny(value: unknown, words: string[]): boolean {
+  const text = String(value ?? "").toLowerCase();
+  return words.some((word) => text.includes(word.toLowerCase()));
+}
+
+function intakeText(detail: Detail): string {
+  return Object.values(intakeAnswers(detail)).map((value) => valueText(value)).join(" | ").toLowerCase();
+}
+
+function calorieRange(detail: Detail): { low: number | null; high: number | null; label: string } {
+  const energy = energyProfile(detail);
+  const goal = energy.goal_calorie_range_kcal || energy.goal_calorie_range || {};
+  const low = Number(goal.low);
+  const high = Number(goal.high);
+  if (Number.isFinite(low) && Number.isFinite(high) && low > 0 && high > 0) {
+    return { low: Math.round(low), high: Math.round(high), label: `${Math.round(low)}-${Math.round(high)} kcal coach-reviewed range` };
+  }
+  return { low: null, high: null, label: "coach-reviewed calorie range" };
+}
+
+function proteinTarget(detail: Detail): { low: number | null; high: number | null; label: string } {
+  const protein = planDraft(detail).nutrition?.protein_target || energyProfile(detail).protein_target || {};
+  const low = Number(protein.low_g);
+  const high = Number(protein.high_g);
+  if (protein.blocked || includesAny(intakeText(detail), ["kidney", "renal"])) {
+    return { low: null, high: null, label: "protein target needs qualified review" };
+  }
+  if (Number.isFinite(low) && Number.isFinite(high) && low > 0 && high > 0) {
+    return { low: Math.round(low), high: Math.round(high), label: `${Math.round(low)}-${Math.round(high)}g protein/day coach-reviewed target` };
+  }
+  const defaultProtein = Number(protein.default_g);
+  if (Number.isFinite(defaultProtein) && defaultProtein > 0) {
+    return { low: defaultProtein, high: defaultProtein, label: `${Math.round(defaultProtein)}g protein/day coach-reviewed target` };
+  }
+  return { low: null, high: null, label: "clear protein target after coach review" };
+}
+
+function dietStyle(detail: Detail): "vegan" | "vegetarian" | "fish" | "mixed" {
+  const text = intakeText(detail);
+  if (includesAny(text, ["vegan", "plant-based only", "plant based only"])) return "vegan";
+  if (includesAny(text, ["vegetarian", "no meat"])) return "vegetarian";
+  if (includesAny(text, ["pesc", "fish", "no red meat"])) return "fish";
+  return "mixed";
+}
+
+function nutritionGapText(detail: Detail): string {
+  const text = intakeText(detail);
+  const signals: string[] = [];
+  if (includesAny(text, ["fast food", "takeaway", "ready meals", "processed", "snacks", "sweets", "desserts", "soda", "sugary"])) {
+    signals.push("replace convenience food with real-food plates");
+  }
+  if (includesAny(text, ["low", "little fruit", "little vegetable", "not much fruit", "not much vegetables"])) {
+    signals.push("build toward 250-300g vegetables and 250-300g fruit in the main meal");
+  }
+  if (includesAny(text, ["stress", "craving", "emotional", "binge"])) {
+    signals.push("make the meal high-protein and high-fibre so cravings have less power");
+  }
+  if (includesAny(text, ["busy", "no time", "travel", "shift"])) {
+    signals.push("choose simple bowls and oven meals that can be prepared ahead");
+  }
+  return signals.length ? signals.slice(0, 3).join("; ") : "keep the meal simple: protein, plants, whole-food carbs, olive oil and water";
+}
+
+function mealPlanCaution(detail: Detail): string {
+  const text = intakeText(detail);
+  if (hasSafetyPause(detail) || includesAny(text, [
+    "pregnant",
+    "breastfeeding",
+    "postpartum",
+    "eating disorder",
+    "binge",
+    "purge",
+    "underweight",
+    "diabetes",
+    "hypogly",
+    "faint",
+    "kidney",
+    "renal",
+    "medication requiring food",
+  ])) {
+    return "Because your answers include safety context, do not use one-meal-per-day fasting without coach or qualified review. Use this as a one-main-meal GodHealth plate template and add regular nourishment as needed.";
+  }
+  const fasting = pickIntake(intakeAnswers(detail), ["FA1", "fasting_interest", "time_restricted_eating"]);
+  if (fasting && includesAny(fasting, ["no", "not interested", "never"])) {
+    return "Your answers do not show interest in fasting. Use this as one main GodHealth meal per day, not a forced fasting prescription.";
+  }
+  return "This one-main-meal rhythm is educational coaching guidance. If this becomes your only meal, use coach review to make sure energy, protein and recovery stay appropriate.";
+}
+
+type Meal = {
+  day: string;
+  title: string;
+  category: string;
+  time: string;
+  nutrition: string;
+  ingredients: string[];
+  steps: string[];
+  scripture: string;
+};
+
+const CLEAN_MEAT_MEALS: Meal[] = [
+  {
+    day: "Day 1",
+    title: "Grilled Chicken with Sweet Potato & Fresh Figs",
+    category: "Clean Meat",
+    time: "32 min",
+    nutrition: "Base estimate: 760 kcal - Protein 48g - Fat 34g - Carbs 67g",
+    ingredients: ["160g chicken breast", "250g sweet potato", "265g fresh figs", "2 tbsp extra virgin olive oil", "1 tsp fresh mint", "Celtic sea salt & black pepper"],
+    steps: ["Season chicken with mint, salt, pepper and a little olive oil.", "Grill 12-15 minutes until cooked through.", "Cube and roast sweet potato at 200C for 20-25 minutes.", "Serve with quartered figs and remaining olive oil."],
+    scripture: "Genesis 1:29 - whole plants and fruit as God-given nourishment.",
+  },
+  {
+    day: "Day 5",
+    title: "Oven-Roasted Turkey with Leek & Dates",
+    category: "Clean Meat",
+    time: "45 min",
+    nutrition: "Base estimate: 770 kcal - Protein 48g - Fat 34g - Carbs 67g",
+    ingredients: ["170g turkey breast", "260g leek", "280g dates", "2 tbsp extra virgin olive oil", "1 tsp dill", "Celtic sea salt & black pepper"],
+    steps: ["Season turkey with dill, salt, pepper and olive oil.", "Roast at 200C for 30-35 minutes.", "Slice and saute leek for 5-7 minutes.", "Serve turkey with leek, chopped dates and remaining olive oil."],
+    scripture: "Deuteronomy 14:20 - clean birds used with wisdom and moderation.",
+  },
+];
+
+const FISH_MEALS: Meal[] = [
+  {
+    day: "Day 2",
+    title: "Baked Cod with Sweet Potato & Fresh Figs",
+    category: "Vegetarian + Fish",
+    time: "32 min",
+    nutrition: "Base estimate: 760 kcal - Protein 48g - Fat 34g - Carbs 67g",
+    ingredients: ["270g cod fillet", "250g sweet potato", "265g fresh figs", "2 tbsp extra virgin olive oil", "1 tsp fresh mint", "Celtic sea salt & black pepper"],
+    steps: ["Season cod with mint, salt, pepper and a little olive oil.", "Bake at 190C for 15-20 minutes until it flakes easily.", "Roast cubed sweet potato at 200C for 20-25 minutes.", "Serve with fresh figs and remaining olive oil."],
+    scripture: "Leviticus 11:9 - fish with fins and scales.",
+  },
+  {
+    day: "Day 6",
+    title: "Grilled Herring with Leek & Dates",
+    category: "Vegetarian + Fish",
+    time: "22 min",
+    nutrition: "Base estimate: 770 kcal - Protein 48g - Fat 34g - Carbs 67g",
+    ingredients: ["270g herring fillet", "260g leek", "280g dates", "2 tbsp extra virgin olive oil", "1 tsp dill", "Celtic sea salt & black pepper"],
+    steps: ["Season herring with dill, salt, pepper and olive oil.", "Grill 10-12 minutes, turning once.", "Saute leek 5-7 minutes.", "Serve with chopped dates and remaining olive oil."],
+    scripture: "Leviticus 11:9 - simple fish, plants and oil.",
+  },
+];
+
+const VEGETARIAN_MEALS: Meal[] = [
+  {
+    day: "Day 3",
+    title: "Egg & Cottage Cheese Bowl with Leek & Dates",
+    category: "Vegetarian",
+    time: "14 min",
+    nutrition: "Base estimate: 760 kcal - Protein 48g - Fat 34g - Carbs 67g",
+    ingredients: ["2 eggs, scrambled or boiled", "250g cottage cheese", "20g walnuts", "10g pumpkin seeds", "275g leek", "295g dates", "1 tbsp extra virgin olive oil"],
+    steps: ["Prepare eggs and mix with cottage cheese.", "Toast walnuts and seeds for 2-3 minutes if desired.", "Saute sliced leek for 5-7 minutes.", "Assemble with dates, olive oil and a pinch of salt."],
+    scripture: "Proverbs 27:27 - dairy as provision and nourishment.",
+  },
+  {
+    day: "Day 7",
+    title: "Yogurt & Lentil Bowl with Cucumber & Melon",
+    category: "Vegetarian",
+    time: "8 min",
+    nutrition: "Base estimate: 770 kcal - Protein 48g - Fat 34g - Carbs 67g",
+    ingredients: ["250g Greek yogurt 0%", "150g cooked lentils", "20g pumpkin seeds", "290g cucumber", "300g melon", "1 tbsp extra virgin olive oil", "1 tsp mustard seed"],
+    steps: ["Stir lentils into Greek yogurt.", "Toast pumpkin seeds if desired.", "Slice cucumber and cube melon.", "Assemble with olive oil, mustard seed and a little salt."],
+    scripture: "Ezekiel 4:9 - legumes and seeds as slow, steady nourishment.",
+  },
+];
+
+const VEGAN_MEALS: Meal[] = [
+  {
+    day: "Day 4",
+    title: "Tofu & Tempeh Stir-Fry with Leek & Dates",
+    category: "Vegan",
+    time: "14 min",
+    nutrition: "Base estimate: 760 kcal - Protein 48g - Fat 34g - Carbs 67g",
+    ingredients: ["200g firm tofu, cubed", "100g tempeh, sliced", "275g leek", "295g dates", "1 tbsp extra virgin olive oil", "1 tsp saffron threads", "Celtic sea salt"],
+    steps: ["Stir-fry tofu and tempeh for 5-6 minutes until golden.", "Saute leek for 5-7 minutes.", "Pit and chop dates.", "Assemble with olive oil, saffron and a little salt."],
+    scripture: "Genesis 1:29 - seed-bearing plants as God-given food.",
+  },
+  {
+    day: "Day 7",
+    title: "Lentil & Nut Bowl with Cucumber & Melon",
+    category: "Vegan",
+    time: "13 min",
+    nutrition: "Base estimate: 770 kcal - Protein 48g - Fat 34g - Carbs 67g",
+    ingredients: ["300g cooked lentils", "30g pumpkin seeds", "20g almonds", "290g cucumber", "300g melon", "1 tbsp extra virgin olive oil", "1 tsp mustard seed"],
+    steps: ["Warm lentils gently for 5 minutes.", "Toast pumpkin seeds and almonds if desired.", "Slice cucumber and cube melon.", "Assemble with olive oil, mustard seed and a little salt."],
+    scripture: "Ezekiel 4:9 - lentils, seeds and grains as Biblical staples.",
+  },
+];
+
+function personalizedAddOn(detail: Detail): string {
+  const range = calorieRange(detail);
+  const protein = proteinTarget(detail);
+  const style = dietStyle(detail);
+  const goal = pickIntake(intakeAnswers(detail), ["GL1", "primary_goal", "goal", "main_goal"]).toLowerCase();
+  const recoveryAddOn = style === "vegan"
+    ? "add 200g tofu or 300g cooked lentils, 30g almonds and 1 apple"
+    : "add 250g Greek yogurt, 30g almonds and 1 apple";
+  const higherEnergyAddOn = style === "vegan"
+    ? "add 200g tofu or 300g cooked lentils, 30g almonds, 1 apple and 75-125g whole grains"
+    : "add 250g Greek yogurt, 30g almonds, 1 apple and 2 slices whole-grain/Ezekiel bread";
+  if (hasSafetyPause(detail)) return "Add regular meals or snacks as your coach/qualified professional recommends; do not restrict to one meal automatically.";
+  if (range.low && range.low >= 1600) {
+    return `If coach-approved intake needs more energy: ${higherEnergyAddOn}.`;
+  }
+  if (range.low && range.low >= 1200) {
+    return `To avoid under-eating while keeping one clear main meal: ${recoveryAddOn}.`;
+  }
+  if (includesAny(goal, ["muscle", "strength", "performance"])) {
+    return "Performance add-on: add 250g sweet potato or 75-125g whole grains around training, plus water/tea.";
+  }
+  if (includesAny(goal, ["fat", "weight", "belly"])) {
+    return `Fat-loss structure: keep oils measured, eat slowly, and protect ${protein.label}; do not cut below your coach-reviewed range.`;
+  }
+  return "Stewardship add-on: if hunger, training or recovery needs more support, add Greek yogurt or an extra portion of legumes/whole grains after coach review.";
+}
+
+function createMealPlan(detail: Detail): Meal[] {
+  const style = dietStyle(detail);
+  if (style === "vegan") return [
+    { ...VEGAN_MEALS[0], day: "Day 1" },
+    { ...VEGAN_MEALS[1], day: "Day 2" },
+    { ...VEGAN_MEALS[0], day: "Day 3", title: "Tofu & Tempeh Stir-Fry with Broccoli & Pomegranate" },
+    { ...VEGAN_MEALS[1], day: "Day 4", title: "Lentil & Nut Bowl with Spinach, Onion & Grapes" },
+    { ...VEGAN_MEALS[0], day: "Day 5", title: "Tofu & Tempeh Bowl with Sweet Potato & Figs" },
+    { ...VEGAN_MEALS[1], day: "Day 6", title: "Lentil & Almond Bowl with Green Beans & Apple" },
+    { ...VEGAN_MEALS[0], day: "Day 7", title: "Tempeh Stewardship Bowl with Leek & Melon" },
+  ];
+  if (style === "vegetarian") return [
+    { ...VEGETARIAN_MEALS[0], day: "Day 1" },
+    { ...VEGETARIAN_MEALS[1], day: "Day 2" },
+    { ...VEGETARIAN_MEALS[0], day: "Day 3", title: "Egg & Cottage Cheese Bowl with Broccoli & Pomegranate" },
+    { ...VEGETARIAN_MEALS[1], day: "Day 4", title: "Yogurt & Lentil Bowl with Spinach, Onion & Grapes" },
+    { ...VEGETARIAN_MEALS[0], day: "Day 5", title: "Egg & Cottage Cheese Bowl with Sweet Potato & Figs" },
+    { ...VEGETARIAN_MEALS[1], day: "Day 6", title: "Yogurt & Lentil Bowl with Green Beans & Apple" },
+    { ...VEGETARIAN_MEALS[0], day: "Day 7", title: "Egg Stewardship Bowl with Leek & Melon" },
+  ];
+  if (style === "fish") return [
+    { ...FISH_MEALS[0], day: "Day 1" },
+    { ...VEGETARIAN_MEALS[0], day: "Day 2" },
+    { ...FISH_MEALS[1], day: "Day 3" },
+    { ...VEGETARIAN_MEALS[1], day: "Day 4" },
+    { ...FISH_MEALS[0], day: "Day 5", title: "Baked Cod with Broccoli & Pomegranate" },
+    { ...FISH_MEALS[1], day: "Day 6", title: "Grilled Herring with Green Beans & Apple" },
+    { ...VEGETARIAN_MEALS[0], day: "Day 7", title: "Egg & Cottage Cheese Stewardship Bowl" },
+  ];
+  return [
+    CLEAN_MEAT_MEALS[0],
+    FISH_MEALS[0],
+    VEGETARIAN_MEALS[0],
+    VEGAN_MEALS[0],
+    CLEAN_MEAT_MEALS[1],
+    FISH_MEALS[1],
+    VEGETARIAN_MEALS[1],
+  ];
+}
+
 function phaseWeeks(detail: Detail): Record<string, string>[] {
   const priorities = big3(detail);
   const first = priorities[0]?.title || priorities[0]?.name || "your primary gap";
@@ -628,6 +887,125 @@ function renderResponsePages(
   });
 }
 
+function renderMealDayCard(
+  page: PDFPage,
+  fonts: Fonts,
+  y: number,
+  meal: Meal,
+  addOn: string,
+  primary = false,
+): number {
+  const height = 180;
+  card(page, 48, y, PAGE.width - 96, height, primary);
+  page.drawText(ascii(meal.day).toUpperCase(), { x: 64, y: y - 20, font: fonts.sansBold, size: 8, color: C.gold2 });
+  page.drawText(ascii(meal.category).toUpperCase(), { x: 455, y: y - 20, font: fonts.sansBold, size: 7.3, color: C.gold });
+  drawText(page, meal.title, 64, y - 42, { font: fonts.serifBold, size: 16, color: C.cream, maxWidth: 455, lineHeight: 18, maxLines: 1 });
+  divider(page, 64, y - 53, PAGE.width - 128);
+  drawText(page, `${meal.time} - ${meal.nutrition}`, 64, y - 69, {
+    font: fonts.sansBold,
+    size: 8,
+    color: C.gold2,
+    maxWidth: 455,
+    lineHeight: 10.5,
+    maxLines: 1,
+  });
+  drawText(page, `Eat: ${meal.ingredients.join("; ")}`, 64, y - 88, {
+    font: fonts.sans,
+    size: 8.2,
+    color: C.cream,
+    maxWidth: 455,
+    lineHeight: 10.8,
+    maxLines: 3,
+  });
+  drawText(page, `Prepare: ${meal.steps.join(" ")}`, 64, y - 122, {
+    font: fonts.sans,
+    size: 7.9,
+    color: C.muted,
+    maxWidth: 455,
+    lineHeight: 10.2,
+    maxLines: 2,
+  });
+  drawText(page, `Personal note: ${addOn}`, 64, y - 145, {
+    font: fonts.sansBold,
+    size: 7.8,
+    color: C.gold2,
+    maxWidth: 455,
+    lineHeight: 10.2,
+    maxLines: 1,
+  });
+  drawText(page, `Biblical anchor: ${meal.scripture}`, 64, y - 163, {
+    font: fonts.sans,
+    size: 7.6,
+    color: C.muted,
+    maxWidth: 455,
+    lineHeight: 10,
+    maxLines: 1,
+  });
+  return y - height - 13;
+}
+
+function renderMealPlanPages(pdf: PDFDocument, fonts: Fonts, detail: Detail): void {
+  const meals = createMealPlan(detail);
+  const range = calorieRange(detail);
+  const protein = proteinTarget(detail);
+  const caution = mealPlanCaution(detail);
+  const addOn = personalizedAddOn(detail);
+  const style = dietStyle(detail);
+  const gap = primaryGap(detail);
+
+  let page = basePage(pdf, fonts, pdf.getPageCount() + 1);
+  let y = title(page, fonts, "Personal Biblical meal plan", "Your 7-day GodHealth food rhythm");
+  drawText(page, "Built from the GodHealth Nutrition Guidelines: Biblical whole foods, modern nutrition principles, simple preparation, and one clear main meal per day.", 48, y, {
+    font: fonts.sans,
+    size: 10,
+    color: C.cream,
+    maxWidth: 500,
+    lineHeight: 13.5,
+  });
+  y -= 56;
+
+  card(page, 48, y, PAGE.width - 96, 124, true);
+  page.drawText("PERSONALIZED TARGETS", { x: 66, y: y - 22, font: fonts.sansBold, size: 8, color: C.gold2 });
+  drawText(page, `Food style detected from your answers: ${style}. Primary capacity signal: ${gap?.domain_name || gap?.domain_code || "coach review"}. Nutrition focus: ${nutritionGapText(detail)}.`, 66, y - 43, {
+    font: fonts.sans,
+    size: 9,
+    color: C.cream,
+    maxWidth: PAGE.width - 132,
+    lineHeight: 12,
+    maxLines: 3,
+  });
+  drawText(page, `Calories: ${range.label}. Protein: ${protein.label}. Fruit/veg: each meal is built around 250-300g vegetables plus 250-300g fruit where possible.`, 66, y - 82, {
+    font: fonts.sansBold,
+    size: 8.4,
+    color: C.gold2,
+    maxWidth: PAGE.width - 132,
+    lineHeight: 11.4,
+    maxLines: 3,
+  });
+  y -= 142;
+
+  y = detailCard(page, fonts, y, "Important safety note", caution, { primary: hasSafetyPause(detail), maxLines: 4, minHeight: 72 });
+  y = detailCard(page, fonts, y, "GodHealth plate rule", "Every meal follows the same structure from the nutrition guidelines: a clear protein source, 250-300g plants, a whole-food carb, extra virgin olive oil, Biblical herbs/spices, water or tea, and no highly processed foods.", { maxLines: 4, minHeight: 72 });
+  y = detailCard(page, fonts, y, "Foods to avoid this week", "Avoid pork/unclean meats, shellfish, heavy alcohol, smoking/drugs, industrial trans fats, sugary drinks, candy, packaged snacks and highly processed convenience food. Keep the week simple and clean.", { maxLines: 4, minHeight: 72 });
+
+  page = basePage(pdf, fonts, pdf.getPageCount() + 1);
+  y = title(page, fonts, "7-day meal plan", "Exactly what to eat");
+  meals.forEach((meal, index) => {
+    if (y < 230) {
+      page = basePage(pdf, fonts, pdf.getPageCount() + 1);
+      y = title(page, fonts, "7-day meal plan", "Continued", 775);
+    }
+    y = renderMealDayCard(page, fonts, y, meal, addOn, index === 0);
+  });
+
+  page = basePage(pdf, fonts, pdf.getPageCount() + 1);
+  y = title(page, fonts, "Shopping and prep", "Make the week easy to obey");
+  y = detailCard(page, fonts, y, "Simple shopping list", "Protein: chicken or turkey, cod or herring, eggs, cottage cheese or Greek yogurt, lentils, tofu and tempeh. Plants: sweet potato, leek, cucumber, melon, figs, dates, broccoli, green beans, spinach, onion and pomegranate. Fats: extra virgin olive oil, walnuts, almonds, pumpkin seeds. Seasoning: mint, dill, coriander, mustard seed, saffron, Celtic sea salt and black pepper.", { primary: true, maxLines: 7, minHeight: 112 });
+  y = detailCard(page, fonts, y, "One preparation block", "Once or twice this week, cook lentils, roast sweet potatoes, wash fruit, slice vegetables and portion protein. A prepared environment lowers friction when stress or tiredness rises.", { maxLines: 4, minHeight: 72 });
+  y = detailCard(page, fonts, y, "Bad-day fallback", "If the full meal feels too hard: choose one protein, one fruit, one vegetable and water. Do not quit the day. Return to stewardship at the next decision.", { maxLines: 4, minHeight: 72 });
+  detailCard(page, fonts, y, "Biblical anchor", "Whether therefore ye eat, or drink, or whatsoever ye do, do all to the glory of God. - 1 Corinthians 10:31 KJV", { primary: true, maxLines: 3, minHeight: 68 });
+}
+
 async function buildPdf(detail: Detail): Promise<Uint8Array> {
   const pdf = await PDFDocument.create();
   const fonts: Fonts = {
@@ -707,6 +1085,8 @@ async function buildPdf(detail: Detail): Promise<Uint8Array> {
     "High-signal answers used for personalization",
     "No high-signal personal context was found for this run.",
   );
+
+  renderMealPlanPages(pdf, fonts, detail);
 
   renderKeyValuePages(
     pdf,
