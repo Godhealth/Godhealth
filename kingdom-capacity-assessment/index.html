@@ -42,6 +42,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 .brand-button{appearance:none;border:0;background:transparent;cursor:pointer;padding:0}.dashboard-nav{gap:10px;overflow-x:auto;scrollbar-width:none}.dashboard-nav::-webkit-scrollbar{display:none}.dashboard-nav .dash-nav-link{appearance:none;white-space:nowrap;border:1px solid rgba(217,180,90,.24);border-radius:999px;background:rgba(217,180,90,.06);padding:10px 13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.2s ease}.dashboard-nav .dash-nav-link:hover{transform:translateY(-1px);border-color:rgba(241,214,147,.55);background:rgba(217,180,90,.12)}.dashboard-home-card{position:relative;overflow:hidden;background:radial-gradient(circle at 16% 0,rgba(241,214,147,.20),transparent 34rem),linear-gradient(180deg,rgba(15,50,33,.98),rgba(4,22,14,.98))}.dashboard-home-card:after{content:"";position:absolute;right:-90px;top:-90px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(217,180,90,.16),transparent 68%);pointer-events:none}.dashboard-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px;position:relative;z-index:1}.dashboard-action{appearance:none;display:grid;gap:6px;min-height:118px;text-align:left;border:1px solid rgba(217,180,90,.27);border-radius:22px;background:linear-gradient(180deg,rgba(217,180,90,.09),rgba(217,180,90,.035));color:var(--ink);padding:18px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.045);transition:.22s ease}.dashboard-action:hover{transform:translateY(-2px);border-color:rgba(241,214,147,.58);box-shadow:0 22px 44px -34px rgba(217,180,90,.86),inset 0 1px 0 rgba(255,255,255,.06)}.dashboard-action b{font-size:15px;font-weight:950;line-height:1.2}.dashboard-action span{color:var(--ink-soft);font-size:12px;line-height:1.35}.dashboard-action.primary{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.86)}.dashboard-action.primary span{color:rgba(36,24,2,.76)}.today-section-anchor{scroll-margin-top:104px}.foundation-kicker{color:var(--gold-3);font-size:12px;font-weight:950;letter-spacing:.15em;text-transform:uppercase}.foundation-number{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(217,180,90,.10);border:1px solid rgba(217,180,90,.32);color:var(--gold-3);font-size:12px;font-weight:950;flex:0 0 auto}.foundation-card.is-complete .foundation-number{background:rgba(36,24,2,.14);border-color:rgba(36,24,2,.26);color:#241802}
 @media(max-width:880px){.bar{height:auto;min-height:88px;align-items:flex-start;flex-direction:column;padding:14px 0}.nav.dashboard-nav{display:flex;width:100%;gap:8px;padding:0 0 4px}.dashboard-nav .dash-nav-link{font-size:11px;padding:9px 11px}.dashboard-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-action{min-height:106px}.today-section-anchor{scroll-margin-top:132px}}
 @media(max-width:560px){.dashboard-actions{grid-template-columns:1fr}.brand{font-size:34px}.dashboard-action{min-height:auto}}
+@media(max-width:680px){header{z-index:60}.bar{gap:12px;align-items:stretch}.brand-button{align-self:center}.nav.dashboard-nav,header .dashboard-nav{display:grid!important;width:100%;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}.dashboard-nav .dash-nav-link{display:flex;align-items:center;justify-content:center;width:100%;min-height:42px;white-space:normal;text-align:center;line-height:1.15;font-size:10.5px;padding:10px 8px}.today-section-anchor{scroll-margin-top:178px}}
 </style>
 </head>
 <body>
@@ -210,6 +211,16 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   const steps = { today:0, intro:1, core:2, deep:3, result:4 };
   const LOCAL_DRAFT_KEY = "godhealth_kca_v3_local_draft";
   const FOUNDATION_ORDER = [
+    "spiritual_foundation",
+    "prayer_gratitude",
+    "clean_hydration",
+    "god_created_nutrition",
+    "protein_portions",
+    "eating_window",
+    "movement_nature",
+    "strength_sitting",
+    "sleep_fasting",
+    "serve_neighbour",
     "quiet_time",
     "hydration",
     "nutrition",
@@ -218,7 +229,6 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     "break_sitting",
     "strength_mobility",
     "sleep_recovery",
-    "serve_neighbour",
     "community",
     "gratitude_reflection",
     "fasting"
