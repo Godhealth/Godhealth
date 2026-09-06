@@ -23,8 +23,9 @@ header{position:sticky;top:0;z-index:20;background:rgba(4,22,14,.90);backdrop-fi
 .score-bars{display:grid;gap:12px}.score-row{padding:14px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.055)}.score-row-head{display:flex;justify-content:space-between;gap:12px;font-weight:900}.bar-track{height:10px;border-radius:999px;background:rgba(255,255,255,.10);margin-top:10px;overflow:hidden}.bar-fill{height:100%;width:var(--pct,0%);border-radius:999px;background:linear-gradient(90deg,var(--gold-1),var(--gold-3))}
 .detail-stack{display:grid;gap:18px}.domain-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.domain-card{padding:14px;border-radius:17px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.045)}.domain-card strong{display:block;color:var(--gold-3)}.domain-score{margin-top:5px;color:var(--ink-soft);font-size:13px}.response-group{display:grid;gap:10px}.response-item{padding:14px;border-radius:16px;background:rgba(3,17,10,.42);border:1px solid rgba(217,180,90,.16)}.response-item strong{display:block;color:var(--gold-3);font-size:13px}.response-item p{margin-top:6px;color:var(--ink-soft);font-size:13px}.answer{margin-top:8px;display:inline-flex;border-radius:999px;border:1px solid rgba(217,180,90,.25);padding:6px 10px;color:var(--ink);font-size:12px;font-weight:800;background:rgba(217,180,90,.06)}.intake-report-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}.intake-report-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.intake-report-item{padding:16px;border-radius:19px;border:1px solid rgba(217,180,90,.22);background:linear-gradient(180deg,rgba(217,180,90,.075),rgba(217,180,90,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.intake-report-item strong{display:block;color:var(--gold-3);font-size:13px;line-height:1.35}.intake-report-item .answer{display:block;width:100%;border-radius:16px;white-space:normal;line-height:1.45}
 .candidate-grid{display:grid;gap:12px}.candidate-item{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.candidate-item input{margin-top:5px;accent-color:var(--gold-2)}.plan-grid{display:grid;gap:12px}.plan-day{display:grid;grid-template-columns:auto 1fr;gap:13px;padding:15px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.plan-day span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;font-weight:950}.report-note{padding:14px 16px;border-radius:18px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.06);color:var(--ink-soft)}.empty{padding:34px;border-radius:24px;border:1px dashed rgba(217,180,90,.36);text-align:center;color:var(--ink-soft)}.hidden{display:none!important}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}.loading{opacity:.7;pointer-events:none}
+.execution-overview{display:grid;gap:14px}.execution-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}.execution-client-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.execution-client{width:100%;text-align:left;padding:17px;border-radius:22px;border:1px solid rgba(217,180,90,.22);background:linear-gradient(180deg,rgba(217,180,90,.08),rgba(217,180,90,.035));color:var(--ink);cursor:pointer;transition:.2s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.execution-client:hover,.execution-client.active{transform:translateY(-2px);border-color:rgba(241,214,147,.62);box-shadow:0 22px 42px -34px rgba(217,180,90,.9),inset 0 1px 0 rgba(255,255,255,.06)}.execution-client strong{display:block;font-size:16px;line-height:1.25}.execution-metric{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:14px}.execution-metric b{font-size:34px;line-height:1;color:var(--gold-3)}.execution-status{display:inline-flex;align-items:center;min-height:30px;padding:6px 10px;border-radius:999px;border:1px solid rgba(217,180,90,.28);background:rgba(217,180,90,.07);color:var(--gold-3);font-size:11px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}.execution-status.strong_execution{border-color:rgba(114,216,139,.42);background:rgba(114,216,139,.10);color:#d8ffe1}.execution-status.building{border-color:rgba(241,214,147,.42);background:rgba(241,214,147,.10);color:var(--gold-3)}.execution-status.needs_attention{border-color:rgba(217,77,58,.46);background:rgba(217,77,58,.11);color:#ffd7d0}.week-review-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.week-hero{display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:center}.week-ring{position:relative;width:min(210px,100%);aspect-ratio:1;margin:auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold-3) calc(var(--score,0)*1%),rgba(217,180,90,.14) 0);box-shadow:0 0 0 1px rgba(241,214,147,.33),0 26px 54px -38px rgba(0,0,0,.9),inset 0 0 38px rgba(4,22,14,.92)}.week-ring:before{content:"";position:absolute;inset:12px;border-radius:50%;background:linear-gradient(180deg,var(--forest-soft),var(--forest-deep));box-shadow:inset 0 0 0 1px rgba(241,214,147,.26)}.week-ring-inner{position:relative;text-align:center}.week-ring strong{display:block;font-size:46px;line-height:1;color:var(--gold-3);font-weight:950}.week-ring span{display:block;margin-top:7px;color:var(--ink-soft);font-size:10px;font-weight:950;letter-spacing:.15em;text-transform:uppercase}.foundation-breakdown{display:grid;gap:10px}.foundation-breakdown-item{padding:14px;border-radius:18px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.foundation-breakdown-head{display:flex;justify-content:space-between;gap:12px;font-weight:900}.heatmap-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.heat-day{min-height:70px;padding:9px 6px;border-radius:16px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.045);text-align:center}.heat-day strong{display:block;color:var(--gold-3);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.heat-dots{display:flex;justify-content:center;gap:4px;flex-wrap:wrap;margin-top:8px}.heat-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.10)}.heat-dot.done{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);border-color:rgba(241,214,147,.6);box-shadow:0 0 10px rgba(217,180,90,.35)}.reflection-card{padding:16px;border-radius:20px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05)}.reflection-card strong{display:block;color:var(--gold-3);font-family:"Cormorant Garamond",serif;font-size:24px;line-height:1.05}.reflection-card p{margin-top:10px}.foundation-editor{display:grid;gap:12px}.foundation-editor-row{padding:15px;border-radius:19px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.045)}.foundation-editor-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.foundation-editor-title label{display:flex;align-items:center;gap:9px;color:var(--gold-3);font-weight:950}.foundation-editor-title input{accent-color:var(--gold-2)}.foundation-editor-row .input{margin-top:10px;padding:12px;border-radius:14px}.day-toggle-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.day-toggle{display:inline-flex;align-items:center;gap:5px;padding:6px 8px;border-radius:999px;border:1px solid rgba(217,180,90,.22);background:rgba(217,180,90,.05);font-size:11px;font-weight:900;color:var(--ink-soft)}.day-toggle input{accent-color:var(--gold-2)}
 footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90,.14);text-align:center}
-@media(max-width:960px){.auth-shell,.dash-layout,.score-layout,.g2,.g3,.g4,.domain-grid,.intake-report-grid{grid-template-columns:1fr}.run-list{position:static;max-height:none;padding-right:0}.nav{display:none}.btn{width:100%}.bar{height:76px}}@media(max-width:560px){.wrap{width:min(100% - 28px,1180px)}h1{font-size:38px}.section{padding:40px 0}.card-pad{padding:19px}.score-ring{width:226px}.score-ring strong{font-size:46px}}
+@media(max-width:960px){.auth-shell,.dash-layout,.score-layout,.g2,.g3,.g4,.domain-grid,.intake-report-grid,.execution-client-grid,.week-review-grid,.week-hero{grid-template-columns:1fr}.run-list{position:static;max-height:none;padding-right:0}.nav{display:none}.btn{width:100%}.bar{height:76px}.execution-client-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.wrap{width:min(100% - 28px,1180px)}h1{font-size:38px}.section{padding:40px 0}.card-pad{padding:19px}.score-ring{width:226px}.score-ring strong{font-size:46px}.execution-client-grid,.heatmap-grid{grid-template-columns:1fr}.week-ring{width:206px}}
 </style>
 </head>
 <body>
@@ -119,6 +120,8 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       </div>
 
       <div class="grid g4" id="statsGrid" style="margin-bottom:22px"></div>
+      <section class="detail-stack" id="executionOverviewMount" style="margin-bottom:22px"></section>
+      <section class="detail-stack" id="executionDetailMount" style="margin-bottom:22px"></section>
 
       <div class="dash-layout">
         <aside class="run-list" id="runList" aria-label="Assessment runs"></aside>
@@ -150,7 +153,10 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     isCoach:false,
     definition:null,
     runs:[],
-    selectedRunId:null
+    selectedRunId:null,
+    executionOverview:[],
+    selectedExecutionClientId:null,
+    executionDetail:null
   };
   const $ = id => document.getElementById(id);
   const scaleLabels = ["Not true / Never", "Rarely true", "Sometimes true", "Mostly true", "Consistently true"];
@@ -746,7 +752,302 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     state.runs = Array.isArray(data) ? data : [];
     renderStats();
     renderRunList();
+    await loadExecutionOverview();
     if(state.runs.length && !state.selectedRunId) loadDetail(state.runs[0].id);
+  }
+
+  function executionStatusClass(status){
+    return String(status || "not_started").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+  }
+
+  function compactDate(value){
+    if(!value) return "—";
+    try{
+      return new Intl.DateTimeFormat("en-GB",{ day:"2-digit", month:"short" }).format(new Date(value + "T00:00:00"));
+    }catch(_error){
+      return String(value);
+    }
+  }
+
+  function dayName(index){
+    return ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"][Number(index) - 1] || "Day";
+  }
+
+  function addDays(dateValue, days){
+    const date = new Date(dateValue + "T00:00:00");
+    date.setDate(date.getDate() + days);
+    return date.toISOString().slice(0,10);
+  }
+
+  function nextWeekStart(detail){
+    const start = detail && detail.program && detail.program.week_start;
+    return start ? addDays(start, 7) : new Date().toISOString().slice(0,10);
+  }
+
+  async function loadExecutionOverview(){
+    const mount = $("executionOverviewMount");
+    if(!mount) return;
+    const { data, error } = await state.supabase.rpc("kca_coach_execution_overview");
+    if(error){
+      mount.innerHTML = `
+        <div class="card card-pad">
+          <p class="eyebrow">Daily + Weekly Execution Loop</p>
+          <h3 style="margin-top:8px">Execution tracking is not active yet.</h3>
+          <p class="muted" style="margin-top:12px">${escapeHtml(error.message || "Run the latest Supabase migration to activate the coaching execution loop.")}</p>
+        </div>
+      `;
+      return;
+    }
+    state.executionOverview = data && Array.isArray(data.clients) ? data.clients : [];
+    renderExecutionOverview(data || {});
+    if(state.executionOverview.length && !state.selectedExecutionClientId){
+      await loadExecutionDetail(state.executionOverview[0].client_user_id, data.week_start);
+    }
+  }
+
+  function renderExecutionOverview(data){
+    const clients = state.executionOverview || [];
+    const strong = clients.filter(client => client.execution_status === "Strong Execution").length;
+    const building = clients.filter(client => client.execution_status === "Building").length;
+    const attention = clients.filter(client => client.needs_attention).length;
+    $("executionOverviewMount").innerHTML = `
+      <div class="card card-pad reveal visible">
+        <div class="execution-overview">
+          <div class="execution-head">
+            <div>
+              <p class="eyebrow">Daily + Weekly Execution Loop</p>
+              <h3 style="margin-top:8px">Today’s client execution.</h3>
+              <p class="muted" style="margin-top:12px">Clients are sorted with Needs Attention first. This score reflects prescribed foundation execution, not spiritual worth or medical status.</p>
+            </div>
+            <div class="btn-row">
+              <span class="pill warn">${attention} need attention</span>
+              <span class="pill">${building} building</span>
+              <span class="pill ok">${strong} strong</span>
+            </div>
+          </div>
+          <div class="execution-client-grid">
+            ${clients.length ? clients.map(client => renderExecutionClientCard(client, data.week_start)).join("") : `<div class="empty">No active clients found yet.</div>`}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderExecutionClientCard(client, weekStart){
+    const pctValue = pct(client.execution_percentage);
+    const status = client.execution_status || "Not Started";
+    const active = client.client_user_id === state.selectedExecutionClientId ? "active" : "";
+    return `
+      <button class="execution-client ${active}" type="button" data-execution-client="${escapeHtml(client.client_user_id)}" data-week-start="${escapeHtml(weekStart || "")}">
+        <span class="execution-status ${executionStatusClass(status)}">${escapeHtml(status)}</span>
+        <strong style="margin-top:12px">${escapeHtml(client.name || "Client")}</strong>
+        <p class="small" style="margin-top:5px">${escapeHtml(client.email || "No email")}</p>
+        <div class="execution-metric"><span class="small">Week ${escapeHtml(client.current_week || 1)}</span><b>${pctValue}%</b></div>
+        <p class="small" style="margin-top:10px">${client.reflection_submitted ? "Weekly reflection submitted" : "No weekly reflection yet"}</p>
+      </button>
+    `;
+  }
+
+  async function loadExecutionDetail(clientUserId, weekStart){
+    if(!clientUserId) return;
+    state.selectedExecutionClientId = clientUserId;
+    renderExecutionOverview({ week_start:weekStart, clients:state.executionOverview });
+    $("executionDetailMount").innerHTML = `<div class="empty">Loading weekly execution review...</div>`;
+    const { data, error } = await state.supabase.rpc("kca_coach_execution_detail", {
+      p_client_user_id:clientUserId,
+      p_week_start:weekStart || null
+    });
+    if(error){
+      $("executionDetailMount").innerHTML = `<div class="card card-pad alert"><h3>Could not open weekly review.</h3><p class="muted" style="margin-top:12px">${escapeHtml(error.message)}</p></div>`;
+      return;
+    }
+    state.executionDetail = data;
+    $("executionDetailMount").innerHTML = renderExecutionDetail(data);
+  }
+
+  function renderExecutionDetail(detail){
+    const summary = detail.weekly_summary || {};
+    const program = detail.program || {};
+    const percentage = pct(summary.execution_percentage);
+    const status = summary.execution_status || "Not Started";
+    return `
+      <div class="card card-pad">
+        <div class="week-hero">
+          <div class="week-ring" style="--score:${percentage}"><div class="week-ring-inner"><strong>${percentage}%</strong><span>Weekly Execution</span></div></div>
+          <div>
+            <p class="eyebrow">Week Review</p>
+            <h3 style="margin-top:8px">${escapeHtml(detail.client && detail.client.name || "Client")} · Week ${escapeHtml(program.week || 1)}</h3>
+            <p class="muted" style="margin-top:12px">${compactDate(program.week_start)} – ${compactDate(program.week_end)} · ${escapeHtml(detail.client && detail.client.email || "")}</p>
+            <div class="btn-row" style="margin-top:16px">
+              <span class="execution-status ${executionStatusClass(status)}">${escapeHtml(status)}</span>
+              <span class="pill">${escapeHtml(summary.completed_opportunities || 0)} / ${escapeHtml(summary.total_opportunities || 0)} completed</span>
+              <span class="pill ${summary.reflection_submitted ? "ok" : ""}">${summary.reflection_submitted ? "Reflection submitted" : "Reflection missing"}</span>
+            </div>
+          </div>
+        </div>
+        <div class="week-review-grid" style="margin-top:22px">
+          <div>
+            <p class="eyebrow">Foundation Breakdown</p>
+            <div class="foundation-breakdown" style="margin-top:12px">${renderFoundationBreakdown(summary.foundation_breakdown || [])}</div>
+          </div>
+          <div>
+            <p class="eyebrow">7-Day Heatmap</p>
+            <div class="heatmap-grid" style="margin-top:12px">${renderExecutionHeatmap(summary.heatmap || [])}</div>
+          </div>
+        </div>
+      </div>
+      ${renderReflectionReview(detail.weekly_reflection)}
+      ${renderFoundationEditor(detail)}
+    `;
+  }
+
+  function renderFoundationBreakdown(items){
+    if(!items.length) return `<div class="empty">No prescribed foundation opportunities this week yet.</div>`;
+    return items.map(item => {
+      const total = Number(item.total || item.total_opportunities || 0);
+      const completed = Number(item.completed || item.completed_opportunities || 0);
+      const percent = total ? Math.round((completed / total) * 100) : 0;
+      return `
+        <div class="foundation-breakdown-item">
+          <div class="foundation-breakdown-head"><span>${escapeHtml(item.label || item.foundation_label || item.foundation_key || "Foundation")}</span><span>${completed}/${total}</span></div>
+          <p class="small" style="margin-top:7px">${escapeHtml(item.target_label || "")}</p>
+          <div class="bar-track"><div class="bar-fill" style="--pct:${percent}%"></div></div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function renderExecutionHeatmap(days){
+    const byDay = new Map((days || []).map(day => [String(day.dow || day.day || ""), day]));
+    return [1,2,3,4,5,6,7].map(index => {
+      const day = byDay.get(String(index)) || {};
+      const total = Number(day.total || 0);
+      const completed = Number(day.completed || 0);
+      const dots = total ? Array.from({ length:total }, (_item,dotIndex) => `<span class="heat-dot ${dotIndex < completed ? "done" : ""}"></span>`).join("") : `<span class="small">—</span>`;
+      return `<div class="heat-day"><strong>${dayName(index)}</strong><div class="heat-dots">${dots}</div><p class="small" style="margin-top:7px">${completed}/${total}</p></div>`;
+    }).join("");
+  }
+
+  function renderReflectionReview(reflection){
+    if(!reflection){
+      return `
+        <div class="card card-pad">
+          <p class="eyebrow">Weekly Reflection</p>
+          <h3 style="margin-top:8px">No weekly Body · Soul · Spirit reflection yet.</h3>
+          <p class="muted" style="margin-top:12px">When the client completes the weekly reflection, the exact answers will appear here.</p>
+        </div>
+      `;
+    }
+    return `
+      <div class="card card-pad">
+        <p class="eyebrow">Weekly Reflection</p>
+        <h3 style="margin-top:8px">Client reflection for Week ${escapeHtml(reflection.program_week || "")}.</h3>
+        <div class="week-review-grid" style="margin-top:18px">
+          ${reflectionBlock("Body", reflection.body_question, reflection.body_answer)}
+          ${reflectionBlock("Soul", reflection.soul_question, reflection.soul_answer)}
+          ${reflectionBlock("Spirit", reflection.spirit_question, reflection.spirit_answer)}
+          ${reflectionBlock("Coach Note", "Anything your coach should know?", reflection.coach_note_from_client || "No extra note.")}
+        </div>
+      </div>
+    `;
+  }
+
+  function reflectionBlock(label, question, answer){
+    return `<div class="reflection-card"><span class="pill">${escapeHtml(label)}</span><strong style="margin-top:12px">${escapeHtml(question || label)}</strong><p class="muted">${escapeHtml(answer || "No answer yet.")}</p></div>`;
+  }
+
+  function renderFoundationEditor(detail){
+    const prescriptions = detail.prescriptions || [];
+    const effectiveFrom = nextWeekStart(detail);
+    if(!prescriptions.length){
+      return `
+        <div class="card card-pad">
+          <p class="eyebrow">Next Week Personal Standards</p>
+          <h3 style="margin-top:8px">No foundations available to edit yet.</h3>
+          <p class="muted" style="margin-top:12px">Default foundations will be created when this client opens Today or when the execution migration is active.</p>
+        </div>
+      `;
+    }
+    return `
+      <div class="card card-pad">
+        <p class="eyebrow">Coach Controls</p>
+        <h3 style="margin-top:8px">Next week’s Personal Standards.</h3>
+        <p class="muted" style="margin-top:12px">Changes start from ${compactDate(effectiveFrom)} and do not rewrite historical weeks.</p>
+        <form id="foundationEditorForm" class="foundation-editor" style="margin-top:18px">
+          <input type="hidden" name="client_user_id" value="${escapeHtml(detail.client && detail.client.user_id || "")}">
+          <input type="hidden" name="effective_from" value="${escapeHtml(effectiveFrom)}">
+          ${prescriptions.map(renderFoundationEditorRow).join("")}
+          <button class="btn btn-gold" type="submit">Save Next Week Standards</button>
+          <p class="small" id="foundationEditorMessage">Only successful database saves become visible to the client.</p>
+        </form>
+      </div>
+    `;
+  }
+
+  function renderFoundationEditorRow(prescription){
+    const days = Array.isArray(prescription.prescribed_days) ? prescription.prescribed_days.map(Number) : [1,2,3,4,5,6,7];
+    return `
+      <div class="foundation-editor-row" data-foundation-key="${escapeHtml(prescription.foundation_key)}">
+        <div class="foundation-editor-title">
+          <label><input type="checkbox" data-field="is_prescribed" ${prescription.is_prescribed ? "checked" : ""}> ${escapeHtml(prescription.foundation_label || prescription.foundation_key)}</label>
+          <span class="pill">${escapeHtml(prescription.foundation_key)}</span>
+        </div>
+        <p class="small" style="margin-top:8px">${escapeHtml(prescription.foundation_description || "")}</p>
+        <input class="input" data-field="target_label" value="${escapeHtml(prescription.target_label || "")}" placeholder="Personal target shown to client">
+        <div class="day-toggle-row">
+          ${[1,2,3,4,5,6,7].map(day => `<label class="day-toggle"><input type="checkbox" data-day="${day}" ${days.includes(day) ? "checked" : ""}>${dayName(day)}</label>`).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  async function saveFoundationPrescriptions(event){
+    event.preventDefault();
+    const form = event.currentTarget;
+    const button = form.querySelector("button[type='submit']");
+    const message = $("foundationEditorMessage");
+    const clientUserId = form.elements.client_user_id.value;
+    const effectiveFrom = form.elements.effective_from.value;
+    const current = state.executionDetail && state.executionDetail.prescriptions || [];
+    const currentByKey = new Map(current.map(item => [item.foundation_key, item]));
+    const prescriptions = Array.from(form.querySelectorAll(".foundation-editor-row")).map(row => {
+      const key = row.dataset.foundationKey;
+      const original = currentByKey.get(key) || {};
+      const days = Array.from(row.querySelectorAll("[data-day]:checked")).map(input => Number(input.dataset.day));
+      return {
+        foundation_key:key,
+        foundation_label:original.foundation_label || key,
+        foundation_description:original.foundation_description || "",
+        target_label:(row.querySelector("[data-field='target_label']") || {}).value || "",
+        target_value:original.target_value,
+        target_unit:original.target_unit,
+        prescribed_days:days.length ? days : [],
+        is_prescribed:Boolean(row.querySelector("[data-field='is_prescribed']") && row.querySelector("[data-field='is_prescribed']").checked),
+        allow_not_applicable:Boolean(original.allow_not_applicable),
+        program_week:original.program_week || null,
+        metadata:original.metadata || {}
+      };
+    });
+    try{
+      button.disabled = true;
+      button.textContent = "Saving...";
+      if(message) message.textContent = "Saving next week standards securely...";
+      const { data, error } = await state.supabase.rpc("kca_coach_save_foundation_prescriptions", {
+        p_client_user_id:clientUserId,
+        p_effective_from:effectiveFrom,
+        p_prescriptions:prescriptions
+      });
+      if(error) throw error;
+      state.executionDetail = data;
+      if(message) message.textContent = "Saved. These targets are versioned from next week.";
+      await loadExecutionOverview();
+      $("executionDetailMount").innerHTML = renderExecutionDetail(data);
+    }catch(error){
+      if(message) message.textContent = "Could not save yet: " + (error.message || "Unknown error");
+    }finally{
+      button.disabled = false;
+      button.textContent = "Save Next Week Standards";
+    }
   }
 
   async function grantClientAccess(event){
@@ -898,6 +1199,14 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     $("refreshAccessBtn").addEventListener("click", checkCoachAccess);
     $("refreshBtn").addEventListener("click", loadRuns);
     $("clientAccessForm").addEventListener("submit", grantClientAccess);
+    $("executionOverviewMount").addEventListener("click", event => {
+      const button = event.target.closest("[data-execution-client]");
+      if(!button) return;
+      loadExecutionDetail(button.dataset.executionClient, button.dataset.weekStart || null);
+    });
+    $("executionDetailMount").addEventListener("submit", event => {
+      if(event.target && event.target.id === "foundationEditorForm") saveFoundationPrescriptions(event);
+    });
     $("copyClientAccessLink").addEventListener("click", async () => {
       const input = $("clientAccessLink");
       if(!input || !input.value) return;

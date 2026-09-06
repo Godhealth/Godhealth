@@ -37,6 +37,8 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 .scale label{width:100%;height:100%}
 .choice-pill{width:100%;user-select:none}
 .choice-pill.is-selected{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.84);box-shadow:0 18px 36px -22px rgba(217,180,90,.95),inset 0 1px 0 rgba(255,255,255,.52)}
+.today-shell{display:grid;gap:22px;margin-top:26px}.today-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}.today-score-card{display:grid;place-items:center;text-align:center;min-height:220px;border-radius:26px;border:1px solid rgba(217,180,90,.30);background:radial-gradient(circle at 50% 0,rgba(241,214,147,.20),transparent 46%),linear-gradient(180deg,rgba(15,50,33,.98),rgba(4,22,14,.98));box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 30px 68px -48px rgba(0,0,0,.88)}.today-score-card strong{display:block;font-size:clamp(54px,8vw,82px);line-height:.9;color:var(--gold-3);font-weight:950}.today-score-card span{display:block;margin-top:12px;color:var(--ink-soft);font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.status-badge{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(217,180,90,.28);background:rgba(217,180,90,.08);color:var(--gold-3);font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.status-badge.strong{color:#d8ffe1;border-color:rgba(114,216,139,.35);background:rgba(114,216,139,.08)}.status-badge.needs{color:#ffd7d0;border-color:rgba(217,77,58,.42);background:rgba(217,77,58,.10)}.foundation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.foundation-card{width:100%;min-height:134px;text-align:left;border:1px solid rgba(217,180,90,.25);border-radius:22px;background:linear-gradient(180deg,rgba(217,180,90,.075),rgba(217,180,90,.035));color:var(--ink);padding:18px;cursor:pointer;transition:.2s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.foundation-card:hover{transform:translateY(-2px);border-color:rgba(241,214,147,.46);box-shadow:0 18px 38px -30px rgba(217,180,90,.7),inset 0 1px 0 rgba(255,255,255,.06)}.foundation-card.is-complete{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802;border-color:rgba(255,236,174,.86)}.foundation-card.is-saving{opacity:.66;pointer-events:none}.foundation-card.is-unsaved{border-color:rgba(217,77,58,.54)}.foundation-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.foundation-check{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid rgba(217,180,90,.42);background:rgba(217,180,90,.08);color:var(--gold-3);font-weight:950;flex:0 0 auto}.foundation-card.is-complete .foundation-check{background:rgba(36,24,2,.16);border-color:rgba(36,24,2,.28);color:#241802}.foundation-title{display:block;font-size:15px;font-weight:950;letter-spacing:.01em;line-height:1.25}.foundation-desc{display:block;margin-top:9px;color:var(--ink-soft);font-size:13px;line-height:1.45}.foundation-card.is-complete .foundation-desc{color:rgba(36,24,2,.78)}.foundation-target{display:inline-flex;margin-top:12px;padding:6px 9px;border-radius:999px;background:rgba(3,17,10,.24);border:1px solid rgba(217,180,90,.22);color:var(--gold-3);font-size:11px;font-weight:900;letter-spacing:.05em;text-transform:uppercase}.foundation-card.is-complete .foundation-target{background:rgba(36,24,2,.12);border-color:rgba(36,24,2,.18);color:#241802}.heat-row{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}.heat-day{display:grid;gap:6px;place-items:center;padding:10px 6px;border-radius:16px;border:1px solid rgba(217,180,90,.20);background:rgba(217,180,90,.05);font-size:11px;font-weight:900;color:var(--ink-soft)}.heat-dot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(217,180,90,.20);color:var(--gold-3)}.heat-dot.good{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802}.reflection-grid{display:grid;gap:12px}.reflection-submitted{padding:16px;border-radius:18px;border:1px solid rgba(114,216,139,.35);background:rgba(114,216,139,.08);color:#d8ffe1}
+@media(max-width:880px){.today-hero-grid,.foundation-grid{grid-template-columns:1fr}.foundation-card{min-height:auto}.heat-row{gap:6px}.heat-day{padding:8px 4px}}
 </style>
 </head>
 <body>
@@ -93,6 +95,10 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
       </div>
       <div class="tabs" id="tabs" aria-hidden="true"></div>
+
+      <section class="screen" id="screenToday">
+        <div id="todayMount" class="today-shell"></div>
+      </section>
 
       <section class="screen active" id="screenIntro">
         <div class="card card-pad" style="margin-top:26px">
@@ -190,13 +196,15 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     core_answers:{},
     intake_index:0,
     core_index:0,
+    today:null,
+    todaySaving:{},
     consent:{ accepted:false, full_name:"" },
     latest:null,
     runResult:null
   };
   const $ = id => document.getElementById(id);
   const scaleLabels = (KCA && KCA.SCALE_LABELS) || ["Not true right now","Rarely true","Sometimes true","Mostly true","Consistently true"];
-  const steps = { intro:1, core:2, deep:3, result:4 };
+  const steps = { today:0, intro:1, core:2, deep:3, result:4 };
   const LOCAL_DRAFT_KEY = "godhealth_kca_v3_local_draft";
   const simpleIntakeLabels = {
     PR1:"How old are you?",
@@ -410,6 +418,7 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       await loadDefinition();
       await loadLatest();
       showStart(state.session.user);
+      await openToday({ silent:true });
     }catch(error){
       showAccessRequired(error.message || "Premium assessment access is not enabled yet.");
     }
@@ -418,6 +427,211 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   async function loadLatest(){
     const { data, error } = await state.supabase.rpc("kca_v3_my_latest");
     if(!error && data) state.latest = data;
+  }
+
+  function localDateString(){
+    const date = new Date();
+    const tzOffset = date.getTimezoneOffset() * 60000;
+    return new Date(date.getTime() - tzOffset).toISOString().slice(0, 10);
+  }
+
+  async function openToday(options = {}){
+    if(!state.supabase || !state.session) return;
+    $("app").classList.remove("hidden");
+    $("todayMount").innerHTML = `<div class="card card-pad center"><p class="eyebrow">Today</p><h3 style="margin-top:8px">Loading your GodHealth Foundations...</h3></div>`;
+    showScreen("today");
+    const { data, error } = await state.supabase.rpc("kca_get_today_dashboard", { p_local_date:localDateString() });
+    if(error){
+      $("todayMount").innerHTML = `<div class="card card-pad alert"><p class="eyebrow">Today</p><h3 style="margin-top:8px">Your daily coaching screen is not active yet.</h3><p class="muted" style="margin-top:10px">${escapeHtml(error.message || "Please ask GodHealth to activate the Daily + Weekly Coaching Loop.")}</p><div class="btn-row center" style="margin-top:18px"><button class="btn btn-gold" id="fallbackBeginBtn" type="button">Begin Assessment</button></div></div>`;
+      $("fallbackBeginBtn")?.addEventListener("click", () => $("beginBtn").click());
+      if(!options.silent) console.warn(error);
+      return;
+    }
+    state.today = data || {};
+    renderToday();
+  }
+
+  function statusClass(status){
+    const text = String(status || "").toLowerCase();
+    if(text.includes("strong")) return "strong";
+    if(text.includes("needs") || text.includes("not started")) return "needs";
+    return "";
+  }
+
+  function weekdayLabel(dateValue){
+    try{ return new Intl.DateTimeFormat("en-US", { weekday:"short" }).format(new Date(dateValue + "T12:00:00")); }
+    catch(_error){ return ""; }
+  }
+
+  function renderToday(){
+    const data = state.today || {};
+    const client = data.client || {};
+    const program = data.program || {};
+    const summary = data.weekly_summary || {};
+    const items = Array.isArray(data.today_items) ? data.today_items : [];
+    const percentage = Math.round(Number(summary.execution_percentage) || 0);
+    const status = summary.execution_status || "Not Started";
+    const firstName = client.first_name || (client.email ? client.email.split("@")[0] : "there");
+    $("todayMount").innerHTML = `
+      <div class="today-hero-grid">
+        <div class="card card-pad">
+          <p class="eyebrow">Today</p>
+          <h2>${escapeHtml(firstName)}, this is your GodHealth rhythm.</h2>
+          <p class="lead" style="margin-top:14px">Week ${escapeHtml(program.week || 1)} · Day ${escapeHtml(program.day || 1)}. Check off today’s prescribed Foundations. Simple execution, not perfection.</p>
+          <div class="btn-row" style="margin-top:22px">
+            <button class="btn btn-gold" id="todayBeginAssessmentBtn" type="button">${state.latest && state.latest.run ? "View Assessment Result" : "Begin Assessment"}</button>
+            <button class="btn btn-outline" id="todayRestoreAssessmentBtn" type="button">Restore Progress</button>
+          </div>
+        </div>
+        <div class="today-score-card">
+          <div>
+            <strong>${percentage}%</strong>
+            <span>Weekly Execution</span>
+            <div style="margin-top:16px"><span class="status-badge ${statusClass(status)}">${escapeHtml(status)}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-pad">
+        <div class="domain-head">
+          <div>
+            <p>Today’s GodHealth Foundations</p>
+            <h3 style="margin-top:8px">One tap. Saved immediately.</h3>
+          </div>
+          <span class="status-badge">${escapeHtml(items.filter(item => item.status === "complete").length)} / ${escapeHtml(items.length)} Complete</span>
+        </div>
+        <div class="foundation-grid" style="margin-top:18px">
+          ${items.length ? items.map(foundationCard).join("") : `<div class="report-note">No Foundations are prescribed for today yet.</div>`}
+        </div>
+      </div>
+      ${renderWeekHeatmap(summary)}
+      ${renderWeeklyReflection(data)}
+    `;
+    $("todayBeginAssessmentBtn")?.addEventListener("click", () => {
+      if(state.latest && state.latest.run){
+        renderResultFromServer(state.latest);
+        showScreen("result");
+      }else{
+        $("beginBtn").click();
+      }
+    });
+    $("todayRestoreAssessmentBtn")?.addEventListener("click", () => $("restoreBtn").click());
+    document.querySelectorAll("[data-foundation-toggle]").forEach(button => button.addEventListener("click", toggleFoundation));
+    $("weeklyReflectionForm")?.addEventListener("submit", submitWeeklyReflection);
+  }
+
+  function foundationCard(item){
+    const complete = item.status === "complete";
+    const saving = state.todaySaving[item.prescription_id];
+    const unsaved = item.unsaved;
+    return `<button class="foundation-card ${complete ? "is-complete" : ""} ${saving ? "is-saving" : ""} ${unsaved ? "is-unsaved" : ""}" data-foundation-toggle="${escapeHtml(item.prescription_id)}" type="button" aria-pressed="${complete ? "true" : "false"}">
+      <span class="foundation-top">
+        <span>
+          <span class="foundation-title">${escapeHtml(item.foundation_label)}</span>
+          <span class="foundation-desc">${escapeHtml(unsaved ? "Not saved — tap to retry." : item.foundation_description)}</span>
+          ${item.target_label ? `<span class="foundation-target">${escapeHtml(item.target_label)}</span>` : ""}
+        </span>
+        <span class="foundation-check">${saving ? "…" : complete ? "✓" : ""}</span>
+      </span>
+    </button>`;
+  }
+
+  function renderWeekHeatmap(summary){
+    const heatmap = Array.isArray(summary.heatmap) ? summary.heatmap : [];
+    if(!heatmap.length) return "";
+    return `<div class="card card-pad">
+      <p class="eyebrow">This Week</p>
+      <h3 style="margin-top:8px">Daily execution snapshot.</h3>
+      <div class="heat-row" style="margin-top:16px">
+        ${heatmap.map(day => {
+          const pct = Number(day.percentage) || 0;
+          return `<div class="heat-day"><span>${escapeHtml(day.weekday || weekdayLabel(day.date))}</span><span class="heat-dot ${pct >= 85 ? "good" : ""}">${Math.round(pct)}</span></div>`;
+        }).join("")}
+      </div>
+    </div>`;
+  }
+
+  function renderWeeklyReflection(data){
+    const program = data.program || {};
+    const questions = data.reflection_questions || {};
+    const reflection = data.weekly_reflection;
+    if(reflection){
+      return `<div class="card card-pad success">
+        <p class="eyebrow">Week ${escapeHtml(program.week || "")} Complete</p>
+        <h3 style="margin-top:8px">Your reflection is saved.</h3>
+        <div class="reflection-grid" style="margin-top:16px">
+          <div class="reflection-submitted"><strong>Body</strong><p style="margin-top:6px">${escapeHtml(reflection.body_answer)}</p></div>
+          <div class="reflection-submitted"><strong>Soul</strong><p style="margin-top:6px">${escapeHtml(reflection.soul_answer)}</p></div>
+          <div class="reflection-submitted"><strong>Spirit</strong><p style="margin-top:6px">${escapeHtml(reflection.spirit_answer)}</p></div>
+          ${reflection.coach_note_from_client ? `<div class="reflection-submitted"><strong>For my coach</strong><p style="margin-top:6px">${escapeHtml(reflection.coach_note_from_client)}</p></div>` : ""}
+        </div>
+      </div>`;
+    }
+    return `<div class="card card-pad">
+      <p class="eyebrow">Week ${escapeHtml(program.week || "")} Reflection</p>
+      <h3 style="margin-top:8px">Body, Soul and Spirit check-in.</h3>
+      <p class="muted" style="margin-top:10px">At the end of your week, send your coach a simple reflection.</p>
+      <form id="weeklyReflectionForm" class="reflection-grid" style="margin-top:18px">
+        ${reflectionField("body", questions.body || "Where did your body feel supported or challenged this week?")}
+        ${reflectionField("soul", questions.soul || "What pattern in your thoughts, emotions or discipline did you notice this week?")}
+        ${reflectionField("spirit", questions.spirit || "Where did you sense God inviting you into deeper surrender this week?")}
+        <div class="form-field"><label for="coachNote">Anything your coach should know? Optional</label><textarea class="textarea" id="coachNote" placeholder="Optional note for your coach"></textarea></div>
+        <button class="btn btn-gold" type="submit">Save Weekly Reflection</button>
+        <p class="small" id="weeklyReflectionMessage">Your reflection saves securely to GodHealth.</p>
+      </form>
+    </div>`;
+  }
+
+  function reflectionField(key, label){
+    return `<div class="form-field"><label for="reflection-${key}">${escapeHtml(label)}</label><textarea class="textarea" id="reflection-${key}" required placeholder="Write a short, honest answer..."></textarea></div>`;
+  }
+
+  async function toggleFoundation(event){
+    const prescriptionId = event.currentTarget.dataset.foundationToggle;
+    if(!prescriptionId || state.todaySaving[prescriptionId]) return;
+    const items = Array.isArray(state.today && state.today.today_items) ? state.today.today_items : [];
+    const item = items.find(entry => entry.prescription_id === prescriptionId);
+    if(!item) return;
+    const nextCompleted = item.status !== "complete";
+    state.todaySaving[prescriptionId] = true;
+    item.unsaved = false;
+    renderToday();
+    const { data, error } = await state.supabase.rpc("kca_toggle_daily_foundation", {
+      p_prescription_id:prescriptionId,
+      p_log_date:(state.today.program && state.today.program.local_date) || localDateString(),
+      p_completed:nextCompleted
+    });
+    delete state.todaySaving[prescriptionId];
+    if(error){
+      item.unsaved = true;
+      renderToday();
+      return;
+    }
+    item.status = nextCompleted ? "complete" : "incomplete";
+    item.completed_at = data && data.log ? data.log.completed_at : null;
+    if(data && data.weekly_summary) state.today.weekly_summary = data.weekly_summary;
+    renderToday();
+  }
+
+  async function submitWeeklyReflection(event){
+    event.preventDefault();
+    const message = $("weeklyReflectionMessage");
+    if(message) message.textContent = "Saving reflection...";
+    const program = state.today && state.today.program || {};
+    const { data, error } = await state.supabase.rpc("kca_submit_weekly_reflection", {
+      p_program_week:Number(program.week) || 1,
+      p_week_start:program.week_start || localDateString(),
+      p_body_answer:$("reflection-body").value,
+      p_soul_answer:$("reflection-soul").value,
+      p_spirit_answer:$("reflection-spirit").value,
+      p_coach_note:$("coachNote").value
+    });
+    if(error){
+      if(message) message.textContent = "Could not save yet: " + error.message;
+      return;
+    }
+    state.today.weekly_reflection = data && data.reflection ? data.reflection : true;
+    if(data && data.weekly_summary) state.today.weekly_summary = data.weekly_summary;
+    renderToday();
   }
 
   function bind(){
@@ -1190,6 +1404,14 @@ footer{padding:42px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   function showScreen(name){
     document.querySelectorAll(".screen").forEach(item => item.classList.remove("active"));
     $("screen" + name.charAt(0).toUpperCase() + name.slice(1)).classList.add("active");
+    const progressWrap = document.querySelector(".progress-wrap");
+    if(name === "today"){
+      if(progressWrap) progressWrap.style.display = "none";
+      $("tabs").style.display = "none";
+      return;
+    }
+    if(progressWrap) progressWrap.style.display = "";
+    $("tabs").style.display = "";
     const step = steps[name] || 1;
     const percent = Math.round((step / 4) * 100);
     $("progressLabel").textContent = "Step " + step + " of 4";
