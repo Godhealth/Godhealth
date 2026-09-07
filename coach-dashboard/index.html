@@ -29,7 +29,9 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 </style>
 <style>
 .execution-group{display:grid;gap:12px;margin-top:18px}.execution-group-title{display:flex;align-items:center;justify-content:space-between;gap:12px}.execution-group-title h4{margin:0;color:var(--gold-3);font-size:12px;font-weight:950;letter-spacing:.16em;text-transform:uppercase}.execution-group-title span{color:var(--ink-mute);font-size:12px;font-weight:800}.execution-client-grid.grouped{margin-top:0}.execution-client.needs{border-color:rgba(217,77,58,.38);background:linear-gradient(180deg,rgba(217,77,58,.105),rgba(217,180,90,.035))}.execution-client.on-track{border-color:rgba(114,216,139,.28)}
-</style>
+.builder-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}.builder-template{min-height:42px;border-radius:999px;border:1px solid rgba(217,180,90,.25);background:rgba(217,180,90,.06);color:var(--ink);padding:9px 12px;font-size:11px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.builder-template:hover{border-color:rgba(241,214,147,.55);color:var(--gold-3)}.builder-grid{display:grid;grid-template-columns:1.2fr .55fr .55fr;gap:9px;margin-top:10px}.builder-grid .input{margin-top:0}.builder-note{margin-top:10px}.builder-textarea{width:100%;min-height:82px;margin-top:10px;padding:12px;border-radius:14px;border:1px solid rgba(217,180,90,.24);background:rgba(3,17,10,.64);color:var(--ink);resize:vertical}.required-toggle{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.required-toggle label{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:900;color:var(--ink-soft)}.date-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}.feel-mini{display:grid;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(217,180,90,.14)}.feel-mini-row{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--ink-soft)}.feel-mini-row b{color:var(--gold-3)}.coach-combo{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:12px}.coach-combo-day{min-height:108px;display:grid;gap:6px;justify-items:center;align-items:end;padding:8px 5px;border-radius:15px;border:1px solid rgba(217,180,90,.17);background:rgba(217,180,90,.04)}.coach-combo-bar{position:relative;width:24px;height:70px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}.coach-combo-bar i{position:absolute;left:0;right:0;bottom:0;height:var(--exec,0%);background:linear-gradient(180deg,var(--gold-3),var(--gold-1));border-radius:999px}.coach-combo-dot{position:absolute;left:50%;bottom:calc(var(--feel,0%) - 5px);transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:var(--ink);border:2px solid var(--gold-2);box-shadow:0 0 12px rgba(241,214,147,.42)}.coach-combo-day.is-missing .coach-combo-dot{display:none}.coach-combo-day.is-future{opacity:.38}.coach-combo-day span{font-size:10px;font-weight:950;color:var(--ink-mute)}
+@media(max-width:780px){.builder-grid,.date-grid{grid-template-columns:1fr}.coach-combo{grid-template-columns:repeat(7,minmax(34px,1fr));gap:5px}.coach-combo-day{padding:7px 3px}.coach-combo-bar{width:20px}}
+  </style>
 </head>
 <body>
 <header>
@@ -164,6 +166,37 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   const $ = id => document.getElementById(id);
   const scaleLabels = ["Not true / Never", "Rarely true", "Sometimes true", "Mostly true", "Consistently true"];
   const DAILY_SEVEN_ORDER = ["seek","hydrate","eat","move","recover","renew","serve"];
+  const PROTOCOL_ORDER = ["seek","hydrate","eat","move","recover","renew","serve","fasting"];
+  const FOUNDATION_NAMES = { seek:"SEEK", hydrate:"HYDRATE", eat:"EAT", move:"MOVE", recover:"RECOVER", renew:"RENEW", serve:"SERVE", fasting:"FASTING" };
+  const FEEL_FIELDS = [
+    ["morning_readiness","Morning Readiness"],
+    ["daytime_energy","Daytime Energy"],
+    ["mental_clarity","Mental Clarity"],
+    ["inner_calm","Inner Calm"],
+    ["sleep_ease","Sleep Ease"]
+  ];
+  const CHECKIN_TEMPLATES = {
+    foundation:{
+      name:"Foundation",
+      items:{ seek:"15 min Bible + prayer", hydrate:"Water target", eat:"Simple God-created meals", move:"Daily steps", recover:"Sleep rhythm", renew:"5 min reflection", serve:"Serve one neighbour" }
+    },
+    build:{
+      name:"Build",
+      items:{ seek:"20 min Bible + prayer", hydrate:"2.0–2.4 L water", eat:"Protein every meal", move:"Steps + 2 strength sessions", recover:"Screens off before bed", renew:"Gratitude + breath", serve:"One intentional act" }
+    },
+    performance:{
+      name:"Performance",
+      items:{ seek:"30 min Word + prayer", hydrate:"Personal water + minerals", eat:"Structured meals", move:"Steps + progressive strength", recover:"7.5+ hours sleep", renew:"Daily emotional reset", serve:"Love your neighbour practically" }
+    },
+    fasting:{
+      name:"Fasting Protocol",
+      items:{ fasting:"Coach-prescribed fasting window", eat:"Nourishing refeed meal", hydrate:"Water + minerals", seek:"Prayer joined to fasting", recover:"Gentle recovery rhythm" }
+    },
+    recovery:{
+      name:"Recovery Week",
+      items:{ seek:"Quiet prayer before phone", hydrate:"Steady clean water", eat:"Simple nourishing meals", move:"Walk + mobility", recover:"Prioritize sleep", renew:"Gentle reflection", serve:"Small act of love" }
+    }
+  };
 
   function escapeHtml(value){
     return String(value == null ? "" : value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[char]));
@@ -860,12 +893,14 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     const status = client.execution_status || "Not Started";
     const active = client.client_user_id === state.selectedExecutionClientId ? "active" : "";
     const toneClass = tone || (client.needs_attention ? "needs" : "on-track");
+    const feel = client.average_feel == null ? null : Number(client.average_feel);
     return `
       <button class="execution-client ${toneClass} ${active}" type="button" data-execution-client="${escapeHtml(client.client_user_id)}" data-week-start="${escapeHtml(weekStart || "")}">
         <span class="execution-status ${executionStatusClass(status)}">${escapeHtml(status)}</span>
         <strong style="margin-top:12px">${escapeHtml(client.name || "Client")}</strong>
         <p class="small" style="margin-top:5px">${escapeHtml(client.email || "No email")}</p>
         <div class="execution-metric"><span class="small">Week ${escapeHtml(client.current_week || 1)}</span><b>${pctValue}%</b></div>
+        <div class="execution-metric" style="margin-top:7px"><span class="small">Average Feel</span><b style="font-size:24px">${feel == null ? "—" : feel.toFixed(1)}</b></div>
         <p class="small" style="margin-top:10px">${client.reflection_submitted ? "Weekly reflection submitted" : "No weekly reflection yet"}</p>
       </button>
     `;
@@ -891,8 +926,10 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   function renderExecutionDetail(detail){
     const summary = detail.weekly_summary || {};
     const program = detail.program || {};
+    const progress = detail.week_progress || {};
     const percentage = pct(summary.execution_percentage);
     const status = summary.execution_status || "Not Started";
+    const averageFeel = progress.average_feel == null ? null : Number(progress.average_feel);
     return `
       <div class="card card-pad">
         <div class="week-hero">
@@ -904,6 +941,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
             <div class="btn-row" style="margin-top:16px">
               <span class="execution-status ${executionStatusClass(status)}">${escapeHtml(status)}</span>
               <span class="pill">${escapeHtml(summary.completed_opportunities || 0)} / ${escapeHtml(summary.total_opportunities || 0)} completed</span>
+              <span class="pill ${averageFeel != null && averageFeel >= 7 ? "ok" : ""}">Average Feel ${averageFeel == null ? "—" : averageFeel.toFixed(1)} / 10</span>
               <span class="pill ${summary.reflection_submitted ? "ok" : ""}">${summary.reflection_submitted ? "Reflection submitted" : "Reflection missing"}</span>
             </div>
           </div>
@@ -918,6 +956,11 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
             <div class="heatmap-grid" style="margin-top:12px">${renderExecutionHeatmap(summary.heatmap || [])}</div>
           </div>
         </div>
+        <div style="margin-top:22px">
+          <p class="eyebrow">Execution + Wellbeing</p>
+          ${renderCoachProgressGraph(progress)}
+          ${renderCoachFeelAverages(progress)}
+        </div>
       </div>
       ${renderReflectionReview(detail.weekly_reflection)}
       ${renderFoundationEditor(detail)}
@@ -927,8 +970,8 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   function renderFoundationBreakdown(items){
     if(!items.length) return `<div class="empty">No prescribed foundation opportunities this week yet.</div>`;
     const ordered = [...items].sort((a,b) => {
-      const aIndex = DAILY_SEVEN_ORDER.indexOf(String(a.foundation_key || "").toLowerCase());
-      const bIndex = DAILY_SEVEN_ORDER.indexOf(String(b.foundation_key || "").toLowerCase());
+      const aIndex = PROTOCOL_ORDER.indexOf(String(a.foundation_key || "").toLowerCase());
+      const bIndex = PROTOCOL_ORDER.indexOf(String(b.foundation_key || "").toLowerCase());
       return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex);
     });
     return ordered.map(item => {
@@ -959,6 +1002,29 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return [1,2,3,4,5,6,7].map(index => {
       return `<div class="heat-day"><strong>${dayName(index)}</strong><div class="heat-dots"><span class="small">—</span></div><p class="small" style="margin-top:7px">0/0</p></div>`;
     }).join("");
+  }
+
+  function renderCoachProgressGraph(progress){
+    const days = Array.isArray(progress.days) ? progress.days : [];
+    if(!days.length) return `<p class="muted" style="margin-top:12px">No weekly progress data yet.</p>`;
+    return `<div class="coach-combo">
+      ${days.map(day => {
+        const exec = day.execution_percentage == null ? Number(day.percentage || 0) : Number(day.execution_percentage || 0);
+        const feel = day.feel_average == null ? null : Number(day.feel_average);
+        return `<div class="coach-combo-day ${day.is_future ? "is-future" : ""} ${feel == null ? "is-missing" : ""}">
+          <div class="coach-combo-bar" style="--exec:${Math.max(0,Math.min(100,exec))}%;--feel:${feel == null ? 0 : Math.max(0,Math.min(100,feel * 10))}%"><i></i><b class="coach-combo-dot"></b></div>
+          <span>${escapeHtml(day.weekday || "")}</span>
+        </div>`;
+      }).join("")}
+    </div>
+    <p class="small" style="margin-top:9px">Gold bars show execution. White dots show Daily Feel. Missing answers are shown as missing, not zero.</p>`;
+  }
+
+  function renderCoachFeelAverages(progress){
+    const breakdown = progress.feel_breakdown || {};
+    const rows = FEEL_FIELDS.map(([key,label]) => [label, breakdown[key]]).filter(([,value]) => value != null);
+    if(!rows.length) return "";
+    return `<div class="feel-mini">${rows.map(([label,value]) => `<div class="feel-mini-row"><span>${escapeHtml(label)}</span><b>${Number(value).toFixed(1)} / 10</b></div>`).join("")}</div>`;
   }
 
   function renderReflectionReview(reflection){
@@ -1004,8 +1070,11 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return `
       <div class="card card-pad">
         <p class="eyebrow">Coach Controls</p>
-        <h3 style="margin-top:8px">Daily Seven · Next Week Standards.</h3>
-        <p class="muted" style="margin-top:12px">Changes start from ${compactDate(effectiveFrom)} and do not rewrite historical weeks.</p>
+        <h3 style="margin-top:8px">Check-In Builder.</h3>
+        <p class="muted" style="margin-top:12px">Personalize each client's future standards. Changes start from ${compactDate(effectiveFrom)} and never rewrite history.</p>
+        <div class="builder-tools" aria-label="Check-in templates">
+          ${Object.entries(CHECKIN_TEMPLATES).map(([key, template]) => `<button class="builder-template" type="button" data-builder-template="${escapeHtml(key)}">${escapeHtml(template.name)}</button>`).join("")}
+        </div>
         <form id="foundationEditorForm" class="foundation-editor" style="margin-top:18px">
           <input type="hidden" name="client_user_id" value="${escapeHtml(detail.client && detail.client.user_id || "")}">
           <input type="hidden" name="effective_from" value="${escapeHtml(effectiveFrom)}">
@@ -1019,16 +1088,34 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   function renderFoundationEditorRow(prescription){
     const days = Array.isArray(prescription.prescribed_days) ? prescription.prescribed_days.map(Number) : [1,2,3,4,5,6,7];
+    const key = String(prescription.foundation_key || "").toLowerCase();
+    const isDailySeven = DAILY_SEVEN_ORDER.includes(key);
+    const metadata = prescription.metadata || {};
     return `
-      <div class="foundation-editor-row" data-foundation-key="${escapeHtml(prescription.foundation_key)}">
+      <div class="foundation-editor-row" data-foundation-key="${escapeHtml(key)}">
         <div class="foundation-editor-title">
-          <label><input type="checkbox" data-field="is_prescribed" ${prescription.is_prescribed ? "checked" : ""}> ${escapeHtml(prescription.foundation_label || prescription.foundation_key)}</label>
-          <span class="pill">${escapeHtml(prescription.foundation_key)}</span>
+          <label><input type="checkbox" data-field="is_prescribed" ${prescription.is_prescribed ? "checked" : ""}> ${escapeHtml(FOUNDATION_NAMES[key] || prescription.foundation_label || key)}</label>
+          <span class="pill">${isDailySeven ? "Daily Seven" : "Protocol"}</span>
         </div>
-        <p class="small" style="margin-top:8px">${escapeHtml(prescription.foundation_description || "")}</p>
-        <input class="input" data-field="target_label" value="${escapeHtml(prescription.target_label || "")}" placeholder="Personal target shown to client">
+        <p class="small" style="margin-top:8px">${escapeHtml(isDailySeven ? "The foundation name is fixed. Only the personal standard underneath it changes." : "Optional coach-prescribed protocol. Only active when prescribed.")}</p>
+        <input class="input" data-field="target_label" value="${escapeHtml(prescription.target_label || "")}" placeholder="Target shown to client, e.g. 7,000 steps · Strength A">
+        <textarea class="builder-textarea" data-field="foundation_description" placeholder="Description/instruction shown under this check-in">${escapeHtml(prescription.foundation_description || "")}</textarea>
+        <textarea class="builder-textarea" data-field="client_instruction" placeholder="Short client-specific instruction">${escapeHtml(metadata.client_instruction || "")}</textarea>
+        <div class="builder-grid">
+          <input class="input" data-field="target_value" value="${escapeHtml(prescription.target_value || "")}" placeholder="Target value">
+          <input class="input" data-field="target_unit" value="${escapeHtml(prescription.target_unit || "")}" placeholder="Unit">
+          <input class="input" data-field="program_week" value="${escapeHtml(prescription.program_week || "")}" placeholder="Week">
+        </div>
         <div class="day-toggle-row">
           ${[1,2,3,4,5,6,7].map(day => `<label class="day-toggle"><input type="checkbox" data-day="${day}" ${days.includes(day) ? "checked" : ""}>${dayName(day)}</label>`).join("")}
+        </div>
+        <div class="required-toggle">
+          <label><input type="radio" name="required-${escapeHtml(key)}" data-field="is_required" value="true" ${metadata.is_required === false ? "" : "checked"}> Required</label>
+          <label><input type="radio" name="required-${escapeHtml(key)}" data-field="is_required" value="false" ${metadata.is_required === false ? "checked" : ""}> Optional</label>
+        </div>
+        <div class="date-grid">
+          <input class="input" data-field="active_from" type="date" value="${escapeHtml(prescription.active_from || "")}" aria-label="Effective date">
+          <input class="input" data-field="active_until" type="date" value="${escapeHtml(prescription.active_until || "")}" aria-label="End date">
         </div>
       </div>
     `;
@@ -1049,16 +1136,21 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       const days = Array.from(row.querySelectorAll("[data-day]:checked")).map(input => Number(input.dataset.day));
       return {
         foundation_key:key,
-        foundation_label:original.foundation_label || key,
-        foundation_description:original.foundation_description || "",
+        foundation_label:FOUNDATION_NAMES[key] || original.foundation_label || key,
+        foundation_description:(row.querySelector("[data-field='foundation_description']") || {}).value || "",
         target_label:(row.querySelector("[data-field='target_label']") || {}).value || "",
-        target_value:original.target_value,
-        target_unit:original.target_unit,
+        target_value:(row.querySelector("[data-field='target_value']") || {}).value || null,
+        target_unit:(row.querySelector("[data-field='target_unit']") || {}).value || null,
         prescribed_days:days.length ? days : [],
         is_prescribed:Boolean(row.querySelector("[data-field='is_prescribed']") && row.querySelector("[data-field='is_prescribed']").checked),
         allow_not_applicable:Boolean(original.allow_not_applicable),
-        program_week:original.program_week || null,
-        metadata:original.metadata || {}
+        program_week:(row.querySelector("[data-field='program_week']") || {}).value || null,
+        active_from:(row.querySelector("[data-field='active_from']") || {}).value || effectiveFrom,
+        active_until:(row.querySelector("[data-field='active_until']") || {}).value || null,
+        metadata:Object.assign({}, original.metadata || {}, {
+          is_required:((row.querySelector("[data-field='is_required']:checked") || {}).value !== "false"),
+          client_instruction:(row.querySelector("[data-field='client_instruction']") || {}).value || ""
+        })
       };
     });
     try{
@@ -1081,6 +1173,21 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       button.disabled = false;
       button.textContent = "Save Next Week Standards";
     }
+  }
+
+  function applyBuilderTemplate(templateKey){
+    const template = CHECKIN_TEMPLATES[templateKey];
+    if(!template) return;
+    Object.entries(template.items).forEach(([key, label]) => {
+      const row = document.querySelector(`.foundation-editor-row[data-foundation-key="${CSS.escape(key)}"]`);
+      if(!row) return;
+      const prescribed = row.querySelector("[data-field='is_prescribed']");
+      const target = row.querySelector("[data-field='target_label']");
+      if(prescribed) prescribed.checked = true;
+      if(target) target.value = label;
+    });
+    const message = $("foundationEditorMessage");
+    if(message) message.textContent = `${template.name} template applied. Review and save to make it active from the effective date.`;
   }
 
   async function grantClientAccess(event){
@@ -1239,6 +1346,10 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     });
     $("executionDetailMount").addEventListener("submit", event => {
       if(event.target && event.target.id === "foundationEditorForm") saveFoundationPrescriptions(event);
+    });
+    $("executionDetailMount").addEventListener("click", event => {
+      const button = event.target.closest("[data-builder-template]");
+      if(button) applyBuilderTemplate(button.dataset.builderTemplate);
     });
     $("copyClientAccessLink").addEventListener("click", async () => {
       const input = $("clientAccessLink");
