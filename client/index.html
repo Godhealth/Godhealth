@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#04160e">
+  <title>GodHealth Client App</title>
+  <meta name="description" content="Private GodHealth client app for the Daily Seven execution rhythm.">
+  <link rel="manifest" href="/client/manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/godhealth-config.js"></script>
+  <style>
+    :root{
+      --forest-deep:#04160e;
+      --forest:#0a2417;
+      --forest-soft:#0f3221;
+      --gold-1:#b88a2e;
+      --gold-2:#d9b45a;
+      --gold-3:#f1d693;
+      --gold-line:rgba(217,180,90,.27);
+      --ink:#f7f3ea;
+      --ink-soft:rgba(247,243,234,.76);
+      --ink-mute:rgba(247,243,234,.56);
+      --cream:#fbf5e8;
+      --charcoal:#211b12;
+      --danger:#d94d3a;
+      --success:#72d88b;
+      --nav-h:76px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100svh;
+      background:radial-gradient(circle at 50% -12rem,rgba(217,180,90,.18),transparent 34rem),linear-gradient(180deg,var(--forest-deep),#03110b 76%,var(--forest-deep));
+      color:var(--ink);
+      font-family:Inter,system-ui,sans-serif;
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));
+    }
+    button,input,textarea{font:inherit}
+    p,h1,h2,h3{margin:0}
+    .hidden{display:none!important}
+    .app{width:min(520px,100%);margin:0 auto;min-height:100svh}
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      min-height:70px;
+      padding:12px 18px;
+      background:rgba(4,22,14,.92);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(217,180,90,.14);
+    }
+    .brand{
+      font-family:"Cormorant Garamond",serif;
+      font-size:32px;
+      line-height:1;
+      font-weight:700;
+      letter-spacing:.03em;
+      background:linear-gradient(135deg,#fff3b8,#f1d693 34%,#d9b45a 68%,#b88a2e);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      text-shadow:0 0 22px rgba(217,180,90,.22);
+    }
+    .profile-wrap{position:relative}
+    .profile-btn{
+      display:grid;
+      place-items:center;
+      width:42px;
+      height:42px;
+      border:1px solid rgba(217,180,90,.30);
+      border-radius:50%;
+      background:linear-gradient(180deg,rgba(217,180,90,.12),rgba(217,180,90,.04));
+      color:var(--gold-3);
+      cursor:pointer;
+      font-weight:900;
+    }
+    .profile-menu{
+      position:absolute;
+      right:0;
+      top:50px;
+      width:240px;
+      padding:10px;
+      border:1px solid rgba(217,180,90,.25);
+      border-radius:20px;
+      background:linear-gradient(180deg,rgba(15,50,33,.99),rgba(4,22,14,.99));
+      box-shadow:0 24px 60px -34px rgba(0,0,0,.9);
+    }
+    .menu-link,.menu-button{
+      display:flex;
+      width:100%;
+      min-height:42px;
+      align-items:center;
+      border:0;
+      border-radius:14px;
+      padding:10px 12px;
+      background:transparent;
+      color:var(--ink-soft);
+      text-align:left;
+      text-decoration:none;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:800;
+    }
+    .menu-link:hover,.menu-button:hover{background:rgba(217,180,90,.08);color:var(--gold-3)}
+    .screen{display:none;padding:18px 16px 24px}
+    .screen.active{display:block}
+    .hero-mini{display:grid;gap:10px;margin:6px 0 16px}
+    .eyebrow{color:var(--gold-2);font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:700;line-height:1;letter-spacing:-.025em}
+    h1{font-size:clamp(34px,9vw,46px)}
+    h2{font-size:clamp(29px,8vw,39px)}
+    h3{font-size:24px}
+    .muted{color:var(--ink-soft)}
+    .small{font-size:12px;color:var(--ink-mute)}
+    .card{
+      border:1px solid var(--gold-line);
+      border-radius:26px;
+      background:linear-gradient(180deg,rgba(15,50,33,.96),rgba(8,30,19,.96));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 32px 74px -48px rgba(0,0,0,.78);
+    }
+    .card-pad{padding:20px}
+    .today-stat{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      align-items:center;
+      margin:14px 0 16px;
+      padding:16px;
+      border-radius:22px;
+      border:1px solid rgba(217,180,90,.27);
+      background:radial-gradient(circle at 100% 0,rgba(241,214,147,.18),transparent 11rem),linear-gradient(180deg,rgba(217,180,90,.085),rgba(217,180,90,.035));
+    }
+    .today-stat strong{display:block;font-size:24px;font-weight:950;letter-spacing:.05em;color:var(--gold-3)}
+    .today-stat span{display:block;margin-top:2px}
+    .mini-ring{
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      background:conic-gradient(var(--gold-3) calc(var(--done,0)*1%),rgba(255,255,255,.10) 0);
+      box-shadow:0 0 0 1px rgba(241,214,147,.28),inset 0 0 0 8px rgba(4,22,14,.78);
+    }
+    .daily-list{display:grid;gap:10px}
+    .daily-row{
+      appearance:none;
+      width:100%;
+      min-height:68px;
+      display:grid;
+      grid-template-columns:42px 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px;
+      border:1px solid rgba(217,180,90,.24);
+      border-radius:20px;
+      background:linear-gradient(180deg,rgba(217,180,90,.075),rgba(217,180,90,.035));
+      color:var(--ink);
+      text-align:left;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+    .daily-row:active{transform:scale(.992)}
+    .daily-row[disabled]{opacity:.68;cursor:wait}
+    .daily-icon{
+      display:grid;
+      place-items:center;
+      width:42px;
+      height:42px;
+      border-radius:16px;
+      border:1px solid rgba(217,180,90,.28);
+      background:rgba(217,180,90,.08);
+      color:var(--gold-3);
+      font-weight:950;
+      font-size:13px;
+    }
+    .daily-title{display:block;font-weight:950;letter-spacing:.06em;font-size:14px}
+    .daily-target{display:block;margin-top:3px;color:var(--ink-soft);font-size:12px;font-weight:700;line-height:1.28}
+    .check{
+      display:grid;
+      place-items:center;
+      width:29px;
+      height:29px;
+      border-radius:50%;
+      border:1px solid rgba(217,180,90,.35);
+      color:transparent;
+      font-weight:950;
+    }
+    .daily-row.is-complete{
+      background:linear-gradient(135deg,#fff1b8,#d9b45a 54%,#b88a2e);
+      color:#241802;
+      border-color:rgba(255,236,174,.86);
+      box-shadow:0 16px 34px -24px rgba(217,180,90,.95),inset 0 1px 0 rgba(255,255,255,.52);
+    }
+    .daily-row.is-complete .daily-icon,.daily-row.is-complete .check{background:rgba(36,24,2,.14);border-color:rgba(36,24,2,.22);color:#241802}
+    .daily-row.is-complete .daily-target{color:rgba(36,24,2,.75)}
+    .grid{display:grid;gap:12px}
+    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .quiet-card{
+      padding:16px;
+      border-radius:22px;
+      border:1px solid rgba(217,180,90,.22);
+      background:linear-gradient(180deg,rgba(217,180,90,.07),rgba(217,180,90,.03));
+    }
+    .quiet-card b{display:block;color:var(--gold-3);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+    .quiet-card span{display:block;margin-top:8px;color:var(--ink-soft);font-size:13px}
+    .progress-bar{height:9px;margin-top:10px;border-radius:999px;background:rgba(255,255,255,.10);overflow:hidden}
+    .progress-bar i{display:block;height:100%;width:var(--value,0%);border-radius:999px;background:linear-gradient(90deg,var(--gold-1),var(--gold-3));transition:width .45s ease}
+    .week-strip{display:flex;gap:8px;overflow-x:auto;padding:2px 0 6px;scrollbar-width:none}
+    .week-dot{min-width:58px;padding:10px 8px;border:1px solid rgba(217,180,90,.20);border-radius:16px;background:rgba(217,180,90,.045);text-align:center;color:var(--ink-soft);font-size:11px;font-weight:900}
+    .week-dot.is-now{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802}
+    .heat-row{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
+    .heat-day{display:grid;gap:5px;place-items:center;padding:9px 4px;border:1px solid rgba(217,180,90,.20);border-radius:15px;background:rgba(217,180,90,.045);font-size:10px;font-weight:900;color:var(--ink-soft)}
+    .heat-dot{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(217,180,90,.22);background:rgba(255,255,255,.075);color:var(--gold-3)}
+    .heat-dot.good{background:linear-gradient(135deg,#fff1b8,#d9b45a,#b88a2e);color:#241802}
+    .reflection-step{display:none}
+    .reflection-step.active{display:grid;gap:14px}
+    textarea,input{
+      width:100%;
+      border:1px solid rgba(217,180,90,.28);
+      border-radius:18px;
+      background:rgba(3,17,10,.66);
+      color:var(--ink);
+      padding:15px 16px;
+      outline:none;
+    }
+    textarea{min-height:160px;resize:vertical}
+    textarea:focus,input:focus{border-color:rgba(241,214,147,.75);box-shadow:0 0 0 4px rgba(217,180,90,.12)}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:56px;
+      padding:16px 24px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:950;
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
+    .btn-gold{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(135deg,#fff1b8 0%,#eac75f 32%,#b1781d 68%,#f6dc86 100%);
+      color:#241802;
+      box-shadow:0 22px 46px -18px rgba(184,138,46,.95),inset 0 1px 0 rgba(255,255,255,.56),inset 0 -10px 20px rgba(82,47,8,.18);
+    }
+    .btn-outline{background:rgba(217,180,90,.07);color:var(--ink);border-color:var(--gold-line)}
+    .btn-row{display:flex;gap:10px;flex-wrap:wrap}
+    .bottom-nav{
+      position:fixed;
+      left:50%;
+      bottom:0;
+      z-index:30;
+      transform:translateX(-50%);
+      width:min(520px,100%);
+      height:calc(var(--nav-h) + env(safe-area-inset-bottom));
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      padding:8px 8px calc(8px + env(safe-area-inset-bottom));
+      border-top:1px solid rgba(217,180,90,.17);
+      background:rgba(4,22,14,.94);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+    .tab{
+      appearance:none;
+      border:0;
+      border-radius:16px;
+      background:transparent;
+      color:var(--ink-mute);
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.04em;
+      display:grid;
+      gap:3px;
+      place-items:center;
+      cursor:pointer;
+    }
+    .tab span{font-size:18px;line-height:1}
+    .tab.active{color:var(--gold-3);background:rgba(217,180,90,.08)}
+    .loading,.empty{min-height:58svh;display:grid;place-items:center;text-align:center;padding:24px}
+    .login-shell{min-height:100svh;display:grid;place-items:center;padding:24px}
+    .login-card{width:min(430px,100%)}
+    @media (min-width:720px){
+      body{padding-bottom:0}
+      .app{width:min(860px,100%)}
+      .screen{padding:26px 24px 96px}
+      .bottom-nav{border:1px solid rgba(217,180,90,.17);border-radius:28px;bottom:20px;width:min(520px,calc(100% - 36px));box-shadow:0 22px 54px -36px rgba(0,0,0,.85)}
+    }
+    @media (max-width:390px){
+      .daily-row{grid-template-columns:38px 1fr auto;padding:10px 12px}
+      .daily-icon{width:38px;height:38px}
+      .two{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <main id="loginView" class="login-shell hidden">
+    <section class="card card-pad login-card">
+      <p class="eyebrow">GodHealth Private Client App</p>
+      <h1 style="margin-top:8px">Sign in.</h1>
+      <p class="muted" style="margin-top:12px">Use the email GodHealth activated for your premium coaching journey.</p>
+      <form id="loginForm" class="grid" style="margin-top:20px">
+        <input id="loginEmail" type="email" autocomplete="email" required placeholder="you@example.com">
+        <button class="btn btn-gold" type="submit">Send Secure Access Link</button>
+        <p class="small" id="loginMessage">Your secure link opens this private client app.</p>
+      </form>
+    </section>
+  </main>
+
+  <main id="appView" class="app hidden">
+    <header class="topbar">
+      <div class="brand">GodHealth</div>
+      <div class="profile-wrap">
+        <button class="profile-btn" id="profileBtn" type="button" aria-label="Open profile menu">⋯</button>
+        <div class="profile-menu hidden" id="profileMenu">
+          <a class="menu-link" href="/kingdom-capacity-assessment/">Assessment</a>
+          <a class="menu-link" href="/kingdom-capacity-assessment/#result">Assessment Report</a>
+          <button class="menu-button" id="refreshBtn" type="button">Refresh Today</button>
+          <button class="menu-button" id="signOutBtn" type="button">Sign Out</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="screen active" id="screen-today">
+      <div id="todayMount" class="loading">Loading your Daily Seven...</div>
+    </section>
+
+    <section class="screen" id="screen-journey">
+      <div class="hero-mini">
+        <p class="eyebrow">Journey</p>
+        <h2>Your 12-week path.</h2>
+        <p class="muted">Each week builds capacity through Body, Soul and Spirit. Your coach can adjust future weeks without changing the past.</p>
+      </div>
+      <div class="card card-pad">
+        <div id="journeyStrip" class="week-strip"></div>
+        <div class="grid two" style="margin-top:18px">
+          <div class="quiet-card"><b>Weeks 1–4</b><span>Build rhythm. Reduce chaos. Establish the Daily Seven.</span></div>
+          <div class="quiet-card"><b>Weeks 5–8</b><span>Increase strength, structure and ownership.</span></div>
+          <div class="quiet-card"><b>Weeks 9–12</b><span>Prepare for a sustainable lifestyle beyond the cohort.</span></div>
+          <div class="quiet-card"><b>Coach-led</b><span>Robin can personalize your next-week standards prospectively.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-food">
+      <div class="hero-mini">
+        <p class="eyebrow">Food</p>
+        <h2>Simple stewardship.</h2>
+        <p class="muted">Your food rhythm stays practical: God-created food, protein, hydration and a meal window that fits your situation.</p>
+      </div>
+      <div id="foodMount" class="grid"></div>
+    </section>
+
+    <section class="screen" id="screen-training">
+      <div class="hero-mini">
+        <p class="eyebrow">Training</p>
+        <h2>Train for your calling.</h2>
+        <p class="muted">Today only shows what is actually prescribed for today, so rest days do not feel like missed training days.</p>
+      </div>
+      <div id="trainingMount" class="grid"></div>
+    </section>
+
+    <section class="screen" id="screen-progress">
+      <div class="hero-mini">
+        <p class="eyebrow">Progress</p>
+        <h2>This week.</h2>
+        <p class="muted">Execution, consistency and reflection — without shame. Use this to stay honest and keep walking forward.</p>
+      </div>
+      <div id="progressMount" class="grid"></div>
+    </section>
+  </main>
+
+  <nav id="bottomNav" class="bottom-nav hidden" aria-label="Client app navigation">
+    <button class="tab active" data-tab="today" type="button"><span>✦</span>Today</button>
+    <button class="tab" data-tab="journey" type="button"><span>⌁</span>Journey</button>
+    <button class="tab" data-tab="food" type="button"><span>◒</span>Food</button>
+    <button class="tab" data-tab="training" type="button"><span>△</span>Training</button>
+    <button class="tab" data-tab="progress" type="button"><span>◎</span>Progress</button>
+  </nav>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    const state = { supabase:null, session:null, data:null, saving:new Set(), reflectionStep:0, reflectionDraft:{} };
+    const DAILY_ORDER = ["seek","hydrate","eat","move","recover","renew","serve"];
+    const ICONS = { seek:"PR", hydrate:"H₂", eat:"ET", move:"MV", recover:"ZZ", renew:"RN", serve:"SV" };
+    const TAB_BY_KEY = { hydrate:"food", eat:"food", move:"training", recover:"progress", renew:"progress", seek:"today", serve:"today" };
+
+    function escapeHtml(value){
+      return String(value == null ? "" : value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[char]));
+    }
+
+    function initSupabase(){
+      const cfg = window.GODHEALTH_CONFIG && window.GODHEALTH_CONFIG.supabase;
+      if(!cfg || !window.supabase) return null;
+      return window.supabase.createClient(cfg.url, cfg.anonKey, {
+        auth:{ persistSession:true, autoRefreshToken:true, detectSessionInUrl:true, storageKey:"godhealth-kca-v3-auth" }
+      });
+    }
+
+    function localDate(){
+      const d = new Date();
+      const z = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+      return z.toISOString().slice(0,10);
+    }
+
+    function setLoginMessage(message, danger=false){
+      const el = $("loginMessage");
+      el.textContent = message;
+      el.style.color = danger ? "#ffd7d0" : "";
+    }
+
+    async function showLogin(){
+      $("loginView").classList.remove("hidden");
+      $("appView").classList.add("hidden");
+      $("bottomNav").classList.add("hidden");
+    }
+
+    async function showApp(){
+      $("loginView").classList.add("hidden");
+      $("appView").classList.remove("hidden");
+      $("bottomNav").classList.remove("hidden");
+      await loadToday();
+    }
+
+    async function loadToday(){
+      try{
+        $("todayMount").className = "loading";
+        $("todayMount").textContent = "Loading your Daily Seven...";
+        const { data, error } = await state.supabase.rpc("kca_get_today_dashboard", { p_local_date: localDate() });
+        if(error) throw error;
+        state.data = data;
+        renderAll();
+      }catch(error){
+        const message = error && error.message ? error.message : String(error);
+        console.warn("GodHealth client app load failed", error);
+        $("todayMount").className = "empty";
+        if(/premium_entitlement_required/i.test(message)){
+          $("todayMount").innerHTML = `<div class="card card-pad"><p class="eyebrow">No active program</p><h2>Access is not active yet.</h2><p class="muted" style="margin-top:12px">Ask GodHealth to activate your coaching access for this email.</p></div>`;
+        }else if(/not_authenticated/i.test(message)){
+          await showLogin();
+        }else{
+          $("todayMount").innerHTML = `<div class="card card-pad"><p class="eyebrow">Could not load</p><h2>Please try again.</h2><p class="muted" style="margin-top:12px">We could not load your Daily Seven yet. Please retry, or message GodHealth if it keeps happening.</p><button class="btn btn-gold" id="retryTodayBtn" style="margin-top:18px" type="button">Retry</button></div>`;
+          $("retryTodayBtn")?.addEventListener("click", loadToday);
+        }
+      }
+    }
+
+    function sortedItems(){
+      return [...((state.data && state.data.today_items) || [])].sort((a,b) => DAILY_ORDER.indexOf(a.foundation_key) - DAILY_ORDER.indexOf(b.foundation_key));
+    }
+
+    function todayCounts(){
+      const items = sortedItems();
+      const complete = items.filter(item => item.status === "complete").length;
+      return { complete, total: items.length || 7, percentage: Math.round((complete / (items.length || 7)) * 100) };
+    }
+
+    function renderAll(){
+      renderToday();
+      renderJourney();
+      renderFood();
+      renderTraining();
+      renderProgress();
+    }
+
+    function renderToday(){
+      const data = state.data || {};
+      const program = data.program || {};
+      const client = data.client || {};
+      const counts = todayCounts();
+      const weekday = new Date((program.local_date || localDate()) + "T12:00:00").toLocaleDateString("en-US", { weekday:"long" });
+      $("todayMount").className = "";
+      $("todayMount").innerHTML = `
+        <div class="hero-mini">
+          <p class="eyebrow">Today</p>
+          <h1>Good morning, ${escapeHtml(client.first_name || "friend")}.</h1>
+          <p class="muted">Week ${escapeHtml(program.week || 1)} · ${escapeHtml(weekday)}</p>
+        </div>
+        <div class="today-stat">
+          <div>
+            <strong>${counts.complete} OF ${counts.total} COMPLETE</strong>
+            <span class="small">Daily Seven execution for today</span>
+          </div>
+          <div class="mini-ring" style="--done:${counts.percentage}"></div>
+        </div>
+        <div class="daily-list">
+          ${sortedItems().map(renderDailyRow).join("") || `<div class="card card-pad"><p class="eyebrow">No Daily Seven prescription</p><p class="muted" style="margin-top:8px">Refresh, or ask Robin to activate your current week.</p></div>`}
+        </div>
+      `;
+    }
+
+    function renderDailyRow(item){
+      const complete = item.status === "complete";
+      const saving = state.saving.has(item.prescription_id);
+      return `
+        <button class="daily-row ${complete ? "is-complete" : ""}" ${saving ? "disabled" : ""} data-prescription="${escapeHtml(item.prescription_id)}" data-current="${escapeHtml(item.status)}" type="button">
+          <span class="daily-icon">${escapeHtml(ICONS[item.foundation_key] || "✓")}</span>
+          <span>
+            <span class="daily-title">${escapeHtml(item.foundation_label)}</span>
+            <span class="daily-target">${escapeHtml(item.target_label || item.foundation_description || "")}</span>
+          </span>
+          <span class="check">${complete ? "✓" : " "}</span>
+        </button>
+      `;
+    }
+
+    async function toggleDaily(button){
+      const id = button.dataset.prescription;
+      if(!id || state.saving.has(id)) return;
+      const current = button.dataset.current === "complete";
+      state.saving.add(id);
+      const item = sortedItems().find(entry => entry.prescription_id === id);
+      if(item) item.status = current ? "incomplete" : "complete";
+      renderToday();
+      try{
+        const { data, error } = await state.supabase.rpc("kca_toggle_daily_foundation", {
+          p_prescription_id:id,
+          p_log_date:localDate(),
+          p_completed:!current
+        });
+        if(error) throw error;
+        if(data && data.weekly_summary) state.data.weekly_summary = data.weekly_summary;
+        state.saving.delete(id);
+        await loadToday();
+      }catch(error){
+        console.warn("GodHealth Daily Seven save failed", error);
+        if(item) item.status = current ? "complete" : "incomplete";
+        state.saving.delete(id);
+        renderToday();
+        alert("Not saved — please tap again to retry. If this keeps happening, message GodHealth.");
+      }
+    }
+
+    function renderJourney(){
+      const week = Number(state.data?.program?.week || 1);
+      $("journeyStrip").innerHTML = Array.from({ length:12 }, (_, index) => {
+        const n = index + 1;
+        return `<div class="week-dot ${n === week ? "is-now" : ""}">Week<br>${n}</div>`;
+      }).join("");
+    }
+
+    function renderFood(){
+      const items = sortedItems().filter(item => ["hydrate","eat"].includes(item.foundation_key));
+      $("foodMount").innerHTML = items.map(item => `
+        <div class="card card-pad">
+          <p class="eyebrow">${escapeHtml(item.foundation_label)}</p>
+          <h3 style="margin-top:7px">${escapeHtml(item.target_label)}</h3>
+          <p class="muted" style="margin-top:10px">${escapeHtml(item.foundation_description)}</p>
+          ${Array.isArray(item.metadata?.examples) ? `<div class="grid" style="margin-top:14px">${item.metadata.examples.map(example => `<div class="quiet-card"><b>${escapeHtml(example)}</b><span>Only when personally appropriate for you.</span></div>`).join("")}</div>` : ""}
+        </div>
+      `).join("") || `<div class="card card-pad"><p class="muted">No food prescription found yet.</p></div>`;
+    }
+
+    function renderTraining(){
+      const move = sortedItems().find(item => item.foundation_key === "move");
+      $("trainingMount").innerHTML = `
+        <div class="card card-pad">
+          <p class="eyebrow">Today’s movement</p>
+          <h3 style="margin-top:7px">${escapeHtml(move?.target_label || "Today’s movement prescription")}</h3>
+          <p class="muted" style="margin-top:10px">${escapeHtml(move?.foundation_description || "Your movement prescription appears here when your week is active.")}</p>
+        </div>
+        <div class="quiet-card"><b>Important</b><span>If today is a rest day, the app will not mark strength training as missed.</span></div>
+      `;
+    }
+
+    function renderProgress(){
+      const summary = state.data?.weekly_summary || {};
+      const heatmap = summary.heatmap || [];
+      const reflection = state.data?.weekly_reflection;
+      const pct = Math.round(Number(summary.execution_percentage || 0));
+      $("progressMount").innerHTML = `
+        <div class="card card-pad">
+          <p class="eyebrow">Weekly execution</p>
+          <h2 style="margin-top:8px">${pct}% execution</h2>
+          <div class="progress-bar" style="--value:${pct}%"><i></i></div>
+          <p class="muted" style="margin-top:12px">${escapeHtml(summary.execution_status || "Not Started")} · ${escapeHtml(summary.completed_opportunities || 0)} of ${escapeHtml(summary.total_opportunities || 0)} opportunities complete.</p>
+        </div>
+        <div class="card card-pad">
+          <p class="eyebrow">7-day heatmap</p>
+          <div class="heat-row" style="margin-top:14px">
+            ${heatmap.map(day => `<div class="heat-day"><span>${escapeHtml(day.weekday)}</span><span class="heat-dot ${Number(day.percentage || 0) >= 80 ? "good" : ""}">${escapeHtml(day.completed || 0)}</span></div>`).join("") || `<p class="muted">No logs yet.</p>`}
+          </div>
+        </div>
+        <div class="card card-pad" id="reflectionCard">
+          ${reflection ? renderReflectionComplete(reflection, pct) : renderReflectionWizard()}
+        </div>
+      `;
+      bindReflection();
+    }
+
+    function renderReflectionComplete(reflection, pct){
+      return `
+        <p class="eyebrow">Reflection submitted</p>
+        <h2 style="margin-top:8px">Week ${escapeHtml(reflection.program_week || state.data?.program?.week || "")} complete.</h2>
+        <div class="quiet-card" style="margin-top:14px"><b>${pct}% execution</b><span>Reflection submitted. Week ${Number(reflection.program_week || state.data?.program?.week || 1) + 1} is ready when your next week begins.</span></div>
+      `;
+    }
+
+    function renderReflectionWizard(){
+      const q = state.data?.reflection_questions || {};
+      const steps = [
+        ["body","BODY",q.body || "What happened in your body this week?"],
+        ["soul","SOUL",q.soul || "What happened in your inner life this week?"],
+        ["spirit","SPIRIT",q.spirit || "What happened in your walk with God this week?"],
+        ["coach","YOUR COACH",q.coach || "What do you want Robin to know before next week?"]
+      ];
+      return `
+        <p class="eyebrow">Weekly reflection · ${state.reflectionStep + 1} of 4</p>
+        ${steps.map(([key,label,question], index) => `
+          <div class="reflection-step ${index === state.reflectionStep ? "active" : ""}" data-step="${index}">
+            <h2 style="margin-top:8px">${escapeHtml(label)}</h2>
+            <p class="muted">${escapeHtml(question)}</p>
+            <textarea id="reflection-${key}" placeholder="Write your answer here...">${escapeHtml(state.reflectionDraft[key] || "")}</textarea>
+          </div>
+        `).join("")}
+        <div class="btn-row" style="margin-top:16px">
+          <button class="btn btn-outline" id="reflectionBack" type="button" ${state.reflectionStep === 0 ? "disabled" : ""}>Back</button>
+          <button class="btn btn-gold" id="reflectionNext" type="button">${state.reflectionStep === 3 ? "Submit Reflection" : "Next"}</button>
+        </div>
+        <p class="small" id="reflectionMessage" style="margin-top:10px"></p>
+      `;
+    }
+
+    function bindReflection(){
+      ["body","soul","spirit","coach"].forEach(key => {
+        const el = $("reflection-" + key);
+        if(el) el.addEventListener("input", () => { state.reflectionDraft[key] = el.value; });
+      });
+      $("reflectionBack")?.addEventListener("click", () => {
+        state.reflectionStep = Math.max(0, state.reflectionStep - 1);
+        renderProgress();
+      });
+      $("reflectionNext")?.addEventListener("click", async () => {
+        if(state.reflectionStep < 3){
+          state.reflectionStep += 1;
+          renderProgress();
+          return;
+        }
+        await submitReflection();
+      });
+    }
+
+    async function submitReflection(){
+      const message = $("reflectionMessage");
+      message.textContent = "Saving...";
+      const { error } = await state.supabase.rpc("kca_submit_weekly_reflection", {
+        p_program_week: state.data?.program?.week || 1,
+        p_week_start: state.data?.program?.week_start,
+        p_body_answer: state.reflectionDraft.body || "",
+        p_soul_answer: state.reflectionDraft.soul || "",
+        p_spirit_answer: state.reflectionDraft.spirit || "",
+        p_coach_note: state.reflectionDraft.coach || ""
+      });
+      if(error){
+        console.warn("GodHealth weekly reflection save failed", error);
+        message.textContent = "Could not save yet. Please try again, or message GodHealth if it keeps happening.";
+        return;
+      }
+      state.reflectionDraft = {};
+      state.reflectionStep = 0;
+      await loadToday();
+      switchTab("progress");
+    }
+
+    function switchTab(tab){
+      document.querySelectorAll(".screen").forEach(screen => screen.classList.remove("active"));
+      $("screen-" + tab).classList.add("active");
+      document.querySelectorAll(".tab").forEach(button => button.classList.toggle("active", button.dataset.tab === tab));
+      window.scrollTo({ top:0, behavior:"smooth" });
+    }
+
+    function bind(){
+      $("loginForm").addEventListener("submit", async event => {
+        event.preventDefault();
+        const email = $("loginEmail").value.trim();
+        if(!email) return;
+        const redirect = location.hostname === "localhost" || location.hostname === "127.0.0.1"
+          ? location.origin + "/client/"
+          : "https://www.godhealth.org/client/";
+        const { error } = await state.supabase.auth.signInWithOtp({
+          email,
+          options:{ emailRedirectTo:redirect, shouldCreateUser:false }
+        });
+        if(error){
+          console.warn("GodHealth client app login link failed", error);
+          setLoginMessage("We could not send your access link yet. Please check the email address or ask GodHealth for help.", true);
+          return;
+        }
+        setLoginMessage("Check your inbox for your secure access link.", false);
+      });
+      $("todayMount").addEventListener("click", event => {
+        const button = event.target.closest("[data-prescription]");
+        if(button) toggleDaily(button);
+      });
+      document.querySelectorAll(".tab").forEach(button => button.addEventListener("click", () => switchTab(button.dataset.tab)));
+      $("profileBtn").addEventListener("click", () => $("profileMenu").classList.toggle("hidden"));
+      $("refreshBtn").addEventListener("click", async () => { $("profileMenu").classList.add("hidden"); await loadToday(); });
+      $("signOutBtn").addEventListener("click", async () => {
+        await state.supabase.auth.signOut();
+        await showLogin();
+      });
+      document.addEventListener("click", event => {
+        if(!$("profileMenu").contains(event.target) && !$("profileBtn").contains(event.target)) $("profileMenu").classList.add("hidden");
+      });
+    }
+
+    async function boot(){
+      state.supabase = initSupabase();
+      if(!state.supabase){
+        $("loginView").classList.remove("hidden");
+        $("loginView").innerHTML = `<div class="card card-pad login-card"><h1>Configuration missing.</h1><p class="muted">Supabase is not configured yet.</p></div>`;
+        return;
+      }
+      bind();
+      if("serviceWorker" in navigator && location.protocol !== "file:"){
+        navigator.serviceWorker.register("/client/sw.js").catch(() => {});
+      }
+      const { data } = await state.supabase.auth.getSession();
+      state.session = data.session;
+      if(state.session) await showApp();
+      else await showLogin();
+      state.supabase.auth.onAuthStateChange((_event, session) => {
+        state.session = session;
+        if(session) showApp();
+        else showLogin();
+      });
+    }
+    boot();
+  </script>
+</body>
+</html>

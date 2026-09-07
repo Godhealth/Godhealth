@@ -27,6 +27,9 @@ header{position:sticky;top:0;z-index:20;background:rgba(4,22,14,.90);backdrop-fi
 footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90,.14);text-align:center}
 @media(max-width:960px){.auth-shell,.dash-layout,.score-layout,.g2,.g3,.g4,.domain-grid,.intake-report-grid,.execution-client-grid,.week-review-grid,.week-hero{grid-template-columns:1fr}.run-list{position:static;max-height:none;padding-right:0}.nav{display:none}.btn{width:100%}.bar{height:76px}.execution-client-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.wrap{width:min(100% - 28px,1180px)}h1{font-size:38px}.section{padding:40px 0}.card-pad{padding:19px}.score-ring{width:226px}.score-ring strong{font-size:46px}.execution-client-grid,.heatmap-grid{grid-template-columns:1fr}.week-ring{width:206px}}
 </style>
+<style>
+.execution-group{display:grid;gap:12px;margin-top:18px}.execution-group-title{display:flex;align-items:center;justify-content:space-between;gap:12px}.execution-group-title h4{margin:0;color:var(--gold-3);font-size:12px;font-weight:950;letter-spacing:.16em;text-transform:uppercase}.execution-group-title span{color:var(--ink-mute);font-size:12px;font-weight:800}.execution-client-grid.grouped{margin-top:0}.execution-client.needs{border-color:rgba(217,77,58,.38);background:linear-gradient(180deg,rgba(217,77,58,.105),rgba(217,180,90,.035))}.execution-client.on-track{border-color:rgba(114,216,139,.28)}
+</style>
 </head>
 <body>
 <header>
@@ -160,6 +163,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   };
   const $ = id => document.getElementById(id);
   const scaleLabels = ["Not true / Never", "Rarely true", "Sometimes true", "Mostly true", "Consistently true"];
+  const DAILY_SEVEN_ORDER = ["seek","hydrate","eat","move","recover","renew","serve"];
 
   function escapeHtml(value){
     return String(value == null ? "" : value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[char]));
@@ -810,14 +814,16 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     const strong = clients.filter(client => client.execution_status === "Strong Execution").length;
     const building = clients.filter(client => client.execution_status === "Building").length;
     const attention = clients.filter(client => client.needs_attention).length;
+    const needsAttention = clients.filter(client => client.needs_attention || ["Needs Attention","Not Started"].includes(client.execution_status || ""));
+    const onTrack = clients.filter(client => !needsAttention.some(item => item.client_user_id === client.client_user_id));
     $("executionOverviewMount").innerHTML = `
       <div class="card card-pad reveal visible">
         <div class="execution-overview">
           <div class="execution-head">
             <div>
-              <p class="eyebrow">Daily + Weekly Execution Loop</p>
-              <h3 style="margin-top:8px">Today’s client execution.</h3>
-              <p class="muted" style="margin-top:12px">Clients are sorted with Needs Attention first. This score reflects prescribed foundation execution, not spiritual worth or medical status.</p>
+              <p class="eyebrow">Daily Seven Execution</p>
+              <h3 style="margin-top:8px">Who needs me today?</h3>
+              <p class="muted" style="margin-top:12px">Needs Attention appears first. Execution reflects Daily Seven follow-through, never spiritual worth or medical status.</p>
             </div>
             <div class="btn-row">
               <span class="pill warn">${attention} need attention</span>
@@ -825,20 +831,37 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
               <span class="pill ok">${strong} strong</span>
             </div>
           </div>
-          <div class="execution-client-grid">
-            ${clients.length ? clients.map(client => renderExecutionClientCard(client, data.week_start)).join("") : `<div class="empty">No active clients found yet.</div>`}
-          </div>
+          ${clients.length ? `
+            ${renderExecutionClientGroup("Needs Attention", "Clients who may need a personal touch from Robin.", needsAttention, data.week_start, "needs")}
+            ${renderExecutionClientGroup("On Track", "Clients moving steadily through this week.", onTrack, data.week_start, "on-track")}
+          ` : `<div class="empty">No active clients found yet.</div>`}
         </div>
       </div>
     `;
   }
 
-  function renderExecutionClientCard(client, weekStart){
+  function renderExecutionClientGroup(title, subtitle, clients, weekStart, tone){
+    return `
+      <section class="execution-group">
+        <div class="execution-group-title">
+          <h4>${escapeHtml(title)}</h4>
+          <span>${escapeHtml(String(clients.length))} client${clients.length === 1 ? "" : "s"}</span>
+        </div>
+        <p class="small">${escapeHtml(subtitle)}</p>
+        <div class="execution-client-grid grouped">
+          ${clients.length ? clients.map(client => renderExecutionClientCard(client, weekStart, tone)).join("") : `<div class="empty">No clients in this group right now.</div>`}
+        </div>
+      </section>
+    `;
+  }
+
+  function renderExecutionClientCard(client, weekStart, tone){
     const pctValue = pct(client.execution_percentage);
     const status = client.execution_status || "Not Started";
     const active = client.client_user_id === state.selectedExecutionClientId ? "active" : "";
+    const toneClass = tone || (client.needs_attention ? "needs" : "on-track");
     return `
-      <button class="execution-client ${active}" type="button" data-execution-client="${escapeHtml(client.client_user_id)}" data-week-start="${escapeHtml(weekStart || "")}">
+      <button class="execution-client ${toneClass} ${active}" type="button" data-execution-client="${escapeHtml(client.client_user_id)}" data-week-start="${escapeHtml(weekStart || "")}">
         <span class="execution-status ${executionStatusClass(status)}">${escapeHtml(status)}</span>
         <strong style="margin-top:12px">${escapeHtml(client.name || "Client")}</strong>
         <p class="small" style="margin-top:5px">${escapeHtml(client.email || "No email")}</p>
@@ -903,7 +926,12 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   function renderFoundationBreakdown(items){
     if(!items.length) return `<div class="empty">No prescribed foundation opportunities this week yet.</div>`;
-    return items.map(item => {
+    const ordered = [...items].sort((a,b) => {
+      const aIndex = DAILY_SEVEN_ORDER.indexOf(String(a.foundation_key || "").toLowerCase());
+      const bIndex = DAILY_SEVEN_ORDER.indexOf(String(b.foundation_key || "").toLowerCase());
+      return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex);
+    });
+    return ordered.map(item => {
       const total = Number(item.total || item.total_opportunities || 0);
       const completed = Number(item.completed || item.completed_opportunities || 0);
       const percent = total ? Math.round((completed / total) * 100) : 0;
@@ -918,13 +946,18 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   }
 
   function renderExecutionHeatmap(days){
-    const byDay = new Map((days || []).map(day => [String(day.dow || day.day || ""), day]));
+    const list = Array.isArray(days) ? [...days] : [];
+    if(list.length){
+      return list.map((day, index) => {
+        const total = Number(day.total || 0);
+        const completed = Number(day.completed || 0);
+        const label = day.weekday || day.dow || day.day || dayName(index + 1);
+        const dots = total ? Array.from({ length:total }, (_item,dotIndex) => `<span class="heat-dot ${dotIndex < completed ? "done" : ""}"></span>`).join("") : `<span class="small">—</span>`;
+        return `<div class="heat-day"><strong>${escapeHtml(label)}</strong><div class="heat-dots">${dots}</div><p class="small" style="margin-top:7px">${completed}/${total}</p></div>`;
+      }).join("");
+    }
     return [1,2,3,4,5,6,7].map(index => {
-      const day = byDay.get(String(index)) || {};
-      const total = Number(day.total || 0);
-      const completed = Number(day.completed || 0);
-      const dots = total ? Array.from({ length:total }, (_item,dotIndex) => `<span class="heat-dot ${dotIndex < completed ? "done" : ""}"></span>`).join("") : `<span class="small">—</span>`;
-      return `<div class="heat-day"><strong>${dayName(index)}</strong><div class="heat-dots">${dots}</div><p class="small" style="margin-top:7px">${completed}/${total}</p></div>`;
+      return `<div class="heat-day"><strong>${dayName(index)}</strong><div class="heat-dots"><span class="small">—</span></div><p class="small" style="margin-top:7px">0/0</p></div>`;
     }).join("");
   }
 
@@ -971,7 +1004,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return `
       <div class="card card-pad">
         <p class="eyebrow">Coach Controls</p>
-        <h3 style="margin-top:8px">Next week’s Personal Standards.</h3>
+        <h3 style="margin-top:8px">Daily Seven · Next Week Standards.</h3>
         <p class="muted" style="margin-top:12px">Changes start from ${compactDate(effectiveFrom)} and do not rewrite historical weeks.</p>
         <form id="foundationEditorForm" class="foundation-editor" style="margin-top:18px">
           <input type="hidden" name="client_user_id" value="${escapeHtml(detail.client && detail.client.user_id || "")}">

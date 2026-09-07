@@ -1,0 +1,10 @@
+{
+  "name": "GodHealth Client App",
+  "short_name": "GodHealth",
+  "start_url": "/client/",
+  "scope": "/client/",
+  "display": "standalone",
+  "background_color": "#04160e",
+  "theme_color": "#04160e",
+  "description": "Private GodHealth client app for the Daily Seven execution rhythm."
+}
