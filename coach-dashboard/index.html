@@ -816,9 +816,14 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return date.toISOString().slice(0,10);
   }
 
-  function nextWeekStart(detail){
-    const start = detail && detail.program && detail.program.week_start;
-    return start ? addDays(start, 7) : new Date().toISOString().slice(0,10);
+  function localToday(){
+    const date = new Date();
+    date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    return date.toISOString().slice(0,10);
+  }
+
+  function immediateEffectiveDate(){
+    return localToday();
   }
 
   async function loadExecutionOverview(){
@@ -1057,7 +1062,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
 
   function renderFoundationEditor(detail){
     const prescriptions = detail.prescriptions || [];
-    const effectiveFrom = nextWeekStart(detail);
+    const effectiveFrom = immediateEffectiveDate();
     if(!prescriptions.length){
       return `
         <div class="card card-pad">
@@ -1071,7 +1076,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       <div class="card card-pad">
         <p class="eyebrow">Coach Controls</p>
         <h3 style="margin-top:8px">Check-In Builder.</h3>
-        <p class="muted" style="margin-top:12px">Personalize each client's future standards. Changes start from ${compactDate(effectiveFrom)} and never rewrite history.</p>
+        <p class="muted" style="margin-top:12px">Personalize each client's Daily Seven standards. Changes start today (${compactDate(effectiveFrom)}) and past days stay unchanged.</p>
         <div class="builder-tools" aria-label="Check-in templates">
           ${Object.entries(CHECKIN_TEMPLATES).map(([key, template]) => `<button class="builder-template" type="button" data-builder-template="${escapeHtml(key)}">${escapeHtml(template.name)}</button>`).join("")}
         </div>
@@ -1079,7 +1084,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
           <input type="hidden" name="client_user_id" value="${escapeHtml(detail.client && detail.client.user_id || "")}">
           <input type="hidden" name="effective_from" value="${escapeHtml(effectiveFrom)}">
           ${prescriptions.map(prescription => renderFoundationEditorRow(prescription, effectiveFrom)).join("")}
-          <button class="btn btn-gold" type="submit">Save Next Week Standards</button>
+          <button class="btn btn-gold" type="submit">Save Today’s Standards</button>
           <p class="small" id="foundationEditorMessage">Only successful database saves become visible to the client.</p>
         </form>
       </div>
@@ -1156,7 +1161,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     try{
       button.disabled = true;
       button.textContent = "Saving...";
-      if(message) message.textContent = "Saving next week standards securely...";
+      if(message) message.textContent = "Saving today’s standards securely...";
       const { data, error } = await state.supabase.rpc("kca_coach_save_foundation_prescriptions", {
         p_client_user_id:clientUserId,
         p_effective_from:effectiveFrom,
@@ -1164,14 +1169,14 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       });
       if(error) throw error;
       state.executionDetail = data;
-      if(message) message.textContent = "Saved. These targets are versioned from next week.";
+      if(message) message.textContent = "Saved. These targets are active from today. Ask the client to refresh the app.";
       await loadExecutionOverview();
       $("executionDetailMount").innerHTML = renderExecutionDetail(data);
     }catch(error){
       if(message) message.textContent = "Could not save yet: " + (error.message || "Unknown error");
     }finally{
       button.disabled = false;
-      button.textContent = "Save Next Week Standards";
+      button.textContent = "Save Today’s Standards";
     }
   }
 
