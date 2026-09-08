@@ -1168,9 +1168,14 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         p_prescriptions:prescriptions
       });
       if(error) throw error;
-      if(message) message.textContent = "Saved. Verifying the saved standards from the database...";
+      const savedRows = data && Array.isArray(data.saved_rows) ? data.saved_rows : [];
+      const savedHydrate = savedRows.find(row => row.foundation_key === "hydrate");
+      const receiptText = `Saved ${data && data.saved_count != null ? data.saved_count : savedRows.length} standards in Supabase.${savedHydrate ? ` HYDRATE now says: ${savedHydrate.target_label || "empty"}.` : ""}`;
+      if(message) message.textContent = `${receiptText} Verifying the saved standards from the database...`;
       await loadExecutionOverview();
       await loadExecutionDetail(clientUserId, effectiveFrom);
+      const freshMessage = $("foundationEditorMessage");
+      if(freshMessage) freshMessage.textContent = receiptText;
     }catch(error){
       if(message) message.textContent = "Could not save yet: " + (error.message || "Unknown error");
     }finally{
