@@ -1078,7 +1078,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         <form id="foundationEditorForm" class="foundation-editor" style="margin-top:18px">
           <input type="hidden" name="client_user_id" value="${escapeHtml(detail.client && detail.client.user_id || "")}">
           <input type="hidden" name="effective_from" value="${escapeHtml(effectiveFrom)}">
-          ${prescriptions.map(renderFoundationEditorRow).join("")}
+          ${prescriptions.map(prescription => renderFoundationEditorRow(prescription, effectiveFrom)).join("")}
           <button class="btn btn-gold" type="submit">Save Next Week Standards</button>
           <p class="small" id="foundationEditorMessage">Only successful database saves become visible to the client.</p>
         </form>
@@ -1086,7 +1086,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     `;
   }
 
-  function renderFoundationEditorRow(prescription){
+  function renderFoundationEditorRow(prescription, effectiveFrom){
     const days = Array.isArray(prescription.prescribed_days) ? prescription.prescribed_days.map(Number) : [1,2,3,4,5,6,7];
     const key = String(prescription.foundation_key || "").toLowerCase();
     const isDailySeven = DAILY_SEVEN_ORDER.includes(key);
@@ -1114,7 +1114,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
           <label><input type="radio" name="required-${escapeHtml(key)}" data-field="is_required" value="false" ${metadata.is_required === false ? "checked" : ""}> Optional</label>
         </div>
         <div class="date-grid">
-          <input class="input" data-field="active_from" type="date" value="${escapeHtml(prescription.active_from || "")}" aria-label="Effective date">
+          <input class="input" data-field="active_from" type="date" value="${escapeHtml(effectiveFrom || prescription.active_from || "")}" aria-label="Effective date">
           <input class="input" data-field="active_until" type="date" value="${escapeHtml(prescription.active_until || "")}" aria-label="End date">
         </div>
       </div>
