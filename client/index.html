@@ -185,7 +185,8 @@
       font-size:13px;
     }
     .daily-title{display:block;font-weight:950;letter-spacing:.06em;font-size:14px}
-    .daily-target{display:block;margin-top:3px;color:var(--ink-soft);font-size:12px;font-weight:700;line-height:1.28}
+    .daily-target{display:block;margin-top:3px;color:var(--ink-soft);font-size:12px;font-weight:800;line-height:1.28}
+    .daily-note{display:block;margin-top:5px;color:rgba(255,248,226,.72);font-size:11px;font-weight:650;line-height:1.35}
     .check{
       display:grid;
       place-items:center;
@@ -204,6 +205,7 @@
     }
     .daily-row.is-complete .daily-icon,.daily-row.is-complete .check{background:rgba(36,24,2,.14);border-color:rgba(36,24,2,.22);color:#241802}
     .daily-row.is-complete .daily-target{color:rgba(36,24,2,.75)}
+    .daily-row.is-complete .daily-note{color:rgba(36,24,2,.68)}
     .grid{display:grid;gap:12px}
     .two{grid-template-columns:repeat(2,minmax(0,1fr))}
     .quiet-card{
@@ -545,12 +547,17 @@
     function renderDailyRow(item){
       const complete = item.status === "complete";
       const saving = state.saving.has(item.prescription_id);
+      const target = item.target_label || "";
+      const instruction = item.metadata && item.metadata.client_instruction ? item.metadata.client_instruction : "";
+      const detail = instruction || item.foundation_description || "";
+      const showDetail = detail && detail.trim() !== target.trim();
       return `
         <button class="daily-row ${complete ? "is-complete" : ""}" ${saving ? "disabled" : ""} data-prescription="${escapeHtml(item.prescription_id)}" data-current="${escapeHtml(item.status)}" type="button">
           <span class="daily-icon">${escapeHtml(ICONS[item.foundation_key] || "✓")}</span>
           <span>
             <span class="daily-title">${escapeHtml(item.foundation_label)}</span>
-            <span class="daily-target">${escapeHtml(item.target_label || item.foundation_description || "")}</span>
+            <span class="daily-target">${escapeHtml(target || detail || "")}</span>
+            ${showDetail ? `<span class="daily-note">${escapeHtml(detail)}</span>` : ""}
           </span>
           <span class="check">${complete ? "✓" : " "}</span>
         </button>

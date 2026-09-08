@@ -1103,9 +1103,9 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
           <span class="pill">${isDailySeven ? "Daily Seven" : "Protocol"}</span>
         </div>
         <p class="small" style="margin-top:8px">${escapeHtml(isDailySeven ? "The foundation name is fixed. Only the personal standard underneath it changes." : "Optional coach-prescribed protocol. Only active when prescribed.")}</p>
-        <input class="input" data-field="target_label" value="${escapeHtml(prescription.target_label || "")}" placeholder="Target shown to client, e.g. 7,000 steps · Strength A">
-        <textarea class="builder-textarea" data-field="foundation_description" placeholder="Description/instruction shown under this check-in">${escapeHtml(prescription.foundation_description || "")}</textarea>
-        <textarea class="builder-textarea" data-field="client_instruction" placeholder="Short client-specific instruction">${escapeHtml(metadata.client_instruction || "")}</textarea>
+        <input class="input" data-field="target_label" value="${escapeHtml(prescription.target_label || "")}" placeholder="Main text shown on the client Today card">
+        <textarea class="builder-textarea" data-field="foundation_description" placeholder="Full explanation shown in the client app">${escapeHtml(prescription.foundation_description || "")}</textarea>
+        <textarea class="builder-textarea" data-field="client_instruction" placeholder="Optional personal note shown directly under the Today card">${escapeHtml(metadata.client_instruction || "")}</textarea>
         <div class="builder-grid">
           <input class="input" data-field="target_value" value="${escapeHtml(prescription.target_value || "")}" placeholder="Target value">
           <input class="input" data-field="target_unit" value="${escapeHtml(prescription.target_unit || "")}" placeholder="Unit">
@@ -1168,10 +1168,9 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         p_prescriptions:prescriptions
       });
       if(error) throw error;
-      state.executionDetail = data;
-      if(message) message.textContent = "Saved. These targets are active from today. Ask the client to refresh the app.";
+      if(message) message.textContent = "Saved. Verifying the saved standards from the database...";
       await loadExecutionOverview();
-      $("executionDetailMount").innerHTML = renderExecutionDetail(data);
+      await loadExecutionDetail(clientUserId, effectiveFrom);
     }catch(error){
       if(message) message.textContent = "Could not save yet: " + (error.message || "Unknown error");
     }finally{
