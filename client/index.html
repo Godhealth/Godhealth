@@ -421,7 +421,7 @@
 
   <script>
     const $ = id => document.getElementById(id);
-    const state = { supabase:null, session:null, data:null, saving:new Set(), feelSavingTimer:null, reflectionStep:0, reflectionDraft:{} };
+    const state = { supabase:null, session:null, data:null, saving:new Set(), feelSavingTimer:null, liveRefreshTimer:null, silentRefreshing:false, reflectionStep:0, reflectionDraft:{} };
     const DAILY_ORDER = ["seek","hydrate","eat","move","recover","renew","serve"];
     const PROTOCOL_ORDER = ["seek","hydrate","eat","move","recover","renew","serve","fasting"];
     const ICONS = { seek:"PR", hydrate:"H₂", eat:"ET", move:"MV", recover:"ZZ", renew:"RN", serve:"SV", fasting:"FS" };
@@ -459,6 +459,7 @@
     }
 
     async function showLogin(){
+      stopLiveRefresh();
       $("loginView").classList.remove("hidden");
       $("appView").classList.add("hidden");
       $("bottomNav").classList.add("hidden");
@@ -469,12 +470,16 @@
       $("appView").classList.remove("hidden");
       $("bottomNav").classList.remove("hidden");
       await loadToday();
+      startLiveRefresh();
     }
 
-    async function loadToday(){
+    async function loadToday(options = {}){
+      const silent = options.silent === true;
       try{
-        $("todayMount").className = "loading";
-        $("todayMount").textContent = "Loading your Daily Seven...";
+        if(!silent){
+          $("todayMount").className = "loading";
+          $("todayMount").textContent = "Loading your Daily Seven...";
+        }
         const { data, error } = await state.supabase.rpc("kca_get_today_dashboard", { p_local_date: localDate() });
         if(error) throw error;
         state.data = data;
@@ -482,6 +487,7 @@
       }catch(error){
         const message = error && error.message ? error.message : String(error);
         console.warn("GodHealth client app load failed", error);
+        if(silent) return;
         $("todayMount").className = "empty";
         if(/premium_entitlement_required/i.test(message)){
           $("todayMount").innerHTML = `<div class="card card-pad"><p class="eyebrow">No active program</p><h2>Access is not active yet.</h2><p class="muted" style="margin-top:12px">Ask GodHealth to activate your coaching access for this email.</p></div>`;
@@ -491,6 +497,37 @@
           $("todayMount").innerHTML = `<div class="card card-pad"><p class="eyebrow">Could not load</p><h2>Please try again.</h2><p class="muted" style="margin-top:12px">We could not load your Daily Seven yet. Please retry, or message GodHealth if it keeps happening.</p><button class="btn btn-gold" id="retryTodayBtn" style="margin-top:18px" type="button">Retry</button></div>`;
           $("retryTodayBtn")?.addEventListener("click", loadToday);
         }
+      }
+    }
+
+    function clientIsEditing(){
+      const active = document.activeElement;
+      return Boolean(
+        state.saving.size ||
+        state.feelSavingTimer ||
+        (active && active.matches && active.matches("input, textarea, select, [contenteditable='true']"))
+      );
+    }
+
+    async function refreshTodaySilently(){
+      if(!state.session || document.hidden || state.silentRefreshing || clientIsEditing()) return;
+      state.silentRefreshing = true;
+      try{
+        await loadToday({ silent:true });
+      }finally{
+        state.silentRefreshing = false;
+      }
+    }
+
+    function startLiveRefresh(){
+      stopLiveRefresh();
+      state.liveRefreshTimer = window.setInterval(refreshTodaySilently, 5000);
+    }
+
+    function stopLiveRefresh(){
+      if(state.liveRefreshTimer){
+        window.clearInterval(state.liveRefreshTimer);
+        state.liveRefreshTimer = null;
       }
     }
 
@@ -716,6 +753,7 @@
 
     async function saveFeelNow(){
       clearTimeout(state.feelSavingTimer);
+      state.feelSavingTimer = null;
       const feel = state.data?.daily_feel || {};
       const payload = {};
       FEEL_FIELDS.forEach(([key]) => {
@@ -872,6 +910,10 @@
         await state.supabase.auth.signOut();
         await showLogin();
       });
+      document.addEventListener("visibilitychange", () => {
+        if(!document.hidden) refreshTodaySilently();
+      });
+      window.addEventListener("focus", refreshTodaySilently);
       document.addEventListener("click", event => {
         if(!$("profileMenu").contains(event.target) && !$("profileBtn").contains(event.target)) $("profileMenu").classList.add("hidden");
       });

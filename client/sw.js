@@ -1,4 +1,4 @@
-const CACHE_NAME = "godhealth-client-static-v1";
+const CACHE_NAME = "godhealth-client-static-v2";
 const STATIC_ASSETS = [
   "/client/",
   "/client/index.html",
@@ -29,7 +29,15 @@ self.addEventListener("fetch", event => {
   if(url.hostname.includes("supabase.co")) return;
   if(url.pathname.startsWith("/client/") || url.pathname === "/godhealth-config.js"){
     event.respondWith(
-      caches.match(event.request).then(cached => cached || fetch(event.request))
+      fetch(event.request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME)
+            .then(cache => cache.put(event.request, copy))
+            .catch(() => undefined);
+          return response;
+        })
+        .catch(() => caches.match(event.request))
     );
   }
 });
