@@ -1179,7 +1179,9 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       if(error) throw error;
       const savedRows = data && Array.isArray(data.saved_rows) ? data.saved_rows : [];
       const savedHydrate = savedRows.find(row => row.foundation_key === "hydrate");
-      const receiptText = `Saved ${data && data.saved_count != null ? data.saved_count : savedRows.length} standards in Supabase.${savedHydrate ? ` HYDRATE now says: ${savedHydrate.target_label || "empty"}.` : ""}`;
+      const savedFasting = savedRows.find(row => row.foundation_key === "fasting");
+      const fastingDays = savedFasting && Array.isArray(savedFasting.prescribed_days) ? savedFasting.prescribed_days.map(dayName).join(", ") : "";
+      const receiptText = `Saved ${data && data.saved_count != null ? data.saved_count : savedRows.length} standards in Supabase.${savedHydrate ? ` HYDRATE now says: ${savedHydrate.target_label || "empty"}.` : ""}${savedFasting ? ` FASTING is ${savedFasting.is_prescribed ? "active" : "off"}${fastingDays ? ` on ${fastingDays}` : ""}.` : ""}`;
       if(message) message.textContent = `${receiptText} Verifying the saved standards from the database...`;
       await loadExecutionOverview();
       await loadExecutionDetail(clientUserId, effectiveFrom);
@@ -1196,6 +1198,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
   function applyBuilderTemplate(templateKey){
     const template = CHECKIN_TEMPLATES[templateKey];
     if(!template) return;
+    const form = $("foundationEditorForm");
     Object.entries(template.items).forEach(([key, label]) => {
       const row = document.querySelector(`.foundation-editor-row[data-foundation-key="${CSS.escape(key)}"]`);
       if(!row) return;
@@ -1213,12 +1216,16 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     });
     const message = $("foundationEditorMessage");
     const saveButton = $("saveTodayStandardsBtn");
-    if(message) message.textContent = `${template.name} template is prepared, but NOT saved yet. Click the gold “Save Today’s Standards” button below to make it visible for the client.`;
+    if(message) message.textContent = `${template.name} template applied. Saving it now so the client can see it today...`;
     if(saveButton){
       saveButton.classList.add("template-ready");
-      saveButton.scrollIntoView({ behavior:"smooth", block:"center" });
-      saveButton.focus({ preventScroll:true });
       setTimeout(() => saveButton.classList.remove("template-ready"), 3500);
+    }
+    if(form){
+      setTimeout(() => {
+        if(typeof form.requestSubmit === "function") form.requestSubmit();
+        else form.dispatchEvent(new Event("submit", { bubbles:true, cancelable:true }));
+      }, 80);
     }
   }
 
