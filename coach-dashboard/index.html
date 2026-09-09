@@ -1137,6 +1137,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     const form = event.currentTarget;
     const button = form.querySelector("button[type='submit']");
     const message = $("foundationEditorMessage");
+    if(form.dataset.saving === "true") return;
     const clientUserId = form.elements.client_user_id.value;
     const effectiveFrom = form.elements.effective_from.value;
     const current = state.executionDetail && state.executionDetail.prescriptions || [];
@@ -1168,6 +1169,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       };
     });
     try{
+      form.dataset.saving = "true";
       button.disabled = true;
       button.textContent = "Saving...";
       if(message) message.textContent = "Saving today’s standards securely...";
@@ -1190,6 +1192,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     }catch(error){
       if(message) message.textContent = "Could not save yet: " + (error.message || "Unknown error");
     }finally{
+      form.dataset.saving = "false";
       button.disabled = false;
       button.textContent = "Save Today’s Standards";
     }
@@ -1223,8 +1226,10 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     }
     if(form){
       setTimeout(() => {
-        if(typeof form.requestSubmit === "function") form.requestSubmit();
-        else form.dispatchEvent(new Event("submit", { bubbles:true, cancelable:true }));
+        saveFoundationPrescriptions({
+          preventDefault(){},
+          currentTarget:form
+        });
       }, 80);
     }
   }
