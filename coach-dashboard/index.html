@@ -192,6 +192,11 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       name:"Fasting Protocol",
       items:{ fasting:"Coach-prescribed fasting window", eat:"Nourishing refeed meal", hydrate:"Water + minerals", seek:"Prayer joined to fasting", recover:"Gentle recovery rhythm" }
     },
+    fasting_off:{
+      name:"Turn Fasting Off",
+      items:{},
+      turnOff:["fasting"]
+    },
     recovery:{
       name:"Recovery Week",
       items:{ seek:"Quiet prayer before phone", hydrate:"Steady clean water", eat:"Simple nourishing meals", move:"Walk + mobility", recover:"Prioritize sleep", renew:"Gentle reflection", serve:"Small act of love" }
@@ -1082,7 +1087,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       <div class="card card-pad">
         <p class="eyebrow">Coach Controls</p>
         <h3 style="margin-top:8px">Check-In Builder.</h3>
-        <p class="muted" style="margin-top:12px">Personalize each client's Daily Seven standards. Changes start today (${compactDate(effectiveFrom)}) and past days stay unchanged.</p>
+        <p class="muted" style="margin-top:12px">Use a template for a quick save, or write your own custom standard in any field below and click Save Today’s Standards. Changes start today (${compactDate(effectiveFrom)}) and past days stay unchanged.</p>
         <div class="builder-tools" aria-label="Check-in templates">
           ${Object.entries(CHECKIN_TEMPLATES).map(([key, template]) => `<button class="builder-template" type="button" data-builder-template="${escapeHtml(key)}">${escapeHtml(template.name)}</button>`).join("")}
         </div>
@@ -1202,14 +1207,37 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     const template = CHECKIN_TEMPLATES[templateKey];
     if(!template) return;
     const form = $("foundationEditorForm");
-    Object.entries(template.items).forEach(([key, label]) => {
+    if(form) form.dataset.applyingTemplate = "true";
+
+    if(templateKey !== "fasting"){
+      const fastingRow = document.querySelector(`.foundation-editor-row[data-foundation-key="fasting"]`);
+      if(fastingRow){
+        const prescribed = fastingRow.querySelector("[data-field='is_prescribed']");
+        if(prescribed) prescribed.checked = false;
+        fastingRow.querySelectorAll("[data-day]").forEach(input => {
+          input.checked = false;
+        });
+      }
+    }
+
+    (template.turnOff || []).forEach(key => {
+      const row = document.querySelector(`.foundation-editor-row[data-foundation-key="${CSS.escape(key)}"]`);
+      if(!row) return;
+      const prescribed = row.querySelector("[data-field='is_prescribed']");
+      if(prescribed) prescribed.checked = false;
+      row.querySelectorAll("[data-day]").forEach(input => {
+        input.checked = false;
+      });
+    });
+
+    Object.entries(template.items || {}).forEach(([key, label]) => {
       const row = document.querySelector(`.foundation-editor-row[data-foundation-key="${CSS.escape(key)}"]`);
       if(!row) return;
       const prescribed = row.querySelector("[data-field='is_prescribed']");
       const target = row.querySelector("[data-field='target_label']");
       if(prescribed) prescribed.checked = true;
       if(target) target.value = label;
-      if(templateKey === "fasting"){
+      if(templateKey === "fasting" && key === "fasting"){
         const activeFrom = (row.querySelector("[data-field='active_from']") || {}).value || localToday();
         const activeDay = isoDayFromDate(activeFrom);
         row.querySelectorAll("[data-day]").forEach(input => {
@@ -1219,18 +1247,38 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     });
     const message = $("foundationEditorMessage");
     const saveButton = $("saveTodayStandardsBtn");
-    if(message) message.textContent = `${template.name} template applied. Saving it now so the client can see it today...`;
+    if(message) message.textContent = templateKey === "fasting_off" ? "Turning FASTING off and saving it now so the client sees the change today..." : `${template.name} template applied. Saving it now so the client can see it today...`;
     if(saveButton){
       saveButton.classList.add("template-ready");
       setTimeout(() => saveButton.classList.remove("template-ready"), 3500);
     }
     if(form){
       setTimeout(() => {
-        saveFoundationPrescriptions({
+        const savePromise = saveFoundationPrescriptions({
           preventDefault(){},
           currentTarget:form
         });
+        if(savePromise && typeof savePromise.finally === "function"){
+          savePromise.finally(() => {
+            form.dataset.applyingTemplate = "false";
+          });
+        }else{
+          form.dataset.applyingTemplate = "false";
+        }
       }, 80);
+    }
+  }
+
+  function markFoundationEditorDirty(){
+    const form = $("foundationEditorForm");
+    if(!form || form.dataset.saving === "true" || form.dataset.applyingTemplate === "true") return;
+    const message = $("foundationEditorMessage");
+    const saveButton = $("saveTodayStandardsBtn");
+    if(message) message.textContent = "Custom changes ready. Click “Save Today’s Standards” to update the client today.";
+    if(saveButton){
+      saveButton.classList.add("template-ready");
+      clearTimeout(saveButton._dirtyPulseTimer);
+      saveButton._dirtyPulseTimer = setTimeout(() => saveButton.classList.remove("template-ready"), 1800);
     }
   }
 
@@ -1394,6 +1442,12 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     $("executionDetailMount").addEventListener("click", event => {
       const button = event.target.closest("[data-builder-template]");
       if(button) applyBuilderTemplate(button.dataset.builderTemplate);
+    });
+    $("executionDetailMount").addEventListener("input", event => {
+      if(event.target && event.target.closest("#foundationEditorForm")) markFoundationEditorDirty();
+    });
+    $("executionDetailMount").addEventListener("change", event => {
+      if(event.target && event.target.closest("#foundationEditorForm")) markFoundationEditorDirty();
     });
     $("copyClientAccessLink").addEventListener("click", async () => {
       const input = $("clientAccessLink");
