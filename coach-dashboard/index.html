@@ -810,6 +810,12 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
     return ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"][Number(index) - 1] || "Day";
   }
 
+  function isoDayFromDate(value){
+    const date = new Date((value || localToday()) + "T12:00:00");
+    const day = date.getDay();
+    return day === 0 ? 7 : day;
+  }
+
   function addDays(dateValue, days){
     const date = new Date(dateValue + "T00:00:00");
     date.setDate(date.getDate() + days);
@@ -1139,6 +1145,9 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       const key = row.dataset.foundationKey;
       const original = currentByKey.get(key) || {};
       const days = Array.from(row.querySelectorAll("[data-day]:checked")).map(input => Number(input.dataset.day));
+      const activeFrom = (row.querySelector("[data-field='active_from']") || {}).value || effectiveFrom;
+      const isPrescribed = Boolean(row.querySelector("[data-field='is_prescribed']") && row.querySelector("[data-field='is_prescribed']").checked);
+      const prescribedDays = isPrescribed && !days.length ? [isoDayFromDate(activeFrom)] : days;
       return {
         foundation_key:key,
         foundation_label:FOUNDATION_NAMES[key] || original.foundation_label || key,
@@ -1146,11 +1155,11 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         target_label:(row.querySelector("[data-field='target_label']") || {}).value || "",
         target_value:(row.querySelector("[data-field='target_value']") || {}).value || null,
         target_unit:(row.querySelector("[data-field='target_unit']") || {}).value || null,
-        prescribed_days:days.length ? days : [],
-        is_prescribed:Boolean(row.querySelector("[data-field='is_prescribed']") && row.querySelector("[data-field='is_prescribed']").checked),
+        prescribed_days:prescribedDays,
+        is_prescribed:isPrescribed,
         allow_not_applicable:Boolean(original.allow_not_applicable),
         program_week:(row.querySelector("[data-field='program_week']") || {}).value || null,
-        active_from:(row.querySelector("[data-field='active_from']") || {}).value || effectiveFrom,
+        active_from:activeFrom,
         active_until:(row.querySelector("[data-field='active_until']") || {}).value || null,
         metadata:Object.assign({}, original.metadata || {}, {
           is_required:((row.querySelector("[data-field='is_required']:checked") || {}).value !== "false"),
@@ -1194,6 +1203,13 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       const target = row.querySelector("[data-field='target_label']");
       if(prescribed) prescribed.checked = true;
       if(target) target.value = label;
+      if(templateKey === "fasting"){
+        const activeFrom = (row.querySelector("[data-field='active_from']") || {}).value || localToday();
+        const activeDay = isoDayFromDate(activeFrom);
+        row.querySelectorAll("[data-day]").forEach(input => {
+          input.checked = Number(input.dataset.day) === activeDay;
+        });
+      }
     });
     const message = $("foundationEditorMessage");
     const saveButton = $("saveTodayStandardsBtn");
