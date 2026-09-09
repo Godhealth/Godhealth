@@ -1151,7 +1151,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       const key = row.dataset.foundationKey;
       const original = currentByKey.get(key) || {};
       const days = Array.from(row.querySelectorAll("[data-day]:checked")).map(input => Number(input.dataset.day));
-      const activeFrom = (row.querySelector("[data-field='active_from']") || {}).value || effectiveFrom;
+      const activeFrom = effectiveFrom;
       const isPrescribed = Boolean(row.querySelector("[data-field='is_prescribed']") && row.querySelector("[data-field='is_prescribed']").checked);
       const prescribedDays = isPrescribed && !days.length ? [isoDayFromDate(activeFrom)] : days;
       return {
@@ -1165,7 +1165,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         is_prescribed:isPrescribed,
         allow_not_applicable:Boolean(original.allow_not_applicable),
         program_week:(row.querySelector("[data-field='program_week']") || {}).value || null,
-        active_from:activeFrom,
+        active_from:effectiveFrom,
         active_until:(row.querySelector("[data-field='active_until']") || {}).value || null,
         metadata:Object.assign({}, original.metadata || {}, {
           is_required:((row.querySelector("[data-field='is_required']:checked") || {}).value !== "false"),
@@ -1238,7 +1238,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       if(prescribed) prescribed.checked = true;
       if(target) target.value = label;
       if(templateKey === "fasting" && key === "fasting"){
-        const activeFrom = (row.querySelector("[data-field='active_from']") || {}).value || localToday();
+        const activeFrom = (form && form.elements.effective_from && form.elements.effective_from.value) || localToday();
         const activeDay = isoDayFromDate(activeFrom);
         row.querySelectorAll("[data-day]").forEach(input => {
           input.checked = Number(input.dataset.day) === activeDay;
