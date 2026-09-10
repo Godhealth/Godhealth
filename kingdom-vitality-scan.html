@@ -759,6 +759,21 @@ async function supabaseRpc(functionName,payload){
     button.disabled = true;
     button.textContent = "Starting securely…";
     const now = new Date().toISOString();
+    if(button.dataset.leadWebhookSent !== "true"){
+      button.dataset.leadWebhookSent = "true";
+      fetch("https://godhealth.app.n8n.cloud/webhook/2a3fa0cd-62f8-4467-9948-817589483072",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          name,
+          email,
+          consent_data_processing:privacyConsent,
+          opt_in_marketing:marketingConsent,
+          source:"kingdom_vitality_scan_landing_page",
+          submitted_at:now
+        })
+      }).catch(() => {});
+    }
     try {
       const result = await supabaseRpc("gh_start_scan",{
         p_first_name:name,
