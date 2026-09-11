@@ -1481,6 +1481,23 @@ function setupPostScanStrategyCall(){
     submit.disabled = true;
     submit.textContent = "Saving securely…";
     const now = new Date().toISOString();
+    if(submit.dataset.strategyCallWebhookSent !== "true"){
+      submit.dataset.strategyCallWebhookSent = "true";
+      fetch("https://godhealth.app.n8n.cloud/webhook/8f778195-b67a-47b9-a71c-6b276f2dc54d",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          name:state.lead.first_name || state.lead.name || "",
+          email:state.lead.email || "",
+          phone_country_code:countryCode,
+          phone_number:phoneRaw,
+          phone_full:phoneNormalized,
+          consent_phone_contact:phoneConsent,
+          source:"kingdom_vitality_scan_strategy_call",
+          submitted_at:now
+        })
+      }).catch(() => {});
+    }
     try {
       await supabaseRpc("gh_request_call",{
         p_lead_id:state.lead.id,
