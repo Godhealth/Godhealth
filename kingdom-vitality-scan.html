@@ -1848,6 +1848,33 @@ function finishAssessment(skipDispatch){
   window.dispatchEvent(new CustomEvent("godhealth:scan-report-visible"));
   window.scrollTo({top:0,behavior:"smooth"});
 
+  if(!skipDispatch && !window.__godhealthScanResultsWebhookSent){
+    window.__godhealthScanResultsWebhookSent = true;
+    const pillarInsightsHtml = report.querySelector(".pillar-insights")?.innerHTML || pillarInsights;
+    const weekPlanHtml = report.querySelector(".week-plan")?.innerHTML || weekPlanItems;
+    fetch("https://godhealth.app.n8n.cloud/webhook/625e1e63-50ba-463b-b065-c62d56467e21", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({
+        name: state.lead.first_name || state.lead.name || "",
+        email: state.lead.email || "",
+        overall_pct: Number(s.grandPct),
+        body_score: Number(scores.physical),
+        soul_score: Number(scores.mental),
+        spirit_score: Number(scores.spiritual),
+        alignment_gap: primaryName,
+        primary_gap_copy: gapCopy[primaryKey],
+        pillar_insights_html: pillarInsightsHtml,
+        verse_ref: verse.ref,
+        verse_text: verse.text,
+        verse_practice: versePractice,
+        week_plan_html: weekPlanHtml,
+        source: "kingdom-vitality-scan",
+        submitted_at: new Date().toISOString()
+      })
+    }).catch(()=>{});
+  }
+
   const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const countTo = (element,target,duration,suffix,onFrame)=>{
     if(!element) return;
