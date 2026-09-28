@@ -1107,3 +1107,11 @@ html,body{max-width:100%;overflow-x:hidden}
   .site-footer .footer-legal{grid-column:auto;padding:27px 0 0}
   .site-footer a{width:auto}
 }
+
+
+/* User-requested polish: gold menu arrows and calm image reveals without gold wipes */
+.overflow-panel>a>i{color:var(--gold-light)!important;font-style:normal;font-size:18px;line-height:1;text-align:center;transition:transform .2s ease,color .2s ease}
+.overflow-panel>a:hover>i,.overflow-panel>a:focus-visible>i{color:var(--gold-light)!important;transform:translateX(3px)}
+.pain-card figure:before,.framework-card figure:before,.founder-card .founder-photo:before{display:none!important}
+.pain-card.reveal figure img,.framework-card.reveal figure img,.founder-card.reveal .founder-photo img{opacity:.15;transform:scale(1.035);transition:opacity .8s ease,transform 1.2s cubic-bezier(.2,.75,.2,1)}
+.pain-card.reveal.visible figure img,.framework-card.reveal.visible figure img,.founder-card.reveal.visible .founder-photo img{opacity:1;transform:scale(1)}
