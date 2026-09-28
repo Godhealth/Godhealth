@@ -1,0 +1,1109 @@
+:root{
+  --forest:#041a15;
+  --forest-2:#082820;
+  --navy:#061426;
+  --gold:#c6a15a;
+  --gold-light:#e4c985;
+  --cream:#f4efe5;
+  --paper:#fbf8f1;
+  --ink:#10231d;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Manrope",Arial,sans-serif;
+}
+
+body{background:#031611;font-family:var(--sans)}
+.announcement{background:linear-gradient(90deg,#9b7534,#d5b66f 50%,#9b7534);padding:10px 16px;letter-spacing:2.2px}
+.site-header{max-width:none;padding-left:max(28px,calc((100vw - 1280px)/2));padding-right:max(28px,calc((100vw - 1280px)/2));background:rgba(3,20,16,.82);backdrop-filter:blur(20px);border-bottom:1px solid rgba(214,180,108,.2)}
+.header-actions{display:flex;align-items:center;gap:12px}
+.overflow-navigation{position:relative}
+.overflow-toggle{
+  width:50px;
+  height:50px;
+  padding:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  border:1px solid rgba(228,201,133,.48);
+  border-radius:2px;
+  background:rgba(7,28,23,.72);
+  color:var(--gold-light);
+  cursor:pointer;
+  box-shadow:0 12px 32px rgba(0,0,0,.2);
+  transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.overflow-toggle span{width:4px;height:4px;border-radius:50%;background:currentColor;box-shadow:0 0 10px rgba(228,201,133,.5);transition:transform .25s ease}
+.overflow-toggle:hover,.overflow-toggle:focus-visible,.overflow-navigation.open .overflow-toggle{
+  background:var(--gold);
+  border-color:rgba(255,255,255,.62);
+  color:#061711;
+  transform:translateY(-2px);
+  box-shadow:0 0 0 3px rgba(184,148,79,.16),0 16px 38px rgba(0,0,0,.3);
+  outline:none;
+}
+.overflow-navigation.open .overflow-toggle span:first-child{transform:translateY(-2px)}
+.overflow-navigation.open .overflow-toggle span:last-child{transform:translateY(2px)}
+.overflow-panel{
+  position:absolute;
+  z-index:100;
+  top:calc(100% + 14px);
+  right:0;
+  width:min(370px,calc(100vw - 36px));
+  padding:9px;
+  border:1px solid rgba(228,201,133,.52);
+  background:linear-gradient(155deg,rgba(4,28,22,.985),rgba(5,20,35,.985));
+  color:#fff;
+  box-shadow:0 35px 90px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.025);
+  backdrop-filter:blur(24px);
+  animation:menuOpen .28s cubic-bezier(.2,.75,.2,1) both;
+}
+.overflow-panel[hidden]{display:none}
+.overflow-panel:before{content:"";position:absolute;right:17px;top:-7px;width:12px;height:12px;background:#061b17;border-left:1px solid rgba(228,201,133,.52);border-top:1px solid rgba(228,201,133,.52);transform:rotate(45deg)}
+.overflow-heading{padding:18px 18px 15px;border-bottom:1px solid rgba(228,201,133,.2);display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.overflow-heading span{color:var(--gold-light);font-size:9px;font-weight:800;letter-spacing:2.2px}
+.overflow-heading small{color:#8fa19a;font-size:9px}
+.overflow-panel>a{
+  min-height:72px;
+  display:grid;
+  grid-template-columns:28px 1fr 18px;
+  align-items:center;
+  gap:11px;
+  padding:13px 15px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  color:#fff;
+  text-decoration:none;
+  transition:background .2s ease,transform .2s ease;
+}
+.overflow-panel>a:last-child{border-bottom:0}
+.overflow-panel>a:hover,.overflow-panel>a:focus-visible{background:rgba(255,255,255,.055);transform:translateX(3px);outline:none}
+.overflow-panel>a.featured{background:linear-gradient(90deg,rgba(199,161,90,.15),rgba(199,161,90,.04));border-left:2px solid var(--gold)}
+.overflow-panel>a>b{color:var(--gold);font:600 13px/1 var(--serif)}
+.overflow-panel>a>span{display:grid;gap:2px}
+.overflow-panel>a strong{font:600 18px/1.2 var(--serif)}
+.overflow-panel>a small{color:#9dafaa;font-size:10px;line-height:1.4}
+.overflow-panel>a>i{color:var(--gold-light);font-style:normal;font-size:15px;text-align:right}
+@keyframes menuOpen{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:none}}
+.brand{font-family:var(--serif);font-size:30px;font-weight:600;letter-spacing:-.02em}
+.brand-mark{width:34px;height:34px;border:1px solid rgba(228,201,133,.75);border-radius:50%;display:grid;place-items:center;font-family:var(--sans);font-size:8px;font-weight:700;letter-spacing:.8px;background:radial-gradient(circle,rgba(213,182,111,.18),transparent 65%)}
+.site-header nav a{letter-spacing:.3px}
+.button{border-radius:2px;letter-spacing:1.25px;position:relative;overflow:hidden}
+.button:after{content:"";position:absolute;inset:2px;border:1px solid rgba(255,255,255,.26);pointer-events:none}
+.button-primary{background:linear-gradient(135deg,#9b7330 0%,#e0c17b 48%,#ad843d 100%);border:1px solid #e8ce94;box-shadow:0 18px 50px rgba(0,0,0,.34),0 0 0 1px rgba(199,161,90,.18)}
+.button-small{border-color:rgba(228,201,133,.7);background:rgba(7,28,23,.45)}
+
+.hero{max-width:none;min-height:790px;padding-top:110px;padding-bottom:110px;grid-template-columns:1.08fr .72fr;gap:92px;background:
+linear-gradient(90deg,rgba(2,17,13,.97) 0%,rgba(2,17,13,.89) 34%,rgba(2,17,13,.52) 64%,rgba(2,17,13,.2) 100%),
+linear-gradient(180deg,rgba(4,20,16,.12),rgba(4,20,16,.82)),
+url("assets/godhealth-luxury-hero.jpg") center/cover no-repeat}
+.hero:after{background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:74px 74px}
+.hero-glow{position:absolute;width:680px;height:680px;left:-230px;top:100px;border-radius:50%;background:rgba(113,84,30,.14);filter:blur(90px)}
+.hero-copy{max-width:770px}
+.hero-signature{display:flex;align-items:center;gap:14px;color:var(--gold-light);font-size:9px;letter-spacing:2.2px;margin-bottom:35px}.hero-signature span{width:38px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.hero-signature span:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+.eyebrow{font-size:10px;letter-spacing:2.8px}
+h1{font-size:clamp(54px,5.7vw,83px);line-height:.99;letter-spacing:-.045em;text-shadow:0 6px 30px rgba(0,0,0,.28)}
+h1 em{color:#dec17e}
+.hero-lead{max-width:630px;font-size:18px;color:#d0d8d4}
+.trust-line{margin-top:24px;padding-top:21px;border-top:1px solid rgba(228,201,133,.2);width:max-content;max-width:100%}
+.scan-preview{padding:31px;border-radius:3px;border:1px solid rgba(238,214,158,.9);background:
+linear-gradient(135deg,rgba(255,255,255,.96),rgba(239,230,212,.94));box-shadow:0 45px 120px rgba(0,0,0,.62),0 0 0 8px rgba(5,24,19,.42);transform:rotate(.7deg)}
+.scan-preview:before{content:"";position:absolute;inset:8px;border:1px solid rgba(155,115,48,.26);pointer-events:none}
+.edition-label{display:block;text-align:right;font-size:7px;letter-spacing:1.7px;color:#8b764d;margin-bottom:15px}
+.report-top strong{font-size:27px}
+.report-seal{border:1px solid var(--gold);box-shadow:inset 0 0 0 3px var(--forest)}
+.score-ring{box-shadow:0 10px 35px rgba(100,70,20,.15)}
+.report-focus{border-radius:2px;border-left:3px solid var(--gold)}
+
+.pain-section{background:
+radial-gradient(circle at 8% 0,rgba(199,161,90,.1),transparent 25%),
+linear-gradient(135deg,#f8f4ec,#eee6d8)}
+.section-heading h2,.deliverable-copy h2,.final-cta h2,.founder-card h2{font-size:clamp(42px,4.4vw,62px);line-height:1.04}
+.pain-card{border-radius:2px;padding:38px 34px;border-color:rgba(124,98,53,.25);box-shadow:0 28px 70px rgba(38,31,19,.08);transition:transform .3s ease,box-shadow .3s ease}
+.pain-card:hover{transform:translateY(-5px);box-shadow:0 36px 85px rgba(38,31,19,.13)}
+.pain-card h3{font-size:27px;line-height:1.05}
+.truth-band{border-left:0;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);background:linear-gradient(90deg,#041a15,#0a2b23);padding:29px 34px}
+
+.framework-section{position:relative;background:
+radial-gradient(circle at 50% 0,rgba(154,115,48,.16),transparent 38%),
+linear-gradient(145deg,#061426,#031812)}
+.framework-card{border-radius:2px;padding:44px 35px;background:linear-gradient(145deg,rgba(255,255,255,.052),rgba(255,255,255,.018));backdrop-filter:blur(10px)}
+.framework-card.featured{box-shadow:0 30px 90px rgba(0,0,0,.27);transform:translateY(-12px)}
+.framework-card h3{font-size:33px}
+.framework-icon{border-radius:50%;box-shadow:0 0 0 7px rgba(199,161,90,.06)}
+
+.editorial-break{min-height:610px;position:relative;display:grid;place-items:center;text-align:center;background:url("assets/godhealth-transformation-path-v2.png") center/cover no-repeat}
+.editorial-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,15,12,.18),rgba(2,15,12,.82)),linear-gradient(90deg,rgba(2,15,12,.55),transparent 50%,rgba(2,15,12,.3))}
+.editorial-content{position:relative;max-width:950px;padding:70px 30px;color:#fff}
+.editorial-content blockquote{font-family:var(--serif);font-size:clamp(44px,5vw,70px);font-weight:500;line-height:1.05;margin:18px 0 32px;text-shadow:0 8px 40px rgba(0,0,0,.45)}
+.editorial-content>span{font-size:9px;font-weight:700;letter-spacing:3px;color:#e7d19d}
+
+.deliverables{background:
+linear-gradient(90deg,rgba(3,22,17,.97),rgba(3,22,17,.92)),
+url("assets/godhealth-luxury-hero.jpg") left center/cover no-repeat;border-top:1px solid rgba(199,161,90,.22)}
+.deliverable-list{border-color:rgba(228,201,133,.3)}
+.deliverable-list>div{padding:30px 0}
+.deliverable-list strong{font-size:25px}
+
+.proof-section{background:linear-gradient(135deg,#efe8dc,#faf7f0)}
+.proof-grid{gap:20px}
+.proof-grid blockquote{border-radius:2px;padding:38px;min-height:290px;box-shadow:0 26px 70px rgba(47,37,21,.07);border-top:2px solid var(--gold)}
+.proof-grid blockquote p{font-size:22px;line-height:1.5}
+
+.founder-section{background:
+radial-gradient(circle at 15% 50%,rgba(199,161,90,.13),transparent 28%),
+linear-gradient(145deg,#061426,#041a15)}
+.founder-monogram{border-width:1px;box-shadow:0 0 0 11px rgba(199,161,90,.05),inset 0 0 80px rgba(199,161,90,.08);display:flex;flex-direction:column}
+.founder-monogram span{font-family:var(--serif);font-size:66px;line-height:1}.founder-monogram small{font-size:8px;letter-spacing:2.5px;margin-top:10px}
+
+.path-section{position:relative;background:
+linear-gradient(180deg,rgba(3,22,17,.94),rgba(3,22,17,.98)),
+url("assets/godhealth-transformation-path-v2.png") center/cover no-repeat}
+.path-grid{border-color:rgba(199,161,90,.3);box-shadow:0 35px 90px rgba(0,0,0,.28)}
+.path-step{background:rgba(3,22,17,.9);padding:42px 36px}.path-step.active{background:linear-gradient(145deg,rgba(199,161,90,.17),rgba(4,31,24,.94))}
+.path-step h3{font-size:29px}
+
+.faq-section{background:linear-gradient(135deg,#faf7ef,#eee5d6)}
+.final-cta{min-height:650px;display:grid;place-items:center;background:
+linear-gradient(90deg,rgba(2,17,13,.95),rgba(2,17,13,.68),rgba(2,17,13,.86)),
+url("assets/godhealth-luxury-hero.jpg") center/cover no-repeat}
+.final-cta h2{font-size:clamp(48px,5vw,72px)}
+.site-footer{background:#02110d;border-top-color:rgba(199,161,90,.3)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;background-position:58% center}
+  .hero-copy{max-width:700px}
+  .editorial-break{min-height:520px}
+  .framework-card.featured{transform:none}
+}
+@media(max-width:600px){
+  .announcement{font-size:8px;letter-spacing:1.35px}
+  .hero{padding-top:68px;background-position:64% center;background-image:linear-gradient(180deg,rgba(2,17,13,.96),rgba(2,17,13,.8)),url("assets/godhealth-luxury-hero.jpg")}
+  .hero-signature{font-size:8px;letter-spacing:1.4px}
+  h1{font-size:49px}
+  .scan-preview{padding:24px 20px}
+  .editorial-break{min-height:500px;background-position:58% center}
+  .editorial-content blockquote{font-size:39px}
+  .pain-card:hover{transform:none}
+  .section-heading h2,.deliverable-copy h2,.final-cta h2,.founder-card h2{font-size:39px}
+}
+
+/* Final clarity pass: centered mobile hero and clean scan section. */
+.deliverables{
+  background:#fff;
+  color:#10231d;
+}
+.deliverables .eyebrow{color:#8a692d}
+.deliverable-copy h2{color:#10231d}
+.deliverable-copy>p{color:#53615c}
+.value-equation>span{background:#f8f5ed;border-color:#ddd1b9}
+.value-equation strong{color:#10231d}
+.value-equation small{color:#60706a}
+.deliverable-list{background:#f8f5ed;border:1px solid #ddd1b9;box-shadow:0 24px 70px rgba(16,35,29,.08)}
+.deliverable-list>div{border-color:#ddd1b9}
+.deliverable-list strong{color:#10231d}
+.deliverable-list small{color:#53615c}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);justify-items:center}
+  .hero-copy,.hero-media{width:100%;max-width:720px;margin-inline:auto;text-align:center;min-width:0}
+  .hero-lead,.mission-line{margin-left:auto;margin-right:auto}
+  .hero-signature,.trust-line{justify-content:center}
+}
+
+@media(max-width:600px){
+  .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:100%;padding:44px 18px 64px;gap:34px;overflow:hidden}
+  .hero-copy,.hero-media{width:100%;max-width:100%;margin:0 auto;text-align:center;min-width:0;box-sizing:border-box}
+  .hero-copy>*{max-width:100%}
+  .hero-signature,.trust-line{justify-content:center}
+  .hero .button-primary{margin-left:auto;margin-right:auto}
+  .mission-line{border-left:0;border-top:2px solid var(--gold);text-align:center}
+  .hero-media{padding-left:0;padding-right:0}
+  .hero-video-frame{width:100%;max-width:100%;margin:0 auto;aspect-ratio:16/9;overflow:hidden}
+  .hero-video-frame video{width:100%;height:100%;object-fit:cover}
+  .hero-media-caption{align-items:center;text-align:center}
+  .hero-media-caption>div{justify-content:center}
+}
+
+/* Shared GodHealth brand assets from the current main and sales sites */
+.brand{min-width:142px}
+.brand-logo{display:block;width:142px;height:58px;object-fit:contain;object-position:left center}
+.brand-name{display:none}
+.site-footer .brand-logo{width:128px;height:72px}
+
+.hero{
+  background:
+  linear-gradient(90deg,rgba(3,17,13,.985) 0%,rgba(3,17,13,.92) 37%,rgba(5,18,28,.68) 68%,rgba(5,18,28,.35) 100%),
+  linear-gradient(180deg,rgba(4,20,16,.06),rgba(4,20,16,.6)),
+  url("assets/brand-hero.jpg") center/cover no-repeat
+}
+.scan-preview{background:linear-gradient(145deg,rgba(255,253,248,.97),rgba(241,231,211,.95));box-shadow:0 45px 120px rgba(0,0,0,.68),0 0 0 8px rgba(5,24,19,.48)}
+
+.pain-card{padding:0;overflow:hidden}
+.pain-card figure{margin:0;height:210px;overflow:hidden;position:relative}
+.pain-card figure:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(4,26,21,.3))}
+.pain-card figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s ease}
+.pain-card:hover figure img{transform:scale(1.035)}
+.pain-card>div{padding:30px 32px 34px}
+.pain-card>div>span{font-family:var(--serif);color:var(--gold-dark);font-size:13px}
+.pain-card h3{margin-top:20px}
+
+.framework-card{padding:0;overflow:hidden}
+.framework-card figure{margin:0;height:220px;overflow:hidden;position:relative}
+.framework-card figure:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 44%,rgba(4,24,19,.88))}
+.framework-card figure img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.88) contrast(1.04);transition:transform .6s ease}
+.framework-card:hover figure img{transform:scale(1.035)}
+.framework-copy{padding:0 34px 40px;position:relative;margin-top:-26px}
+.framework-copy .framework-icon{position:relative;z-index:2;background:#071c17}
+.framework-card.featured{transform:translateY(-12px)}
+
+.proof-grid blockquote footer{display:flex;align-items:center;gap:14px}
+.proof-grid blockquote footer img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #d6b46c;box-shadow:0 8px 20px rgba(40,30,14,.16)}
+.proof-grid blockquote footer>span{display:grid;color:var(--ink)}
+.proof-grid blockquote footer small{color:#79837f;font-size:11px}
+
+.founder-card{grid-template-columns:330px 1fr;gap:64px}
+.founder-photo{margin:0;position:relative;border:1px solid rgba(228,201,133,.55);padding:8px;background:rgba(255,255,255,.035);box-shadow:0 35px 90px rgba(0,0,0,.35)}
+.founder-photo img{display:block;width:100%;height:390px;object-fit:cover;object-position:center}
+.founder-photo figcaption{position:absolute;left:24px;bottom:24px;padding:8px 12px;background:rgba(3,22,17,.88);border-left:2px solid var(--gold);color:#ead9aa;font-size:8px;font-weight:700;letter-spacing:1.8px;backdrop-filter:blur(8px)}
+
+.product-mini{height:108px;display:flex;align-items:flex-end;margin:24px 0 -42px 18px;filter:drop-shadow(0 16px 18px rgba(0,0,0,.38))}
+.product-mini img{width:58px;height:88px;object-fit:cover;border:1px solid rgba(228,201,133,.65);transform:rotate(-4deg)}
+.product-mini img+img{margin-left:-12px;transform:rotate(6deg) translateY(-4px)}
+
+@media(max-width:900px){
+  .hero{background-position:62% center}
+  .founder-card{grid-template-columns:260px 1fr;gap:40px}
+  .founder-photo img{height:340px}
+}
+@media(max-width:600px){
+  .brand{min-width:auto}
+  .brand-logo{width:112px;height:54px}
+  .hero{background-image:linear-gradient(180deg,rgba(2,17,13,.97),rgba(2,17,13,.82)),url("assets/brand-hero.jpg");background-position:62% center}
+  .pain-card figure{height:200px}
+  .framework-card figure{height:210px}
+  .framework-card.featured{transform:none}
+  .founder-card{grid-template-columns:1fr;text-align:left}
+  .founder-photo{max-width:350px;margin:auto}
+  .founder-photo img{height:360px}
+  .credentials{justify-content:flex-start}
+  .site-footer .brand-logo{width:118px}
+  .header-actions{gap:8px}
+  .overflow-toggle{width:46px;height:46px}
+  .overflow-panel{position:fixed;top:78px;right:14px;left:14px;width:auto}
+  .overflow-panel:before{right:18px}
+}
+
+/* Premium interaction system, matched to the live GodHealth sales experience */
+.purchase-link{
+  min-height:64px;
+  padding:0 32px;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:var(--gold);
+  border:1px solid rgba(255,255,255,.62);
+  box-shadow:0 0 0 1px rgba(184,148,79,.35),0 16px 42px rgba(184,148,79,.38);
+  color:#061711!important;
+  font-size:13px;
+  font-weight:950;
+  letter-spacing:.105em;
+  animation:purchasePulse 2.6s ease-in-out infinite;
+}
+.purchase-link:before{
+  display:none;
+}
+.purchase-link>*{position:relative;z-index:1}
+.purchase-link:hover,.purchase-link:focus-visible{
+  background:var(--gold);
+  filter:none;
+  transform:translateY(-3px) scale(1.025);
+  box-shadow:0 0 0 3px rgba(184,148,79,.24),0 22px 55px rgba(184,148,79,.5);
+  outline:none;
+}
+.purchase-link:active{transform:translateY(0) scale(.985)}
+.purchase-link>span{animation:arrowInvite 1.25s ease-in-out infinite}
+.site-header .purchase-link{min-height:48px;padding:0 22px;font-size:11px}
+
+@keyframes purchasePulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(184,148,79,.34),0 16px 42px rgba(184,148,79,.34)}
+  50%{box-shadow:0 0 0 9px rgba(184,148,79,0),0 22px 58px rgba(184,148,79,.56)}
+}
+@keyframes buttonShine{0%,42%{left:-55%}68%,100%{left:125%}}
+@keyframes arrowInvite{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+
+/* Calm editorial movement: photography opens first, copy follows */
+.kinetic-heading{animation:headingArrival 1s cubic-bezier(.2,.75,.2,1) both}
+.hero-lead{animation:softArrival 1s .14s cubic-bezier(.2,.75,.2,1) both}
+.hero .purchase-link{animation:softArrival 1s .25s cubic-bezier(.2,.75,.2,1) both,purchasePulse 2.6s 1.25s ease-in-out infinite}
+@keyframes headingArrival{from{opacity:0;transform:translateY(28px);letter-spacing:-.065em}to{opacity:1;transform:none;letter-spacing:-.045em}}
+@keyframes softArrival{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+.pain-card figure:before,.framework-card figure:before,.founder-photo:before{
+  content:"";
+  position:absolute;
+  z-index:3;
+  inset:0;
+  background:linear-gradient(135deg,#b58d47,#e2c980);
+  transform-origin:right center;
+  transform:scaleX(1);
+  transition:transform .9s cubic-bezier(.76,0,.24,1) .12s;
+  pointer-events:none;
+}
+.pain-card.reveal figure img,.framework-card.reveal figure img,.founder-card.reveal .founder-photo img{transform:scale(1.08);transition:transform 1.25s cubic-bezier(.2,.75,.2,1) .1s}
+.pain-card.reveal.visible figure:before,.framework-card.reveal.visible figure:before,.founder-card.reveal.visible .founder-photo:before{transform:scaleX(0)}
+.pain-card.reveal.visible figure img,.framework-card.reveal.visible figure img,.founder-card.reveal.visible .founder-photo img{transform:scale(1)}
+.section-heading.reveal h2,.deliverable-copy.reveal h2,.final-cta .reveal h2{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .75s ease .1s,transform .75s cubic-bezier(.2,.75,.2,1) .1s;
+}
+.section-heading.reveal.visible h2,.deliverable-copy.reveal.visible h2,.final-cta .reveal.visible h2{opacity:1;transform:none}
+
+/* Complete client stories */
+.proof-section{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 8% 12%,rgba(199,161,90,.18),transparent 26%),
+    radial-gradient(circle at 92% 75%,rgba(9,54,43,.09),transparent 30%),
+    linear-gradient(145deg,#f5efe4,#fffdf8 62%,#eee5d7);
+}
+.proof-section:before{
+  content:"GH";
+  position:absolute;
+  right:-40px;
+  top:60px;
+  color:rgba(153,115,51,.045);
+  font:600 260px/1 var(--serif);
+  letter-spacing:-.09em;
+  pointer-events:none;
+}
+.proof-section>.section-heading{position:relative;z-index:1;max-width:850px}
+.story-shell{
+  position:relative;
+  z-index:1;
+  max-width:1180px;
+  margin:58px auto 0;
+  display:grid;
+  grid-template-columns:300px minmax(0,1fr);
+  border:1px solid rgba(139,102,44,.3);
+  background:#fffdf8;
+  box-shadow:0 38px 110px rgba(47,36,19,.14);
+}
+.story-portraits{
+  padding:22px;
+  background:linear-gradient(160deg,#061f19,#0a2b23);
+  border-right:1px solid rgba(199,161,90,.38);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.story-tab{
+  width:100%;
+  min-height:86px;
+  padding:12px;
+  display:grid;
+  grid-template-columns:58px 1fr;
+  align-items:center;
+  gap:14px;
+  border:1px solid transparent;
+  background:transparent;
+  color:#fff;
+  text-align:left;
+  font:inherit;
+  cursor:pointer;
+  transition:background .25s ease,border-color .25s ease,transform .25s ease;
+}
+.story-tab:hover{background:rgba(255,255,255,.045);transform:translateX(3px)}
+.story-tab.active{background:rgba(199,161,90,.11);border-color:rgba(228,201,133,.45)}
+.story-tab img{width:58px;height:58px;object-fit:cover;border-radius:50%;filter:saturate(.82);border:1px solid rgba(228,201,133,.5)}
+.story-tab.active img{box-shadow:0 0 0 4px rgba(199,161,90,.12);filter:none}
+.story-tab span{display:grid;gap:2px;min-width:0}
+.story-tab strong{font-family:var(--serif);font-size:18px;font-weight:600;color:#fff}
+.story-tab small{font-size:9px;line-height:1.35;color:#aabbb4;letter-spacing:.02em}
+.story-tab.active small{color:#e1c986}
+
+.story-stage{position:relative;padding:46px 48px 32px;min-width:0;background:linear-gradient(145deg,rgba(255,255,255,.9),rgba(248,242,231,.76))}
+.story-slide{display:grid;grid-template-columns:190px minmax(0,1fr);gap:42px;align-items:start;animation:storyIn .62s cubic-bezier(.2,.75,.2,1) both}
+.story-slide[hidden]{display:none}
+.story-photo{position:relative;margin:0;overflow:hidden;border:1px solid rgba(153,115,51,.36);box-shadow:0 22px 50px rgba(53,39,17,.16)}
+.story-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(3,24,18,.68));pointer-events:none}
+.story-photo img{display:block;width:100%;height:245px;object-fit:cover;transition:transform .8s ease}
+.story-slide.active .story-photo img{animation:portraitReveal .9s cubic-bezier(.2,.75,.2,1) both}
+.story-photo span{position:absolute;z-index:1;left:14px;bottom:12px;color:#f3e3b7;font-size:8px;font-weight:800;letter-spacing:1.5px}
+.story-slide blockquote{margin:0;position:relative}
+.story-slide blockquote:before{content:"“";position:absolute;right:0;top:-38px;color:rgba(184,148,79,.18);font:600 110px/1 var(--serif)}
+.story-rating{color:#b58b3f;font-size:13px;letter-spacing:4px;margin-bottom:14px}
+.story-slide h3{max-width:600px;margin:0 0 18px;color:#10231d;font:600 clamp(29px,3vw,40px)/1.05 var(--serif);letter-spacing:-.025em}
+.story-slide p{position:relative;color:#4e5b56;font:500 15px/1.82 var(--sans);margin:0}
+.story-slide footer{display:grid;margin-top:24px;padding-top:20px;border-top:1px solid rgba(153,115,51,.22)}
+.story-slide footer strong{color:#10231d;font:600 20px/1.2 var(--serif)}
+.story-slide footer span{color:#8c754b;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+.story-controls{display:flex;align-items:center;justify-content:flex-end;gap:14px;margin-top:28px;color:#8c754b;font-size:10px;letter-spacing:1.5px;font-weight:800}
+.story-arrow{width:42px;height:42px;border:1px solid rgba(153,115,51,.35);background:transparent;color:#17342b;font-size:18px;cursor:pointer;transition:.2s ease}
+.story-arrow:hover{background:#061f19;color:#e4c985;border-color:#061f19;transform:translateY(-2px)}
+@keyframes storyIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes portraitReveal{from{transform:scale(1.08);filter:sepia(.3)}to{transform:scale(1);filter:none}}
+
+@media(max-width:900px){
+  .story-shell{grid-template-columns:1fr}
+  .story-portraits{border-right:0;border-bottom:1px solid rgba(199,161,90,.38);display:grid;grid-template-columns:repeat(4,1fr);padding:12px;gap:6px}
+  .story-tab{grid-template-columns:1fr;justify-items:center;text-align:center;padding:10px 6px;min-height:106px}
+  .story-tab small{display:none}
+  .story-tab:hover{transform:translateY(-2px)}
+  .story-tab strong{font-size:14px}
+}
+@media(max-width:600px){
+  .purchase-link{min-height:58px;padding:0 20px;font-size:11px;letter-spacing:.085em}
+  .story-shell{margin-top:36px}
+  .story-portraits{overflow-x:auto;grid-template-columns:repeat(4,90px);justify-content:start}
+  .story-stage{padding:28px 22px 22px}
+  .story-slide{grid-template-columns:1fr;gap:26px}
+  .story-photo{max-width:190px}
+  .story-photo img{height:190px}
+  .story-slide h3{font-size:31px}
+  .story-slide p{font-size:14px;line-height:1.75}
+  .story-controls{justify-content:space-between}
+  .proof-section:before{font-size:150px}
+}
+
+/* GodHealth High-End Vitality Edition */
+body{
+  background:#020e0b;
+  background-image:radial-gradient(circle at 50% -15%,rgba(199,161,90,.1),transparent 34%);
+}
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:80;
+  background:linear-gradient(90deg,rgba(2,18,14,.94),rgba(5,20,34,.9));
+  box-shadow:0 18px 60px rgba(0,0,0,.22);
+}
+.site-header:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(228,201,133,.56),transparent)}
+.site-header nav a{position:relative;padding:30px 0;color:#d5dfdb}
+.site-header nav a:after{content:"";position:absolute;left:0;right:100%;bottom:20px;height:1px;background:var(--gold-light);transition:right .25s ease}
+.site-header nav a:hover:after{right:0}
+
+.hero{
+  min-height:calc(100vh - 120px);
+  grid-template-columns:minmax(0,1fr) minmax(460px,.92fr);
+  gap:68px;
+  padding-top:90px;
+  padding-bottom:96px;
+  background:
+    linear-gradient(90deg,rgba(2,17,13,.97) 0%,rgba(2,17,13,.87) 38%,rgba(4,17,28,.38) 67%,rgba(4,17,28,.18) 100%),
+    linear-gradient(180deg,rgba(2,15,12,.04),rgba(2,15,12,.52)),
+    url("assets/brand-hero.jpg") center/cover no-repeat;
+  box-shadow:inset 0 -1px 0 rgba(228,201,133,.28);
+}
+.hero:before{content:"";position:absolute;z-index:0;inset:0;background:radial-gradient(circle at 76% 45%,rgba(224,193,123,.17),transparent 28%),linear-gradient(112deg,transparent 62%,rgba(255,255,255,.035));pointer-events:none}
+.hero-copy{max-width:720px}
+.hero-copy:before{content:"GODHEALTH · PRIVATE EDITION";display:block;width:max-content;margin-bottom:18px;padding:6px 10px;border-left:2px solid var(--gold);background:rgba(2,18,14,.48);color:#dbc17f;font-size:8px;font-weight:800;letter-spacing:2px;backdrop-filter:blur(8px)}
+.hero h1{max-width:760px;text-shadow:0 10px 42px rgba(0,0,0,.52)}
+.hero h1 em{color:#f0d58f;text-shadow:0 0 42px rgba(224,193,123,.22)}
+.hero-lead{color:#e1e8e5;font-size:18px;text-shadow:0 3px 20px rgba(0,0,0,.55)}
+.trust-line{color:#d2ded9;border-top-color:rgba(228,201,133,.4)}
+.trust-line span{padding:5px 0}
+
+.hero-media{
+  position:relative;
+  z-index:2;
+  padding:10px;
+  border:1px solid rgba(239,213,151,.64);
+  background:linear-gradient(145deg,rgba(255,255,255,.11),rgba(255,255,255,.025));
+  box-shadow:0 42px 110px rgba(0,0,0,.62),0 0 0 8px rgba(3,22,17,.34),0 0 75px rgba(199,161,90,.14);
+  backdrop-filter:blur(13px);
+}
+.hero-media:before,.hero-media:after{content:"";position:absolute;width:64px;height:64px;pointer-events:none}
+.hero-media:before{top:-6px;left:-6px;border-top:1px solid #eed697;border-left:1px solid #eed697}
+.hero-media:after{right:-6px;bottom:-6px;border-right:1px solid #eed697;border-bottom:1px solid #eed697}
+.video-edition{min-height:42px;padding:4px 8px 10px;display:flex;align-items:center;justify-content:space-between;gap:15px;color:#e6d39e}
+.video-edition span{font-size:9px;font-weight:900;letter-spacing:2.2px}
+.video-edition small{font-size:8px;letter-spacing:1.3px;color:#9eafa8}
+.hero-video-frame{position:relative;overflow:hidden;background:#000;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1)}
+.hero-video-frame video{display:block;width:100%;height:100%;object-fit:cover;cursor:pointer}
+.video-vignette{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.07),transparent 58%,rgba(0,0,0,.62)),radial-gradient(circle,transparent 52%,rgba(1,10,7,.34));box-shadow:inset 0 0 42px rgba(0,0,0,.35)}
+.video-unmute{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  min-width:min(380px,calc(100% - 38px));
+  padding:15px 21px;
+  border:1px solid rgba(255,244,207,.9);
+  border-radius:999px;
+  background:linear-gradient(135deg,#fff0b3,#d8ad4d 50%,#9e6d20);
+  color:#1d1608;
+  font:900 11px/1.25 var(--sans);
+  letter-spacing:.07em;
+  cursor:pointer;
+  box-shadow:0 20px 54px rgba(0,0,0,.56),0 0 36px rgba(239,213,151,.48),inset 0 1px 0 rgba(255,255,255,.75);
+  transition:opacity .25s ease,visibility .25s ease,transform .25s ease;
+  animation:videoInvitation 2.8s ease-in-out infinite;
+}
+.video-unmute span{margin-right:8px;font-size:16px}
+.video-unmute:hover{transform:translate(-50%,-54%) scale(1.025)}
+.hero-media.sound-enabled .video-unmute{opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,-45%)}
+.video-actions{position:absolute;z-index:5;left:12px;bottom:13px;display:flex;gap:7px}
+.video-actions button{width:38px;height:38px;padding:0;border:1px solid rgba(244,215,127,.62);border-radius:50%;background:rgba(2,18,14,.78);color:#f1d894;font-size:14px;cursor:pointer;backdrop-filter:blur(10px);box-shadow:0 8px 20px rgba(0,0,0,.4);transition:.2s ease}
+.video-actions button:hover{background:#c7a15a;color:#061711;transform:translateY(-2px)}
+.video-progress{position:absolute;z-index:5;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.16);overflow:hidden}
+.video-progress span{display:block;width:100%;height:100%;transform:scaleX(0);transform-origin:left center;background:linear-gradient(90deg,#9b7330,#f1d894);box-shadow:0 0 12px #f1d894;will-change:transform}
+.hero-media-caption{padding:15px 10px 8px;display:grid;gap:4px;color:#fff}
+.hero-media-caption>div{display:flex;align-items:center;gap:9px}
+.hero-media-caption strong{font:600 17px/1.25 var(--serif)}
+.hero-media-caption small{padding-left:17px;color:#9fb0aa;font-size:9px;letter-spacing:.07em}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#d7b861;box-shadow:0 0 0 4px rgba(215,184,97,.12),0 0 15px rgba(215,184,97,.65)}
+.hero-media:fullscreen{width:100vw;height:100vh;padding:0;border:0;background:#000;display:grid;place-items:center}
+.hero-media:fullscreen .video-edition,.hero-media:fullscreen .hero-media-caption{display:none}
+.hero-media:fullscreen .hero-video-frame{width:100vw;max-height:100vh;aspect-ratio:16/9}
+@keyframes videoInvitation{0%,100%{box-shadow:0 20px 54px rgba(0,0,0,.56),0 0 22px rgba(239,213,151,.32)}50%{box-shadow:0 25px 64px rgba(0,0,0,.66),0 0 44px rgba(239,213,151,.7)}}
+
+.pain-section,.framework-section,.deliverables,.proof-section,.founder-section,.path-section,.faq-section,.final-cta{position:relative;isolation:isolate}
+.pain-section:after,.framework-section:after,.deliverables:after,.proof-section:after,.founder-section:after,.path-section:after,.faq-section:after{content:"";position:absolute;z-index:-1;left:50%;bottom:0;width:min(1120px,82%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(199,161,90,.44),transparent)}
+.pain-section{
+  background:
+    linear-gradient(90deg,rgba(248,244,236,.96),rgba(248,244,236,.86) 55%,rgba(248,244,236,.72)),
+    url("assets/godhealth-transformation-path-v2.png") center/cover no-repeat;
+}
+.pain-card{border-color:rgba(153,115,51,.34);box-shadow:0 28px 75px rgba(35,26,12,.14);background:rgba(255,253,248,.92);backdrop-filter:blur(7px)}
+.pain-card figure{height:235px}
+.pain-card figure:after{background:linear-gradient(180deg,transparent 58%,rgba(4,26,21,.18))}
+.pain-card figure img{filter:saturate(1.08) contrast(1.04)}
+.truth-band{box-shadow:0 26px 70px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.05)}
+
+.framework-section{
+  background:
+    linear-gradient(120deg,rgba(4,18,31,.94),rgba(3,27,21,.78)),
+    url("assets/robin-faith-card.jpg") center/cover no-repeat;
+}
+.framework-section .section-heading>p:last-child{color:#c6d2ce}
+.framework-card{border-color:rgba(228,201,133,.28);background:linear-gradient(145deg,rgba(5,28,23,.88),rgba(7,19,31,.72));box-shadow:0 28px 75px rgba(0,0,0,.28)}
+.framework-card figure{height:250px}
+.framework-card figure img{filter:saturate(1.05) contrast(1.06)}
+.framework-card figure:after{background:linear-gradient(180deg,transparent 54%,rgba(4,24,19,.78))}
+.framework-card.featured{border-color:#d9b866;box-shadow:0 36px 95px rgba(0,0,0,.38),0 0 50px rgba(199,161,90,.11)}
+
+.editorial-break{min-height:680px;background-position:center 44%;background-attachment:fixed}
+.editorial-overlay{background:linear-gradient(180deg,rgba(2,15,12,.06),rgba(2,15,12,.64)),linear-gradient(90deg,rgba(2,15,12,.35),transparent 50%,rgba(2,15,12,.2))}
+.editorial-content{max-width:1020px}
+.editorial-content blockquote{text-shadow:0 12px 50px rgba(0,0,0,.7)}
+
+.deliverables{
+  background:
+    linear-gradient(90deg,rgba(3,22,17,.94) 0%,rgba(3,22,17,.79) 55%,rgba(3,22,17,.55)),
+    url("assets/brand-hero.jpg") center/cover no-repeat;
+}
+.deliverable-copy>p{color:#d0dad6}
+.deliverable-list{padding:8px 28px;border:1px solid rgba(228,201,133,.28);background:rgba(3,19,15,.52);backdrop-filter:blur(12px);box-shadow:0 30px 80px rgba(0,0,0,.25)}
+
+.proof-section{background:linear-gradient(145deg,rgba(245,239,228,.94),rgba(255,253,248,.91) 58%,rgba(238,229,215,.9)),url("assets/godhealth-transformation-path-v2.png") center/cover no-repeat}
+.story-shell{box-shadow:0 45px 120px rgba(47,36,19,.2),0 0 0 1px rgba(255,255,255,.75)}
+
+.founder-section{
+  background:
+    linear-gradient(90deg,rgba(5,20,35,.96) 0%,rgba(3,27,21,.83) 58%,rgba(3,27,21,.56)),
+    url("assets/robin-founder.jpg") right 28%/cover no-repeat;
+}
+.founder-card{max-width:1080px;padding:38px;border:1px solid rgba(228,201,133,.28);background:rgba(3,20,17,.52);backdrop-filter:blur(15px);box-shadow:0 35px 95px rgba(0,0,0,.35)}
+.founder-photo{border-color:rgba(239,213,151,.72);box-shadow:0 38px 100px rgba(0,0,0,.48),0 0 45px rgba(199,161,90,.11)}
+.founder-card p{color:#d0d9d6}
+
+.path-section{background:linear-gradient(180deg,rgba(3,22,17,.78),rgba(3,22,17,.9)),url("assets/godhealth-transformation-path-v2.png") center/cover no-repeat;background-attachment:fixed}
+.path-step{background:rgba(3,22,17,.78);backdrop-filter:blur(12px);transition:transform .3s ease,background .3s ease}
+.path-step:hover{transform:translateY(-6px);background:rgba(8,42,32,.9)}
+.path-step.active{background:linear-gradient(145deg,rgba(199,161,90,.25),rgba(4,31,24,.84))}
+
+.faq-section{background:linear-gradient(110deg,rgba(250,247,239,.97),rgba(238,229,214,.88)),url("assets/godhealth-daily-stewardship.jpg") right center/cover no-repeat}
+.faq-list{padding:8px 28px;background:rgba(255,253,248,.68);border:1px solid rgba(153,115,51,.2);backdrop-filter:blur(10px)}
+.final-cta{background:linear-gradient(90deg,rgba(2,17,13,.86),rgba(2,17,13,.44),rgba(2,17,13,.7)),url("assets/brand-hero.jpg") center/cover no-repeat;background-attachment:fixed}
+.final-cta:after{content:"";position:absolute;inset:22px;border:1px solid rgba(228,201,133,.26);pointer-events:none}
+.site-footer{background:linear-gradient(90deg,#020e0b,#061426)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:54px;min-height:auto;background-position:57% center}
+  .hero-media{width:min(720px,100%);margin:0 auto}
+  .editorial-break,.path-section,.final-cta{background-attachment:scroll}
+  .founder-section{background-position:70% center}
+}
+@media(max-width:600px){
+  .site-header{top:0}
+  .hero{padding-top:52px;padding-bottom:70px;background-image:linear-gradient(180deg,rgba(2,17,13,.9),rgba(2,17,13,.68)),url("assets/brand-hero.jpg");background-position:58% center}
+  .hero-copy:before{font-size:7px;letter-spacing:1.4px}
+  .hero-media{padding:7px;box-shadow:0 30px 75px rgba(0,0,0,.55),0 0 0 4px rgba(3,22,17,.34)}
+  .video-edition{min-height:36px}
+  .video-edition span{font-size:8px;letter-spacing:1.4px}
+  .video-edition small{font-size:7px}
+  .video-unmute{min-width:calc(100% - 22px);padding:11px 12px;font-size:9px;letter-spacing:.045em}
+  .video-actions{left:8px;bottom:9px}
+  .video-actions button{width:32px;height:32px;font-size:12px}
+  .hero-media-caption strong{font-size:15px}
+  .hero-media-caption small{padding-left:16px;font-size:8px;line-height:1.5}
+  .pain-card figure,.framework-card figure{height:220px}
+  .founder-card{padding:20px}
+  .deliverable-list,.faq-list{padding:4px 18px}
+  .final-cta:after{inset:10px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .purchase-link,.purchase-link:before,.purchase-link>span,.hero .purchase-link,.kinetic-heading,.hero-lead,.story-slide,.story-slide.active .story-photo img,.overflow-panel,.video-unmute{animation:none!important}
+  .pain-card figure:before,.framework-card figure:before,.founder-photo:before{display:none}
+  .pain-card.reveal figure img,.framework-card.reveal figure img,.founder-card.reveal .founder-photo img,.section-heading.reveal h2,.deliverable-copy.reveal h2,.final-cta .reveal h2{opacity:1;transform:none;transition:none}
+}
+
+/* Refined GodHealth green system and calm, high-end interactions */
+:root{--deep-forest:#061f19;--deep-forest-2:#082820;--deep-forest-3:#0b3228}
+body,.site-header,.framework-section,.founder-section,.final-cta{background-color:var(--deep-forest)}
+.framework-section{background-image:radial-gradient(circle at 50% 0,rgba(44,111,89,.2),transparent 40%),linear-gradient(145deg,#082820,#061f19)}
+.hero-video-frame{background:var(--deep-forest);box-shadow:0 32px 88px rgba(1,31,23,.34)}
+.video-vignette{background:transparent!important;box-shadow:none!important}
+.hero-video-frame:after{background:linear-gradient(90deg,var(--deep-forest),rgba(6,31,25,.08),var(--deep-forest))}
+.video-fullscreen{background:rgba(6,31,25,.78)}
+.scan-preview,.founder-photo,.path-grid,.framework-card.featured{box-shadow:0 34px 90px rgba(1,31,23,.34)}
+h1,.editorial-content blockquote{text-shadow:0 8px 34px rgba(1,31,23,.28)}
+
+/* Keep Robin's video completely unobscured: no dark overlay or surrounding shadow. */
+.hero-media{background:#061f19;box-shadow:none!important;backdrop-filter:none}
+.hero-video-frame{box-shadow:none!important}
+.hero-video-frame video{opacity:1!important;filter:none!important}
+.hero-media:fullscreen{background:#061f19}
+.video-actions button{box-shadow:0 8px 20px rgba(1,31,23,.34);transition:transform .38s cubic-bezier(.2,.78,.2,1),background-color .38s ease,color .38s ease}
+@media(max-width:600px){.hero-media{box-shadow:none!important}}
+
+.button,.purchase-link,.path-button,.overflow-panel a,.story-tab,.story-arrow{
+  transition:transform .42s cubic-bezier(.2,.78,.2,1),background-color .42s cubic-bezier(.2,.78,.2,1),border-color .42s cubic-bezier(.2,.78,.2,1),color .42s cubic-bezier(.2,.78,.2,1),box-shadow .42s cubic-bezier(.2,.78,.2,1),filter .42s cubic-bezier(.2,.78,.2,1),opacity .42s ease;
+  will-change:transform
+}
+.button:hover,.purchase-link:hover,.path-button:hover{transform:translateY(-3px);filter:brightness(1.025)}
+.button:active,.purchase-link:active,.path-button:active{transform:translateY(-1px) scale(.99);transition-duration:.16s}
+
+.alignment-section{padding:110px max(28px,calc((100vw - 1160px)/2));background:linear-gradient(180deg,#061f19,#082820);position:relative;overflow:hidden}
+.alignment-section:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:-260px;top:80px;background:rgba(199,161,90,.08);filter:blur(40px)}
+.alignment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:54px;position:relative}
+.alignment-card{overflow:hidden;border:1px solid rgba(199,161,90,.32);background:#082820;box-shadow:0 28px 72px rgba(1,31,23,.32)}
+.alignment-card figure{margin:0;aspect-ratio:3/2;overflow:hidden;background:#0b3228}
+.alignment-card figure img{width:100%;height:100%;display:block;object-fit:cover;transition:transform 1s cubic-bezier(.2,.75,.2,1)}
+.alignment-card:hover figure img{transform:scale(1.025)}
+.alignment-card>div{padding:34px 34px 38px}
+.alignment-card span{color:var(--gold);font-size:9px;font-weight:800;letter-spacing:2px}
+.alignment-card h3{font-family:var(--serif);font-size:clamp(25px,2.3vw,34px);line-height:1.2;margin:11px 0 15px}
+.alignment-card p{color:#b8c7c1;margin:0;font-size:15px}
+.alignment-card-positive{background:linear-gradient(145deg,#0b3228,#061f19);border-color:rgba(224,193,123,.62)}
+
+.path-section{background:linear-gradient(180deg,rgba(6,31,25,.96),rgba(8,40,32,.98)),url("assets/godhealth-transformation-path-v2.png") center/cover no-repeat}
+.path-grid{grid-template-columns:.82fr 1.25fr 1fr;gap:1px;background:rgba(199,161,90,.34)}
+.path-step{background:rgba(6,31,25,.96);padding:38px 30px;display:flex;flex-direction:column;min-width:0}
+.path-step.active{background:linear-gradient(145deg,rgba(199,161,90,.13),#082820)}
+.path-step small{margin-top:24px}
+.path-step p{min-height:68px}
+.bundle-showcase{height:222px;display:flex;align-items:flex-end;justify-content:center;margin:18px -10px 27px;padding:22px 13px 12px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 110%,rgba(199,161,90,.19),transparent 58%)}
+.bundle-showcase img{width:62px;aspect-ratio:760/984;object-fit:cover;margin:0 -18px;border:1px solid rgba(255,255,255,.25);box-shadow:0 15px 26px rgba(1,31,23,.45);transform-origin:bottom center}
+.bundle-showcase img:nth-child(1){transform:rotate(-12deg) translateY(14px)}
+.bundle-showcase img:nth-child(2){transform:rotate(-8deg) translateY(6px)}
+.bundle-showcase img:nth-child(3){transform:rotate(-4deg)}
+.bundle-showcase img:nth-child(4){transform:translateY(-6px);z-index:3}
+.bundle-showcase img:nth-child(5){transform:rotate(4deg)}
+.bundle-showcase img:nth-child(6){transform:rotate(8deg) translateY(6px)}
+.bundle-showcase img:nth-child(7){transform:rotate(11deg) translateY(12px)}
+.bundle-showcase img:nth-child(8){transform:rotate(14deg) translateY(18px)}
+.coaching-showcase{margin:18px 0 27px;aspect-ratio:4/3;overflow:hidden;border:1px solid rgba(199,161,90,.4)}
+.coaching-showcase img{width:100%;height:100%;display:block;object-fit:cover;transition:transform 1s cubic-bezier(.2,.75,.2,1)}
+.path-step-coaching:hover .coaching-showcase img{transform:scale(1.035)}
+.path-button{margin-top:auto;display:inline-flex;align-items:center;justify-content:space-between;gap:15px;min-height:48px;padding:0 17px;border:1px solid rgba(224,193,123,.75);color:#e0c17b;text-decoration:none;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:1.1px;background:rgba(8,40,32,.72)}
+.path-button i{font-style:normal;font-size:17px;transition:transform .42s cubic-bezier(.2,.78,.2,1)}
+.path-button:hover{color:#061f19;background:#e0c17b;box-shadow:0 16px 38px rgba(199,161,90,.22)}
+.path-button:hover i{transform:translateX(5px)}
+
+@media(max-width:900px){
+  .alignment-grid,.path-grid{grid-template-columns:1fr}
+  .path-step p{min-height:0}
+  .bundle-showcase{height:250px}
+}
+@media(max-width:600px){
+  .alignment-section{padding:78px 20px}
+  .alignment-grid{margin-top:36px}
+  .alignment-card>div{padding:27px 23px 30px}
+  .bundle-showcase{height:205px;margin-left:-16px;margin-right:-16px}
+  .bundle-showcase img{width:55px;margin:0 -17px}
+  .path-step{padding:32px 24px}
+}
+
+/* Original GodHealth editorial imagery: Scripture, nourishment, vitality and stewardship. */
+.editorial-break{
+  place-items:center start;
+  text-align:left;
+  background-image:url("assets/godhealth-biblical-nourishment.jpg");
+  background-position:center center;
+}
+.editorial-overlay{
+  background:
+    linear-gradient(90deg,rgba(2,17,13,.91) 0%,rgba(2,17,13,.7) 38%,rgba(2,17,13,.16) 72%,rgba(2,17,13,.04) 100%),
+    linear-gradient(180deg,rgba(2,17,13,.08),rgba(2,17,13,.4));
+}
+.editorial-content{
+  width:min(760px,68vw);
+  margin-left:max(28px,calc((100vw - 1160px)/2));
+  padding-left:0;
+  padding-right:0;
+}
+.editorial-content blockquote{font-size:clamp(42px,4.7vw,68px);max-width:720px}
+
+.deliverables{
+  background:
+    linear-gradient(90deg,rgba(2,17,13,.96) 0%,rgba(2,17,13,.83) 47%,rgba(2,17,13,.24) 76%,rgba(2,17,13,.08)),
+    url("assets/robin-sport-card.jpg") center/cover no-repeat;
+}
+.deliverable-list{
+  background:linear-gradient(145deg,rgba(3,24,18,.82),rgba(3,19,15,.6));
+  border-color:rgba(228,201,133,.38);
+}
+
+.final-cta{
+  background:
+    linear-gradient(90deg,rgba(2,17,13,.9),rgba(2,17,13,.55),rgba(2,17,13,.82)),
+    url("assets/godhealth-daily-stewardship.jpg") center/cover no-repeat;
+}
+.final-cta>div:last-child{
+  padding:52px 46px;
+  border:1px solid rgba(228,201,133,.28);
+  background:rgba(2,17,13,.46);
+  backdrop-filter:blur(8px);
+  box-shadow:0 32px 90px rgba(1,20,15,.3);
+}
+
+@media(max-width:900px){
+  .editorial-content{width:min(690px,82vw)}
+  .deliverables{background-position:62% center}
+}
+
+@media(max-width:600px){
+  .editorial-break{min-height:590px;background-position:68% center}
+  .editorial-overlay{background:linear-gradient(180deg,rgba(2,17,13,.72),rgba(2,17,13,.83))}
+  .editorial-content{width:auto;margin:0;padding:72px 22px}
+  .editorial-content blockquote{font-size:38px}
+  .deliverables{background-position:68% center}
+  .final-cta{background-position:40% center}
+  .final-cta>div:last-child{padding:38px 22px}
+}
+
+/* Conversion system: proof early, clear value, one low-friction next step. */
+.hero-copy{max-width:750px}
+.hero h1{font-size:clamp(45px,4.7vw,72px);line-height:1.02}
+.hero-lead{max-width:690px}
+.hero .button-primary{min-height:58px;padding:18px 27px;box-shadow:0 18px 48px rgba(199,161,90,.22)}
+.hero .trust-line{margin-top:18px;color:#d2ddd8}
+
+.proof-snapshot{
+  position:relative;
+  display:grid;
+  grid-template-columns:.7fr 1.3fr;
+  gap:54px;
+  align-items:center;
+  padding:76px max(28px,calc((100vw - 1160px)/2));
+  overflow:hidden;
+  background:linear-gradient(145deg,#f9f5ec,#eee4d2);
+  color:#10231d;
+  border-top:1px solid rgba(184,148,79,.42);
+  border-bottom:1px solid rgba(184,148,79,.42);
+}
+.proof-snapshot:before{content:"";position:absolute;width:420px;height:420px;left:-250px;top:-210px;border-radius:50%;background:rgba(184,148,79,.13);filter:blur(30px)}
+.proof-snapshot-intro,.proof-snapshot-grid{position:relative}
+.proof-snapshot-intro h2{font-family:var(--serif);font-size:clamp(34px,3.4vw,50px);line-height:1.05;margin:9px 0 15px}
+.proof-snapshot-intro>p:last-of-type{color:#53615c;font-size:16px;line-height:1.7}
+.proof-snapshot-intro>a{display:inline-flex;gap:10px;align-items:center;margin-top:9px;color:#765822;font-size:13px;font-weight:800;text-decoration:none;border-bottom:1px solid rgba(118,88,34,.38);padding-bottom:5px}
+.proof-snapshot-intro>a span{transition:transform .35s ease}
+.proof-snapshot-intro>a:hover span{transform:translateY(4px)}
+.proof-snapshot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.proof-snapshot-card{display:grid;grid-template-columns:72px 1fr;gap:15px;align-items:center;min-height:104px;padding:14px;border:1px solid rgba(128,95,38,.22);background:rgba(255,253,248,.8);color:#10231d;text-decoration:none;box-shadow:0 14px 35px rgba(42,31,12,.07);transition:transform .4s cubic-bezier(.2,.78,.2,1),box-shadow .4s ease,border-color .4s ease}
+.proof-snapshot-card:hover{transform:translateY(-4px);border-color:rgba(184,148,79,.68);box-shadow:0 20px 42px rgba(42,31,12,.13)}
+.proof-snapshot-card img{width:72px;height:76px;object-fit:cover;border-radius:3px;filter:saturate(.9) contrast(1.03)}
+.proof-snapshot-card span{display:grid;gap:3px}
+.proof-snapshot-card b{color:#a77e35;font-size:12px;letter-spacing:1px}
+.proof-snapshot-card strong{font:600 16px/1.24 var(--serif)}
+.proof-snapshot-card small{color:#697570;font-size:12px}
+
+.value-equation{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:26px 0 30px}
+.value-equation>span{display:grid;grid-template-columns:30px 1fr;column-gap:10px;align-items:center;padding:13px 14px;border:1px solid rgba(224,193,123,.3);background:rgba(3,25,19,.62);backdrop-filter:blur(8px)}
+.value-equation b{grid-row:1/3;color:var(--gold);font:600 18px/1 var(--serif)}
+.value-equation strong{font-size:14px;color:#fff}
+.value-equation small{font-size:12px;color:#b7c6c0}
+
+.proof-section{scroll-margin-top:88px}
+
+@media(max-width:900px){
+  .proof-snapshot{grid-template-columns:1fr;gap:34px}
+}
+
+@media(max-width:600px){
+  .hero h1{font-size:42px;line-height:1.04}
+  .hero .button-primary{width:100%;padding-left:16px;padding-right:16px;font-size:11px;letter-spacing:.55px}
+  .proof-snapshot{padding:64px 20px}
+  .proof-snapshot-grid{display:flex;overflow-x:auto;gap:12px;padding:4px 2px 14px;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .proof-snapshot-grid::-webkit-scrollbar{display:none}
+  .proof-snapshot-card{min-width:278px;scroll-snap-align:start}
+  .value-equation{grid-template-columns:1fr}
+}
+
+/* Final conversion and accessibility polish. */
+.skip-link{position:fixed;z-index:1000;left:16px;top:12px;padding:11px 15px;background:#f5df9e;color:#061f19;font-weight:800;text-decoration:none;transform:translateY(-160%);transition:transform .2s ease}
+.skip-link:focus{transform:translateY(0)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #efd58f;outline-offset:4px}
+.proof-cta{max-width:1040px;margin:38px auto 0;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:30px;border:1px solid rgba(139,101,36,.24);background:#061f19;color:#fff;box-shadow:0 22px 55px rgba(37,28,13,.12)}
+.proof-cta>div{display:grid;gap:4px}
+.proof-cta>div>span{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:1.5px}
+.proof-cta strong{font:600 24px/1.18 var(--serif)}
+.proof-cta small{color:#b8c7c1;font-size:13px}
+.proof-cta .button{flex:0 0 auto;white-space:nowrap}
+.faq-list details p{max-width:760px}
+
+@media(max-width:700px){
+  .proof-cta{display:grid;padding:24px 20px}
+  .proof-cta .button{width:100%;white-space:normal;text-align:center}
+}
+
+/* Authenticity and mobile-first pass: real Robin photography, no generated people. */
+html,body{max-width:100%;overflow-x:hidden}
+.hero{
+  background:
+    radial-gradient(circle at 78% 18%,rgba(44,112,91,.27),transparent 32%),
+    linear-gradient(145deg,#07182e 0%,#061f19 58%,#082820 100%);
+}
+.mission-line{max-width:690px;margin:0 0 27px;padding:15px 17px;border-left:2px solid var(--gold);background:rgba(255,255,255,.035);color:#d5dfdb;font-size:14px;line-height:1.65}
+.mission-line span{display:block;margin-bottom:4px;color:var(--gold);font-size:9px;font-weight:800;letter-spacing:2px}
+.framework-section{background:linear-gradient(145deg,#07182e,#061f19 66%,#082820)}
+.framework-card figure img{object-position:center}
+.framework-card:nth-child(1) figure img{object-position:center 42%}
+.framework-card:nth-child(3) figure img{object-position:center 32%}
+.faq-section{background:linear-gradient(110deg,rgba(250,247,239,.98),rgba(238,229,214,.94)),url("assets/godhealth-daily-stewardship.jpg") right center/cover no-repeat}
+
+.founder-section{padding-top:112px;padding-bottom:112px;background:linear-gradient(145deg,#061f19,#082820 70%,#07182e)}
+.founder-intro{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:minmax(300px,430px) 1fr;gap:70px;align-items:center}
+.founder-portrait{position:relative;margin:0;padding:9px;border:1px solid rgba(228,201,133,.58);background:rgba(255,255,255,.035);box-shadow:0 35px 90px rgba(0,0,0,.35)}
+.founder-portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center}
+.founder-portrait figcaption{position:absolute;left:28px;right:28px;bottom:28px;padding:11px 13px;background:rgba(3,22,17,.9);border-left:2px solid var(--gold);color:#ead9aa;font-size:9px;font-weight:800;letter-spacing:1.6px;backdrop-filter:blur(8px)}
+.founder-copy h2{font-family:var(--serif);font-size:clamp(43px,4.4vw,64px);line-height:1.02;margin-bottom:22px}
+.founder-copy>p{color:#c8d4cf;font-size:16px;line-height:1.78}
+.founder-mission{padding:18px 20px;border-left:3px solid var(--gold);background:rgba(199,161,90,.08)}
+.founder-mission strong{color:#fff;font:600 21px/1.45 var(--serif)}
+.authority-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:28px}
+.authority-facts>span{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:center;min-height:74px;padding:14px 16px;border:1px solid rgba(228,201,133,.24);background:rgba(255,255,255,.035)}
+.authority-facts b{color:var(--gold);font:600 25px/1 var(--serif);white-space:nowrap}
+.authority-facts small{color:#d3ddd9;font-size:11px;line-height:1.35}
+.founder-gallery{max-width:1160px;margin:58px auto 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.founder-gallery figure{position:relative;min-width:0;margin:0;overflow:hidden;border:1px solid rgba(228,201,133,.24);background:#061f19}
+.founder-gallery img{display:block;width:100%;height:260px;object-fit:cover;filter:saturate(.9) contrast(1.03);transition:transform .7s cubic-bezier(.2,.75,.2,1)}
+.founder-gallery figure:nth-child(1) img{object-position:center 24%}
+.founder-gallery figure:nth-child(3) img{object-position:center}
+.founder-gallery figure:hover img{transform:scale(1.035)}
+.founder-gallery figcaption{position:absolute;left:0;right:0;bottom:0;display:grid;gap:2px;padding:30px 14px 14px;background:linear-gradient(transparent,rgba(2,17,13,.94));color:#fff}
+.founder-gallery figcaption b{font:600 18px/1.1 var(--serif)}
+.founder-gallery figcaption span{color:#d8c58e;font-size:9px;font-weight:700;letter-spacing:.7px;text-transform:uppercase}
+.coaching-showcase img{object-position:center}
+
+.authority-ribbon{position:relative;z-index:3;padding:30px max(28px,calc((100vw - 1160px)/2));display:grid;grid-template-columns:250px 1fr;gap:34px;align-items:center;background:#f5efe3;color:#10231d;border-top:1px solid rgba(184,148,79,.45);border-bottom:1px solid rgba(184,148,79,.45)}
+.authority-ribbon-intro{display:grid;gap:7px}
+.authority-ribbon-intro span{color:#8a692d;font-size:9px;font-weight:800;letter-spacing:2px}
+.authority-ribbon-intro strong{font:600 22px/1.24 var(--serif)}
+.authority-ribbon-track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.authority-ribbon article{min-width:0;display:grid;grid-template-columns:62px 1fr;gap:12px;align-items:center;padding:9px;border:1px solid rgba(128,95,38,.2);background:rgba(255,253,248,.76)}
+.authority-ribbon article img{width:62px;height:70px;display:block;object-fit:cover;object-position:center;border-radius:2px}
+.authority-ribbon article:nth-child(2) img{object-position:center}
+.authority-ribbon article>div{display:grid;gap:2px;min-width:0}
+.authority-ribbon article small{color:#9a7634;font-size:7px;font-weight:800;letter-spacing:1.3px}
+.authority-ribbon article b{font:600 15px/1.16 var(--serif)}
+.authority-ribbon article span{color:#65716c;font-size:9px;line-height:1.3}
+
+@media(max-width:900px){
+  .authority-ribbon{grid-template-columns:1fr;gap:20px}
+  .founder-intro{grid-template-columns:minmax(240px,340px) 1fr;gap:38px}
+  .founder-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .founder-gallery figure:nth-child(4),.founder-gallery figure:nth-child(5){grid-column:span 1}
+  .founder-gallery img{height:240px}
+}
+
+@media(max-width:600px){
+  body{font-size:16px}
+  .site-header{position:relative;z-index:50}
+  .hero{padding:44px 18px 64px;gap:38px}
+  .hero-copy{width:100%}
+  .hero h1{font-size:clamp(37px,10.6vw,44px);line-height:1.03;letter-spacing:-.035em}
+  .hero-lead{font-size:16px;line-height:1.65;margin-bottom:22px}
+  .mission-line{font-size:13px;line-height:1.58;margin-bottom:22px;padding:13px 14px}
+  .hero-media{width:100%;min-width:0}
+  .hero-video-frame{width:100%;max-width:100%}
+  .video-unmute{left:10px;right:10px;width:calc(100% - 20px);font-size:9px;white-space:normal}
+  .hero-media-caption{align-items:flex-start;gap:7px}
+  .hero-media-caption small{line-height:1.45}
+  .button,.path-button{min-height:50px}
+  .authority-ribbon{padding:28px 18px;gap:18px}
+  .authority-ribbon-intro strong{font-size:20px;max-width:330px}
+  .authority-ribbon-track{display:flex;overflow-x:auto;gap:10px;margin:0 -18px;padding:0 18px 10px;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .authority-ribbon-track::-webkit-scrollbar{display:none}
+  .authority-ribbon article{flex:0 0 276px;scroll-snap-align:start;grid-template-columns:72px 1fr;padding:10px}
+  .authority-ribbon article img{width:72px;height:82px}
+  .authority-ribbon article b{font-size:17px}
+  .authority-ribbon article span{font-size:10px}
+  .pain-section,.framework-section,.proof-section,.path-section,.faq-section,.founder-section,.deliverables{padding-left:18px;padding-right:18px}
+  .framework-card figure{aspect-ratio:16/10}
+  .deliverables{background-position:58% center}
+  .founder-section{padding-top:78px;padding-bottom:78px}
+  .founder-intro{grid-template-columns:1fr;gap:34px}
+  .founder-portrait{width:100%;max-width:390px;margin:0 auto;padding:6px}
+  .founder-portrait img{aspect-ratio:5/6}
+  .founder-portrait figcaption{left:18px;right:18px;bottom:18px}
+  .founder-copy h2{font-size:42px}
+  .founder-copy>p{font-size:15px;line-height:1.72}
+  .founder-mission strong{font-size:19px}
+  .authority-facts{grid-template-columns:1fr}
+  .authority-facts>span{min-height:68px}
+  .founder-gallery{display:flex;overflow-x:auto;gap:12px;margin:42px -18px 0;padding:0 18px 14px;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .founder-gallery::-webkit-scrollbar{display:none}
+  .founder-gallery figure{flex:0 0 78vw;scroll-snap-align:center}
+  .founder-gallery img{height:310px}
+  .path-step{padding-left:21px;padding-right:21px}
+  .bundle-showcase{overflow:visible;transform:scale(.92);transform-origin:center}
+  .faq-section{background:#f6f0e5}
+  .final-cta .button-primary{width:100%}
+}
+
+/* Keep these user-requested layout corrections last in the cascade. */
+.deliverables{background:#fff;color:#10231d}
+.deliverables .eyebrow{color:#8a692d}
+.deliverable-copy h2{color:#10231d}
+.deliverable-copy>p{color:#53615c}
+.value-equation>span{background:#f8f5ed;border-color:#ddd1b9}
+.value-equation strong,.deliverable-list strong{color:#10231d}
+.value-equation small,.deliverable-list small{color:#53615c}
+.deliverable-list{background:#f8f5ed;border:1px solid #ddd1b9;box-shadow:0 24px 70px rgba(16,35,29,.08)}
+.deliverable-list>div{border-color:#ddd1b9}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);justify-items:center}
+  .hero-copy,.hero-media{width:100%;max-width:720px;margin-inline:auto;text-align:center;min-width:0}
+  .hero-lead,.mission-line{margin-left:auto;margin-right:auto}
+  .hero-signature,.trust-line{justify-content:center}
+}
+
+@media(max-width:600px){
+  .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:100%;padding:44px 18px 64px;gap:34px;overflow:hidden}
+  .hero-copy,.hero-media{width:100%;max-width:100%;margin:0 auto;text-align:center;min-width:0;box-sizing:border-box}
+  .hero-copy>*{max-width:100%}
+  .hero-signature,.trust-line{justify-content:center}
+  .hero .button-primary{margin-left:auto;margin-right:auto}
+  .mission-line{border-left:0;border-top:2px solid var(--gold);text-align:center}
+  .hero-media{padding-left:0;padding-right:0}
+  .hero-video-frame{width:100%;max-width:100%;margin:0 auto;aspect-ratio:16/9;overflow:hidden}
+  .hero-video-frame video{width:100%;height:100%;object-fit:cover}
+  .hero-media-caption{align-items:center;text-align:center}
+  .hero-media-caption>div{justify-content:center}
+}
+
+/* GodHealth hero and mission */
+.hero{
+  background:
+    linear-gradient(90deg,rgba(3,17,13,.97) 0%,rgba(3,17,13,.9) 39%,rgba(3,17,13,.57) 68%,rgba(3,17,13,.3) 100%),
+    linear-gradient(180deg,rgba(3,17,13,.08),rgba(3,17,13,.58)),
+    url("assets/godhealth-coaching-hero-v2.png") center/cover no-repeat;
+}
+.mission-section{position:relative;isolation:isolate;overflow:hidden;padding:110px max(28px,calc((100vw - 1160px)/2));display:grid;grid-template-columns:160px minmax(280px,.78fr) minmax(360px,1.22fr);gap:54px;align-items:center;background:linear-gradient(135deg,#041913,#082820 68%,#07182e);border-top:1px solid rgba(228,201,133,.38);border-bottom:1px solid rgba(228,201,133,.28);color:#fff}
+.mission-section:before{content:"";position:absolute;z-index:-1;inset:-20%;background:radial-gradient(circle at 15% 50%,rgba(199,161,90,.13),transparent 23%),radial-gradient(circle at 86% 20%,rgba(37,108,85,.19),transparent 25%)}
+.mission-mark{width:138px;height:138px;display:grid;place-items:center;border:1px solid rgba(228,201,133,.55);border-radius:50%;color:#dfc47d;font:600 44px/1 var(--serif);box-shadow:0 0 0 10px rgba(199,161,90,.045),inset 0 0 55px rgba(199,161,90,.08)}
+.mission-heading h2{margin:13px 0 0;color:#fff;font:600 clamp(42px,4.1vw,62px)/1.02 var(--serif);letter-spacing:-.035em}
+.mission-heading h2 em{color:#dfc47d;font-weight:500}
+.mission-content{padding-left:38px;border-left:1px solid rgba(228,201,133,.32)}
+.mission-content>p{margin:0;color:#cbd8d3;font-size:16px;line-height:1.76}
+.mission-content .mission-lead{margin-bottom:17px;color:#fff;font:500 21px/1.55 var(--serif)}
+.mission-standard{display:grid;gap:7px;margin-top:26px;padding:18px 20px;background:rgba(255,255,255,.035);border-left:3px solid #c7a15a}
+.mission-standard span{color:#c7a15a;font-size:10px;font-weight:800;letter-spacing:1.8px}
+.mission-standard strong{color:#fff;font:600 20px/1.35 var(--serif)}
+
+/* Fixed-height, dark luxury testimonial presentation */
+.proof-section{background:linear-gradient(145deg,#031510,#08251d 62%,#07182e);color:#fff}
+.proof-section:before{color:rgba(228,201,133,.035)}
+.proof-section .section-heading h2{color:#fff}
+.proof-section .section-heading>p:last-child,.results-note{color:#b9c8c2}
+.story-shell{overflow:hidden;border:1px solid rgba(228,201,133,.72);background:#061f19;box-shadow:0 42px 120px rgba(0,0,0,.48),0 0 0 7px rgba(199,161,90,.045)}
+.story-shell:before{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.035)}
+.story-portraits{background:linear-gradient(165deg,#020f0c,#06231b);border-right-color:rgba(228,201,133,.42)}
+.story-tab{border-radius:2px}
+.story-tab.active{background:linear-gradient(105deg,rgba(199,161,90,.18),rgba(199,161,90,.055));border-color:rgba(228,201,133,.67);box-shadow:inset 3px 0 0 #d5b668}
+.story-stage{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;background:linear-gradient(145deg,#09271f,#041913 70%,#06182a)}
+.story-slide{grid-column:1;grid-row:1;align-self:start}
+.story-slide[hidden]{display:grid;visibility:hidden;opacity:0;pointer-events:none}
+.story-photo{border-color:rgba(228,201,133,.76);box-shadow:0 24px 62px rgba(0,0,0,.44),0 0 0 5px rgba(199,161,90,.055)}
+.story-slide h3{color:#fff}
+.story-slide p{color:#c8d5d0}
+.story-slide footer{border-top-color:rgba(228,201,133,.28)}
+.story-slide footer strong{color:#fff}
+.story-slide footer span{color:#d2b86e}
+.story-slide blockquote:before{color:rgba(228,201,133,.11)}
+.story-controls{grid-column:1;grid-row:2;color:#d2b86e}
+.story-arrow{border-color:rgba(228,201,133,.48);color:#efd995}
+.story-arrow:hover{background:#c7a15a;color:#061f19;border-color:#c7a15a}
+.proof-cta{border-color:rgba(228,201,133,.52);background:linear-gradient(135deg,#08271f,#06182a)}
+
+@media(max-width:900px){
+  .mission-section{grid-template-columns:120px minmax(0,1fr);gap:38px;padding-top:86px;padding-bottom:86px}
+  .mission-mark{width:110px;height:110px;font-size:36px}
+  .mission-content{grid-column:1/-1;padding-left:0;border-left:0;max-width:760px}
+}
+
+@media(max-width:600px){
+  .hero{background-position:60% center;background-image:linear-gradient(180deg,rgba(3,17,13,.94),rgba(3,17,13,.74)),url("assets/godhealth-coaching-hero-v2.png")}
+  .mission-section{padding:74px 18px;grid-template-columns:1fr;gap:27px;text-align:center}
+  .mission-mark{margin:0 auto;width:96px;height:96px;font-size:31px}
+  .mission-heading h2{font-size:42px}
+  .mission-content{grid-column:auto}
+  .mission-content>p{font-size:15px}
+  .mission-content .mission-lead{font-size:20px}
+  .mission-standard{text-align:left}
+  .story-shell{box-shadow:0 24px 65px rgba(0,0,0,.42),0 0 0 4px rgba(199,161,90,.045)}
+  .story-portraits{border-bottom-color:rgba(228,201,133,.4)}
+}
+
+/* Final button, video, footer and hero framing pass. */
+.button,.path-button{justify-content:center;text-align:center;font-weight:900}
+.button>span,.path-button>i{display:none}
+
+/* Aspirational vitality story */
+.editorial-break{
+  background-image:linear-gradient(90deg,rgba(3,24,19,.9) 0%,rgba(3,24,19,.66) 43%,rgba(3,24,19,.16) 78%),url("assets/home-vitality-vision.webp");
+  background-position:center;
+}
+.editorial-content{max-width:780px;margin-right:auto;text-align:left;padding-left:max(28px,calc((100vw - 1160px)/2))}
+.editorial-content blockquote{max-width:760px;margin-left:0}
+.editorial-answer{max-width:610px;margin:22px 0 30px;color:#e5ece8;font-size:17px;line-height:1.7}
+@media(max-width:700px){
+  .editorial-break{background-position:67% center}
+  .editorial-content{padding:42px 20px;text-align:center;background:linear-gradient(180deg,rgba(3,24,19,.72),rgba(3,24,19,.9))}
+  .editorial-content blockquote,.editorial-answer{margin-left:auto;margin-right:auto}
+}
+.video-unmute{left:50%!important;right:auto!important;top:50%!important;bottom:auto!important;width:min(390px,calc(100% - 38px));min-width:0;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;transform:translate(-50%,-50%)}
+.video-unmute>span{display:none}
+.video-unmute:hover{transform:translate(-50%,-54%) scale(1.025)}
+.hero-media.sound-enabled .video-unmute{transform:translate(-50%,-45%)}
+.hero{background-color:#041913;background-image:linear-gradient(90deg,rgba(3,17,13,.97) 0%,rgba(3,17,13,.89) 37%,rgba(3,17,13,.5) 67%,rgba(3,17,13,.24) 100%),linear-gradient(180deg,rgba(3,17,13,.06),rgba(3,17,13,.5)),url("assets/godhealth-coaching-hero-v2.png");background-repeat:no-repeat;background-position:center,center,center;background-size:cover,cover,100% auto}
+
+.site-footer{padding:58px max(28px,calc((100vw - 1160px)/2));display:grid;grid-template-columns:.8fr .7fr 1.25fr;align-items:start;gap:58px;background:linear-gradient(135deg,#020e0b,#061f19 62%,#07182e);border-top:1px solid rgba(228,201,133,.32);color:#aebdb7;font-size:13px;line-height:1.65}
+.site-footer .footer-brand,.site-footer .footer-company,.site-footer .footer-legal{display:grid;align-content:start;gap:8px}
+.site-footer .footer-brand p,.site-footer .footer-legal p{margin:0;color:#aebdb7}
+.site-footer .footer-company strong{color:#fff;font:600 21px/1.25 var(--serif)}
+.site-footer a{width:max-content;color:#d7bd76;text-decoration:none;font-weight:700}
+.site-footer a:hover{text-decoration:underline}
+.site-footer .footer-legal{padding-left:32px;border-left:1px solid rgba(228,201,133,.25)}
+.site-footer .footer-legal span{margin-top:4px;color:#788983;font-size:11px}
+
+@media(max-width:900px){
+  .site-footer{grid-template-columns:1fr 1fr;text-align:left}
+  .site-footer .footer-legal{grid-column:1/-1;padding:24px 0 0;border-left:0;border-top:1px solid rgba(228,201,133,.2)}
+}
+
+@media(max-width:600px){
+  .hero{background-color:#041913;background-image:linear-gradient(180deg,rgba(3,17,13,.84) 0%,rgba(3,17,13,.72) 280px,#041913 470px),url("assets/godhealth-coaching-hero-v2.png");background-repeat:no-repeat;background-position:center,72% top;background-size:cover,145% auto}
+  .video-unmute{width:calc(100% - 28px);padding:12px 14px;font-size:10px;line-height:1.35;letter-spacing:.045em}
+  .site-footer{grid-template-columns:1fr;gap:30px;padding:46px 20px;text-align:center}
+  .site-footer .footer-brand,.site-footer .footer-company,.site-footer .footer-legal{justify-items:center}
+  .site-footer .footer-legal{grid-column:auto;padding:27px 0 0}
+  .site-footer a{width:auto}
+}
