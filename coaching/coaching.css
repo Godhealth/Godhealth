@@ -197,3 +197,9 @@ main>:not(.coach-hero):not(.coaching-proof){order:2}
   .transformation-instruction{display:grid;text-align:center}.transformation-instruction span{text-align:center}
   .call-steps{grid-template-columns:1fr}.call-steps article{padding:20px 18px}
 }
+
+
+/* User-requested polish: slightly slimmer transformation subjects */
+.transformation-compare>img{transform-origin:center bottom}
+.transformation-compare .transformation-before{transform:scaleX(.92);transform-origin:center bottom}
+.transformation-compare .transformation-after{transform:scaleX(.95);transform-origin:center bottom}
