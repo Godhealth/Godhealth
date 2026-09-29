@@ -7,6 +7,7 @@
   const campaign = Object.fromEntries(keys.map(key => [key, params.get(key) || stored[key] || '']));
   const scan = document.getElementById('scan-cta');
   const coaching = document.getElementById('coaching-cta');
+  const watchVideo = document.getElementById('watch-video-cta');
   [scan, coaching].forEach((link) => {
     if (!link) return;
     const url = new URL(link.href);
@@ -15,6 +16,7 @@
   });
   scan?.addEventListener('click', () => window.dataLayer.push({event:'scan_cta_clicked', ...campaign}));
   coaching?.addEventListener('click', () => window.dataLayer.push({event:'strategy_call_clicked', ...campaign}));
+  watchVideo?.addEventListener('click', () => window.dataLayer.push({event:'thank_you_video_cta_clicked', ...campaign}));
 
   const animateScores = () => {
     const ring = document.querySelector('[data-score-ring]');
