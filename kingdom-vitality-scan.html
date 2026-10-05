@@ -763,6 +763,7 @@ async function supabaseRpc(functionName,payload){
       button.dataset.leadWebhookSent = "true";
       fetch("https://godhealth.app.n8n.cloud/webhook/2a3fa0cd-62f8-4467-9948-817589483072",{
         method:"POST",
+        keepalive:true,
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
           name,
@@ -1485,6 +1486,7 @@ function setupPostScanStrategyCall(){
       submit.dataset.strategyCallWebhookSent = "true";
       fetch("https://godhealth.app.n8n.cloud/webhook/8f778195-b67a-47b9-a71c-6b276f2dc54d",{
         method:"POST",
+        keepalive:true,
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
           name:state.lead.first_name || state.lead.name || "",
@@ -1854,6 +1856,7 @@ function finishAssessment(skipDispatch){
     const weekPlanHtml = report.querySelector(".week-plan")?.innerHTML || weekPlanItems;
     fetch("https://godhealth.app.n8n.cloud/webhook/625e1e63-50ba-463b-b065-c62d56467e21", {
       method: "POST",
+      keepalive: true,
       headers: {"Content-Type":"application/json"},
       body: JSON.stringify({
         name: state.lead.first_name || state.lead.name || "",
