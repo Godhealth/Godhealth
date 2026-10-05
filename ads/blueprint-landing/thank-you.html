@@ -39,6 +39,24 @@
 .thank-you-page .under-cta{margin:13px 0 0;color:rgba(6,23,17,.58);font-size:.88rem}
 .thank-you-page footer{background:#061711;color:rgba(255,255,255,.62)}
 @media (max-width:700px){.thank-you-page .thank-success{padding:42px 0 34px}.thank-you-page .thank-confirmations{grid-template-columns:1fr;margin-top:26px}.thank-you-page .thank-confirmation{padding:15px}.thank-you-page .thank-transition{padding:40px 0 58px}.thank-you-page .thank-sales-cta{min-height:68px;padding:17px 16px;font-size:.74rem;letter-spacing:.045em}.thank-you-page .thank-system-card{margin-top:22px}}
+.thank-you-page .thank-blueprint-image{width:min(100%,190px);height:245px;object-fit:cover;object-position:top;margin:28px auto 8px;border:1px solid rgba(197,157,75,.65);box-shadow:0 20px 45px rgba(0,0,0,.28);transform:rotate(2deg)}
+.thank-you-page .thank-bundle-image{display:block;width:min(100%,720px);height:auto;margin:28px auto 30px;filter:drop-shadow(0 22px 30px rgba(6,23,17,.25))}
+.thank-you-page .thank-clarity{padding:64px 0 90px;background:#fff;color:var(--ink)}
+.thank-you-page .thank-clarity-inner{max-width:980px;text-align:center}
+.thank-you-page .thank-clarity .eyebrow{color:#977126}
+.thank-you-page .thank-clarity h2{max-width:850px;margin:12px auto 18px;color:var(--forest);font-size:clamp(2.2rem,4.7vw,4rem);line-height:1.05}
+.thank-you-page .thank-clarity h2 em{color:#a67c31}
+.thank-you-page .thank-clarity-intro{max-width:700px;margin:0 auto;color:rgba(6,23,17,.68);font-size:1.08rem;line-height:1.6}
+.thank-you-page .thank-clarity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:34px 0 30px;text-align:left}
+.thank-you-page .thank-clarity-grid article{padding:24px;border-top:3px solid var(--gold);border:1px solid rgba(19,40,29,.13);border-top-width:3px;background:#fbfaf7}
+.thank-you-page .thank-clarity-grid article>span{color:#a17e43;font-size:12px;font-weight:900;letter-spacing:.14em}
+.thank-you-page .thank-clarity-grid h3{margin:15px 0 9px;font-size:1.55rem;color:var(--forest);letter-spacing:-.03em}
+.thank-you-page .thank-clarity-grid p{margin:0;color:#627167;font-size:.96rem;line-height:1.5}
+.thank-you-page .thank-clarity-close{margin:10px auto 0;color:var(--forest);font-size:1.12rem}.thank-you-page .thank-clarity-close strong{color:#99762e}
+.thank-you-page .thank-sticky-cta{position:fixed;z-index:30;left:14px;right:14px;bottom:max(12px,env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 12px 10px 18px;border:1px solid rgba(184,148,79,.72);background:rgba(7,23,17,.96);box-shadow:0 15px 48px rgba(0,0,0,.34);backdrop-filter:blur(14px)}
+.thank-you-page .thank-sticky-cta span{display:grid;gap:1px;min-width:0}.thank-you-page .thank-sticky-cta small{color:#c6a762;font-size:9px;font-weight:900;letter-spacing:.14em}.thank-you-page .thank-sticky-cta strong{overflow:hidden;color:#fff;font-size:13px;text-overflow:ellipsis;white-space:nowrap}.thank-you-page .thank-sticky-cta .purchase-link{min-height:48px;padding:0 16px;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;font-size:10px;letter-spacing:.06em}.thank-you-page .thank-sticky-cta .purchase-link>b{font-size:17px;color:var(--forest)}
+.thank-you-page footer{padding-bottom:94px}
+@media(max-width:700px){.thank-you-page .thank-blueprint-image{width:150px;height:194px;margin-top:24px}.thank-you-page .thank-bundle-image{width:calc(100% + 14px);max-width:none;margin-left:-7px;margin-top:24px}.thank-you-page .thank-clarity{padding:50px 0 68px}.thank-you-page .thank-clarity-grid{grid-template-columns:1fr;gap:10px;margin-top:26px}.thank-you-page .thank-clarity-grid article{padding:18px}.thank-you-page .thank-clarity-close{font-size:1rem}.thank-you-page .thank-sticky-cta{left:8px;right:8px;padding-left:12px;gap:8px}.thank-you-page .thank-sticky-cta strong{font-size:11px}.thank-you-page .thank-sticky-cta .purchase-link{padding:0 11px;font-size:9px;letter-spacing:.035em}}
 </style>
 </head>
 <body class="thank-you-page">
@@ -57,6 +75,7 @@
         <p class="eyebrow">BLUEPRINT CONFIRMED</p>
         <h1 id="success-title">You’re <em>in.</em></h1>
         <p class="thank-lead">Your 7-Step Fat-Loss Blueprint is on its way to your inbox.</p>
+        <img class="thank-blueprint-image" src="assets/blueprint-clean.webp" alt="The 7-Step Fat-Loss Blueprint for Busy Christians" width="1103" height="1426">
 
         <div class="thank-confirmations" aria-label="Your GodHealth resources">
           <div class="thank-confirmation">
@@ -83,6 +102,7 @@
           <p>THE COMPLETE GODHEALTH SYSTEM</p>
           <span>A clear next level for putting your plan into practice.</span>
         </div>
+        <img class="thank-bundle-image" src="assets/bundle-32.png" alt="The Complete GodHealth System bundle" width="1536" height="1024" loading="lazy">
 
         <a class="button button-primary purchase-button thank-sales-cta" id="complete-system-cta" href="https://sales.godhealth.org">
           <span>CONTINUE TO THE COMPLETE GODHEALTH SYSTEM</span>
@@ -91,7 +111,26 @@
         <p class="under-cta">See everything included on the next page.</p>
       </div>
     </section>
+
+    <section class="thank-clarity" aria-labelledby="clarity-title">
+      <div class="wrap thank-clarity-inner">
+        <p class="eyebrow">WHY PEOPLE GET STUCK</p>
+        <h2 id="clarity-title">The Blueprint gives you a direction. <em>The system helps you follow through.</em></h2>
+        <p class="thank-clarity-intro">Most people do not need more random health advice. They need simple tools, practical structure and a clear way to turn good intentions into daily action.</p>
+        <div class="thank-clarity-grid">
+          <article><span>01</span><h3>Knowing what to do</h3><p>You start with motivation, but without a complete structure it is easy to fall back into old routines when life gets busy.</p></article>
+          <article><span>02</span><h3>Making it practical</h3><p>Real progress becomes easier when your food, habits, movement and daily rhythm all support the same goal.</p></article>
+          <article><span>03</span><h3>Building consistency</h3><p>The right tools reduce guesswork, so you can take the next step with more clarity and confidence.</p></article>
+        </div>
+        <p class="thank-clarity-close">You already took the first step. <strong>See what can help you put it into action.</strong></p>
+      </div>
+    </section>
   </main>
+
+  <div class="thank-sticky-cta" aria-label="Continue to the Complete GodHealth System">
+    <span><small>YOUR NEXT STEP</small><strong>Complete GodHealth System</strong></span>
+    <a class="purchase-link" id="sticky-system-cta" href="https://sales.godhealth.org"><span>SEE THE COMPLETE SYSTEM</span><b aria-hidden="true">→</b></a>
+  </div>
 
   <footer>
     <div class="wrap">
