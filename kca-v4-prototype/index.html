@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GodHealth · KCA V4 Prototype</title>
+<style>:root{font-family:system-ui,-apple-system,sans-serif;color:#f7f2df;background:#071e1b}*{box-sizing:border-box}body{margin:0}main{max-width:720px;margin:auto;padding:24px 18px 90px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #846c35;padding:16px 0}header strong{color:#e8c879;letter-spacing:3px}small,.muted{color:#a9b9ad}.progress{height:7px;background:#1a3a31;border-radius:8px;margin:25px 0}.progress span{display:block;height:100%;background:#d8b866;border-radius:8px;transition:width .2s}article{background:#0d2923;border:1px solid #486a50;border-radius:20px;padding:26px 22px}h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,40px);line-height:1.2}h2{font-size:16px;color:#e6c579;letter-spacing:1px}button,input,textarea,select{font:inherit}button{cursor:pointer}.choices{display:grid;gap:10px;margin:24px 0}.choice{width:100%;text-align:left;border:1px solid #57745e;background:#14352c;color:#fff;padding:17px;border-radius:12px}.choice:hover,.choice:focus,.choice.selected{border-color:#f2d080;background:#284c3b}.nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px}.nav button,.primary{background:#d6b569;color:#10231b;border:0;border-radius:10px;padding:14px 20px;font-weight:700}.nav button:disabled{opacity:.4}.nav .secondary{background:transparent;color:#f3dfad;border:1px solid #89754b}input[type=number],input[type=text],textarea{width:100%;padding:16px;border:1px solid #8b986c;border-radius:12px;background:#17382e;color:#fff}label{display:block;margin:12px 0}.hint{font-size:14px;color:#d3c9a8}.warning{background:#473226;border:1px solid #d8a66b;padding:14px;border-radius:10px;margin:16px 0}.hidden{display:none}</style></head><body><main><header><strong>GODHEALTH</strong><small>V4 · PRIVATE PROTOTYPE</small></header><div class="progress"><span id="bar"></span></div><div id="app"></div></main>
+<script>
+const core=[
+["B1.1","Most of my meals are simple, real foods instead of packaged foods."],["B1.6","Food feels peaceful and purposeful, not full of guilt, chaos, restriction, or loss of control."],["B2.1","I usually give myself enough time to sleep about 7 hours or more."],["B2.6","Tiredness does not often hurt my focus, work, training, safety, or relationships."],["B3.1","I usually get enough weekly movement, like walking, cardio, or active work."],["B3.2","I train my muscles at least 2 days per week when my body allows it."],["B4.1","I have enough energy for the responsibilities that matter most."],["B4.5","Pain, dizziness, breathlessness, or unexplained fatigue do not often stop me from functioning."],
+["S1.1","I can notice an unhelpful thought without believing it right away."],["S1.4","I can take the next wise step even when I do not feel motivated."],["S2.1","I can usually name what I feel instead of only reacting."],["S2.2","When I feel stressed, angry, anxious, disappointed, or lonely, I can pause before I act."],["S3.2","I make clear plans for my important habits."],["S3.5","When I miss a habit, I usually restart at the next good moment instead of waiting for Monday."],["S4.2","The people closest to me usually support the healthy changes I want to make."],["S4.3","My home and work environment make healthy choices easier, not harder."],
+["P1.1","I read or hear Scripture often enough that God's truth shapes my choices."],["P1.6","I try to live out what I learn from Scripture."],["P2.1","Prayer is a regular part of my life, not only something I do in crisis."],["P2.5","Depending on God helps me take faithful action, not avoid responsibility."],["P3.1","I see caring for my body as stewardship of what God gave me."],["P3.2","My health choices are led more by wisdom and self-control than impulse, fear, vanity, or obsession."],["P4.1","I know the people, responsibilities, and work God has placed in front of me in this season."],["P4.2","My health has a bigger purpose: service, stewardship, and calling."]
+];
+const q=(id,section,title,options,required=true,condition=null)=>({id,section,title,options,required,condition});
+const questions=[
+q("GL1","YOUR VISION","What is your main 12-week goal?",["Fat loss","Muscle and strength","More energy","Better health and habits","Whole-person transformation"]),
+q("GL4","YOUR VISION","Why does this goal matter to you?",null,false),
+...[
+["G1","Has a clinician advised you to restrict exercise, fasting, weight loss, or dietary changes?"],
+["G2","Do you have unexplained chest pain, fainting, severe breathlessness, or rapidly worsening symptoms?"],
+["G3","Are you pregnant, postpartum, recovering from surgery, or managing a condition that changes your training or nutrition needs?"],
+["G4","Have you experienced an eating disorder, purging, severe restriction, or loss-of-control eating?"],
+["G5","Are you currently in a mental-health crisis or in need of urgent support?"],
+["G6","Are you taking medication or receiving treatment that may affect your energy, appetite, sleep, weight, or exercise tolerance?"]
+].map(x=>q(x[0],"SAFETY",x[1],["No","Yes","Not sure / discuss privately"])),
+q("PR1","BODY · PROFILE","How old are you?",null),
+q("PR2","BODY · PROFILE","Which sex-based energy equation should your coach review?",["Male","Female","Prefer coach review"]),
+q("PR3","BODY · PROFILE","What is your height in centimeters?",null),
+q("PR4","BODY · PROFILE","What is your current weight in kilograms?",null),
+q("GL5","BODY · GOALS","What is your target weight in kilograms?",null,false,a=>a.GL1==="Fat loss"),
+q("PR7","BODY · MOVEMENT","How active is your workday?",["Mostly sitting","Mostly standing","Mostly walking","Physically demanding"]),
+q("PR8","BODY · MOVEMENT","About how many steps do you take per day?",["Under 3,000","3,000–5,000","5,000–8,000","8,000–11,000","Over 11,000","I don't know"]),
+q("TR1","BODY · MOVEMENT","How many days per week do you strength train?",["0","1","2","3","4+"]),
+q("TR2","BODY · MOVEMENT","How much cardio do you do weekly?",["None","Under 60 min","60–149 min","150–299 min","300+ min"]),
+q("TR3","BODY · TRAINING","How experienced are you with strength training?",["New to training","Under 6 months","6–24 months","More than 2 years"]),
+q("TR4","BODY · TRAINING","How many training days are realistic for you?",["1","2","3","4+"]),
+q("TR6","BODY · TRAINING","Where would you prefer to train?",["At home, no equipment","At home, with equipment","Gym","Both"]),
+q("TR9","BODY · SAFETY","Do you have injuries, pain, or movement restrictions your coach should know about?",null,false),
+q("SL1","BODY · RECOVERY","How many hours do you usually sleep?",["Under 5","5–6","6–7","7–8","Over 8"]),
+q("SL6","BODY · RECOVERY","How rested do you feel after sleep?",["Not rested","A little","Somewhat","Mostly rested","Very rested"]),
+q("SL4","BODY · RECOVERY","Do you work night or rotating shifts?",["No","Yes"]),
+q("SL5","BODY · RECOVERY","Has anyone noticed loud snoring, gasping, or breathing pauses during your sleep?",["No","Yes","Not sure"]),
+q("SL7","BODY · RECOVERY","How often do you use screens in the hour before bed?",["Never","Sometimes","Most nights","Every night"]),
+q("NU1","BODY · NUTRITION","How many meals do you usually eat each day?",["1","2","3","4+","It varies"]),
+q("NU3","BODY · NUTRITION","How often do you eat fruit and vegetables?",["Rarely","Some days","Most days","Every day"]),
+q("NU5","BODY · NUTRITION","How often do your meals include protein?",["Rarely","Sometimes","Most meals","Every meal"]),
+q("NU11","BODY · NUTRITION","Do you have food allergies, intolerances, or important dietary restrictions?",null,false),
+q("NU12","BODY · NUTRITION","How much time can you usually spend preparing meals?",["Under 15 min","15–30 min","30–60 min","Over 60 min"]),
+q("FA1","BODY · FASTING","Are you interested in optional fasting or time-restricted eating?",["Yes","No","Not sure"]),
+q("FA2","BODY · FASTING","Which fasting approach have you tried?",["None","12–14 hours","16:8","18:6 or longer","Other"],false,a=>a.FA1==="Yes"),
+q("FA3","BODY · FASTING","How did fasting affect you? Mention any dizziness, weakness, or difficult eating patterns.",null,false,a=>a.FA1==="Yes"),
+q("RC1","BODY · RECOVERY","Do you currently use a sauna?",["Never","Sometimes","Weekly","Multiple times weekly"],false),
+q("RC2","BODY · RECOVERY","Do you use cold showers or cold-water immersion?",["Never","Sometimes","Weekly","Daily"],false),
+q("EN7","SOUL · HABITS","What most often causes your routine to fall apart?",["Busy schedule","Stress","Low energy","Lack of planning","Family demands","Loss of motivation","Other"]),
+q("SS1","SOUL · EMOTIONS","What mental or emotional pattern most often gets in your way?",["Stress","Anxiety or worry","All-or-nothing thinking","Emotional eating","Perfectionism","Other"]),
+q("EN2","SOUL · SUPPORT","How supportive are the people closest to you?",["Not supportive","A little","Somewhat","Supportive","Very supportive"]),
+q("GL7","SOUL · READINESS","How ready are you to make changes over the next 12 weeks?",["1–2","3–4","5–6","7–8","9–10"]),
+q("SS2","SPIRIT · GROWTH","What spiritual rhythm would you most like to strengthen?",["Scripture","Prayer","Gratitude","Sabbath/rest","Christian community","Stewardship","Purpose and calling"]),
+...core.map(([id,title])=>q(id,id[0]==="B"?"BODY · CAPACITY":id[0]==="S"?"SOUL · CAPACITY":"SPIRIT · CAPACITY",title,["0 · Never","1 · Rarely","2 · Sometimes","3 · Mostly","4 · Consistently"]))
+];
+const answers={};let current=0;const root=document.getElementById("app");const bar=document.getElementById("bar");
+const visible=()=>questions.filter(x=>!x.condition||x.condition(answers));
+function render(){const list=visible();if(current>=list.length){finish();return}const x=list[current];bar.style.width=(current/list.length*100)+"%";let choices=x.options?'<div class="choices">'+x.options.map((v,i)=>'<button class="choice '+(answers[x.id]===v?'selected':'')+'" data-i="'+i+'">'+escapeHtml(v)+'</button>').join("")+'</div>':'<label><span class="muted">Your answer</span><textarea rows="3" id="free" placeholder="Type your answer here...">'+escapeHtml(answers[x.id]||"")+'</textarea></label>';
+root.innerHTML='<article><small>'+escapeHtml(x.section)+' · '+(current+1)+' / '+list.length+'</small><h1>'+escapeHtml(x.title)+'</h1>'+choices+'<p class="hint">'+(x.required?"Required":"Optional — you can skip this question")+'</p><div class="nav"><button class="secondary" id="back" '+(current===0?'disabled':'')+'>Back</button><button id="next">Continue</button></div></article>';
+document.getElementById("back").onclick=()=>{current=Math.max(0,current-1);render()};document.getElementById("next").onclick=()=>{if(!x.options){answers[x.id]=document.getElementById("free").value.trim()}if(x.required&&!answers[x.id]){alert("Please answer this question.");return}advance()};
+root.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{answers[x.id]=x.options[Number(b.dataset.i)];advance()});
+}
+function advance(){const x=visible()[current];if(x.id==="G5"&&answers.G5!=="No"){root.innerHTML='<article><h1>Your safety comes first</h1><div class="warning">If you are in immediate danger or experiencing a mental-health emergency, contact your local emergency service or qualified crisis service now. A GodHealth assessment is not emergency care.</div><p>Normal automated recommendations are paused. Please discuss next steps with a qualified professional.</p><button class="primary" onclick="location.reload()">Restart prototype</button></article>';return}current++;render()}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function finish(){bar.style.width="100%";const count=core.filter(([id])=>answers[id]!==undefined).length;const flags=["G1","G2","G3","G4","G5","G6"].filter(id=>answers[id]!=="No");root.innerHTML='<article><h1>Assessment prototype complete</h1><p>'+count+' of 24 core responses recorded.</p><p>'+flags.length+' safety item(s) require coach review or clarification.</p><div class="warning">Prototype only. No diagnosis, calculated scores, automated plan, PDF, or server submission is produced.</div><p>Your answers exist only in this page until it is reloaded.</p><button class="primary" onclick="location.reload()">Start again</button></article>'}
+render();
+</script></body></html>
