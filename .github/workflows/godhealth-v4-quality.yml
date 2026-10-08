@@ -1,0 +1,27 @@
+name: GodHealth V4 quality checks
+on:
+  push:
+    branches: [feature/kca-v4-isolated-prototype]
+  pull_request:
+    paths: ['kca-v4-prototype/**']
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript syntax
+        run: |
+          node --check kca-v4-prototype/engine.js
+          node --check kca-v4-prototype/planner.js
+      - name: Run score and safety tests
+        run: node kca-v4-prototype/engine.test.cjs
+      - name: Run planner integration tests
+        run: node kca-v4-prototype/planner.test.cjs
+      - name: Check expected scripts and report flow
+        run: |
+          grep -q 'src="./engine.js"' kca-v4-prototype/index.html
+          grep -q 'src="./planner.js"' kca-v4-prototype/index.html
+          grep -q 'downloadReport' kca-v4-prototype/index.html
