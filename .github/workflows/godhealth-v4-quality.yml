@@ -31,6 +31,8 @@ jobs:
         run: node kca-v4-prototype/usda.test.cjs
       - name: Test bundled USDA offline assessment nutrition
         run: node kca-v4-prototype/offline.test.cjs
+      - name: Test expanded USDA candidate catalogue
+        run: node kca-v4-prototype/expanded-foods.test.cjs
       - name: Check expected scripts and report flow
         run: |
           grep -q 'src="./engine.js"' kca-v4-prototype/index.html
