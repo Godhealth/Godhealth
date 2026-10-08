@@ -31,3 +31,8 @@
 - [ ] Owner approves a separate, staged rollout plan
 
 Development branch: `feature/kca-v4-isolated-prototype`. Pull request #9.
+## Food review workflow (added)
+Open `kca-v4-prototype/food-review.html` from the same hosted V4 preview as the JSON catalogue. Filter the 196 candidates, mark pending/approved/excluded/review, record evidence and preparation notes, and export the local JSON. This is a **reviewer draft**, not production authorization. The reviewer must sign off on the source, Biblical interpretation, allergen status and food preparation. Do not enable the candidate records in recipe generation based only on the local approval flag.
+
+## Nutrient comparison source
+EFSA dietary reference values: https://www.efsa.europa.eu/en/topics/topic/dietary-reference-values and DRV Finder: https://multimedia.efsa.europa.eu/drvs/index.htm. These are population reference values, **not** individualized clinical prescriptions. A registered dietitian should select appropriate reference ranges, upper limits and contraindications, and approve any automated decision rules before they are activated.
