@@ -17,12 +17,17 @@ jobs:
           node --check kca-v4-prototype/engine.js
           node --check kca-v4-prototype/planner.js
           node --check kca-v4-prototype/recipes.js
+          node --check kca-v4-prototype/nutrition-bridge.js
+          node --check kca-v4-prototype/nutrition-data.js
+          node --check api/kca-v4-usda.js
       - name: Run score and safety tests
         run: node kca-v4-prototype/engine.test.cjs
       - name: Run planner integration tests
         run: node kca-v4-prototype/planner.test.cjs
       - name: Run recipe regression tests
         run: node kca-v4-prototype/recipes.test.cjs
+      - name: Test USDA nutrient mapping and safety
+        run: node kca-v4-prototype/usda.test.cjs
       - name: Check expected scripts and report flow
         run: |
           grep -q 'src="./engine.js"' kca-v4-prototype/index.html
