@@ -33,6 +33,8 @@ jobs:
         run: node kca-v4-prototype/offline.test.cjs
       - name: Test expanded USDA candidate catalogue
         run: node kca-v4-prototype/expanded-foods.test.cjs
+      - name: Test end-to-end assessment scenarios
+        run: node kca-v4-prototype/scenarios.test.cjs
       - name: Check expected scripts and report flow
         run: |
           grep -q 'src="./engine.js"' kca-v4-prototype/index.html
