@@ -42,7 +42,8 @@ function makeWeek(a,energy){
   });
   return {day:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][i],meals,totals:totals(meals.flatMap(m=>m.ingredients.map(x=>[x.id,x.grams])))};
  });
- return {requiresReview:false,days,shopping:Object.entries(shopping).map(([id,grams])=>({food:labels[id],grams})).sort((a,b)=>a.food.localeCompare(b.food)),disclaimer:"Energy and macros are estimates from a small reference table, not validated food-composition data. Portion rounding changes targets. Micronutrients cannot be claimed until a verified database is integrated. Coach review is mandatory."};
+ const deviations=days.map(d=>({day:d.day,estimatedKcal:d.totals.kcal,maintenanceReferenceKcal:energy,differenceKcal:d.totals.kcal-energy,differencePct:Math.round(100*(d.totals.kcal-energy)/energy)}));
+ return {requiresReview:false,energyReferenceType:"estimated_maintenance_not_a_prescribed_target",deviations,days,shopping:Object.entries(shopping).map(([id,grams])=>({food:labels[id],grams})).sort((a,b)=>a.food.localeCompare(b.food)),disclaimer:"Serving sizes are scaled against an estimated maintenance reference, not a prescribed calorie goal. Macro calculations use the locally loaded USDA mappings when available. Portion rounding and ingredient variants affect totals. Micronutrient adequacy has not been established; coach review is mandatory."};
 }
 window.GodHealthRecipeEngine={db,recipes,totals,recipeCandidates,makeWeek};
 })();
