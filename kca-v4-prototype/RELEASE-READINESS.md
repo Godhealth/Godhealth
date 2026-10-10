@@ -36,3 +36,9 @@ Open `kca-v4-prototype/food-review.html` from the same hosted V4 preview as the 
 
 ## Nutrient comparison source
 EFSA dietary reference values: https://www.efsa.europa.eu/en/topics/topic/dietary-reference-values and DRV Finder: https://multimedia.efsa.europa.eu/drvs/index.htm. These are population reference values, **not** individualized clinical prescriptions. A registered dietitian should select appropriate reference ranges, upper limits and contraindications, and approve any automated decision rules before they are activated.
+
+## Latest optimization implementation
+- `recipes.js` now has deterministic bounded ingredient-level portion optimization against an estimated maintenance-energy reference. `optimizePortions(items, energy, macros)` can additionally optimize against **explicit coach-supplied** protein/fat/carbohydrate gram targets. These targets are not inferred from user characteristics, and a coach must validate them.
+- No micronutrient sufficiency solver is active; USDA daily and seven-day totals are calculated and missing values identified, but are not automatically compared to a clinically validated set of individual DRVs/upper limits.
+- `build-food-audit.cjs` generates an itemized audit for all 196 provisional foods. It does not constitute food-by-food approval. The review interface remains separate from production recipes.
+- Static UI tests and CI cannot substitute for real Safari/Chrome/mobile rendering or a professional PDF page-by-page check.
