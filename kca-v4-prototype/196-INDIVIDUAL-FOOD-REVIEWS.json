@@ -4,8 +4,8 @@
   "date": "2026-10-10",
   "total": 196,
   "counts": {
-    "conditionally_suitable_ingredient_candidate": 172,
-    "hold_for_correction_or_exclusion": 24
+    "conditionally_suitable_ingredient_candidate": 174,
+    "hold_for_correction_or_exclusion": 22
   },
   "foods": [
     {
@@ -416,18 +416,16 @@
       "description": "Apples, raw, gala, with skin (Includes foods for USDA's Food Distribution Program)",
       "category": "fruit",
       "usdaSource": "SR Legacy",
-      "decision": "hold_for_correction_or_exclusion",
+      "decision": "conditionally_suitable_ingredient_candidate",
       "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
-      "issues": [
-        "not_suitable_as_standalone_main_meal_ingredient"
-      ],
+      "issues": [],
       "cautions": [],
       "missingMicros": [
         "vitamin_d_ug",
         "vitamin_b12_ug"
       ],
       "macrosComplete": true,
-      "individualNote": "Do not activate: not_suitable_as_standalone_main_meal_ingredient",
+      "individualNote": "Whole fruit candidate; check exact variety, preparation and individual allergy risk before client use.",
       "verifiedSourceRecord": false,
       "reviewer": "automated_criteria_with_assistant_category_review",
       "reviewDate": "2026-10-10"
@@ -456,18 +454,16 @@
       "description": "Apples, raw, red delicious, with skin (Includes foods for USDA's Food Distribution Program)",
       "category": "fruit",
       "usdaSource": "SR Legacy",
-      "decision": "hold_for_correction_or_exclusion",
+      "decision": "conditionally_suitable_ingredient_candidate",
       "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
-      "issues": [
-        "not_suitable_as_standalone_main_meal_ingredient"
-      ],
+      "issues": [],
       "cautions": [],
       "missingMicros": [
         "vitamin_d_ug",
         "vitamin_b12_ug"
       ],
       "macrosComplete": true,
-      "individualNote": "Do not activate: not_suitable_as_standalone_main_meal_ingredient",
+      "individualNote": "Whole fruit candidate; check exact variety, preparation and individual allergy risk before client use.",
       "verifiedSourceRecord": false,
       "reviewer": "automated_criteria_with_assistant_category_review",
       "reviewDate": "2026-10-10"
