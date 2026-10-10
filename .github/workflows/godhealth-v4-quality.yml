@@ -39,6 +39,12 @@ jobs:
         run: node kca-v4-prototype/build-food-audit.cjs
       - name: Run V4 UI and printable-report smoke checks
         run: node kca-v4-prototype/ui-smoke.test.cjs
+      - name: Install headless Chromium test dependencies
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Real desktop/mobile Chromium assessment and PDF test
+        run: node kca-v4-prototype/browser-e2e.test.cjs
       - name: Check expected scripts and report flow
         run: |
           grep -q 'src="./engine.js"' kca-v4-prototype/index.html
