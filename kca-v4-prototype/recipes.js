@@ -26,7 +26,22 @@ function recipeCandidates(a){
  pool.sort((x,y)=>y.score-x.score);
  return {requiresReview:false,recipes:pool};
 }
-function makeWeek(a,energy){
+function optimizePortions(items,energy,macros){
+ const valid=macros&&['protein','fat','carbs'].every(k=>Number.isFinite(macros[k])&&macros[k]>0);
+ const base=items.map(([id,g])=>({id,base:g,min:Math.max(5,Math.round(g*.55/5)*5),max:Math.max(5,Math.round(g*2.1/5)*5)}));
+ const proposed=base.map(x=>[x.id,x.base]);
+ function score(v){const t=totals(v);let s=Math.pow((t.kcal-energy)/Math.max(energy,1),2)*6;
+ if(valid)for(const k of ['protein','fat','carbs'])s+=Math.pow((t[k]-macros[k])/Math.max(macros[k],10),2);
+ for(let i=0;i<v.length;i++)s+=.005*Math.pow((v[i][1]-base[i].base)/Math.max(base[i].base,5),2);
+ return s}
+ for(let pass=0;pass<5;pass++)for(let i=0;i<base.length;i++){
+  let best=proposed[i][1],lowest=Infinity;
+  for(let grams=base[i].min;grams<=base[i].max;grams+=5){proposed[i][1]=grams;const s=score(proposed);if(s<lowest){lowest=s;best=grams}}
+  proposed[i][1]=best;
+ }
+ return {ingredients:proposed,nutrition:totals(proposed),optimizedAgainst:valid?'explicit_coach_macro_targets':'maintenance_energy_reference_only'}
+}
+function makeWeek(a,energy,coachMacros){
  const choices=recipeCandidates(a);if(choices.requiresReview||!Number.isFinite(energy)||energy<1200||energy>4500)return {requiresReview:true,reason:choices.reason||"Energy target needs qualified review before portion calculation.",days:[],shopping:[]};
  const mealCount=Math.max(2,Math.min(4,parseInt(a.NU1,10)||3));const slots=mealCount;
  const breakfasts=choices.recipes.filter(r=>r.kind==="breakfast");const mains=choices.recipes.filter(r=>r.kind==="main");const shopping={};
@@ -35,19 +50,8 @@ function makeWeek(a,energy){
    const template=j===0?breakfasts[i%breakfasts.length]:mains[(i*2+j-1)%mains.length];
    const target=energy/slots;
    const base=totals(template.ingredients).kcal;
-   // Bounded deterministic search: minimize energy deviation and avoid extreme portions.
-   // Protein is tracked, not prescribed: no individual protein goal is inferred.
-   const candidates=[];
-   for(let step=11;step<=42;step++){
-    const f=step/20;
-    const proposed=template.ingredients.map(([id,g])=>[id,Math.max(5,Math.round(g*f/5)*5)]);
-    const actual=totals(proposed);
-    const deviation=Math.abs(actual.kcal-target)/target;
-    const portionPenalty=Math.max(0,f-1.8)*.15+Math.max(0,.65-f)*.15;
-    candidates.push({ingredients:proposed,score:deviation+portionPenalty});
-   }
-   candidates.sort((x,y)=>x.score-y.score);
-   const ingredients=candidates[0].ingredients;
+   const selected=optimizePortions(template.ingredients,target,coachMacros&&Object.fromEntries(['protein','fat','carbs'].map(k=>[k,coachMacros[k]/slots])));
+   const ingredients=selected.ingredients;
    for(const [id,g] of ingredients)shopping[id]=(shopping[id]||0)+g;
    return {name:template.name,category:template.category,ingredients:ingredients.map(([id,g])=>({food:labels[id],grams:g,id})),method:template.method,nutrition:totals(ingredients),micronutrients:null,micronutrientStatus:"See separate USDA nutrient calculation when available; adequacy not established."};
   });
@@ -56,5 +60,5 @@ function makeWeek(a,energy){
  const deviations=days.map(d=>({day:d.day,estimatedKcal:d.totals.kcal,maintenanceReferenceKcal:energy,differenceKcal:d.totals.kcal-energy,differencePct:Math.round(100*(d.totals.kcal-energy)/energy)}));
  return {requiresReview:false,energyReferenceType:"estimated_maintenance_not_a_prescribed_target",deviations,days,shopping:Object.entries(shopping).map(([id,grams])=>({food:labels[id],grams})).sort((a,b)=>a.food.localeCompare(b.food)),disclaimer:"Serving sizes are scaled against an estimated maintenance reference, not a prescribed calorie goal. Macro calculations use the locally loaded USDA mappings when available. Portion rounding and ingredient variants affect totals. Micronutrient adequacy has not been established; coach review is mandatory."};
 }
-window.GodHealthRecipeEngine={db,recipes,totals,recipeCandidates,makeWeek};
+window.GodHealthRecipeEngine={db,recipes,totals,recipeCandidates,optimizePortions,makeWeek};
 })();
