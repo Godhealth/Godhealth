@@ -1,0 +1,49 @@
+/* GodHealth V4: standalone, client-side preview engine. No server writes. */
+(function(){
+"use strict";
+const pairs=[["B1.1","B1.6"],["B2.1","B2.6"],["B3.1","B3.2"],["B4.1","B4.5"],["S1.1","S1.4"],["S2.1","S2.2"],["S3.2","S3.5"],["S4.2","S4.3"],["P1.1","P1.6"],["P2.1","P2.5"],["P3.1","P3.2"],["P4.1","P4.2"]];
+const names=["Nutrition","Sleep & Recovery","Movement","Energy & Function","Thoughts & Mindset","Emotional Regulation","Consistency","Environment & Support","Scripture","Prayer & Dependence","Stewardship","Purpose & Calling"];
+const num=x=>Number.parseInt(String(x||"").split(" ")[0],10);
+const esc=x=>String(x==null?"":x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function score(a){const domains=pairs.map((ids,i)=>{const values=ids.map(id=>num(a[id]));return {name:names[i],value:values.every(v=>Number.isInteger(v)&&v>=0&&v<=4)?Math.round((values[0]+values[1])*12.5):null}});const pillars=["BODY","SOUL","SPIRIT"].map((name,i)=>{const d=domains.slice(i*4,i*4+4);return {name,value:d.every(x=>x.value!==null)?Math.round(d.reduce((sum,x)=>sum+x.value,0)/4):null,domains:d}});return {pillars,overall:pillars.every(x=>x.value!==null)?Math.round(pillars.reduce((s,x)=>s+x.value,0)/3):null}}
+function safety(a){const gates=["G1","G2","G3","G4","G5","G6"];return gates.filter(id=>a[id]!=="No").concat(a.SL5==="Yes"?["SL5"]:[]).concat(a.TR9?["TR9"]:[])}
+const weekThemes=["Establish your starting point","Build a sustainable sleep rhythm","Make movement consistent","Plan simple meals","Strengthen recovery and stress skills","Build strength safely","Practice consistency during busy days","Adjust for restaurants and travel","Improve daily energy management","Strengthen Body, Soul & Spirit habits","Practice independence and flexibility","Review progress and plan your next season"];
+const workouts={
+ beginner:[["Chair squat or sit-to-stand","Wall push-up","Glute bridge","Bird dog","Easy march in place"],["Supported reverse step","Counter push-up","Hip hinge practice","Dead bug","Easy walk"],["Bodyweight squat","Wall push-up","Calf raise","Bird dog","Easy march"]],
+ intermediate:[["Squat","Push-up variation","Reverse lunge","Hip bridge","Plank variation"],["Split squat","Push-up variation","Hip hinge","Side plank","March or walk"],["Squat variation","Push-up variation","Lunge variation","Glute bridge","Dead bug"]]
+};
+function generate(a){
+ const s=score(a), flags=safety(a),review=flags.length>0;
+ const days=Math.max(1,Math.min(4,num(a.TR4)||2));
+ const novice=a.TR3==="New to training"||a.TR3==="Under 6 months";
+ const duration=novice?15:25;
+ const sessions=workouts[novice?"beginner":"intermediate"];
+ const foods=(a.NU15||"").trim(),produce=(a.NU16||"").trim();
+ const preference=foods||produce;
+ const travel=Boolean(a.EN3&&a.EN3!=="Rarely"),dining=a.NU13&&a.NU13!=="Rarely",limited=a.NU20==="Limited facilities";
+ const sleepLow=["Under 5","5–6","6–7"].includes(a.SL1);
+ const goal=a.GL1||"Whole-person transformation";
+ const restrictions=[a.NU11,a.NU17].filter(Boolean).join("; ");
+ const hasRestrictions=Boolean(restrictions.trim());
+ const suggestions=[
+ ["Eggs or an appropriate protein alternative","Fruit","Oats or another tolerated whole grain"],
+ ["Chicken or a suitable protein alternative","Vegetables","Rice or potatoes"],
+ ["Fish or a suitable protein alternative","Vegetables","Potatoes or whole grains"],
+ ["Plain yogurt or an appropriate alternative","Fruit","Nuts or seeds if tolerated"],
+ ["Beans, lentils or another tolerated protein","Vegetables","Whole grains"],
+ ["Lean protein of choice","Vegetables","Sweet potato or rice"],
+ ["Leftover protein or beans","Vegetables or fruit","Whole-food carbohydrate of choice"]
+ ];
+ const meals=suggestions.map((p,i)=>({day:i+1,breakfast:hasRestrictions?"COACH TO SELECT SAFE INGREDIENTS":p[0]+" with "+p[1],main:hasRestrictions?"COACH TO SELECT SAFE INGREDIENTS":p[0]+", "+p[1].toLowerCase()+", "+p[2],note:dining&&i===4?"Restaurant day: choose a tolerated protein, vegetables, and an appropriate side.":travel&&i===2?"Travel day: choose simple available foods and keep food safety in mind.":limited?"No-cook or microwave-friendly substitutions may be needed.":"Swap ingredients for your stated preferences and allergies."}));
+ const training=Array.from({length:days},(_,i)=>({day:i+1,minutes:duration,place:a.TR6||"Home, no equipment",moves:review?["COACH SAFETY CLEARANCE REQUIRED BEFORE EXERCISE"]:sessions[i%sessions.length],prescription:novice?"1–2 comfortable rounds; 6–10 controlled repetitions per move; rest as needed.":"2–3 comfortable rounds; 8–12 controlled repetitions per move; rest as needed."}));
+ const week=weekThemes.map((theme,i)=>({week:i+1,theme,action:i<3?"Track your baseline and practice one small daily action.":i<7?"Build consistency, adjust effort gradually, and review recovery.":i<10?"Adapt your plan to real-world interruptions, travel, and meals.":"Review outcomes with your coach and choose the next sustainable step."}));
+ return {version:"v4-preview-engine-2",scores:s,flags,review:review||hasRestrictions,goal,week,training,meals,notes:{foodPreferences:preference||"Not specified",restrictions:restrictions||"None provided",schedule:a.PR9||"Not provided",trainingWindow:a.EN5||"To arrange with coach",travel,dining,sleepLow,reminder:a.EN6||"Flexible / coach decides"},disclaimer:"PREVIEW ONLY — not a prescribed diet, medical advice, calorie prescription, or approved individualized coaching plan. A qualified coach must review all answers, allergies, medication, health restrictions and practical suitability before use. No fasting or cold exposure prescription is generated."};
+}
+function reportHtml(a,r){const pill=r.scores.pillars.map(p=>'<div class="score"><b>'+esc(p.name)+'</b><strong>'+ (p.value===null?"Incomplete":p.value+"/100")+'</strong><small>'+p.domains.map(d=>esc(d.name)+": "+(d.value===null?"—":d.value)).join(" · ")+'</small></div>').join("");
+const weeks=r.week.map(w=>'<tr><td>'+w.week+'</td><td>'+esc(w.theme)+'</td><td>'+esc(w.action)+'</td></tr>').join("");
+const meals=r.meals.map(m=>'<tr><td>'+m.day+'</td><td>'+esc(m.breakfast)+'</td><td>'+esc(m.main)+'</td><td>'+esc(m.note)+'</td></tr>').join("");
+const train=r.training.map(t=>'<article><h3>Session '+t.day+' · '+t.minutes+' minutes</h3><p>'+esc(t.place)+'</p><p>'+t.moves.map(esc).join(" → ")+'</p><p>'+esc(t.prescription)+'</p></article>').join("");
+return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GodHealth V4 · Coach Review Preview</title><style>body{font:15px/1.55 system-ui;margin:0;background:#06180f;color:#f9f4e9}.wrap{max-width:960px;margin:auto;padding:35px 22px}h1,h2{font-family:Georgia,serif;color:#edcb77}h1{font-size:44px}h2{margin-top:40px}p{max-width:800px}.score,article{border:1px solid #a4894d;border-radius:16px;padding:16px;margin:10px 0;background:#123024}.score strong{display:block;font-size:30px;color:#edcb77}.score small{display:block}table{width:100%;border-collapse:collapse}th,td{padding:10px;text-align:left;border-bottom:1px solid #7d764c;vertical-align:top}th{color:#edcb77}.alert{border:2px solid #e1a75c;padding:18px;border-radius:14px}.button{background:#e6c477;color:#182415;padding:14px 20px;border:0;border-radius:30px;font-weight:700;cursor:pointer}@media print{body{background:#fff;color:#172b1e}.wrap{padding:0}h1,h2,.score strong,th{color:#88621e}.score,article{background:#fff;border-color:#bbb}.button{display:none}table{font-size:11px}tr{break-inside:avoid}h2{break-after:avoid}}</style></head><body><div class="wrap"><button class="button" onclick="window.print()">Print / Save as PDF</button><h1>GODHEALTH</h1><p>Kingdom Capacity Assessment · V4 Coach Review Preview</p><div class="alert"><b>'+ (r.review?"COACH REVIEW REQUIRED":"COACH APPROVAL STILL REQUIRED")+'</b><p>'+esc(r.disclaimer)+'</p><p>Safety review items: '+esc(r.flags.join(", ")||"No flags reported")+'</p></div><h2>Capacity Scores</h2><p>Overall: '+(r.scores.overall===null?"Incomplete":r.scores.overall+"/100")+'</p>'+pill+'<h2>Personal Starting Point</h2><p><b>Goal:</b> '+esc(r.goal)+'</p><p><b>Daily schedule:</b> '+esc(r.notes.schedule)+'</p><p><b>Training availability:</b> '+esc(r.notes.trainingWindow)+'</p><p><b>Food preferences:</b> '+esc(r.notes.foodPreferences)+'</p><p><b>Allergies and restrictions (must be verified):</b> '+esc(r.notes.restrictions)+'</p><p><b>Restaurant / takeaway:</b> '+(r.notes.dining?"Regular":"Rare")+' · <b>Travel:</b> '+(r.notes.travel?"Regular":"Rare")+'</p><h2>12-Week Transformation Roadmap — Draft</h2><table><thead><tr><th>Week</th><th>Focus</th><th>Action</th></tr></thead><tbody>'+weeks+'</tbody></table><h2>Training Program — Draft</h2><p>Sessions are intended to fit within 30 minutes, with home/no-equipment options. Adapt to limitations and clinician guidance. Stop if concerning symptoms occur.</p>'+train+'<h2>7-Day Meal Ideas — Draft</h2><p>Ingredient combinations are examples, not a verified personalized menu or nutritional prescription. Review food allergies, restrictions, preferences, portion sizes and energy needs with your coach. Meals may be repeated or swapped.</p><table><thead><tr><th>Day</th><th>First meal idea</th><th>Main meal idea</th><th>Adaptation</th></tr></thead><tbody>'+meals+'</tbody></table><h2>Daily Accountability</h2><p>Preferred check-in: '+esc(r.notes.reminder)+'. Suggested daily tracking: Scripture/prayer, morning light, hydration, nourishing meals, movement, emotional reset, and sleep. These are suggestions, not automated notifications.</p><p>'+esc(r.disclaimer)+'</p></div></body></html>'}
+if(typeof window!=="undefined")window.GodHealthV4={score,safety,generate,reportHtml};
+if(typeof module!=="undefined"&&module.exports)module.exports={score,safety,generate,reportHtml};
+})();

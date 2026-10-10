@@ -1,0 +1,54 @@
+name: GodHealth V4 quality checks
+on:
+  push:
+    branches: [feature/kca-v4-isolated-prototype]
+  pull_request:
+    paths: ['kca-v4-prototype/**']
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript syntax
+        run: |
+          node --check kca-v4-prototype/engine.js
+          node --check kca-v4-prototype/planner.js
+          node --check kca-v4-prototype/recipes.js
+          node --check kca-v4-prototype/nutrition-bridge.js
+          node --check kca-v4-prototype/nutrition-data.js
+          node --check kca-v4-prototype/nutrition-offline.js
+          node --check api/kca-v4-usda.js
+      - name: Run score and safety tests
+        run: node kca-v4-prototype/engine.test.cjs
+      - name: Run planner integration tests
+        run: node kca-v4-prototype/planner.test.cjs
+      - name: Run recipe regression tests
+        run: node kca-v4-prototype/recipes.test.cjs
+      - name: Test USDA nutrient mapping and safety
+        run: node kca-v4-prototype/usda.test.cjs
+      - name: Test bundled USDA offline assessment nutrition
+        run: node kca-v4-prototype/offline.test.cjs
+      - name: Test expanded USDA candidate catalogue
+        run: node kca-v4-prototype/expanded-foods.test.cjs
+      - name: Verify all 196 individual ingredient assessments
+        run: node kca-v4-prototype/food-reviews.test.cjs
+      - name: Test end-to-end assessment scenarios
+        run: node kca-v4-prototype/scenarios.test.cjs
+      - name: Generate 196-food review audit
+        run: node kca-v4-prototype/build-food-audit.cjs
+      - name: Run V4 UI and printable-report smoke checks
+        run: node kca-v4-prototype/ui-smoke.test.cjs
+      - name: Install headless Chromium test dependencies
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Real desktop/mobile Chromium assessment and PDF test
+        run: node kca-v4-prototype/browser-e2e.test.cjs
+      - name: Check expected scripts and report flow
+        run: |
+          grep -q 'src="./engine.js"' kca-v4-prototype/index.html
+          grep -q 'src="./planner.js"' kca-v4-prototype/index.html
+          grep -q 'downloadReport' kca-v4-prototype/index.html
