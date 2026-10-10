@@ -43,7 +43,7 @@ function optimizePortions(items,energy,macros,micronutrientConstraints,foodData)
  const missingMicronutrients=micronutrientConstraints&&foodData?Object.keys(micronutrientConstraints).filter(key=>proposed.some(([id])=>!Number.isFinite(foodData[id]?.per100g?.[key]))):[];
  return {ingredients:proposed,nutrition:totals(proposed),missingMicronutrients,optimizedAgainst:valid?'explicit_coach_macro_targets':'maintenance_energy_reference_only',micronutrientConstraintsApplied:!!(micronutrientConstraints&&foodData)}
 }
-function makeWeek(a,energy,coachMacros){
+function makeWeek(a,energy,coachMacros,coachMicros,foodData){
  const choices=recipeCandidates(a);if(choices.requiresReview||!Number.isFinite(energy)||energy<1200||energy>4500)return {requiresReview:true,reason:choices.reason||"Energy target needs qualified review before portion calculation.",days:[],shopping:[]};
  const mealCount=Math.max(2,Math.min(4,parseInt(a.NU1,10)||3));const slots=mealCount;
  const breakfasts=choices.recipes.filter(r=>r.kind==="breakfast");const mains=choices.recipes.filter(r=>r.kind==="main");const shopping={};
@@ -52,10 +52,10 @@ function makeWeek(a,energy,coachMacros){
    const template=j===0?breakfasts[i%breakfasts.length]:mains[(i*2+j-1)%mains.length];
    const target=energy/slots;
    const base=totals(template.ingredients).kcal;
-   const selected=optimizePortions(template.ingredients,target,coachMacros&&Object.fromEntries(['protein','fat','carbs'].map(k=>[k,coachMacros[k]/slots])));
+   const selected=optimizePortions(template.ingredients,target,coachMacros&&Object.fromEntries(['protein','fat','carbs'].map(k=>[k,coachMacros[k]/slots])),coachMicros&&Object.fromEntries(Object.entries(coachMicros).map(([k,v])=>[k,v/slots])),foodData);
    const ingredients=selected.ingredients;
    for(const [id,g] of ingredients)shopping[id]=(shopping[id]||0)+g;
-   return {name:template.name,category:template.category,ingredients:ingredients.map(([id,g])=>({food:labels[id],grams:g,id})),method:template.method,nutrition:totals(ingredients),micronutrients:null,micronutrientStatus:"See separate USDA nutrient calculation when available; adequacy not established."};
+   return {name:template.name,category:template.category,ingredients:ingredients.map(([id,g])=>({food:labels[id],grams:g,id})),method:template.method,nutrition:totals(ingredients),micronutrients:null,micronutrientStatus:"See separate USDA nutrient calculation when available; adequacy not established.",optimization:{optimizedAgainst:selected.optimizedAgainst,missingMicronutrients:selected.missingMicronutrients}};
   });
   return {day:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][i],meals,totals:totals(meals.flatMap(m=>m.ingredients.map(x=>[x.id,x.grams])))};
  });
