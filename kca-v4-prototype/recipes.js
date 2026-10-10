@@ -35,10 +35,21 @@ function makeWeek(a,energy){
    const template=j===0?breakfasts[i%breakfasts.length]:mains[(i*2+j-1)%mains.length];
    const target=energy/slots;
    const base=totals(template.ingredients).kcal;
-   const factor=Math.max(.55,Math.min(2.1,target/base));
-   const ingredients=template.ingredients.map(([id,g])=>[id,Math.max(5,Math.round(g*factor/5)*5)]);
+   // Bounded deterministic search: minimize energy deviation and avoid extreme portions.
+   // Protein is tracked, not prescribed: no individual protein goal is inferred.
+   const candidates=[];
+   for(let step=11;step<=42;step++){
+    const f=step/20;
+    const proposed=template.ingredients.map(([id,g])=>[id,Math.max(5,Math.round(g*f/5)*5)]);
+    const actual=totals(proposed);
+    const deviation=Math.abs(actual.kcal-target)/target;
+    const portionPenalty=Math.max(0,f-1.8)*.15+Math.max(0,.65-f)*.15;
+    candidates.push({ingredients:proposed,score:deviation+portionPenalty});
+   }
+   candidates.sort((x,y)=>x.score-y.score);
+   const ingredients=candidates[0].ingredients;
    for(const [id,g] of ingredients)shopping[id]=(shopping[id]||0)+g;
-   return {name:template.name,category:template.category,ingredients:ingredients.map(([id,g])=>({food:labels[id],grams:g,id})),method:template.method,nutrition:totals(ingredients),micronutrients:null,micronutrientStatus:"Not calculated: verified nutrient-database mapping required."};
+   return {name:template.name,category:template.category,ingredients:ingredients.map(([id,g])=>({food:labels[id],grams:g,id})),method:template.method,nutrition:totals(ingredients),micronutrients:null,micronutrientStatus:"See separate USDA nutrient calculation when available; adequacy not established."};
   });
   return {day:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][i],meals,totals:totals(meals.flatMap(m=>m.ingredients.map(x=>[x.id,x.grams])))};
  });
