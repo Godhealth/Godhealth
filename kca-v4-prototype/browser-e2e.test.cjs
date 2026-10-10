@@ -12,7 +12,7 @@ for(const [label,options] of [['desktop',{viewport:{width:1440,height:900}}],['m
    const texts=await choice.allTextContents();let i=texts.findIndex(t=>/^no$|^none$|^never$|^not applicable$/i.test(t.trim()));if(i<0)i=0;await choice.nth(i).click();await page.waitForTimeout(470);
   }else{
    const free=page.locator('#free');if(!await free.count())throw Error(label+': questionnaire ended unexpectedly');
-   const question=await page.locator('article small').innerText();const id=(question.match(/\\b(PR1|PR3|PR4|GL5)\\b/)||[])[0];await free.fill(id==='PR1'?'30':id==='PR3'?'175':id==='PR4'?'75':id==='GL5'?'75':'No');await page.locator('#next').click();
+   const question=(await page.locator('article h1').innerText()).toLowerCase();const value=/height|tall|centimet/.test(question)?'175':/age|old are you/.test(question)?'30':/weight|kilogram|waist|circumference/.test(question)?'75':'No';await free.fill(value);await page.locator('#next').click();
   }
  }
  assert.ok(finished,label+' assessment did not finish');const [download]=await Promise.all([page.waitForEvent('download'),page.getByText('Download printable report').click()]);const filename=download.suggestedFilename();assert.ok(filename.endsWith('.html'));const file=path.join(require('node:os').tmpdir(),label+'-godhealth-report.html');await download.saveAs(file);const html=fs.readFileSync(file,'utf8');assert.match(html,/12-Week Action Workbook/);assert.match(html,/Official USDA Nutrient Calculations/);
