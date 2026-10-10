@@ -33,6 +33,8 @@ jobs:
         run: node kca-v4-prototype/offline.test.cjs
       - name: Test expanded USDA candidate catalogue
         run: node kca-v4-prototype/expanded-foods.test.cjs
+      - name: Verify all 196 individual ingredient assessments
+        run: node kca-v4-prototype/food-reviews.test.cjs
       - name: Test end-to-end assessment scenarios
         run: node kca-v4-prototype/scenarios.test.cjs
       - name: Generate 196-food review audit
