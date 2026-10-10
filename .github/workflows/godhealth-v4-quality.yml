@@ -35,6 +35,8 @@ jobs:
         run: node kca-v4-prototype/expanded-foods.test.cjs
       - name: Test end-to-end assessment scenarios
         run: node kca-v4-prototype/scenarios.test.cjs
+      - name: Generate 196-food review audit
+        run: node kca-v4-prototype/build-food-audit.cjs
       - name: Run V4 UI and printable-report smoke checks
         run: node kca-v4-prototype/ui-smoke.test.cjs
       - name: Check expected scripts and report flow
