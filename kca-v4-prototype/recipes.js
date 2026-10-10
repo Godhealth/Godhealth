@@ -26,12 +26,13 @@ function recipeCandidates(a){
  pool.sort((x,y)=>y.score-x.score);
  return {requiresReview:false,recipes:pool};
 }
-function optimizePortions(items,energy,macros){
+function optimizePortions(items,energy,macros,micronutrientConstraints,foodData){
  const valid=macros&&['protein','fat','carbs'].every(k=>Number.isFinite(macros[k])&&macros[k]>0);
  const base=items.map(([id,g])=>({id,base:g,min:Math.max(5,Math.round(g*.55/5)*5),max:Math.max(5,Math.round(g*2.1/5)*5)}));
  const proposed=base.map(x=>[x.id,x.base]);
  function score(v){const t=totals(v);let s=Math.pow((t.kcal-energy)/Math.max(energy,1),2)*6;
  if(valid)for(const k of ['protein','fat','carbs'])s+=Math.pow((t[k]-macros[k])/Math.max(macros[k],10),2);
+ if(micronutrientConstraints&&foodData){for(const [key,min] of Object.entries(micronutrientConstraints)){if(!Number.isFinite(min)||min<=0)continue;let amount=0,complete=true;for(const [id,g] of v){const raw=foodData[id]?.per100g?.[key];if(!Number.isFinite(raw)){complete=false;break}amount+=raw*g/100}if(complete&&amount<min)s+=2*Math.pow((min-amount)/min,2)}}
  for(let i=0;i<v.length;i++)s+=.005*Math.pow((v[i][1]-base[i].base)/Math.max(base[i].base,5),2);
  return s}
  for(let pass=0;pass<5;pass++)for(let i=0;i<base.length;i++){
@@ -39,7 +40,7 @@ function optimizePortions(items,energy,macros){
   for(let grams=base[i].min;grams<=base[i].max;grams+=5){proposed[i][1]=grams;const s=score(proposed);if(s<lowest){lowest=s;best=grams}}
   proposed[i][1]=best;
  }
- return {ingredients:proposed,nutrition:totals(proposed),optimizedAgainst:valid?'explicit_coach_macro_targets':'maintenance_energy_reference_only'}
+ return {ingredients:proposed,nutrition:totals(proposed),optimizedAgainst:valid?'explicit_coach_macro_targets':'maintenance_energy_reference_only',micronutrientConstraintsApplied:!!(micronutrientConstraints&&foodData)}
 }
 function makeWeek(a,energy,coachMacros){
  const choices=recipeCandidates(a);if(choices.requiresReview||!Number.isFinite(energy)||energy<1200||energy>4500)return {requiresReview:true,reason:choices.reason||"Energy target needs qualified review before portion calculation.",days:[],shopping:[]};
