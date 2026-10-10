@@ -20,7 +20,7 @@ function totals(items){const out={kcal:0,protein:0,fat:0,carbs:0};for(const [id,
 const norm=x=>String(x||"").toLowerCase().replace(/[^a-z0-9]+/g," ");
 function recipeCandidates(a){
  const favorites=norm([a.NU15,a.NU16].join(" "));const restricted=norm([a.NU11,a.NU17].join(" "));
- const avoid=/(allerg|intoleran|avoid|no |without|dislike|cannot|can t|celiac|coeliac|vegan|vegetarian|dairy free|gluten free)/.test(restricted);
+ const avoid=/(allerg|intoleran|avoid|no |without|dislike|cannot|can t|celiac|coeliac|vegan|vegetarian|dairy free|gluten free|halal|kosher|nut free|low sodium|low potassium|diabet|renal|kidney|pregnan|breastfeed|eating disorder)/.test(restricted);
  if(avoid)return {requiresReview:true,recipes:[],reason:"Food restrictions or allergies require verified ingredient-level filtering and coach approval."};
  let pool=recipes.map(([name,kind,category,ingredients,method])=>({name,kind,category,ingredients,method,score:ingredients.reduce((s,[id])=>s+(favorites.includes(id)||favorites.includes(labels[id].toLowerCase())?2:0),0)}));
  pool.sort((x,y)=>y.score-x.score);
