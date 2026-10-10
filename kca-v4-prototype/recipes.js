@@ -40,7 +40,8 @@ function optimizePortions(items,energy,macros,micronutrientConstraints,foodData)
   for(let grams=base[i].min;grams<=base[i].max;grams+=5){proposed[i][1]=grams;const s=score(proposed);if(s<lowest){lowest=s;best=grams}}
   proposed[i][1]=best;
  }
- return {ingredients:proposed,nutrition:totals(proposed),optimizedAgainst:valid?'explicit_coach_macro_targets':'maintenance_energy_reference_only',micronutrientConstraintsApplied:!!(micronutrientConstraints&&foodData)}
+ const missingMicronutrients=micronutrientConstraints&&foodData?Object.keys(micronutrientConstraints).filter(key=>proposed.some(([id])=>!Number.isFinite(foodData[id]?.per100g?.[key]))):[];
+ return {ingredients:proposed,nutrition:totals(proposed),missingMicronutrients,optimizedAgainst:valid?'explicit_coach_macro_targets':'maintenance_energy_reference_only',micronutrientConstraintsApplied:!!(micronutrientConstraints&&foodData)}
 }
 function makeWeek(a,energy,coachMacros){
  const choices=recipeCandidates(a);if(choices.requiresReview||!Number.isFinite(energy)||energy<1200||energy>4500)return {requiresReview:true,reason:choices.reason||"Energy target needs qualified review before portion calculation.",days:[],shopping:[]};
