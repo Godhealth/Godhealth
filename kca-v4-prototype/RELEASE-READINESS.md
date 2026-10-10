@@ -44,3 +44,6 @@ EFSA dietary reference values: https://www.efsa.europa.eu/en/topics/topic/dietar
 - No micronutrient sufficiency solver is active; USDA daily and seven-day totals are calculated and missing values identified, but are not automatically compared to a clinically validated set of individual DRVs/upper limits.
 - `build-food-audit.cjs` generates an itemized audit for all 196 provisional foods. It does not constitute food-by-food approval. The review interface remains separate from production recipes.
 - Static UI tests and CI cannot substitute for real Safari/Chrome/mobile rendering or a professional PDF page-by-page check.
+
+## Browser and PDF evidence — 2026-10-10
+GitHub Actions run https://github.com/Godhealth/Godhealth/actions/runs/38069223707 passed all jobs, including Playwright headless Chromium full questionnaire on desktop and iPhone-sized emulated viewport, USDA report HTML download and actual A4 PDF rendering (desktop 97,618 bytes; mobile 97,605 bytes). This proves automated Chromium rendering, **not** native iOS Safari, Android Chrome, or human visual inspection of every PDF page. No release certification is inferred. The 196 additional candidates remain provisional and excluded from client plans.
