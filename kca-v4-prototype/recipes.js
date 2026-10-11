@@ -40,11 +40,11 @@ function optimizePortions(items,energy,macros,micronutrientConstraints,foodData)
   for(let grams=base[i].min;grams<=base[i].max;grams+=5){proposed[i][1]=grams;const s=score(proposed);if(s<lowest){lowest=s;best=grams}}
   proposed[i][1]=best;
  }
- const missingMicronutrients=micronutrientConstraints&&foodData?Object.keys(micronutrientConstraints).filter(key=>proposed.some(([id])=>!Number.isFinite(foodData[id]?.per100g?.[key]))):[];
+ const missingMicronutrients=micronutrientConstraints?Object.keys(micronutrientConstraints).filter(key=>!foodData||proposed.some(([id])=>!Number.isFinite(foodData[id]?.per100g?.[key]))):[];
  return {ingredients:proposed,nutrition:totals(proposed),missingMicronutrients,optimizedAgainst:valid?'explicit_coach_macro_targets':'maintenance_energy_reference_only',micronutrientConstraintsApplied:!!(micronutrientConstraints&&foodData)}
 }
 function makeWeek(a,energy,coachMacros,coachMicros,foodData){
- const choices=recipeCandidates(a);if(choices.requiresReview||!Number.isFinite(energy)||energy<1200||energy>4500)return {requiresReview:true,reason:choices.reason||"Energy target needs qualified review before portion calculation.",days:[],shopping:[]};
+ const choices=recipeCandidates(a);const safetyHold=['G1','G2','G3','G4','G5','G6'].some(k=>a[k]&&a[k]!=='No');const invalidMacros=coachMacros&&(!['protein','fat','carbs'].every(k=>Number.isFinite(coachMacros[k])&&coachMacros[k]>0));const invalidMicros=coachMicros&&Object.values(coachMicros).some(v=>!Number.isFinite(v)||v<0);if(choices.requiresReview||safetyHold||invalidMacros||invalidMicros||!Number.isFinite(energy)||energy<1200||energy>4500)return {requiresReview:true,reason:safetyHold?'Safety response requires individualized review before meal planning.':invalidMacros||invalidMicros?'Invalid coach nutrient targets; cannot optimize.':choices.reason||"Energy target needs qualified review before portion calculation.",days:[],shopping:[]};
  const mealCount=Math.max(2,Math.min(4,parseInt(a.NU1,10)||3));const slots=mealCount;
  const breakfasts=choices.recipes.filter(r=>r.kind==="breakfast");const mains=choices.recipes.filter(r=>r.kind==="main");const shopping={};
  const days=Array.from({length:7},(_,i)=>{
@@ -59,8 +59,8 @@ function makeWeek(a,energy,coachMacros,coachMicros,foodData){
   });
   return {day:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][i],meals,totals:totals(meals.flatMap(m=>m.ingredients.map(x=>[x.id,x.grams])))};
  });
- const deviations=days.map(d=>({day:d.day,estimatedKcal:d.totals.kcal,maintenanceReferenceKcal:energy,differenceKcal:d.totals.kcal-energy,differencePct:Math.round(100*(d.totals.kcal-energy)/energy)}));
- return {requiresReview:false,energyReferenceType:"estimated_maintenance_not_a_prescribed_target",deviations,days,shopping:Object.entries(shopping).map(([id,grams])=>({food:labels[id],grams})).sort((a,b)=>a.food.localeCompare(b.food)),disclaimer:"Serving sizes are scaled against an estimated maintenance reference, not a prescribed calorie goal. Macro calculations use the locally loaded USDA mappings when available. Portion rounding and ingredient variants affect totals. Micronutrient adequacy has not been established; coach review is mandatory."};
+ const deviations=days.map(d=>({day:d.day,estimatedKcal:d.totals.kcal,maintenanceReferenceKcal:energy,differenceKcal:d.totals.kcal-energy,differencePct:Math.round(100*(d.totals.kcal-energy)/energy)}));const unachievable=deviations.filter(d=>Math.abs(d.differencePct)>15).map(d=>d.day+': energy deviation exceeds 15%');const missingNutrients=[...new Set(days.flatMap(d=>d.meals.flatMap(m=>m.optimization.missingMicronutrients)))];const optimizationReview=[...unachievable,...missingNutrients.map(k=>'Unknown micronutrient: '+k)];
+ return {requiresReview:false,optimizationReview,optimizationStatus:optimizationReview.length?'needs_adjustment':'estimated_portions_pending_coach_review',energyReferenceType:"estimated_maintenance_not_a_prescribed_target",deviations,days,shopping:Object.entries(shopping).map(([id,grams])=>({food:labels[id],grams})).sort((a,b)=>a.food.localeCompare(b.food)),disclaimer:"Serving sizes are scaled against an estimated maintenance reference, not a prescribed calorie goal. Macro calculations use the locally loaded USDA mappings when available. Portion rounding and ingredient variants affect totals. Micronutrient adequacy has not been established; coach review is mandatory."};
 }
 window.GodHealthRecipeEngine={db,recipes,totals,recipeCandidates,optimizePortions,makeWeek};
 })();
