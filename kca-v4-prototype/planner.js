@@ -19,6 +19,15 @@ function plan(a){
  const multiplier={"Mostly sitting":1.2,"Mostly standing":1.35,"Mostly walking":1.5,"Physically demanding":1.65}[a.PR7]||null;
  const maintenance=bmr&&multiplier?Math.round(bmr*multiplier/50)*50:null;
  const goal=a.GL1||"Whole-person transformation";
+ // Starting estimates, never guaranteed individual energy requirements.
+ // Keep weight-loss deficits moderate and avoid automatically prescribing low intakes.
+ const bmi=!missingVitals?weight/Math.pow(height/100,2):null;
+ const goalFactor=goal==="Fat loss"?0.85:goal==="Muscle and strength"?1.08:1;
+ const proposed=maintenance?Math.round(maintenance*goalFactor/50)*50:null;
+ const energyFloor=a.PR2==="Male"?1500:a.PR2==="Female"?1200:null;
+ const goalNeedsReview=goal==="Fat loss"&&(bmi===null||bmi<18.5||proposed<energyFloor);
+ const goalTarget=proposed&&!goalNeedsReview?proposed:null;
+ const energyGoal={goal,estimatedMaintenance:maintenance,targetKcal:goalTarget,method:goal==="Fat loss"?"Estimated maintenance minus 15%":goal==="Muscle and strength"?"Estimated maintenance plus 8%":"Estimated maintenance (no automatic deficit)",requiresReview:goalNeedsReview||!goalTarget,reason:goalNeedsReview?"Weight-loss energy target needs individual review (BMI or minimum-intake safeguard).":!goalTarget?"Insufficient data for energy estimate.":"Initial estimate only; adjust based on progress, hunger, energy, and coach review."};
  const objectives=goal==="Fat loss"?["Practice consistent, satisfying meals without crash dieting","Increase comfortable daily movement","Monitor energy, strength and sustainable progress"]:goal==="Muscle and strength"?["Complete consistent strength sessions","Include a protein source in meals","Progress repetitions or difficulty gradually"]:goal==="More energy"?["Prioritize regular sleep opportunities","Build a sustainable movement routine","Review meal timing and recovery"]:["Build steady daily habits","Strengthen Body, Soul & Spirit routines","Track progress and adapt without perfectionism"];
  const sessions=Math.min(4,Math.max(1,parseInt(a.TR4,10)||2));
  const novice=["New to training","Under 6 months"].includes(a.TR3);
@@ -86,7 +95,7 @@ function plan(a){
  if(a.G5!=="No")warnings.push("Mental-health crisis response: automated recommendations must not substitute for urgent professional help.");
  if(a.SL5==="Yes")warnings.push("Possible sleep-disordered breathing: encourage clinical assessment.");
  const calories=warnings.length||!maintenance?null:{estimatedResting:bmr,estimatedMaintenance:maintenance,note:"Rough population-equation estimates only, not a prescription. No automatic calorie deficit or target is assigned."};
- return {...basePlan,version:"v4-personalized-plan-1",goal,objectives,priorities,weekly,workouts,mealPlan:meals,daily,calories,warnings,allergies,requiresCoachApproval:true,notes:{...basePlan.notes,foodPreferences:[a.NU15,a.NU16].filter(Boolean).join(" | ")||"Not specified",budget,prepTime:time,mealsPerDay:mealCount,homeGym:a.TR6||"Home / no equipment",weekend:a.PR10||"Not specified",schedule:a.PR9||"Not provided",reminder:a.EN6||"Flexible / coach decides"}};
+ return {...basePlan,version:"v4-personalized-plan-1",goal,energyGoal,objectives,priorities,weekly,workouts,mealPlan:meals,daily,calories,warnings,allergies,requiresCoachApproval:true,notes:{...basePlan.notes,foodPreferences:[a.NU15,a.NU16].filter(Boolean).join(" | ")||"Not specified",budget,prepTime:time,mealsPerDay:mealCount,homeGym:a.TR6||"Home / no equipment",weekend:a.PR10||"Not specified",schedule:a.PR9||"Not provided",reminder:a.EN6||"Flexible / coach decides"}};
 }
 function html(a,p){
  const row=items=>items.map(x=>"<tr>"+x.map(v=>"<td>"+safe(v)+"</td>").join("")+"</tr>").join("");
