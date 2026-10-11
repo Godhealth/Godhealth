@@ -1,0 +1,3574 @@
+{
+  "title": "GodHealth V4 — 196 individual ingredient screening decisions",
+  "method": "Each provided USDA record assessed for description, category, basic nutrient presence and risk signals. Conservative preliminary nonclinical classifications; NOT independent source verification, clinical certification or permission to activate foods.",
+  "date": "2026-10-10",
+  "total": 196,
+  "counts": {
+    "conditionally_suitable_ingredient_candidate": 174,
+    "hold_for_correction_or_exclusion": 22
+  },
+  "foods": [
+    {
+      "fdcId": 2710823,
+      "description": "Asparagus, green, raw",
+      "category": "vegetables",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2685576,
+      "description": "Beets, raw",
+      "category": "vegetables",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170382,
+      "description": "Broccoli raab, cooked",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169967,
+      "description": "Broccoli, cooked, boiled, drained, without salt",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 747447,
+      "description": "Broccoli, raw",
+      "category": "vegetables",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169975,
+      "description": "Cabbage, raw",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2258586,
+      "description": "Carrots, mature, raw",
+      "category": "vegetables",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170398,
+      "description": "Cauliflower, frozen, unprepared",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169389,
+      "description": "Cauliflower, green, raw",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2346405,
+      "description": "Celery, raw",
+      "category": "vegetables",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 1104647,
+      "description": "Garlic, raw",
+      "category": "vegetables",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "iron_mg",
+        "calcium_mg",
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169249,
+      "description": "Lettuce, green leaf, raw",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170411,
+      "description": "Onions, frozen, chopped, cooked, boiled, drained, without salt",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170413,
+      "description": "Onions, frozen, whole, cooked, boiled, drained, without salt",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170033,
+      "description": "Potatoes, baked, flesh, without salt",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170438,
+      "description": "Potatoes, boiled, cooked in skin, flesh, without salt",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170049,
+      "description": "Potatoes, frozen, whole, cooked, boiled, drained, without salt",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169276,
+      "description": "Radishes, raw",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168463,
+      "description": "Spinach, cooked, boiled, drained, without salt",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169287,
+      "description": "Spinach, frozen, chopped or leaf, unprepared (Includes foods for USDA's Food Distribution Program)",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170088,
+      "description": "Sweet potato, cooked, candied, home-prepared",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "composite_processing_or_additives_require_label_check"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: composite_processing_or_additives_require_label_check",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169306,
+      "description": "Sweet potato, frozen, unprepared (Includes foods for USDA's Food Distribution Program)",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170456,
+      "description": "Tomatoes, green, raw",
+      "category": "vegetables",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168204,
+      "description": "Apples, raw, gala, with skin (Includes foods for USDA's Food Distribution Program)",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Whole fruit candidate; check exact variety, preparation and individual allergy risk before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168202,
+      "description": "Apples, raw, golden delicious, with skin",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168201,
+      "description": "Apples, raw, red delicious, with skin (Includes foods for USDA's Food Distribution Program)",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Whole fruit candidate; check exact variety, preparation and individual allergy risk before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171689,
+      "description": "Apples, raw, without skin",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173928,
+      "description": "Apples, raw, without skin, cooked, boiled",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171697,
+      "description": "Apricots, raw",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171707,
+      "description": "Avocados, raw, Florida",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171705,
+      "description": "Avocados, raw, all commercial varieties",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173946,
+      "description": "Blackberries, raw",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2346411,
+      "description": "Blueberries, raw",
+      "category": "fruit",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171722,
+      "description": "Cranberries, raw",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 746768,
+      "description": "Figs, dried, uncooked",
+      "category": "fruit",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174674,
+      "description": "Grapefruit, raw, pink and red, California and Arizona",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "fiber_g"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174675,
+      "description": "Grapefruit, raw, pink and red, Florida",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174677,
+      "description": "Grapefruit, raw, white, California",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "fiber_g"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174676,
+      "description": "Grapefruit, raw, white, all areas",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169918,
+      "description": "Oranges, raw, Florida",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169097,
+      "description": "Oranges, raw, all commercial varieties",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169917,
+      "description": "Oranges, raw, navels (Includes foods for USDA's Food Distribution Program)",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169919,
+      "description": "Oranges, raw, with peel",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169118,
+      "description": "Pears, raw",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 167776,
+      "description": "Pears, raw, bartlett (Includes foods for USDA's Food Distribution Program)",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 167779,
+      "description": "Pears, raw, green anjou (Includes foods for USDA's Food Distribution Program)",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 167777,
+      "description": "Pears, raw, red anjou",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169124,
+      "description": "Pineapple, raw, all varieties",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168194,
+      "description": "Pineapple, raw, extra sweet variety",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168162,
+      "description": "Plums, dried (prunes), uncooked",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169949,
+      "description": "Plums, raw",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2346410,
+      "description": "Raspberries, raw",
+      "category": "fruit",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 167765,
+      "description": "Watermelon, raw",
+      "category": "fruit",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170568,
+      "description": "Nuts, almonds, blanched",
+      "category": "nuts_seeds",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "tree_nut_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170169,
+      "description": "Nuts, coconut meat, raw",
+      "category": "nuts_seeds",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170174,
+      "description": "Nuts, coconut water (liquid from coconuts)",
+      "category": "nuts_seeds",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2515375,
+      "description": "Nuts, hazelnuts or filberts, raw",
+      "category": "nuts_seeds",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "tree_nut_allergen"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2515378,
+      "description": "Nuts, macadamia nuts, raw",
+      "category": "nuts_seeds",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "tree_nut_allergen"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2346395,
+      "description": "Nuts, pecans, halves, raw",
+      "category": "nuts_seeds",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "tree_nut_allergen"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170591,
+      "description": "Nuts, pine nuts, dried",
+      "category": "nuts_seeds",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "tree_nut_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170554,
+      "description": "Seeds, chia seeds, dried",
+      "category": "nuts_seeds",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169406,
+      "description": "Seeds, sesame butter, tahini, from unroasted kernels (non-chemically removed seed coat)",
+      "category": "nuts_seeds",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "sesame_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170153,
+      "description": "Seeds, sesame flour, partially defatted",
+      "category": "nuts_seeds",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "composite_processing_or_additives_require_label_check"
+      ],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "sesame_allergen"
+      ],
+      "missingMicros": [
+        "fiber_g"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: composite_processing_or_additives_require_label_check",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170562,
+      "description": "Seeds, sunflower seed kernels, dried",
+      "category": "nuts_seeds",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173727,
+      "description": "Beans, adzuki, mature seeds, raw",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "raw_pulses_not_ready_to_eat_cook_thoroughly"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: raw_pulses_not_ready_to_eat_cook_thoroughly",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173731,
+      "description": "Beans, baked, home prepared",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173736,
+      "description": "Beans, cranberry (roman), mature seeds, cooked, boiled, without salt",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175190,
+      "description": "Beans, great northern, mature seeds, raw (Includes foods for USDA's Food Distribution Program)",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "raw_pulses_not_ready_to_eat_cook_thoroughly"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: raw_pulses_not_ready_to_eat_cook_thoroughly",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173742,
+      "description": "Beans, kidney, california red, mature seeds, raw",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "raw_pulses_not_ready_to_eat_cook_thoroughly"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: raw_pulses_not_ready_to_eat_cook_thoroughly",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175196,
+      "description": "Beans, kidney, royal red, mature seeds, raw",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "raw_pulses_not_ready_to_eat_cook_thoroughly"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: raw_pulses_not_ready_to_eat_cook_thoroughly",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173746,
+      "description": "Beans, navy, mature seeds, cooked, boiled, without salt",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175199,
+      "description": "Beans, pinto, mature seeds, raw (Includes foods for USDA's Food Distribution Program)",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "raw_pulses_not_ready_to_eat_cook_thoroughly"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: raw_pulses_not_ready_to_eat_cook_thoroughly",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173749,
+      "description": "Beans, small white, mature seeds, raw",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "raw_pulses_not_ready_to_eat_cook_thoroughly"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: raw_pulses_not_ready_to_eat_cook_thoroughly",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173751,
+      "description": "Beans, yellow, mature seeds, raw",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "raw_pulses_not_ready_to_eat_cook_thoroughly"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: raw_pulses_not_ready_to_eat_cook_thoroughly",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173756,
+      "description": "Chickpeas (garbanzo beans, bengal gram), mature seeds, raw",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "raw_pulses_not_ready_to_eat_cook_thoroughly"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: raw_pulses_not_ready_to_eat_cook_thoroughly",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174284,
+      "description": "Lentils, pink or red, raw",
+      "category": "legumes",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "raw_pulses_not_ready_to_eat_cook_thoroughly"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: raw_pulses_not_ready_to_eat_cook_thoroughly",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169740,
+      "description": "Barley malt flour",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "composite_processing_or_additives_require_label_check"
+      ],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "gluten_grain"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: composite_processing_or_additives_require_label_check",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170285,
+      "description": "Barley, pearled, cooked",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "gluten_grain"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170284,
+      "description": "Barley, pearled, raw",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "gluten_grain"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170687,
+      "description": "Buckwheat flour, whole-groat",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "gluten_grain"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170685,
+      "description": "Buckwheat groats, roasted, dry",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "gluten_grain"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2512378,
+      "description": "Buckwheat, whole grain",
+      "category": "grains",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "gluten_grain"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170688,
+      "description": "Bulgur, dry",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168871,
+      "description": "Millet, cooked",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2512379,
+      "description": "Millet, whole grain",
+      "category": "grains",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169705,
+      "description": "Oats (Includes foods for USDA's Food Distribution Program)",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2346397,
+      "description": "Oats, whole grain, steel cut",
+      "category": "grains",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168874,
+      "description": "Quinoa, uncooked",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169704,
+      "description": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169703,
+      "description": "Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169706,
+      "description": "Rice, brown, medium-grain, raw (Includes foods for USDA's Food Distribution Program)",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168876,
+      "description": "Rice, brown, parboiled, dry, UNCLE BEN'S",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "composite_processing_or_additives_require_label_check"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: composite_processing_or_additives_require_label_check",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169746,
+      "description": "Spelt, cooked",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "gluten_grain"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168893,
+      "description": "Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "gluten_grain"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168889,
+      "description": "Wheat, hard red spring",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "gluten_grain"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168890,
+      "description": "Wheat, hard red winter",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "gluten_grain"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169744,
+      "description": "Wheat, khorasan, cooked",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "gluten_grain"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168891,
+      "description": "Wheat, soft red winter",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "gluten_grain"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169725,
+      "description": "Wheat, sprouted",
+      "category": "grains",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "gluten_grain"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174182,
+      "description": "Fish, anchovy, european, raw",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171955,
+      "description": "Fish, cod, Atlantic, raw",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171990,
+      "description": "Fish, cod, Pacific, cooked, dry heat (may contain additives to retain moisture)",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "composite_processing_or_additives_require_label_check"
+      ],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: composite_processing_or_additives_require_label_check",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174198,
+      "description": "Fish, haddock, cooked, dry heat",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174200,
+      "description": "Fish, halibut, Atlantic and Pacific, raw",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175117,
+      "description": "Fish, herring, Atlantic, cooked, dry heat",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175116,
+      "description": "Fish, herring, Atlantic, raw",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175120,
+      "description": "Fish, mackerel, Atlantic, cooked, dry heat",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173681,
+      "description": "Fish, pollock, Alaska, cooked, dry heat (may contain additives to retain moisture)",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "composite_processing_or_additives_require_label_check"
+      ],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: composite_processing_or_additives_require_label_check",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174237,
+      "description": "Fish, pollock, Atlantic, cooked, dry heat",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2684441,
+      "description": "Fish, salmon, Atlantic, farm raised, raw",
+      "category": "fish",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175167,
+      "description": "Fish, salmon, Atlantic, farmed, raw",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171999,
+      "description": "Fish, salmon, chinook, cooked, dry heat",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173716,
+      "description": "Fish, salmon, coho, farmed, cooked, dry heat",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175137,
+      "description": "Fish, salmon, coho, wild, cooked, moist heat",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175138,
+      "description": "Fish, salmon, pink, raw",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173692,
+      "description": "Fish, salmon, sockeye, cooked, dry heat",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175181,
+      "description": "Fish, trout, brook, raw, New York State",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173718,
+      "description": "Fish, trout, rainbow, farmed, cooked, dry heat",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 175154,
+      "description": "Fish, trout, rainbow, wild, raw",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173706,
+      "description": "Fish, tuna, fresh, bluefin, raw",
+      "category": "fish",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "fish_allergen_and_species_specific_guidance",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 2646170,
+      "description": "Chicken, breast, boneless, skinless, raw",
+      "category": "poultry",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171472,
+      "description": "Chicken, broilers or fryers, back, meat only, cooked, roasted",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173614,
+      "description": "Chicken, broilers or fryers, dark meat, drumstick, meat only, raw",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173613,
+      "description": "Chicken, broilers or fryers, drumstick, meat and skin, cooked, stewed",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172381,
+      "description": "Chicken, broilers or fryers, leg, meat only, cooked, stewed",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171051,
+      "description": "Chicken, broilers or fryers, meat and skin, cooked, stewed",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173625,
+      "description": "Chicken, broilers or fryers, thigh, meat and skin, cooked, roasted",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173639,
+      "description": "Chicken, roasting, dark meat, meat only, cooked, roasted",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172854,
+      "description": "Chicken, skin (drumsticks and thighs), cooked, braised",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "not_suitable_as_standalone_main_meal_ingredient"
+      ],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: not_suitable_as_standalone_main_meal_ingredient",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173643,
+      "description": "Chicken, stewing, light meat, meat only, raw",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172418,
+      "description": "Quail, meat and skin, raw",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171493,
+      "description": "Turkey, all classes, leg, meat and skin, raw",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171095,
+      "description": "Turkey, fryer-roasters, meat and skin, cooked, roasted",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172847,
+      "description": "Turkey, ground, fat free, raw",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172878,
+      "description": "Turkey, retail parts, drumstick, meat only, cooked, roasted",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172874,
+      "description": "Turkey, skin, from retail parts, from dark meat, cooked, roasted",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171489,
+      "description": "Turkey, whole, dark meat, meat and skin, cooked, roasted",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171481,
+      "description": "Turkey, whole, meat only, cooked, roasted",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171499,
+      "description": "Turkey, young hen, skin only, cooked, roasted",
+      "category": "poultry",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "not_suitable_as_standalone_main_meal_ingredient"
+      ],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: not_suitable_as_standalone_main_meal_ingredient",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171730,
+      "description": "Beef, Australian, imported, Wagyu, external fat, Aust. marble score 4/5, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "not_suitable_as_standalone_main_meal_ingredient"
+      ],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: not_suitable_as_standalone_main_meal_ingredient",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174742,
+      "description": "Beef, New Zealand, imported, brisket point end, separable lean and fat, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173093,
+      "description": "Beef, New Zealand, imported, sweetbread, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "not_suitable_as_standalone_main_meal_ingredient"
+      ],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: not_suitable_as_standalone_main_meal_ingredient",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170601,
+      "description": "Beef, brisket, flat half, separable lean only, trimmed to 0\" fat, choice, cooked, braised",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169497,
+      "description": "Beef, chuck eye roast, boneless, America's Beef Roast, separable lean only, trimmed to 0\" fat, select, cooked, roasted",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168673,
+      "description": "Beef, chuck, blade roast, separable lean and fat, trimmed to 1/8\" fat, select, cooked, braised",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170783,
+      "description": "Beef, chuck, short ribs, boneless, separable lean only, trimmed to 0\" fat, choice, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170815,
+      "description": "Beef, chuck, under blade pot roast or steak, boneless, separable lean and fat, trimmed to 0\" fat, select, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169563,
+      "description": "Beef, flank, steak, separable lean and fat, trimmed to 0\" fat, all grades, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174755,
+      "description": "Beef, ground, 93% lean meat / 7% fat, crumbles, cooked, pan-browned",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170643,
+      "description": "Beef, loin, tenderloin steak, boneless, separable lean only, trimmed to 0\" fat, select, cooked, grilled",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173409,
+      "description": "Beef, loin, top sirloin cap steak, boneless, separable lean only, trimmed to 1/8\" fat, select, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172150,
+      "description": "Beef, rib eye roast, bone-in, lip-on, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, roasted",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170838,
+      "description": "Beef, rib eye steak/roast, bone-in, lip-on, separable lean only, trimmed to 1/8\" fat, select, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170621,
+      "description": "Beef, rib, large end (ribs 6-9), separable lean only, trimmed to 0\" fat, all grades, cooked, roasted",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169501,
+      "description": "Beef, rib, whole (ribs 6-12), separable lean and fat, trimmed to 1/8\" fat, select, cooked, broiled",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169521,
+      "description": "Beef, round, bottom round, steak, separable lean and fat, trimmed to 1/8\" fat, select, cooked, braised",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171819,
+      "description": "Beef, round, eye of round, roast, separable lean only, trimmed to 1/8\" fat, choice, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170637,
+      "description": "Beef, round, tip round, roast, separable lean only, trimmed to 0\" fat, select, cooked, roasted",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168710,
+      "description": "Beef, round, top round, steak, separable lean and fat, trimmed to 1/8\" fat, choice, cooked, broiled",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169466,
+      "description": "Beef, short loin, t-bone steak, separable lean and fat, trimmed to 0\" fat, USDA select, cooked, broiled",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 168707,
+      "description": "Beef, shoulder top blade steak, boneless, separable lean and fat, trimmed to 0\" fat, choice, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173067,
+      "description": "Beef, top loin petite roast/filet, boneless, separable lean and fat, trimmed to 1/8\" fat, select, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170194,
+      "description": "Beef, variety meats and by-products, thymus, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "not_suitable_as_standalone_main_meal_ingredient"
+      ],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: not_suitable_as_standalone_main_meal_ingredient",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172585,
+      "description": "Lamb, Australian, imported, fresh, leg, center slice, bone-in, separable lean only, trimmed to 1/8\" fat, cooked, broiled",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172656,
+      "description": "Lamb, Australian, imported, fresh, seam fat, cooked",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "not_suitable_as_standalone_main_meal_ingredient"
+      ],
+      "cautions": [],
+      "missingMicros": [
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: not_suitable_as_standalone_main_meal_ingredient",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174339,
+      "description": "Lamb, New Zealand, imported, frozen, composite of trimmed retail cuts, separable lean only, cooked",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172626,
+      "description": "Lamb, New Zealand, imported, neck chops, separable lean only, cooked, braised",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172545,
+      "description": "Lamb, composite of trimmed retail cuts, separable lean and fat, trimmed to 1/8\" fat, choice, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 174388,
+      "description": "Lamb, new zealand, imported, frozen, rib, separable lean and fat, trimmed to 1/8\" fat, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172553,
+      "description": "Lamb, shoulder, whole (arm and blade), separable lean and fat, trimmed to 1/8\" fat, choice, raw",
+      "category": "clean_meat",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173414,
+      "description": "Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",
+      "category": "dairy_eggs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "milk_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 167703,
+      "description": "Cheese, cottage, lowfat, 1% milkfat, lactose reduced",
+      "category": "dairy_eggs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "milk_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169078,
+      "description": "Cheese, cottage, with vegetables",
+      "category": "dairy_eggs",
+      "usdaSource": "SR Legacy",
+      "decision": "hold_for_correction_or_exclusion",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [
+        "composite_processing_or_additives_require_label_check"
+      ],
+      "cautions": [
+        "milk_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Do not activate: composite_processing_or_additives_require_label_check",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171241,
+      "description": "Cheese, gouda",
+      "category": "dairy_eggs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "milk_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 169051,
+      "description": "Cheese, mozzarella, nonfat",
+      "category": "dairy_eggs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "milk_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 325036,
+      "description": "Cheese, parmesan, grated",
+      "category": "dairy_eggs",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "milk_allergen"
+      ],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_d_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 323793,
+      "description": "Egg, white, dried",
+      "category": "dairy_eggs",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "egg_allergen"
+      ],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 323697,
+      "description": "Egg, white, raw, frozen, pasteurized",
+      "category": "dairy_eggs",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "egg_allergen",
+        "raw_animal_food_requires_safe_handling_and_cooking"
+      ],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 329490,
+      "description": "Egg, whole, dried",
+      "category": "dairy_eggs",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "egg_allergen"
+      ],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 329716,
+      "description": "Egg, yolk, dried",
+      "category": "dairy_eggs",
+      "usdaSource": "Foundation",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing",
+        "egg_allergen"
+      ],
+      "missingMicros": [
+        "fiber_g",
+        "vitamin_b12_ug"
+      ],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170904,
+      "description": "Kefir, lowfat, plain, LIFEWAY",
+      "category": "dairy_eggs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "milk_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 173441,
+      "description": "Milk, fluid, 1% fat, without added vitamin A and vitamin D",
+      "category": "dairy_eggs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "milk_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170886,
+      "description": "Yogurt, plain, low fat",
+      "category": "dairy_eggs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "milk_allergen"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171413,
+      "description": "Oil, olive, salad or cooking",
+      "category": "fats",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171317,
+      "description": "Spices, basil, dried",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171320,
+      "description": "Spices, cinnamon, ground",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170921,
+      "description": "Spices, coriander leaf, dried",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170922,
+      "description": "Spices, coriander seed",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170925,
+      "description": "Spices, dill seed",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171322,
+      "description": "Spices, dill weed, dried",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171325,
+      "description": "Spices, garlic powder",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171328,
+      "description": "Spices, oregano, dried",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170930,
+      "description": "Spices, parsley, dried",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 170931,
+      "description": "Spices, pepper, black",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 171333,
+      "description": "Spices, rosemary, dried",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    },
+    {
+      "fdcId": 172231,
+      "description": "Spices, turmeric, ground",
+      "category": "herbs",
+      "usdaSource": "SR Legacy",
+      "decision": "conditionally_suitable_ingredient_candidate",
+      "decisionScope": "nonclinical_preliminary_food_identity_review_not_client_authorization",
+      "issues": [],
+      "cautions": [
+        "check_specific_form_and_processing"
+      ],
+      "missingMicros": [],
+      "macrosComplete": true,
+      "individualNote": "Food identity is consistent with its listed category; check exact preparation, portion, allergies, and source variant before client use.",
+      "verifiedSourceRecord": false,
+      "reviewer": "automated_criteria_with_assistant_category_review",
+      "reviewDate": "2026-10-10"
+    }
+  ]
+}
