@@ -1153,7 +1153,7 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       const days = Array.from(row.querySelectorAll("[data-day]:checked")).map(input => Number(input.dataset.day));
       const activeFrom = effectiveFrom;
       const isPrescribed = Boolean(row.querySelector("[data-field='is_prescribed']") && row.querySelector("[data-field='is_prescribed']").checked);
-      const prescribedDays = isPrescribed && !days.length ? [isoDayFromDate(activeFrom)] : days;
+      const prescribedDays = days;
       return {
         foundation_key:key,
         foundation_label:FOUNDATION_NAMES[key] || original.foundation_label || key,
@@ -1173,6 +1173,16 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
         })
       };
     });
+    const invalidDays = prescriptions.filter(p => p.is_prescribed && !p.prescribed_days.length);
+    if(invalidDays.length){
+      if(message) message.textContent = "Choose at least one day for: " + invalidDays.map(p => p.foundation_label).join(", ") + ". No changes were saved.";
+      return;
+    }
+    const invalidDates = prescriptions.filter(p => p.active_until && p.active_until < p.active_from);
+    if(invalidDates.length){
+      if(message) message.textContent = "End date must not be before the start date for: " + invalidDates.map(p => p.foundation_label).join(", ") + ". No changes were saved.";
+      return;
+    }
     try{
       form.dataset.saving = "true";
       button.disabled = true;
@@ -1190,10 +1200,15 @@ footer{padding:38px 0;color:var(--ink-mute);border-top:1px solid rgba(217,180,90
       const fastingDays = savedFasting && Array.isArray(savedFasting.prescribed_days) ? savedFasting.prescribed_days.map(dayName).join(", ") : "";
       const receiptText = `Saved ${data && data.saved_count != null ? data.saved_count : savedRows.length} standards in Supabase.${savedHydrate ? ` HYDRATE now says: ${savedHydrate.target_label || "empty"}.` : ""}${savedFasting ? ` FASTING is ${savedFasting.is_prescribed ? "active" : "off"}${fastingDays ? ` on ${fastingDays}` : ""}.` : ""}`;
       if(message) message.textContent = `${receiptText} Verifying the saved standards from the database...`;
-      await loadExecutionOverview();
-      await loadExecutionDetail(clientUserId, effectiveFrom);
-      const freshMessage = $("foundationEditorMessage");
-      if(freshMessage) freshMessage.textContent = receiptText;
+      try{
+        await loadExecutionOverview();
+        await loadExecutionDetail(clientUserId, effectiveFrom);
+        const freshMessage = $("foundationEditorMessage");
+        if(freshMessage) freshMessage.textContent = receiptText;
+      }catch(refreshError){
+        console.warn("Standards saved but readback refresh failed", refreshError);
+        if(message) message.textContent = receiptText + " Saved successfully, but the dashboard could not refresh. Reload to verify the client view.";
+      }
     }catch(error){
       if(message) message.textContent = "Could not save yet: " + (error.message || "Unknown error");
     }finally{
