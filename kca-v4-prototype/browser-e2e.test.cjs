@@ -9,7 +9,7 @@ for(const [label,options] of [['desktop',{viewport:{width:1440,height:900}}],['m
  let finished=false;for(let step=0;step<180;step++){
   if(await page.getByText('Your Kingdom Capacity Results').count()){finished=true;break}
   const choice=page.locator('.choice');if(await choice.count()){
-   const texts=await choice.allTextContents();let i=texts.findIndex(t=>/^no$|^none$|^never$|^not applicable$/i.test(t.trim()));if(i<0)i=0;await choice.nth(i).click();await page.waitForTimeout(470);
+   const texts=await choice.allTextContents();let i=texts.findIndex(t=>/^no$|^none$|^never$|^not applicable$/i.test(t.trim()));if(i<0)i=0;const finalQuestion=(await page.locator('article h1').innerText()).includes('My health has a bigger purpose: service, stewardship, and calling.');await choice.nth(i).click();if(finalQuestion){await page.locator('#next').click();await page.getByText('Your Kingdom Capacity Results').waitFor({timeout:10000});}else await page.waitForTimeout(470);
   }else{
    const free=page.locator('#free');if(!await free.count())throw Error(label+': questionnaire ended unexpectedly');
    const question=(await page.locator('article h1').innerText()).toLowerCase();const value=/height|tall|centimet/.test(question)?'175':/age|old are you/.test(question)?'30':/weight|kilogram|waist|circumference/.test(question)?'75':'No';await free.fill(value);await page.locator('#next').click();
