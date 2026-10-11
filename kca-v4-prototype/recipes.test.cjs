@@ -5,3 +5,5 @@ for(const key of ['G1','G2','G3','G4','G5','G6'])assert.equal(e.makeWeek({[key]:
 assert.equal(e.makeWeek({NU1:'3'},2100,{protein:0,fat:60,carbs:200}).requiresReview,true);
 assert.equal(e.makeWeek({NU1:'3'},2100,null,{iron_mg:10}).optimizationReview.some(s=>s.includes('Unknown micronutrient')),true);
 assert.equal(e.makeWeek({NU1:'3'},2100,null,{iron_mg:10}).optimizationStatus,'needs_adjustment');
+
+const omad=e.makeWeek({NU1:'1',NUFAST:'OMAD / one meal'},2100);assert.equal(omad.requiresReview,false);assert.equal(omad.mealCount,1);assert.ok(omad.days.every(d=>d.meals.length===1));assert.ok(omad.optimizationReview.some(s=>s.includes('One meal a day')));const two=e.makeWeek({NU1:'2',NUFAST:'18:6'},2100);assert.equal(two.mealCount,2);assert.equal(two.fasting.fastingHours,18);assert.ok(two.days.every(d=>d.meals.length===2));const mismatch=e.makeWeek({NU1:'2',NUFAST:'OMAD / one meal'},2100);assert.ok(mismatch.optimizationReview.some(s=>s.includes('conflict')));
