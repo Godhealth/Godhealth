@@ -45,11 +45,11 @@ function optimizePortions(items,energy,macros,micronutrientConstraints,foodData)
 }
 function makeWeek(a,energy,coachMacros,coachMicros,foodData){
  const choices=recipeCandidates(a);const safetyHold=['G1','G2','G3','G4','G5','G6'].some(k=>a[k]&&a[k]!=='No');const invalidMacros=coachMacros&&(!['protein','fat','carbs'].every(k=>Number.isFinite(coachMacros[k])&&coachMacros[k]>0));const invalidMicros=coachMicros&&Object.values(coachMicros).some(v=>!Number.isFinite(v)||v<0);if(choices.requiresReview||safetyHold||invalidMacros||invalidMicros||!Number.isFinite(energy)||energy<1200||energy>4500)return {requiresReview:true,reason:safetyHold?'Safety response requires individualized review before meal planning.':invalidMacros||invalidMicros?'Invalid coach nutrient targets; cannot optimize.':choices.reason||"Energy target needs qualified review before portion calculation.",days:[],shopping:[]};
- const mealCount=Math.max(2,Math.min(4,parseInt(a.NU1,10)||3));const slots=mealCount;
+ const mealCount=/^1$/.test(String(a.NU1||''))?1:2;const slots=mealCount;
  const breakfasts=choices.recipes.filter(r=>r.kind==="breakfast");const mains=choices.recipes.filter(r=>r.kind==="main");const shopping={};
  const days=Array.from({length:7},(_,i)=>{
   const meals=Array.from({length:slots},(_,j)=>{
-   const template=j===0?breakfasts[i%breakfasts.length]:mains[(i*2+j-1)%mains.length];
+   const template=slots===1?mains[i%mains.length]:j===0?breakfasts[i%breakfasts.length]:mains[(i*2+j-1)%mains.length];
    const target=energy/slots;
    const base=totals(template.ingredients).kcal;
    const selected=optimizePortions(template.ingredients,target,coachMacros&&Object.fromEntries(['protein','fat','carbs'].map(k=>[k,coachMacros[k]/slots])),coachMicros&&Object.fromEntries(Object.entries(coachMicros).map(([k,v])=>[k,v/slots])),foodData);
@@ -59,7 +59,7 @@ function makeWeek(a,energy,coachMacros,coachMicros,foodData){
   });
   return {day:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][i],meals,totals:totals(meals.flatMap(m=>m.ingredients.map(x=>[x.id,x.grams])))};
  });
- const deviations=days.map(d=>({day:d.day,estimatedKcal:d.totals.kcal,maintenanceReferenceKcal:energy,differenceKcal:d.totals.kcal-energy,differencePct:Math.round(100*(d.totals.kcal-energy)/energy)}));const unachievable=deviations.filter(d=>Math.abs(d.differencePct)>15).map(d=>d.day+': energy deviation exceeds 15%');const missingNutrients=[...new Set(days.flatMap(d=>d.meals.flatMap(m=>m.optimization.missingMicronutrients)))];const optimizationReview=[...unachievable,...missingNutrients.map(k=>'Unknown micronutrient: '+k)];
+ const deviations=days.map(d=>({day:d.day,estimatedKcal:d.totals.kcal,maintenanceReferenceKcal:energy,differenceKcal:d.totals.kcal-energy,differencePct:Math.round(100*(d.totals.kcal-energy)/energy)}));const unachievable=deviations.filter(d=>Math.abs(d.differencePct)>15).map(d=>d.day+': energy deviation exceeds 15%');const missingNutrients=[...new Set(days.flatMap(d=>d.meals.flatMap(m=>m.optimization.missingMicronutrients)))];const optimizationReview=[...unachievable,...missingNutrients.map(k=>'Unknown micronutrient: '+k)];if(slots===1)optimizationReview.push('One meal a day: energy, protein and micronutrient adequacy require individual review; do not assume this is appropriate for everyone.');
  return {requiresReview:false,optimizationReview,optimizationStatus:optimizationReview.length?'needs_adjustment':'estimated_portions_pending_coach_review',energyReferenceType:"estimated_maintenance_not_a_prescribed_target",deviations,days,shopping:Object.entries(shopping).map(([id,grams])=>({food:labels[id],grams})).sort((a,b)=>a.food.localeCompare(b.food)),disclaimer:"Serving sizes are scaled against an estimated maintenance reference, not a prescribed calorie goal. Macro calculations use the locally loaded USDA mappings when available. Portion rounding and ingredient variants affect totals. Micronutrient adequacy has not been established; coach review is mandatory."};
 }
 window.GodHealthRecipeEngine={db,recipes,totals,recipeCandidates,optimizePortions,makeWeek};
