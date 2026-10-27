@@ -13,7 +13,8 @@ to a call.
 - Explicit busy-Christian audience, low-energy/weight/consistency problems and
   personalized lifestyle support in the opening screen.
 - Existing Robin introduction video in the opening layout, click-to-play with
-  sound and native controls; no video autoplay.
+  sound and native controls enabled on play; no video autoplay. A direct video link
+  is provided when JavaScript is disabled.
 - Real founder qualifications and experience immediately below the opening.
 - Three short problem/support explanations and the three foundations of the
   Kingdom Capacity Method.
@@ -37,7 +38,7 @@ to a call.
 ## Verification
 
 - Built all 15 public pages. Static validation passed: 12 unique referenced images,
-  528 local references and 72 protected functional/configuration files.
+  529 local references and 72 protected functional/configuration files.
 - Homepage has exactly one video, six offer rows and the four unique testimonial
   identities. All call buttons resolve to the same Calendly destination.
 - Browser: introduction played with sound, media readyState 4, duration 148.491
