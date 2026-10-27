@@ -53,3 +53,11 @@
     window.dataLayer.push({ event: link.dataset.ghEvent, gh_location: window.location.pathname, gh_destination: new URL(link.href).origin + new URL(link.href).pathname });
   });
 })();
+// Subtle viewport reveals; content stays visible without JavaScript.
+(() => {
+ if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+ const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+  if (entry.isIntersecting) { entry.target.classList.add('gh-visible'); observer.unobserve(entry.target); }
+ }), {threshold: 0.06});
+ document.querySelectorAll('.gh-section-heading,.gh-trinity article,.gh-lifestyle-card,.gh-assessment-panel,.gh-mindset-card').forEach(element => { element.classList.add('gh-reveal'); observer.observe(element); });
+})();

@@ -266,3 +266,64 @@
 @media(max-width:420px){.gh-header .gh-brand small{display:none}.gh-header .gh-brand img{width:36px;height:36px}.gh-header .gh-brand span{font-size:22px}.gh-header-actions .gh-button{white-space:nowrap;font-size:10px;min-height:40px}.gh-header-inner{gap:8px}}
 @media(max-width:350px){.gh-header-actions>.gh-button{display:none}.gh-header .gh-menu-toggle{width:44px;height:44px}.gh-sticky{gap:8px;padding-left:12px}.gh-sticky>span{font-size:9px}.gh-sticky>span small{font-size:8px}.gh-sticky .gh-button{padding-inline:11px;gap:8px}}
 @media(prefers-reduced-motion:reduce){.gh-site *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+/* Private atelier edition: warm ivory, forest, brushed gold. */
+:root{--gh-paper:#faf8f2;--gh-soft:#f0eee5;--gh-deep:#081f19;--gh-green:#0f3d2e;--gh-gold:#b4924b;--gh-line:#ddd8c9}
+.gh-site{background:var(--gh-paper)}
+.gh-site h1,.gh-site h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.055em;line-height:1.04}
+.gh-site h1{font-size:clamp(46px,5.8vw,86px)}
+.gh-site h2{font-size:clamp(36px,4vw,58px)}
+.gh-site em,.gh-hero-ending{font-family:Georgia,'Times New Roman',serif;font-style:italic}
+.gh-header{background:rgba(250,248,242,.95);border-bottom:1px solid rgba(180,146,75,.25);backdrop-filter:blur(20px)}
+.gh-announcement{background:#081f19;color:#e8ce93;letter-spacing:.06em}
+.gh-hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 10% 0%,rgba(180,146,75,.10),transparent 55%),#faf8f2;padding-block:80px 95px}
+.gh-hero:after{content:'';position:absolute;width:600px;height:600px;border:1px solid rgba(180,146,75,.15);border-radius:50%;right:-280px;top:20px;pointer-events:none}
+.gh-hero-grid{gap:75px;align-items:center}
+.gh-hero .gh-lead{font-size:16px;line-height:1.9}
+.gh-portrait{border-radius:140px 140px 6px 6px!important;overflow:hidden;box-shadow:0 28px 70px #142d231c;border:1px solid #c6af77;padding:8px;background:#eee8db;position:relative}
+.gh-portrait>img{border-radius:132px 132px 0 0;object-fit:cover;max-height:560px}
+.gh-portrait figcaption{background:#0d3026;color:#f9f2df;padding:24px!important}
+.gh-portrait figcaption small{color:#d5d4bd}
+.gh-button{border-radius:3px;background:linear-gradient(115deg,#c39b4b,#efdb9b 52%,#c9a553);color:#172b21;box-shadow:0 5px 20px #9d762017;transition:transform .25s,box-shadow .25s}
+.gh-button:hover{transform:translateY(-3px);box-shadow:0 10px 28px #9d762034}
+.gh-proof-strip{background:#0c2c23;color:#f5efd9;border-block:1px solid #aa8a4355}
+.gh-proof-strip strong{font-family:Georgia,serif;font-weight:400;color:#dfc484;font-size:29px}
+.gh-proof-strip small{color:#cad0c4}
+.gh-section{padding-block:105px}
+.gh-trinity{display:grid;grid-template-columns:repeat(3,1fr);margin-top:50px;border-top:1px solid var(--gh-line)}
+.gh-trinity article{padding:35px 32px 0 0}
+.gh-trinity article+article{padding-left:32px;border-left:1px solid var(--gh-line)}
+.gh-trinity h3{font-family:Georgia,serif;font-weight:400;font-size:30px;line-height:1.15;margin:22px 0 18px}
+.gh-trinity p{font-size:14px;line-height:1.9}
+.gh-assessment{background:radial-gradient(ellipse at 95% 0%,#28503c 0,transparent 55%),#081f19;position:relative}
+.gh-assessment .gh-checklist{margin-top:25px}
+.gh-assessment .gh-note{color:#b2c0af}
+.gh-assessment-panel{border:1px solid #b4924b77;background:linear-gradient(145deg,#ffffff09,#ffffff02);padding:38px;box-shadow:0 20px 65px #0002}
+.gh-assessment-panel h3{font-family:Georgia,serif;font-size:31px;font-weight:400;line-height:1.2}
+.gh-assessment-row{padding:22px 0;border-bottom:1px solid #ffffff20}
+.gh-assessment-row span{display:block;color:#d9bd7a;font-size:10px;font-weight:700;letter-spacing:.15em;margin-bottom:7px}
+.gh-assessment-row strong{font-size:16px}
+.gh-assessment-row p{font-size:13px;margin-top:5px}
+.gh-lifestyle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gh-line);border:1px solid var(--gh-line);margin-top:45px}
+.gh-lifestyle-card{background:#faf8f2;padding:34px 30px;transition:background .3s}
+.gh-lifestyle-card:hover{background:#f0eadc}
+.gh-lifestyle-card h3{font-family:Georgia,serif;font-size:28px;font-weight:400;margin:22px 0 15px}
+.gh-lifestyle-card p{font-size:13px;line-height:1.9}
+.gh-mindset{background:#eae7dc}
+.gh-mindset-card{padding:45px;border:1px solid #b4924b66;background:#f8f5ec;box-shadow:15px 15px 0 #dcd5c3}
+.gh-mindset-name{font-family:Georgia,serif;font-size:48px;color:#143b2d!important;margin:25px 0!important}
+.gh-mindset-name span{display:block;font-family:Manrope,Arial,sans-serif;font-size:12px;letter-spacing:.06em;margin-top:8px}
+.gh-mindset-stat{font-family:Georgia,serif;font-size:65px;color:#89681f;border-block:1px solid #d8ceb6;padding:20px 0;margin-bottom:24px}
+.gh-mindset-stat small{display:block;font:11px Manrope,Arial,sans-serif;letter-spacing:.08em;color:#58675f}
+.gh-pricing-card{background:#0d3026;color:#fff;border:1px solid #b4924b;border-radius:4px;box-shadow:0 22px 65px #0c302620}
+.gh-pricing-card p{color:#cbd3c7}.gh-pricing-card .gh-card-tag{color:#e0c78d}.gh-pricing-card .gh-price{font-family:Georgia,serif;font-weight:400;color:#e2c985}
+.gh-quote-card,.gh-route-card,.gh-resource-card,.gh-deliverable{border-radius:3px;box-shadow:none}
+.gh-quote-card{background:#f3f0e7;border:1px solid #e2dcca}
+.gh-final{background:radial-gradient(ellipse at center top,#224b37,#081f19 70%);padding-block:110px;border-top:1px solid #b4924b77}
+.gh-footer{background:#061b15}.gh-sticky{border-top:1px solid #b4924b55;background:rgba(250,248,242,.97);backdrop-filter:blur(16px)}
+.gh-reveal{animation:gh-enter .8s ease both;animation-play-state:paused}.gh-reveal.gh-visible{animation-play-state:running}
+@keyframes gh-enter{from{opacity:.35;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1400px){.gh-container{width:min(1280px,calc(100% - 120px))}}
+@media(max-width:1000px){.gh-hero-grid{gap:35px}.gh-lifestyle-grid{grid-template-columns:repeat(2,1fr)}.gh-trinity article{padding-right:20px}.gh-trinity article+article{padding-left:20px}}
+@media(max-width:700px){.gh-site h1{font-size:48px}.gh-hero{padding-block:38px 55px}.gh-section{padding-block:65px}.gh-trinity{grid-template-columns:1fr;margin-top:30px}.gh-trinity article,.gh-trinity article+article{padding:25px 0;border-left:0;border-bottom:1px solid var(--gh-line)}.gh-lifestyle-grid{grid-template-columns:1fr}.gh-lifestyle-card{padding:28px}.gh-assessment-panel{padding:25px}.gh-mindset-card{padding:28px;box-shadow:7px 7px 0 #dcd5c3}.gh-portrait{border-radius:100px 100px 4px 4px!important}.gh-portrait>img{border-radius:92px 92px 0 0}.gh-final{padding-block:70px}.gh-mindset-stat{font-size:55px}.gh-hero:after{display:none}}
+@media(prefers-reduced-motion:reduce){.gh-reveal{animation:none}.gh-button{transition:none}}
+.gh-sticky>span{color:#143b2d}.gh-sticky>span small{color:#58675f}
