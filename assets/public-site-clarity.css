@@ -1,4 +1,21 @@
 /* Clear first. Forest green, warm gold, real photography, readable type. */
+.gh-site .gh-footer-top{grid-template-columns:1.35fr 1fr 1.15fr 1fr;gap:35px}
+.gh-site .gh-footer h3{font-size:10px;line-height:1.7;letter-spacing:.12em;margin-bottom:18px}
+.gh-site .gh-footer ul{gap:10px}
+.gh-site .gh-footer a:not(.gh-brand){font-size:12px;line-height:1.8}
+.gh-footer .gh-footer-method{margin-top:20px;color:#d4bc80;font-size:11px;line-height:1.9}
+.gh-footer .gh-footer-business{margin-top:18px;font-size:10px;line-height:1.9}
+.gh-footer-guides{margin-top:37px;padding-top:28px;border-top:1px solid #ffffff1f}
+.gh-site .gh-footer-guides ul{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.gh-about-purpose{margin-top:17px;font-size:14px;color:#876b30}
+.gh-contact-investment{margin-top:22px}
+.gh-route-card>.gh-text-link{display:flex;width:fit-content;margin-top:20px;font-size:11px}
+.gh-guide-coaching{padding:27px;background:#f0f3e9;border:1px solid #dde5d5;border-radius:7px;margin-top:35px}
+.gh-guide-coaching h3{font-size:24px}
+.gh-guide-coaching .gh-text-link{margin-top:8px;font-size:12px}
+@media(max-width:1000px){.gh-site .gh-footer-top{grid-template-columns:1.2fr 1fr;gap:35px}.gh-site .gh-footer-guides ul{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.gh-site .gh-header-inner{height:74px}.gh-site .gh-nav{top:74px;max-height:calc(100dvh - 74px)}}
+@media(max-width:700px){.gh-site .gh-header-inner{height:70px}.gh-site .gh-nav{top:70px;max-height:calc(100dvh - 70px)}.gh-site .gh-footer-top{grid-template-columns:1fr 1fr;gap:30px 24px}.gh-site .gh-footer-top>div:first-child{grid-column:1/-1}.gh-site .gh-footer h3{font-size:9px}.gh-site .gh-footer a:not(.gh-brand){font-size:11px}.gh-site .gh-footer-guides ul{grid-template-columns:1fr 1fr;gap:14px 24px}.gh-guide-coaching{padding:22px}.gh-guide-coaching h3{font-size:22px}}
 :root{--gh-paper:#fff;--gh-soft:#f4f6f2;--gh-ink:#102e24;--gh-muted:#4f625a;--gh-line:#dce4dc;--gh-gold:#9b7426}
 .gh-site h1,.gh-site h2{font-family:var(--gh-sans);font-weight:800;letter-spacing:-.045em;line-height:1.12}
 .gh-site em,.gh-hero-ending{font-family:inherit;font-style:normal}

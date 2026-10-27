@@ -1,8 +1,6 @@
 /* Homepage: warm personal guidance, a visible offer, one conversational next step. */
 .gh-warm-home{--gh-paper:#fdfcf9;--gh-ink:#123d2c;--gh-muted:#58665b;--gh-line:#e0e5da;background:#fdfcf9!important}
 .gh-warm-home .gh-header{background:rgba(253,252,249,.97);border-bottom:1px solid #e0e5da}
-.gh-warm-home .gh-header-inner{height:84px}
-.gh-warm-home .gh-nav{gap:24px}
 .gh-warm-home .gh-button{border-radius:6px;background:#d8b869;color:#173e2c;border-color:#c2a156;box-shadow:0 4px 12px #6c59220a;min-height:50px;padding:15px 24px}
 .gh-warm-home .gh-button:hover{background:#e4c77f;box-shadow:0 7px 18px #6c592217}
 .gh-warm-home .gh-header-actions .gh-button{min-height:43px;font-size:11px;padding:12px 20px}

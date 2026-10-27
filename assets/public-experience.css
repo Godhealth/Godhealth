@@ -1,7 +1,5 @@
-/* Optional scroll motion and Scripture styling for the primary public pages. */
+/* Optional scroll motion and Scripture styling for the full public website. */
 html:has(.gh-experience){scroll-behavior:smooth}
-.ge-progress{position:fixed;inset:0 0 auto;height:3px;z-index:90;pointer-events:none;background:transparent}
-.ge-progress>span{display:block;height:100%;background:#b99b51;transform:scaleX(0);transform-origin:left;will-change:transform}
 .ge-reveal{opacity:1;transform:translateY(14px);transition:transform .55s cubic-bezier(.22,.61,.36,1) var(--ge-delay,0ms)}
 .ge-reveal.ge-visible,.ge-reveal:focus-within{opacity:1;transform:none}
 .gh-scripture{margin:25px 0 0;padding:22px 25px;border-left:2px solid #c5a65f;background:#f0f3e8;border-radius:0 6px 6px 0}

@@ -7,7 +7,7 @@ export const testimonials = [
 ];
 
 export const faqs = [
- ['Who is GodHealth coaching for?', 'Busy Christian men and women who want to lose excess fat, build strength, improve daily energy and stop starting over. You can begin at home, as a beginner, without a gym membership. Your goals and current ability shape the plan.'],
+ ['Who is GodHealth coaching for?', 'Busy Christian men and women who want to lose excess fat, regain energy, stay strong as they age and finally stay consistent. We help you honor God with your body through simple routines that fit work, family and faith. Beginners are welcome.'],
  ['What makes this different from a workout app?', 'The Kingdom Capacity Method combines ancient Biblical principles, modern health science and elite athlete expertise. Your assessment shapes a complete personal lifestyle, training and nutrition plan—including sleep, daily rhythm, movement, mindset and discipline. Weekly virtual coaching and PT, monthly mindset sessions and daily accountability help you follow through.'],
  ['How long are the workouts?', 'Standard workouts and your weekly online personal-training session are designed for 30 minutes or less. No equipment is required. We can adapt training for a gym or adjust the volume when that suits your goals, ability and recovery.'],
  ['What is the starting investment?', 'You can start with an initial investment of $250 USD. This is the starting investment, not the full program price. We explain your personal scope, payment schedule and terms before you commit. The discovery call is free.'],
@@ -18,16 +18,23 @@ export const faqs = [
  ['Is GodHealth a medical service?', 'No. GodHealth offers lifestyle coaching and educational resources, not medical diagnosis, treatment, psychotherapy or emergency care. The assessments are lifestyle tools. Persistent fatigue, pain, symptoms or questions about medication should be discussed with a qualified healthcare professional.'],
  ['Can I start without paying for coaching?', 'Yes. The free 7-Step Fat Loss Blueprint is a self-guided starting point. Its bonus Kingdom Vitality Scan helps you reflect on your lifestyle. You can also read the practical guides in our resources library. No purchase is required to use those free resources.'],
  ['Can I join from the United States?', 'Coaching is delivered online in English. Tell us your location and time zone on the discovery call so we can confirm workable session times before you join. GodHealth is registered in the Netherlands.'],
- ['Do you guarantee a weight-loss result?', 'No. Your results depend on your starting point, health, circumstances and the actions you can sustain. We focus on an appropriate personal plan, support, feedback and measurable progress—not a guaranteed number on the scale.']
+ ['Do you guarantee a weight-loss result?', 'No. Your results depend on your starting point, health, circumstances and the actions you can sustain. We focus on an appropriate personal plan, support, feedback and measurable progress—not a guaranteed number on the scale.'],
+ ['Is everything virtual?', 'Yes. Your weekly coaching calls, weekly private personal training and monthly mindset sessions all take place online. Your personal training plan can be followed at home or in the gym. We confirm a schedule for your time zone before you join.'],
+ ['Who provides the coaching?', 'Robin Kramps is your weekly lifestyle coach and online personal trainer: CIOS Level 4 Certified Lifestyle Coach and Dutch National Hurdles Silver Medalist. Your monthly private mindset coaching and visualization are with Patricia, a Christian success mindset trainer and public speaker who has spoken before 15,000+ people at Ahoy Rotterdam.'],
+ ['What happens immediately after the assessment?', 'You can generate and download your personalized 12-week lifestyle PDF straight away. It connects your lifestyle patterns and obstacles with a practical plan for food, training, sleep and daily routines, based on your goals and busy week. Biblical principles provide the foundation; health science informs the actions. Robin then reviews and refines the starting plan with you.'],
+ ['How do you help me stay consistent?', 'We turn your goals into a few clear daily actions, a normal-day plan and a shorter busy-day backup. Daily accountability, reminders and access to Robin support you between sessions. Weekly coaching helps you review obstacles and adjust your plan instead of starting over.'],
+ ['What do you mean by longevity?', 'We mean caring for your long-term health: building strength, fitness, mobility, recovery and habits you can keep. It is about staying capable for your family, work and calling as you age. It is not a promise of a longer lifespan or a medical treatment.']
 ];
 
 export const guides = [
  {
   slug:'christian-fat-loss', category:'FAT LOSS', minutes:6,
+  footerLabel:'Fat loss for busy Christians', scriptureId:'honor',
+  coachingHelp:'Personal nutrition, short workouts and daily movement are connected with sleep and recovery. Daily accountability helps you keep going through a busy week.',
   title:'Christian fat loss: where to start when life is already full',
   description:'A practical Christian fat-loss starting plan for a busy week: simple meals, manageable movement and habits you can repeat without extreme dieting.',
   image:'robin-coaching-card.jpg', takeaway:'Start with a week you can repeat—not a perfect plan you can follow for three days.',
-  intro:'You start well on Monday. A late meeting changes Tuesday. By Friday, you feel as if the week is lost. If that sounds familiar, begin by making the plan fit your actual week. Fat loss does not need to become your whole life.',
+  intro:'You start well on Monday. A late meeting changes Tuesday. By Friday, you feel as if the week is lost. If that sounds familiar, begin by making the plan fit your actual week. Consistency starts with a routine you can return to. At GodHealth, losing excess fat is part of caring for your body, energy and long-term wellbeing while honoring God.',
   sections:[
    ['start-with-life','Start with your life, not someone else’s routine',`<p>Write down your work hours, family commitments and the times you normally eat. Then find the point where your plan usually breaks: a rushed breakfast, an unplanned lunch, a missed workout or the evening when you are too tired to cook.</p><p>Choose one of those situations to improve first. A plan that ignores it will ask you to solve the same problem again tomorrow. A personal plan starts there.</p>`],
    ['simplify-food','Make a food decision before you are rushed',`<p>Choose two simple meals you are happy to repeat and shop for them before the week begins. Build a reliable meal around a protein food, vegetables or fruit, and other foods that fit your needs. Decide what your backup meal will be when plans change.</p><p>GodHealth’s faith-based principle is to eat God-created food, not man-created food. That is our stewardship framework—not proof that a food can cure disease. Safe preparation, enough nourishment and your personal medical needs still matter.</p><p>Weight loss generally involves an energy intake below your energy expenditure over time. The right amount is personal. A dramatic restriction is not the same as a sustainable plan. For individual medical or dietary needs, work with an appropriately qualified professional.</p>`],
@@ -39,6 +46,8 @@ export const guides = [
  },
  {
   slug:'healthy-eating-busy-christians',category:'NUTRITION',minutes:5,
+  footerLabel:'Simple Biblical nutrition', scriptureId:'glory',
+  coachingHelp:'Your food plan uses God-created food and science-informed guidance, with meals and portions matched to your needs. Suitable fasting and supplement advice can be discussed as part of your wider lifestyle plan.',
   title:'Healthy eating for busy Christians: stop deciding every meal from scratch',
   description:'Build a simple weekly food routine with repeatable meals, a short shopping list and backup choices. Practical nutrition planning for busy Christians.',
   image:'godhealth-biblical-nourishment.jpg',takeaway:'The meal you can prepare on a tired Tuesday is more useful than a complicated plan you never use.',
@@ -54,10 +63,12 @@ export const guides = [
  },
  {
   slug:'30-minute-home-workouts',category:'MOVEMENT',minutes:6,
+  footerLabel:'Home workouts in 30 minutes', scriptureId:'days',
+  coachingHelp:'Train at home or in the gym with a personal program and weekly private online PT with Robin. Sessions take 30 minutes or less. Walking, stretching, gentle breath work and recovery fit around the rest of your week.',
   title:'How to fit a 30-minute home workout into a busy week',
   description:'A practical way to schedule short home workouts, choose a manageable starting point and progress without making fitness your whole life.',
   image:'robin-coaching-card.jpg',takeaway:'Give training a time, a place and a shorter backup. Then build from your current ability.',
-  intro:'You do not need to copy an athlete’s schedule to build a stronger body. For a busy week, the useful question is: what can you repeat safely? A short session you can keep returning to is a practical place to begin.',
+  intro:'You do not need to copy an athlete’s schedule to build a stronger body. For a busy week, the useful question is: what can you repeat safely? A short session you can keep returning to supports consistency, with strength and mobility as long-term priorities. Care for the body God gave you, one manageable session at a time.',
   sections:[
    ['schedule','Make the appointment before the week fills up',`<p>Choose two realistic training slots and write them in your calendar. Be specific about the start time and location. If work regularly runs late, do not build your whole routine around leaving work early.</p><p>Choose a shorter backup slot as well. The backup keeps the routine alive when your preferred window disappears. It does not need to replace every minute of the original session.</p>`],
    ['structure','Give the session a simple structure',`<p>Leave time to warm up, practice a few suitable strength movements, rest and finish without rushing. You do not have to fill every minute with hard exercise. The right exercises and workload depend on your starting ability and needs.</p><table><thead><tr><th>Part</th><th>Purpose</th></tr></thead><tbody><tr><td>Get ready</td><td>Check how you feel and ease into movement.</td></tr><tr><td>Practice strength</td><td>Use appropriate pushing, pulling, leg and trunk movements.</td></tr><tr><td>Recover</td><td>Rest as needed so technique stays controlled.</td></tr><tr><td>Record</td><td>Write what you did and how it felt.</td></tr></tbody></table><p>This is a session-planning example, not an exercise prescription. Some exercises require equipment, an adaptation or coaching to be suitable for you.</p>`],
@@ -69,6 +80,8 @@ export const guides = [
  },
  {
   slug:'consistent-health-habits',category:'CONSISTENCY',minutes:5,
+  footerLabel:'How to stay consistent', scriptureId:'practice',
+  coachingHelp:'Daily accountability, reminders and access to Robin help you follow through. Weekly coaching adjusts the plan; monthly private mindset coaching and visualization with Patricia help you work through patterns that hold you back.',
   title:'How to stay consistent with healthy habits when your week changes',
   description:'Stop the Monday restart cycle with one clear habit, a busy-day version, simple reminders and a practical weekly review.',
   image:'robin-coaching-conversation-v2.jpg',takeaway:'Consistency is returning to the plan—and adjusting it when necessary—not having a perfect record.',
@@ -84,6 +97,8 @@ export const guides = [
  },
  {
   slug:'sleep-and-energy',category:'SLEEP & ENERGY',minutes:5,
+  footerLabel:'Sleep, body clock & energy', scriptureId:'days',
+  coachingHelp:'We connect sleep quality, your body clock, morning daylight and evening routines with food, movement and recovery. A clear daily rhythm gives you a practical place to start, with support to stay consistent.',
   title:'Tired every afternoon? Start by looking at your daily rhythm',
   description:'A simple sleep-and-energy review for a busy life: notice your schedule, protect time for sleep and know when to seek medical help.',
   image:'robin-founder-card.jpg',takeaway:'Look for patterns in your routine. Do not use a lifestyle checklist to diagnose the cause of fatigue.',

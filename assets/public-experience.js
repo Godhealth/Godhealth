@@ -3,9 +3,8 @@
   const root = document.querySelector('.gh-experience');
   if (!root) return;
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  const progress = root.querySelector('[data-ge-progress]');
   const photos = Array.from(root.querySelectorAll('[data-ge-parallax] img'));
-  const selectors = '.gw-heading,.gw-focus-card,.gw-foundations article,.gw-offer-list>li,.gh-scripture,.gw-offer-aside figure,.gc-heading,.gc-support-grid article,.gc-lifestyle-grid article,.gc-steps article';
+  const selectors = '.gw-heading,.gw-focus-card,.gw-foundations article,.gw-offer-list>li,.gh-scripture,.gw-offer-aside figure,.gc-heading,.gc-support-grid article,.gc-lifestyle-grid article,.gc-steps article,.gh-section-heading,.gh-resource-card,.gh-route-card,.gh-timeline article,.gh-full-story,.gh-guide-coaching';
   const targets = Array.from(root.querySelectorAll(selectors));
   let observer;
   if ('IntersectionObserver' in window && !motion.matches) {
@@ -28,8 +27,6 @@
   let scheduled = false;
   const paint = () => {
     scheduled = false;
-    const height = document.documentElement.scrollHeight - innerHeight;
-    if (progress) progress.style.transform = `scaleX(${height > 0 ? Math.max(0, Math.min(1, scrollY / height)) : 0})`;
     photos.forEach((image) => {
       if (motion.matches || innerWidth < 900) { image.style.removeProperty('object-position'); return; }
       const rect = image.parentElement.getBoundingClientRect();
