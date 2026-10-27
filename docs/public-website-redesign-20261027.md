@@ -23,7 +23,7 @@ Heuristic path classification (mutually exclusive, based on URL names):
 | Thank-you, follow-up and pre-call pages | 36 |
 | Other brand, product, media, resource and utility URLs | 203 |
 
-The core homepage, founder biography, team/firm page, roadmap opt-in, training hub and workshop offer were read directly. Founder-page desktop layout and live navigation were inspected in the browser. Not all 611 pages were individually reviewed.
+The core homepage, founder biography, team/firm page, roadmap opt-in, training hub, workshop offer, books, media, partner application and careers pages were read directly. Founder-page desktop layout and live navigation were inspected in the browser. Not all 611 pages were individually reviewed.
 
 ### Transferable structure, not copied content
 
@@ -120,3 +120,19 @@ Generated HTML is committed so the existing static Vercel project does not need 
 - Browser error review found extension-origin metadata messages, not public-site JavaScript errors.
 
 Responsive checks use actual narrow browser iframe viewports, not physical iPhones. No real lead was submitted, appointment booked, payment made or production client data written during QA.
+
+## Production read-back
+
+Public release commit: `c3db98e8f2c9f0a4d2d070ddc83b0f9d26cac96c`.
+Vercel production deployment: `dpl_u9diPP5hH76vWws6cTWA9vRKB7MG`, project `godhealth`, state `READY`, existing domains `www.godhealth.org` and `godhealth.org`.
+
+- All 15 public marketing pages returned HTTP 200 on the real custom domain.
+- Existing scan, client and coach-dashboard routes returned HTTP 200.
+- Public CSS, JS, logo and the new font file returned HTTP 200; a nonexistent page correctly returned HTTP 404.
+- Browser confirmed the new homepage, followed its primary link to `/coaching`, read the live investment block and opened the existing Calendly destination.
+- Calendly displayed the correct free 30-minute strategy call with available dates. No appointment was made.
+- Final live homepage screenshot: `godhealth-home-live-20261027.jpg`.
+
+The authenticated Vercel preview fetch was not used because that tool would create temporary share access. No protection settings were changed. QA used the local browser preview, verified build/source checks and the authorized public production release instead.
+
+No Search Console submission, indexing confirmation, new analytics installation, purchase or end-to-end automation execution is claimed by this release.
