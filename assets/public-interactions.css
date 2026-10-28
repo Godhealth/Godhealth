@@ -68,6 +68,7 @@
 
 /* The logo's dominant gold is #b8944f; all gold typography uses that exact color. */
 :root{--gh-logo-gold:#b8944f;--gh-gold:#b8944f;--gh-gold-ink:#b8944f;--gh-button:#b8944f}
+.gh-site .gh-button,.gh-site button{font-weight:700!important}
 .gh-site em,.gw-hero h1 span,.gh-warm-home .gw-method .gh-kicker,.gw-footer .gh-brand small,.gw-method .gh-scripture figcaption,.gc-method .gh-kicker,.gc-foundations .gc-number,.gc-end .gh-kicker,.gh-mindset-stat,.gh-pricing-card .gh-card-tag,.gh-pricing-card .gh-price,.ge-video-panel>strong,.ge-whatsapp-label,.gh-site .ge-whatsapp-panel h2>span,.gh-site .ge-cookie-banner h2,.ge-cookie-copy a,.ge-cookie-copy button,.ge-cookie-dialog .ge-always-on,.ge-cookie-dialog .ge-cookie-policy{color:#b8944f!important}
 
 /* Wide black-and-gold privacy notice, following the requested visual reference. */
