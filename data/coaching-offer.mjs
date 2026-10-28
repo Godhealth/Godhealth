@@ -3,7 +3,8 @@
 export const transformationPlan = 'Your personalized 12-week transformation lifestyle plan';
 export const nutritionPlan = 'Personalized Biblical and science-based nutrition plan';
 export const trainingPlan = 'Personalized fat loss and muscle-building training plan for your busy schedule';
-export const promotionSummary = 'Normally $350 USD, now $250 USD for your first 30 days. Offer valid through December 31, 2026.';
+export const limitedPlaces = 'Limited to 10 clients per GodHealth coaching journey. One-to-one coaching, with maximum personal attention for each client.';
+export const promotionSummary = 'Normally $350 USD, now $250 USD for your first 30 days. Offer valid through December 31, 2026. ' + limitedPlaces;
 export const recipePacks = [
   ['Smoothie',30], ['Gluten-Free',45], ['5-Ingredient',40], ['Low-Carb',40],
   ['Vegan',40], ['High-Protein',52], ['Vegetarian',58],
@@ -19,6 +20,7 @@ export function nutritionBundleDetails() {
 export function firstMonthOffer(call) {
   return `<article class="ge-start-card ge-start-card-wide" aria-label="Your first 30 days of personal coaching" data-offer-valid-through="2026-12-31">
 <div class="ge-promotion-banner"><strong>YOUR FIRST 30 DAYS · SPECIAL OFFER</strong><span>Valid through <time datetime="2026-12-31">December 31, 2026</time></span></div>
+<p class="ge-capacity-note"><strong>10 limited spots per GodHealth coaching journey.</strong><span>Because this is one-to-one coaching, we keep each journey small to give every client maximum personal attention.</span></p>
 <div class="ge-price-copy">
 <span class="ge-offer-label">PERSONAL ONLINE COACHING</span>
 <h3>Your first <span>30 days.</span></h3>

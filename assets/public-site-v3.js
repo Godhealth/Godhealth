@@ -19,37 +19,35 @@
       document.querySelectorAll('.gh-nav details[open]').forEach((item) => { item.open = false; });
     }
   });
-  document.querySelectorAll('[data-gh-video]').forEach((frame) => {
-    const video = frame.querySelector('video');
-    const launch = frame.querySelector('[data-gh-video-play]');
-    if (!video || !launch) return;
-    launch.addEventListener('click', async () => {
-      video.controls = true;
-      video.muted = false;
-      video.volume = 1;
-      try { await video.play(); launch.hidden = true; }
-      catch { launch.hidden = false; }
-    });
-    video.addEventListener('ended', () => { launch.hidden = false; });
-  });
-  // Carry campaign attribution to existing destinations. Never forward email, name or other PII.
+  // Optional marketing attribution is stored and forwarded only after consent.
   const allowed = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'fbclid', 'gclid'];
   const current = new URLSearchParams(window.location.search);
   const storeKey = 'godhealth_public_attribution_v1';
-  let saved = {};
-  try { saved = JSON.parse(sessionStorage.getItem(storeKey) || '{}'); } catch { saved = {}; }
-  allowed.forEach((key) => { if (current.has(key)) saved[key] = current.get(key).slice(0, 500); });
-  try { sessionStorage.setItem(storeKey, JSON.stringify(saved)); } catch { /* Storage may be disabled. */ }
-  document.querySelectorAll('a[data-gh-attribution]').forEach((link) => {
-    const destination = new URL(link.href);
-    if (!['www.godhealth.org', 'godhealth.org', 'blueprint.godhealth.org', 'sales.godhealth.org', 'calendly.com'].includes(destination.hostname)) return;
-    allowed.forEach((key) => { if (saved[key] && !destination.searchParams.has(key)) destination.searchParams.set(key, saved[key]); });
-    link.href = destination.href;
-  });
+  const attributionLinks = Array.from(document.querySelectorAll('a[data-gh-attribution]'));
+  const destinations = new Map(attributionLinks.map(link => [link, link.getAttribute('href')]));
+  const applyAttribution = () => {
+    const accepted = window.GodHealthConsent?.get().marketing === true;
+    let saved = {};
+    if (accepted) {
+      try { saved = JSON.parse(sessionStorage.getItem(storeKey) || '{}'); } catch { saved = {}; }
+      allowed.forEach(key => { if (current.has(key)) saved[key] = current.get(key).slice(0,500); });
+      try { sessionStorage.setItem(storeKey, JSON.stringify(saved)); } catch { /* Storage may be disabled. */ }
+    } else {
+      try { sessionStorage.removeItem(storeKey); } catch { /* Optional data stays unused. */ }
+    }
+    attributionLinks.forEach(link => {
+      const destination = new URL(destinations.get(link), location.href);
+      if (!['www.godhealth.org', 'godhealth.org', 'blueprint.godhealth.org', 'sales.godhealth.org', 'calendly.com'].includes(destination.hostname)) return;
+      if (accepted) allowed.forEach(key => { if (saved[key] && !destination.searchParams.has(key)) destination.searchParams.set(key, saved[key]); });
+      link.href = destination.href;
+    });
+  };
+  applyAttribution();
+  document.addEventListener('gh:consent-change', applyAttribution);
   // Use an already-installed analytics container, if any. No new pixel or duplicate Lead event.
   document.addEventListener('click', (event) => {
     const link = event.target.closest('a[data-gh-event]');
-    if (!link || !Array.isArray(window.dataLayer)) return;
+    if (!link || window.GodHealthConsent?.get().analytics !== true || !Array.isArray(window.dataLayer)) return;
     window.dataLayer.push({ event: link.dataset.ghEvent, gh_location: window.location.pathname, gh_destination: new URL(link.href).origin + new URL(link.href).pathname });
   });
 })();
