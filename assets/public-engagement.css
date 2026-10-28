@@ -52,7 +52,9 @@
 .ge-offer-phases strong{font-size:11px;color:#1a4430;line-height:1.7}
 .ge-offer-phases p{font-size:11px;line-height:1.8;margin-top:4px!important;color:#607050}
 .ge-start-card .gh-call-button{display:flex;width:100%;min-height:56px;padding:16px;font-size:11px;justify-content:center}
-.ge-start-card .ge-call-note{font-size:9px;text-align:center;margin-top:12px!important;color:#5c6b53;line-height:1.8}
+.ge-start-card .ge-call-note{display:block;width:100%;font-size:9px;text-align:left!important;margin:12px 0 0!important;color:#5c6b53;line-height:1.8}
+.gh-faq-more{margin-top:22px;font-size:12px;line-height:1.8;color:var(--gh-muted)}
+.gh-faq-more a{text-decoration:underline;text-underline-offset:3px}
 .ge-start-card .ge-price-terms{font-size:9px;line-height:1.9;color:#6a725f;margin-top:17px!important}
 .ge-coach-note{display:flex;align-items:center;gap:12px;margin-top:20px;padding:0 8px}
 .ge-coach-note>img{width:39px;height:39px;border-radius:50%;object-fit:cover}
