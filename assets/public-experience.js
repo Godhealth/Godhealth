@@ -4,7 +4,7 @@
   if (!root) return;
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const photos = Array.from(root.querySelectorAll('[data-ge-parallax] img'));
-  const selectors = '.gw-heading,.gw-focus-card,.gw-foundations article,.gw-offer-list>li,.gh-scripture,.ge-start-card,.gc-heading,.gc-foundations article,.gc-support-grid article,.gc-lifestyle-grid article,.gc-steps article,.gh-section-heading,.gh-resource-card,.gh-route-card,.gh-timeline article,.gh-full-story,.gh-guide-coaching';
+  const selectors = '.gw-heading,.gw-focus-card,.gw-foundations article,.gw-offer-list>li,.gh-scripture,.ge-start-card,.ge-schedule-card,.gc-personal-plans article,.gc-heading,.gc-foundations article,.gc-support-grid article,.gc-lifestyle-grid article,.gc-steps article,.gh-section-heading,.gh-resource-card,.gh-route-card,.gh-timeline article,.gh-full-story,.gh-guide-coaching';
   const targets = Array.from(root.querySelectorAll(selectors));
   let observer;
   if ('IntersectionObserver' in window && !motion.matches) {

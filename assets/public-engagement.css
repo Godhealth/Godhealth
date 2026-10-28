@@ -79,3 +79,49 @@
 @media(max-width:700px){.gh-site .gh-call-button{min-height:54px;font-size:11px;letter-spacing:.065em;padding:15px 20px;gap:17px}.gh-site .gh-header-actions>.gh-call-button{padding:11px 12px;font-size:9px;min-height:40px;letter-spacing:.035em}.gw-offer-grid{grid-template-columns:1fr;gap:28px}.gw-offer-aside{position:static}.ge-start-card{padding:25px}.ge-start-card .ge-price{margin-top:16px}.gh-site .ge-start-card h3{font-size:27px}.ge-price>strong{font-size:70px}.ge-price-intro{font-size:13px}.ge-offer-phases strong{font-size:12px}.ge-offer-phases p{font-size:12px}.ge-start-card .ge-price-terms{font-size:10px}.ge-start-card .ge-call-note{font-size:10px}.ge-coach-note{margin-top:17px}.gw-offer-list{gap:14px}.gw-offer-list>li{padding:23px 20px;grid-template-columns:28px 1fr;gap:12px}.gw-offer-list h3{font-size:19px}.gw-offer-list .gw-frequency{font-size:7px;letter-spacing:.04em;max-width:100%}.gw-method .gw-foundations article{padding:23px}.gw-method .gw-foundations h3{font-size:21px}.gw-heading::after,.gc-heading::after,.gh-section-heading::after{margin-top:18px;width:50px}.ge-start-card .gh-call-button{min-height:54px}.gw-focus-copy>span{font-size:7px;padding:3px 6px}}
 @media(max-width:350px){.ge-start-card{padding:21px}.ge-price>strong{font-size:63px}.gw-offer-list>li{padding:21px 15px;gap:10px}.gw-offer-list h3{font-size:18px}.gw-offer-list .gw-frequency{font-size:6px}}
 @media(prefers-reduced-motion:reduce){.gh-site .gh-call-button,.gh-site .gh-call-button::before,.gh-site .gh-call-button>svg,.gw-hero-copy>h1,.gw-intro,.gh-faq details[open]>div,.gw-plan-details[open]>div{animation:none!important}.gh-site .ge-reveal,.gh-site .ge-reveal.ge-visible{transform:none!important;transition:none!important}.gh-site .gh-call-button:hover,.gh-site .gh-call-button:focus-visible,.gw-focus-card:hover{transform:none}.gw-heading::after,.gc-heading::after,.gh-section-heading::after,.gw-offer-list>li,.gw-offer-number,.gw-method .gw-foundations article{transition:none!important}}
+/* Personal support first. The investment follows the complete offer in document order. */
+.ge-schedule-card{border:1px solid #d5dfcc;border-radius:10px;overflow:hidden;background:#edf2e7}
+.ge-schedule-card>img{width:100%;height:210px;object-fit:cover;object-position:50% 25%}
+.ge-schedule-card>div{padding:27px}
+.gh-site .ge-schedule-card h3{font-size:29px;line-height:1.25;letter-spacing:-.04em;margin-top:18px}
+.ge-schedule-card h3>span{color:#8b6b2c}
+.ge-schedule-card p{font-size:12px;line-height:1.9;margin-top:17px}
+.ge-schedule-card ul{list-style:none;padding:0;margin-top:22px;display:grid;gap:0}
+.ge-schedule-card li{padding:14px 0;border-top:1px solid #d5dfcc}
+.ge-schedule-card li>strong{display:block;font-size:11px;color:#2b4e32}
+.ge-schedule-card li>span{display:block;font-size:11px;line-height:1.85;color:#607153;margin-top:5px}
+.ge-schedule-card .ge-schedule-close{border-top:1px solid #d5dfcc;padding-top:17px;font-size:11px;margin-top:0;color:#315238}
+.ge-bundle-details{margin-top:18px}
+.ge-bundle-details summary{cursor:pointer;font-size:11px;font-weight:800;color:#806329;line-height:1.9;text-underline-offset:4px}
+.ge-bundle-details summary:hover{text-decoration:underline}
+.ge-bundle-contents{display:grid;grid-template-columns:1fr 1.2fr;gap:23px;padding:22px;background:#f1f4e9;border:1px solid #dfe6d4;border-radius:6px;margin-top:15px}
+.ge-bundle-contents h4{font-size:11px;line-height:1.7;color:#264c34;margin:0 0 12px}
+.ge-bundle-contents ul{padding-left:16px;display:grid;gap:7px}
+.ge-bundle-contents li{font-size:10px;line-height:1.85;color:#586b4c}
+.ge-bundle-details[open]>.ge-bundle-contents{animation:geDetailsArrival .3s ease both}
+.gc-bundle{background:#f3f5ec}.gc-bundle .ge-bundle-contents{background:#fff;grid-template-columns:1fr 1fr;gap:35px;padding:30px}
+.gc-bundle .ge-bundle-details summary{font-size:13px}
+.gc-bundle .ge-bundle-contents h4{font-size:13px}.gc-bundle .ge-bundle-contents li{font-size:12px}
+.gc-personal-plans{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.gc-personal-plans article{background:#fff;border:1px solid #dce4d4;border-radius:8px;padding:30px}
+.gc-personal-plans h3{font-size:25px;line-height:1.35;letter-spacing:-.025em;margin-top:12px}
+.gc-personal-plans p{font-size:14px;line-height:1.9;margin-top:16px}
+.ge-offer-investment{margin:44px auto 0;max-width:1040px;scroll-margin-top:105px}
+.ge-start-card.ge-start-card-wide{display:grid;grid-template-columns:1fr 1fr;gap:27px 50px;padding:32px}
+.ge-promotion-banner{grid-column:1/-1;margin:-32px -32px 0;padding:17px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;background:#103f2e;color:#f9f4e4;line-height:1.8}
+.ge-promotion-banner>strong{font-size:9px;letter-spacing:.08em}
+.ge-promotion-banner>span{font-size:12px;color:#e7cf92}
+.ge-promotion-banner time{font-weight:800;white-space:nowrap}
+.ge-price-copy,.ge-price-decision{min-width:0}
+.ge-start-card-wide .ge-regular-price{display:flex;align-items:baseline;gap:7px;margin-top:23px;color:#707764;font-size:12px;line-height:1.6}
+.ge-regular-price s{font-size:25px;font-weight:600;text-decoration-thickness:1.5px;text-decoration-color:#8a7c5b}
+.ge-start-card-wide .ge-price{margin-top:2px}
+.ge-start-card-wide .ge-price-intro{max-width:400px}
+.ge-start-card-wide .ge-offer-phases{margin:0 0 24px!important;border-top:0}
+.ge-start-card-wide .ge-offer-phases>li:first-child{padding-top:0}
+.ge-start-card-wide .ge-price-terms{font-size:10px;line-height:1.9}
+.ge-start-card-wide .ge-call-note{font-size:10px}
+.ge-start-card-wide .gh-call-button{min-height:58px}
+@media(max-width:1000px){.ge-bundle-contents{grid-template-columns:1fr}.ge-start-card.ge-start-card-wide{gap:25px 32px}.ge-schedule-card>div{padding:23px}.gh-site .ge-schedule-card h3{font-size:26px}.ge-schedule-card>img{height:180px}}
+@media(max-width:700px){.ge-schedule-card>img{height:160px}.ge-schedule-card>div{padding:24px}.gh-site .ge-schedule-card h3{font-size:27px}.ge-schedule-card li>strong,.ge-schedule-card li>span{font-size:12px}.gc-personal-plans{grid-template-columns:1fr;gap:18px}.gc-personal-plans article{padding:25px}.gc-personal-plans h3{font-size:23px}.gc-personal-plans p{font-size:13px}.ge-bundle-contents{padding:18px;gap:22px}.ge-bundle-contents h4{font-size:11px}.ge-bundle-contents li{font-size:11px}.gc-bundle .ge-bundle-contents{grid-template-columns:1fr;padding:23px;gap:25px}.ge-offer-investment{margin-top:30px}.ge-start-card.ge-start-card-wide{grid-template-columns:1fr;gap:25px;padding:25px}.ge-promotion-banner{margin:-25px -25px 0;display:block;padding:17px 19px;text-align:center}.ge-promotion-banner>strong{display:block;font-size:8px}.ge-promotion-banner>span{display:block;margin-top:5px;font-size:12px}.ge-start-card-wide .ge-regular-price{margin-top:19px}.ge-start-card-wide .ge-price-intro{font-size:12px}.ge-start-card-wide .ge-offer-phases{margin-bottom:23px!important}.ge-start-card-wide .ge-offer-phases>li:first-child{border-top:1px solid #dce4d4;padding-top:20px}.ge-start-card-wide .ge-price-terms{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.ge-bundle-details[open]>.ge-bundle-contents{animation:none!important}}
