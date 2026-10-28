@@ -1,0 +1,81 @@
+/* GodHealth sales-page CTA language, adapted to the existing public website. */
+.gh-site .gh-call-button{position:relative;isolation:isolate;overflow:hidden;min-height:60px;padding:17px 28px;border:1px solid rgba(255,255,255,.62);border-radius:2px;background:#b8944f;color:#061711;box-shadow:0 0 0 1px rgba(184,148,79,.35),0 16px 42px rgba(184,148,79,.28);font-size:12px;font-weight:800;letter-spacing:.085em;text-transform:uppercase;gap:22px;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.gh-site .gh-call-button::before{content:"";position:absolute;z-index:-1;top:-50%;bottom:-50%;left:-55%;width:34%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);animation:geButtonShine 3.2s ease-in-out infinite;animation-play-state:paused;pointer-events:none}
+.gh-site .gh-call-button.ge-action-visible::before{animation-play-state:running}
+.gh-site .gh-call-button.ge-action-visible{animation:gePurchasePulse 3.8s ease-in-out infinite}
+.gh-site .gh-call-button.ge-action-visible>svg{animation:geArrowInvite 1.8s ease-in-out infinite}
+.gh-site .gh-call-button:hover,.gh-site .gh-call-button:focus-visible{background:#b8944f;color:#061711;transform:translateY(-3px) scale(1.02);box-shadow:0 0 0 3px rgba(184,148,79,.24),0 22px 55px rgba(184,148,79,.4);animation:none}
+.gh-site .gh-call-button:focus-visible{outline:2px solid #0f3d2e;outline-offset:4px}
+.gh-site .gh-call-button:active{transform:translateY(0) scale(.985)}
+.gh-site .gh-header-actions>.gh-call-button{min-height:42px;padding:12px 18px;font-size:10px;letter-spacing:.065em;box-shadow:0 0 0 1px #b8944f33,0 7px 20px #b8944f30}
+.gh-site .gh-sticky .gh-call-button{min-height:44px;padding:11px 15px;font-size:10px;gap:12px}
+.ge-accent{color:#94702a}
+.gw-hero{background:radial-gradient(ellipse at 88% 14%,#e8eddc 0,transparent 54%),linear-gradient(120deg,#f7f5ec,#f1f4e9)}
+.gw-hero-copy>h1{animation:geHeroArrival .8s cubic-bezier(.22,.61,.36,1) both}
+.gw-intro{animation:geHeroArrival 1s cubic-bezier(.22,.61,.36,1) both}
+.gh-site .gh-reveal{animation:none}
+.gh-site .ge-reveal{opacity:1;transform:translateY(25px);transition:transform .8s cubic-bezier(.22,.61,.36,1) var(--ge-delay,0ms)}
+.gh-site .ge-reveal.ge-visible,.gh-site .ge-reveal:focus-within{transform:none}
+.gw-heading::after,.gc-heading::after,.gh-section-heading::after{content:"";display:block;width:64px;height:2px;background:#b8944f;margin-top:22px;transform-origin:left;transition:transform .9s cubic-bezier(.22,.61,.36,1) .15s}
+.ge-reveal.gw-heading::after,.ge-reveal.gc-heading::after,.ge-reveal.gh-section-heading::after{transform:scaleX(.15)}
+.ge-reveal.ge-visible.gw-heading::after,.ge-reveal.ge-visible.gc-heading::after,.ge-reveal.ge-visible.gh-section-heading::after{transform:scaleX(1)}
+.gw-focus-card{transition:box-shadow .35s ease,border-color .35s ease,transform .55s cubic-bezier(.22,.61,.36,1)}
+.gw-focus-card:hover{border-color:#baa568;box-shadow:0 16px 35px #173e2c0c;transform:translateY(-4px)}
+.gw-focus-card:nth-child(2){background:#f8f3e6}.gw-focus-card:nth-child(3){background:#edf3e7}.gw-focus-card:nth-child(4){background:#edf1ed}
+.gw-focus-copy h3{color:#163f2c}.gw-focus-copy>span{display:inline-block;padding:4px 8px;border-radius:3px;background:#e3e9da;letter-spacing:.09em}
+.gw-focus-card:nth-child(2) .gw-focus-copy>span{background:#eee2bd;color:#73571f}
+.gw-focus-card:nth-child(3) .gw-focus-copy>span{background:#dce8d1;color:#375b32}
+.gw-focus-card:nth-child(4) .gw-focus-copy>span{background:#dce6df;color:#355344}
+.gw-method .gw-foundations{gap:20px}
+.gw-method .gw-foundations article{border:1px solid #e3d2a336;background:#ffffff07;border-radius:8px;padding:25px;transition:background .35s ease,border-color .35s ease}
+.gw-method .gw-foundations article:hover{background:#ffffff0e;border-color:#e3d2a378}
+.gw-method .gw-foundations article>span{display:grid;place-items:center;width:33px;height:33px;border:1px solid #d9bd704d;background:#e3d2a30a;border-radius:50%}
+.gw-method .gw-foundations h3{font-size:21px}.gw-method .gw-foundations p{font-size:13px}
+.gw-offer{background:linear-gradient(180deg,#f9faf5,#f2f5ec)}
+.gw-offer-grid{grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr);gap:44px}
+.gw-offer-aside{top:100px}
+.ge-start-card{background:#fffdf7;border:1px solid #c6ad72;border-radius:10px;padding:30px;box-shadow:0 12px 40px #163d2c09;overflow:hidden}
+.ge-offer-label{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.11em;color:#816126;background:#f1e8cd;padding:6px 9px;border-radius:3px}
+.gh-site .ge-start-card h3{font-size:27px;line-height:1.3;letter-spacing:-.035em;margin-top:20px;color:#193e2b}
+.ge-start-card h3>span{color:#8e6b25}
+.ge-start-card .ge-price{display:flex;gap:14px;align-items:center;margin:16px 0 0;color:#173d2b}
+.ge-price>strong{font-size:72px;line-height:1.05;font-weight:800;letter-spacing:-.07em}
+.ge-price>span{font-size:11px;font-weight:800;line-height:1.7;max-width:120px}
+.ge-price small{display:block;font-size:10px;font-weight:500;color:#6c735f}
+.ge-price-intro{font-size:13px;line-height:1.85;margin-top:17px!important;color:#526249}
+.ge-price-intro strong{color:#1b4831;font-weight:800}
+.ge-offer-phases{list-style:none!important;display:grid;gap:0;padding:0!important;margin:22px 0 25px!important;border-top:1px solid #dce4d4;border-bottom:1px solid #dce4d4}
+.ge-offer-phases>li{display:grid;grid-template-columns:25px 1fr;gap:11px;padding:17px 0}
+.ge-offer-phases>li+li{border-top:1px solid #e3e8da}
+.ge-offer-phases>li>span{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#e3eadc;color:#3d5a34;font-size:9px;font-weight:800}
+.ge-offer-phases>li:last-child>span{background:#efe4c5;color:#856528}
+.ge-offer-phases strong{font-size:11px;color:#1a4430;line-height:1.7}
+.ge-offer-phases p{font-size:11px;line-height:1.8;margin-top:4px!important;color:#607050}
+.ge-start-card .gh-call-button{display:flex;width:100%;min-height:56px;padding:16px;font-size:11px;justify-content:center}
+.ge-start-card .ge-call-note{font-size:9px;text-align:center;margin-top:12px!important;color:#5c6b53;line-height:1.8}
+.ge-start-card .ge-price-terms{font-size:9px;line-height:1.9;color:#6a725f;margin-top:17px!important}
+.ge-coach-note{display:flex;align-items:center;gap:12px;margin-top:20px;padding:0 8px}
+.ge-coach-note>img{width:39px;height:39px;border-radius:50%;object-fit:cover}
+.ge-coach-note strong{display:block;font-size:11px;color:#355238}.ge-coach-note span{display:block;font-size:9px;color:#718163;margin-top:4px}
+.gw-offer-list{border:0;display:grid;gap:15px;min-width:0}
+.gw-offer-list>li{position:relative;border:1px solid #dce4d4;border-radius:8px;background:#ffffffb8;gap:17px;padding:25px;transition:border-color .4s ease,background .4s ease,box-shadow .4s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
+.gw-offer-list>li.ge-in-focus{border-color:#bba05f;background:#fffdf5;box-shadow:0 9px 28px #705c1f09}
+.gw-offer-list>li.ge-in-focus .gw-offer-number{background:#e9d9a7;border-color:#c7ad67;color:#684d1c}
+.gw-offer-number{transition:background .4s ease,border-color .4s ease}
+.gw-offer-list .gw-frequency{display:inline-block;background:#eef2e8;border-radius:3px;padding:4px 7px;color:#5c6f46;font-size:8px;line-height:1.7}
+.gw-offer-list>li:nth-child(even) .gw-frequency{background:#f2ead4;color:#87672d}
+.gw-offer-list p strong{font-weight:800;color:#2c5737}
+.gc-support-grid article,.gc-lifestyle-grid article{transition:box-shadow .35s ease,border-color .35s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
+.gc-support-grid article:hover,.gc-lifestyle-grid article:hover{border-color:#bea467;box-shadow:0 12px 30px #163d2c09}
+.gh-faq details[open]>div,.gw-plan-details[open]>div{animation:geDetailsArrival .3s ease both}
+.ge-page-inactive .gh-call-button,.ge-page-inactive .gh-call-button::before,.ge-page-inactive .gh-call-button>svg{animation-play-state:paused!important}
+@keyframes geButtonShine{0%,42%{left:-55%}68%,100%{left:125%}}
+@keyframes gePurchasePulse{0%,100%{box-shadow:0 0 0 0 #b8944f2b,0 12px 30px #b8944f2b}50%{box-shadow:0 0 0 6px #b8944f00,0 17px 38px #b8944f45}}
+@keyframes geArrowInvite{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@keyframes geHeroArrival{from{transform:translateY(15px)}to{transform:none}}
+@keyframes geDetailsArrival{from{transform:translateY(5px)}to{transform:none}}
+@media(max-width:1100px){.gw-offer-grid{gap:28px;grid-template-columns:minmax(270px,.85fr) minmax(0,1.15fr)}.ge-start-card{padding:25px}.gw-offer-list>li{padding:22px}.gw-method .gw-foundations article{padding:21px}.gw-method .gw-foundations h3{font-size:20px}}
+@media(max-width:900px){.gw-offer-grid{grid-template-columns:minmax(250px,.9fr) minmax(0,1.1fr);gap:22px}.ge-start-card{padding:22px}.ge-price>strong{font-size:64px}.gw-offer-list>li{padding:21px 18px;grid-template-columns:30px 1fr;gap:12px}.gw-offer-number{width:29px;height:29px}.gw-offer-list h3{font-size:18px}}
+@media(max-width:700px){.gh-site .gh-call-button{min-height:54px;font-size:11px;letter-spacing:.065em;padding:15px 20px;gap:17px}.gh-site .gh-header-actions>.gh-call-button{padding:11px 12px;font-size:9px;min-height:40px;letter-spacing:.035em}.gw-offer-grid{grid-template-columns:1fr;gap:28px}.gw-offer-aside{position:static}.ge-start-card{padding:25px}.ge-start-card .ge-price{margin-top:16px}.gh-site .ge-start-card h3{font-size:27px}.ge-price>strong{font-size:70px}.ge-price-intro{font-size:13px}.ge-offer-phases strong{font-size:12px}.ge-offer-phases p{font-size:12px}.ge-start-card .ge-price-terms{font-size:10px}.ge-start-card .ge-call-note{font-size:10px}.ge-coach-note{margin-top:17px}.gw-offer-list{gap:14px}.gw-offer-list>li{padding:23px 20px;grid-template-columns:28px 1fr;gap:12px}.gw-offer-list h3{font-size:19px}.gw-offer-list .gw-frequency{font-size:7px;letter-spacing:.04em;max-width:100%}.gw-method .gw-foundations article{padding:23px}.gw-method .gw-foundations h3{font-size:21px}.gw-heading::after,.gc-heading::after,.gh-section-heading::after{margin-top:18px;width:50px}.ge-start-card .gh-call-button{min-height:54px}.gw-focus-copy>span{font-size:7px;padding:3px 6px}}
+@media(max-width:350px){.ge-start-card{padding:21px}.ge-price>strong{font-size:63px}.gw-offer-list>li{padding:21px 15px;gap:10px}.gw-offer-list h3{font-size:18px}.gw-offer-list .gw-frequency{font-size:6px}}
+@media(prefers-reduced-motion:reduce){.gh-site .gh-call-button,.gh-site .gh-call-button::before,.gh-site .gh-call-button>svg,.gw-hero-copy>h1,.gw-intro,.gh-faq details[open]>div,.gw-plan-details[open]>div{animation:none!important}.gh-site .ge-reveal,.gh-site .ge-reveal.ge-visible{transform:none!important;transition:none!important}.gh-site .gh-call-button:hover,.gh-site .gh-call-button:focus-visible,.gw-focus-card:hover{transform:none}.gw-heading::after,.gc-heading::after,.gh-section-heading::after,.gw-offer-list>li,.gw-offer-number,.gw-method .gw-foundations article{transition:none!important}}
