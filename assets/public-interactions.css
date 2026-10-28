@@ -66,6 +66,10 @@
 @media(max-width:350px){.ge-video-panel{padding:9px;gap:4px}.ge-video-panel>svg{width:29px;height:29px}.ge-video-panel>span{font-size:11px}.ge-video-panel>strong{font-size:14px}.ge-preview-pause{font-size:6px}.ge-cookie-banner{padding:18px}.ge-cookie-actions>button{font-size:10px;padding:10px 8px}}
 @media(prefers-reduced-motion:reduce){.ge-whatsapp-fab{transition:none}.ge-whatsapp-fab:hover,.ge-whatsapp-fab:focus-visible{transform:none}}
 
+/* The logo's dominant gold is #b8944f; all gold typography uses that exact color. */
+:root{--gh-logo-gold:#b8944f;--gh-gold:#b8944f;--gh-gold-ink:#b8944f;--gh-button:#b8944f}
+.gh-site em,.gw-hero h1 span,.gh-warm-home .gw-method .gh-kicker,.gw-footer .gh-brand small,.gw-method .gh-scripture figcaption,.gc-method .gh-kicker,.gc-foundations .gc-number,.gc-end .gh-kicker,.gh-mindset-stat,.gh-pricing-card .gh-card-tag,.gh-pricing-card .gh-price,.ge-video-panel>strong,.ge-whatsapp-label,.gh-site .ge-whatsapp-panel h2>span,.gh-site .ge-cookie-banner h2,.ge-cookie-copy a,.ge-cookie-copy button,.ge-cookie-dialog .ge-always-on,.ge-cookie-dialog .ge-cookie-policy{color:#b8944f!important}
+
 /* Wide black-and-gold privacy notice, following the requested visual reference. */
 .ge-cookie-banner{left:50%;right:auto;bottom:18px;transform:translateX(-50%);width:min(1176px,calc(100vw - 180px));max-width:none;display:flex;align-items:center;gap:24px;padding:20px 22px 20px 26px;background:linear-gradient(115deg,#1d1d1d,#101010);border:1px solid #d4af374d;border-radius:16px;box-shadow:0 18px 55px #0006;color:#d5d5d5;overflow:hidden}
 .ge-cookie-banner::before{content:"";position:absolute;left:0;inset-block:0;width:4px;background:linear-gradient(#f4dc86,#b98d21)}
@@ -96,3 +100,5 @@
 .ge-cookie-dialog .ge-cookie-policy{color:#e6ce7c}
 @media(max-width:1100px){.ge-cookie-banner{width:calc(100vw - 180px);gap:17px;padding:18px 20px}.ge-cookie-banner>.ge-cookie-actions{flex-direction:column;gap:8px}.ge-cookie-banner .ge-cookie-actions>button{padding:11px 17px}}
 @media(max-width:700px){.ge-cookie-banner{left:12px;right:12px;bottom:88px;transform:none;width:auto;flex-direction:column;align-items:stretch;gap:16px;padding:19px 20px;border-radius:14px;max-height:calc(100dvh - 110px);overflow:auto}.gh-site .ge-cookie-banner h2{font-size:10px}.ge-cookie-copy>p{font-size:12px;line-height:1.8}.ge-cookie-banner>.ge-cookie-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ge-cookie-banner .ge-cookie-actions>button{font-size:11px;white-space:normal;padding:12px 9px;min-height:44px}}
+
+.gh-site .gh-announcement,.gh-site .gh-kicker,.gh-about-purpose,.gh-clarity h1>span,.gc-founder .gh-text-link,.gc-number,.gc-lifestyle-line span,.gc-method>.gh-container>.gh-text-link,.gc-frequency,.gw-problems article>span,.gw-foundations article>span,.gw-service-note span,.gw-frequency,.gw-story-quote,.gw-call .gw-heading h2 span,.gw-call-points li::before,.gw-call-card>div>span,.gh-footer .gh-footer-method,.gw-focus-copy>span,.gh-scripture figcaption,.ge-accent,.ge-offer-label,.ge-start-card h3>span,.ge-offer-phases>li:last-child>span,.gw-offer-list>li.ge-in-focus .gw-offer-number,.ge-schedule-card h3>span,.ge-bundle-details summary,.ge-promotion-banner>span,.gh-proof-strip strong,.gh-assessment-row span{color:#b8944f!important}
