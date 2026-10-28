@@ -7,7 +7,22 @@ export function warmHome({ button, photo, faq, testimonials, CALL, arrow, play }
   const head = (label, title, copy = '') => `<div class="gw-heading"><p class="gh-kicker">${label}</p><h2>${title}</h2>${copy ? `<p>${copy}</p>` : ''}</div>`;
   const escape = (value) => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
   const content = `
-<section class="gw-hero" id="top"><div class="gw-hero-stack"><div class="gw-hero-top"><div class="gh-container gw-hero-copy"><p class="gh-kicker">Biblical + science-based health coaching</p><h1><span class="gw-hero-audience">Busy Christians:</span><span class="gw-hero-outcome">Lose fat, regain energy and stay consistent for life.</span></h1></div></div><div class="gw-hero-video-stage"><div class="gh-container"><div class="gw-intro" id="meet-robin">${introVideo()}</div></div></div><div class="gw-hero-bottom"><div class="gh-container gw-hero-bottom-inner"><div class="gw-hero-action">${call()}</div><div class="gw-hero-rating" role="img" aria-label="5 out of 5 rating"><span aria-hidden="true">★★★★★</span><strong>5 rating</strong></div><div class="gw-hero-metrics"><strong>250+ coached</strong><span aria-hidden="true">·</span><strong>10 seats per program</strong></div><div class="gw-hero-message"><p class="gw-lead">Honor God with your body. Today—and for the years ahead.</p><p class="gw-hero-explain">Personal online coaching for busy Christians. Build a healthier body and lasting habits, with a lifestyle plan and daily support that fit your week.</p></div></div></div></div></section>
+<section class="gw-hero" id="top">
+  <div class="gw-hero-stack">
+    <div class="gw-hero-top"><div class="gh-container gw-hero-copy">
+      <p class="gh-kicker">Biblical + science-based health coaching</p>
+      <h1><span class="gw-hero-audience">Busy Christians:</span><span class="gw-hero-outcome">Lose fat, gain energy and stay consistent for life.</span></h1>
+    </div></div>
+    <div class="gw-hero-video-stage"><div class="gh-container"><div class="gw-intro" id="meet-robin">${introVideo()}</div></div></div>
+    <div class="gw-hero-bottom"><div class="gh-container gw-hero-bottom-inner">
+      <div class="gw-hero-action">${call()}</div>
+      <div class="gw-hero-rating" role="img" aria-label="5 out of 5 review rating"><span aria-hidden="true">★★★★★</span><strong>review rating</strong></div>
+      <div class="gw-hero-clients" role="group" aria-label="GodHealth clients">${testimonials.map(t=>photo(t.image,t.name,'',false,480,480)).join('')}</div>
+      <div class="gw-hero-metrics"><strong>250+ coached</strong><span aria-hidden="true">·</span><strong>10 seats per program</strong></div>
+      <div class="gw-hero-message"><p class="gw-lead">Honor God with your body. Today—and for the years ahead.</p><p class="gw-hero-explain">Personal online coaching for busy Christians. Build a healthier body and lasting habits, with a lifestyle plan and daily support that fit your week.</p></div>
+    </div></div>
+  </div>
+</section>
 ${credentialsStrip()}
 <section class="gw-scripture-strip"><div class="gh-container">${scripture('honor')}</div></section>
 <section class="gw-section" id="how-we-help"><div class="gh-container">${head('FOUR GOALS. ONE PERSONAL APPROACH.', 'Feel better today.<br>Build health you can keep.')}<div class="gw-focus-cards">${[

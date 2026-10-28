@@ -166,6 +166,8 @@
 .gw-hero-rating{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:24px;font-size:14px;line-height:1.4}
 .gw-hero-rating>span{color:#b8944f;font-size:18px;letter-spacing:3px}
 .gw-hero-rating>strong{font-size:13px;font-weight:700;color:#183d2d}
+.gw-hero-clients{display:flex;align-items:center;justify-content:center;margin-top:7px;padding-left:5px}
+.gw-hero-clients>img{display:block;width:24px;height:24px;margin-left:-5px;border:2px solid #f5f5ed;border-radius:50%;object-fit:cover;box-shadow:0 1px 3px #0f3d2e18}
 .gw-hero-metrics{display:flex;align-items:center;justify-content:center;gap:13px;margin-top:9px;color:#53635a;font-size:12px;line-height:1.5}
 .gw-hero-metrics strong{font-weight:600}
 .gw-hero-metrics>span{color:#b8944f;font-weight:800}

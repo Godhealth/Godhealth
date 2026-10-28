@@ -13,6 +13,7 @@
   let whatsappOpen = false;
   let previousFocus;
   let consent = null;
+  const updateCookieHeight = () => document.body.style.setProperty('--gh-cookie-height', `${banner && !banner.hidden ? banner.getBoundingClientRect().height : 0}px`);
   try {
     const raw = document.cookie.split('; ').find(item => item.startsWith(`${COOKIE}=`));
     const value = raw ? JSON.parse(decodeURIComponent(raw.slice(COOKIE.length + 1))) : null;
@@ -24,6 +25,7 @@
     if (analytics) analytics.checked = current().analytics;
     if (marketing) marketing.checked = current().marketing;
     document.body.dataset.ghCookieChoice = !consent ? 'undecided' : consent.analytics && consent.marketing ? 'accepted' : !consent.analytics && !consent.marketing ? 'rejected' : 'custom';
+    updateCookieHeight();
   };
   const setWhatsApp = (open, returnFocus = true) => {
     whatsappOpen = open;
@@ -61,5 +63,6 @@
   document.querySelector('[data-gh-whatsapp-close]')?.addEventListener('click', () => setWhatsApp(false));
   document.addEventListener('click', event => { if (whatsappOpen && !whatsapp?.contains(event.target)) setWhatsApp(false, false); });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && whatsappOpen) setWhatsApp(false); });
+  if (banner && 'ResizeObserver' in window) new ResizeObserver(updateCookieHeight).observe(banner);
   refresh();
 })();
