@@ -65,3 +65,34 @@
 @media(max-width:700px){.ge-credentials{padding:20px 0}.ge-credentials>.gh-container{grid-template-columns:1fr 1fr;gap:10px}.ge-credentials .gh-container>div{padding:13px 12px;min-height:72px}.ge-credentials .gh-container>div:last-child{grid-column:1/-1;justify-content:center;min-height:52px}.ge-credentials strong{font-size:10px;line-height:1.75}.ge-video-panel{width:78%;height:78%;gap:6px;padding:14px;box-shadow:0 0 0 6px #b8944f30,0 10px 30px #0003}.ge-video-panel>svg{width:36px;height:36px;margin-bottom:2px}.ge-video-panel>span{font-size:13px}.ge-video-panel>strong{font-size:17px}.ge-preview-pause{top:6px;right:6px;padding:4px 6px;font-size:7px}.ge-whatsapp{right:16px;bottom:16px;bottom:max(16px,env(safe-area-inset-bottom))}.ge-whatsapp-fab{width:57px;height:57px}.ge-whatsapp-fab>svg{width:33px;height:33px}.ge-whatsapp-panel{width:min(340px,calc(100vw - 32px));padding:25px;bottom:72px}.ge-cookie-banner{left:12px;right:12px;width:auto;max-width:none;bottom:88px;padding:21px}.gh-site .ge-cookie-banner h2{font-size:20px}.ge-cookie-banner>p{font-size:11px}.ge-cookie-dialog{padding:25px}.ge-cookie-dialog>p{font-size:12px}.ge-cookie-option{gap:18px;padding:17px 0}.ge-cookie-option p{font-size:11px}.ge-cookie-footer{font-size:11px}.ge-capacity-note{padding:15px}.ge-capacity-note>strong{font-size:12px}.ge-capacity-note>span{font-size:11px}}
 @media(max-width:350px){.ge-video-panel{padding:9px;gap:4px}.ge-video-panel>svg{width:29px;height:29px}.ge-video-panel>span{font-size:11px}.ge-video-panel>strong{font-size:14px}.ge-preview-pause{font-size:6px}.ge-cookie-banner{padding:18px}.ge-cookie-actions>button{font-size:10px;padding:10px 8px}}
 @media(prefers-reduced-motion:reduce){.ge-whatsapp-fab{transition:none}.ge-whatsapp-fab:hover,.ge-whatsapp-fab:focus-visible{transform:none}}
+
+/* Wide black-and-gold privacy notice, following the requested visual reference. */
+.ge-cookie-banner{left:50%;right:auto;bottom:18px;transform:translateX(-50%);width:min(1176px,calc(100vw - 180px));max-width:none;display:flex;align-items:center;gap:24px;padding:20px 22px 20px 26px;background:linear-gradient(115deg,#1d1d1d,#101010);border:1px solid #d4af374d;border-radius:16px;box-shadow:0 18px 55px #0006;color:#d5d5d5;overflow:hidden}
+.ge-cookie-banner::before{content:"";position:absolute;left:0;inset-block:0;width:4px;background:linear-gradient(#f4dc86,#b98d21)}
+.ge-cookie-copy{flex:1;min-width:0}
+.gh-site .ge-cookie-banner h2{font-size:11px;line-height:1.5;letter-spacing:.12em;font-weight:800;text-transform:uppercase;color:#dfbd52;margin:0 0 7px}
+.ge-cookie-copy>p{font-size:12.5px;line-height:1.8;color:#d5d5d5;margin:0}
+.ge-cookie-copy a,.ge-cookie-copy button{font:inherit;color:#e6ce7c;font-weight:700;text-decoration:underline;text-underline-offset:2px}
+.ge-cookie-copy button{padding:0;border:0;background:none;cursor:pointer}
+.ge-cookie-banner>.ge-cookie-actions{display:flex;flex-shrink:0;gap:10px;margin:0}
+.ge-cookie-banner .ge-cookie-actions>button{border:1px solid #ffffff33;background:#ffffff0b;border-radius:999px;color:#e4e4e4;font-size:12.5px;line-height:1.2;font-weight:800;padding:12px 20px;min-height:42px;white-space:nowrap;box-shadow:inset 0 1px 0 #ffffff0a}
+.ge-cookie-banner .ge-cookie-actions>[data-gh-cookie-accept]{background:linear-gradient(135deg,#f4dc86,#d4af37 48%,#b98d21);border-color:#f5df8df2;color:#080808;box-shadow:0 5px 22px #d4af3726,inset 0 1px 0 #fff5}
+.ge-cookie-banner .ge-cookie-actions>button:hover{filter:brightness(1.12)}
+.ge-cookie-banner button:focus-visible,.ge-cookie-banner a:focus-visible{outline:2px solid #f4dc86;outline-offset:4px}
+.ge-cookie-dialog{background:linear-gradient(125deg,#202020,#101010);border-color:#d4af3766;border-radius:16px;color:#eee;box-shadow:0 25px 100px #0008}
+.ge-cookie-dialog::backdrop{background:#0008}
+.gh-site .ge-cookie-dialog h2{color:#fff}
+.ge-cookie-dialog .ge-whatsapp-label{color:#dfbd52}
+.ge-cookie-dialog>p,.ge-cookie-dialog .ge-cookie-option p{color:#c8c8c8}
+.ge-cookie-dialog .ge-cookie-option{border-color:#ffffff24}
+.ge-cookie-dialog .ge-cookie-option strong{color:#f1f1f1}
+.ge-cookie-dialog .ge-cookie-option input{accent-color:#d4af37}
+.ge-cookie-dialog .ge-panel-close{background:#ffffff0a;border-color:#ffffff33;color:#eee}
+.ge-cookie-dialog .ge-always-on{background:#d4af371c;color:#e6ce7c}
+.ge-cookie-dialog .ge-cookie-actions>button{background:#ffffff0b;border-color:#ffffff40;color:#eee;border-radius:999px}
+.ge-cookie-dialog .ge-cookie-actions>button:hover{background:#ffffff1c}
+.ge-cookie-dialog .ge-cookie-save{border-color:#f5df8d;background:linear-gradient(135deg,#f4dc86,#d4af37 48%,#b98d21);color:#080808;border-radius:999px}
+.ge-cookie-dialog .ge-cookie-save:hover{filter:brightness(1.1)}
+.ge-cookie-dialog .ge-cookie-policy{color:#e6ce7c}
+@media(max-width:1100px){.ge-cookie-banner{width:calc(100vw - 180px);gap:17px;padding:18px 20px}.ge-cookie-banner>.ge-cookie-actions{flex-direction:column;gap:8px}.ge-cookie-banner .ge-cookie-actions>button{padding:11px 17px}}
+@media(max-width:700px){.ge-cookie-banner{left:12px;right:12px;bottom:88px;transform:none;width:auto;flex-direction:column;align-items:stretch;gap:16px;padding:19px 20px;border-radius:14px;max-height:calc(100dvh - 110px);overflow:auto}.gh-site .ge-cookie-banner h2{font-size:10px}.ge-cookie-copy>p{font-size:12px;line-height:1.8}.ge-cookie-banner>.ge-cookie-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ge-cookie-banner .ge-cookie-actions>button{font-size:11px;white-space:normal;padding:12px 9px;min-height:44px}}
