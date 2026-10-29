@@ -16,7 +16,7 @@ const CALL = 'https://calendly.com/godhealth-info/30min';
 const SCAN = '/kingdom-vitality-scan.html';
 const BLUEPRINT = 'https://blueprint.godhealth.org/';
 const BUNDLE = 'https://sales.godhealth.org/';
-const RELEASE = '20261029-google-forest';
+const RELEASE = '20261029-forest-everywhere';
 const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg>';
 const play = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4 12 8-12 8V4Z"/></svg>';
 const esc = (v) => String(v).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
