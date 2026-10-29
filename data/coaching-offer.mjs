@@ -1,5 +1,6 @@
 // Shared offer copy. The 12-week downloadable plan and the first 30 days of
 // coaching are distinct. Continuation remains the client's separate decision.
+import { googleRating } from './public-ui.mjs';
 export const transformationPlan = 'Your personalized 12-week transformation lifestyle plan';
 export const nutritionPlan = 'Personalized Biblical and science-based nutrition plan';
 export const trainingPlan = 'Personalized fat loss and muscle-building training plan for your busy schedule';
@@ -26,7 +27,7 @@ export function firstMonthOffer(call) {
 <h3>Your first <span>30 days.</span></h3>
 <p class="ge-regular-price">Normally <s>$350</s> USD</p>
 <p class="ge-price"><strong>$250</strong><span>USD<small>for the first 30 days</small></span></p>
-<p class="ge-price-intro">Your personalized plans, the full Nutrition Bundle and personal online support.<br><strong>Built around your real life.</strong></p></div>
+<p class="ge-price-intro">Your personalized plans, the full Nutrition Bundle and personal online support.<br><strong>Built around your real life.</strong></p>${googleRating()}</div>
 <div class="ge-price-decision"><ol class="ge-offer-phases"><li><span>01</span><div><strong>First 30 days · $250 USD</strong><p>Put your personal plan into practice with us.</p></div></li><li><span>02</span><div><strong>Next 60 days · Your choice</strong><p>Like the support? You decide whether to continue with us.</p></div></li></ol>
 ${call()}
 <p class="ge-call-note">Free 30-minute online call · No obligation</p>
