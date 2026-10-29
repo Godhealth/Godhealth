@@ -5,7 +5,7 @@
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const photos = Array.from(root.querySelectorAll('[data-ge-parallax] img'));
   const selectors = '.gw-heading,.gw-focus-card,.gw-foundations article,.gw-offer-list>li,.gh-scripture,.ge-start-card,.ge-schedule-card,.gc-personal-plans article,.gc-heading,.gc-foundations article,.gc-support-grid article,.gc-lifestyle-grid article,.gc-steps article,.gh-section-heading,.gh-resource-card,.gh-route-card,.gh-timeline article,.gh-full-story,.gh-guide-coaching,.gx-hero-stage,.gh-photo-grid figure,.gc-plan-path,.gc-coach-details article';
-  const targets = Array.from(root.querySelectorAll(selectors));
+  const targets = Array.from(root.querySelectorAll(selectors + ',.gv-heading,.gv-preview,.gv-outcomes>li'));
   let observer;
   if ('IntersectionObserver' in window && !motion.matches) {
     observer = new IntersectionObserver((entries) => {
