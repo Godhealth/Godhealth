@@ -48,7 +48,7 @@
   document.addEventListener('click', (event) => {
     const link = event.target.closest('a[data-gh-event]');
     if (!link || window.GodHealthConsent?.get().analytics !== true || !Array.isArray(window.dataLayer)) return;
-    window.dataLayer.push({ event: link.dataset.ghEvent, gh_location: window.location.pathname, gh_destination: new URL(link.href).origin + new URL(link.href).pathname });
+    window.dataLayer.push({ event: link.dataset.ghEvent, gh_location: window.location.pathname, gh_cta_label: link.textContent.trim(), gh_section: link.closest('section')?.id || (link.closest('header') ? 'header' : link.closest('footer') ? 'footer' : 'page'), gh_destination: new URL(link.href).origin + new URL(link.href).pathname });
   });
 })();
 // Subtle viewport reveals; content stays visible without JavaScript.

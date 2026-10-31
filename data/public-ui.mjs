@@ -1,3 +1,5 @@
+export const discoveryCallLabel = 'Book my free discovery call';
+export const usWelcome = () => '<p class="gs-us-welcome"><strong>U.S. Christians welcome.</strong> Online coaching in English. Session times confirmed in your time zone before you join.</p>';
 export const credentials = [
   'Certified Lifestyle Coach Level 4',
   'Dutch Hurdles Silver Medalist',

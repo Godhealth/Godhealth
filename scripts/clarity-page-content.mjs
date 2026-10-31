@@ -1,7 +1,8 @@
+import { audienceLinks } from './growth-pages.mjs';
 import { faqs, homeFaqs, methodFaqs } from '../data/public-site-content.mjs';
 import { scripture } from '../data/niv-scriptures.mjs';
 import { firstMonthOffer, transformationPlan, nutritionPlan, trainingPlan, nutritionBundleDetails, promotionSummary } from '../data/coaching-offer.mjs';
-import { credentialsStrip, reviewStars, googleRating } from '../data/public-ui.mjs';
+import { credentialsStrip, reviewStars, googleRating, usWelcome } from '../data/public-ui.mjs';
 import { publicHero, heroPhoto } from '../data/public-hero.mjs';
 // Short public-page copy. Keep service detail on coaching/method, not the homepage.
 export function clarityPages({ button, link, photo, faq, testimonials, CALL, BLUEPRINT }) {
@@ -18,7 +19,7 @@ export function clarityPages({ button, link, photo, faq, testimonials, CALL, BLU
   const quotes = () => `<div class="gc-quotes">${['valerie', 'milan', 'thomas'].map(id => {
     const t = testimonials.find(t => t.id === id);
     const quote = id === 'valerie' ? 'The afternoon energy crashes I used to struggle with completely disappeared after just a few weeks.' : id === 'milan' ? 'I finally have a stable, better eating pattern with the right nutrients.' : 'I feel fitter, more energetic, and have learned a lot about healthy nutrition as God intended.';
-    return `<figure>${reviewStars()}<blockquote>“${quote}”</blockquote><figcaption>${photo(t.image, t.name, '', false, 480, 480)}<div><strong>${t.name}</strong><span>GodHealth client</span></div></figcaption></figure>`;
+    return `<figure>${reviewStars()}<p class="gs-review-outcome">${t.outcome}</p><blockquote>“${quote}”</blockquote><figcaption>${photo(t.image, t.name, '', false, 480, 480)}<div><strong>${t.name}</strong><span>GodHealth client</span></div></figcaption></figure>`;
   }).join('')}</div>`;
   const stories = () => `<section class="gc-section gc-stories"><div class="gh-container">${sectionHead('THEIR WORDS', 'What clients say.')}${googleRating()}${quotes()}<div class="gc-section-end">${link('Read their full stories', '/client-stories')}<p class="gc-fine">Individual experiences. Results vary.</p></div></div></section>`;
   const end = () => `<section class="gc-section gc-end"><div class="gh-container"><p class="gh-kicker">YOUR NEXT STEP</p><h2>Let’s make healthy living<br>fit your life.</h2>${call()}<p>Free 30-minute online call. No obligation to join.</p></div></section>`;
@@ -29,6 +30,7 @@ export function clarityPages({ button, link, photo, faq, testimonials, CALL, BLU
     actions:`<div class="gx-call-wrap">${call()}<p>Free 30-minute online call · No obligation</p></div>`,
     meta:'<ul class="gc-hero-points"><li>100% online</li><li>Fully personalized</li><li>Built around your schedule</li></ul>',
     variant:'coaching',
+    notice:usWelcome(),
     visual:`<div class="gx-coach-visual"><figure>${photo('robin-founder-card.jpg','Robin Kramps, your GodHealth lifestyle coach','',true,900,732)}<figcaption><strong>Your coach, Robin Kramps.</strong><span>Dutch Hurdles Silver Medalist · Lifestyle Coach Level 4</span></figcaption></figure><div class="gx-coach-promise"><span class="gx-visual-eyebrow">BUILT AROUND YOU</span><h2>Your real life.<br><em>A plan that fits.</em></h2><div><span>01</span><p><strong>Your personal plan</strong>Lifestyle, nutrition and training.</p></div><div><span>02</span><p><strong>Your weekly support</strong>Private coaching and online PT.</p></div><div><span>03</span><p><strong>Your daily accountability</strong>Help following through.</p></div>${link('Meet Robin','/about-robin')}</div></div>`
   });
 
@@ -52,7 +54,7 @@ ${stories()}
     ['Mindset & discipline', 'Visualization, clear daily priorities, a busy-day backup and habits you can repeat.'],
     ['Faith & purpose', 'Body, soul and spirit. Build capacity for your family, work and calling.'],
   ];
-  const coaching = `${hero(true)}${proof()}
+  const coaching = `${hero(true)}${proof()}<div class="gh-container">${audienceLinks()}</div>
 <section class="gc-section gc-plan" id="your-plan"><div class="gh-container gc-plan-grid"><div>${sectionHead('1 · UNDERSTAND YOUR STARTING POINT', 'Your personalized 12-week<br>transformation lifestyle plan.', 'Complete your Kingdom Capacity Assessment. Generate your personal lifestyle PDF straight away—without waiting for your first coaching call.')}<p class="gc-small">Robin reviews your work hours, family commitments, time, ability, equipment and food preferences. Your plan is refined around the week you actually have—using Biblical principles and science-based guidance.</p><p class="gc-fine">Your PDF is an educational starting plan. Robin reviews and refines it with you. Answers that need professional review may limit recommendations.</p></div><div class="gc-plan-path"><div><span>01</span><p><strong>See your patterns.</strong>Understand what makes progress difficult.</p></div><div><span>02</span><p><strong>Download your roadmap.</strong>Your next 12 weeks, in one place.</p></div><div><span>03</span><p><strong>Make it yours.</strong>Personal lifestyle, nutrition and training plans refined with Robin.</p></div></div></div></section>
 <section class="gc-section gc-soft" id="personalized-plans"><div class="gh-container">${sectionHead('YOUR PERSONAL PLANS', 'Made for your week.<br><span class="ge-accent">Made to keep following.</span>', 'A realistic plan starts with your actual schedule and possibilities. Robin adapts the details, reviews what works and adjusts them with you.')}<div class="gc-personal-plans"><article><span class="gc-frequency">PERSONALIZED NUTRITION</span><h3>${nutritionPlan}</h3><p>God-created food, science-based nutrition guidance and practical portions. Matched to your goals, preferences, budget and daily routine.</p></article><article><span class="gc-frequency">HOME OR GYM</span><h3>${trainingPlan}</h3><p>Progressive training that fits your available time, equipment, starting ability and recovery. With a simpler option for busy days.</p></article></div></div></section>
 <section class="gc-section"><div class="gh-container">${sectionHead('2 · PUT IT INTO PRACTICE', 'Real people.<br>Personal support.')}<div class="gc-support-grid">${support.map(([frequency, title, copy]) => `<article><span class="gc-frequency">${frequency}</span><h3>${title}</h3><p>${copy}</p></article>`).join('')}</div><div class="gc-patricia"><strong>Meet Patricia</strong><p>Christian success mindset trainer and public speaker. She has spoken before <strong>15,000+ people at Ahoy Rotterdam.</strong> Your session with her is private and online.</p></div>${scripture('counsel')}</div></section>
