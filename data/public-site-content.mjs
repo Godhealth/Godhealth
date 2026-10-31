@@ -7,7 +7,7 @@ export const testimonials = [
   {id:'thomas', name:'Thomas R', image:'testimonial-thomas.jpg', title:'Great experience!', excerpt:'I feel fitter, more energetic, and have learned a lot about healthy nutrition as God intended.', text:'Since I started at GodHealth, I have made a lot of progress, both physically and in my lifestyle. I feel fitter, more energetic, and have learned a lot about healthy nutrition as God intended. I have also been able to gain a much deeper insight into the connection between mind and body. I can definitely recommend GodHealth to anyone who wants to live healthier and grow, both physically and spiritually.'}
 ];
 
-export const faqs = [
+const allFaqs = [
  ['Who is GodHealth coaching for?', 'Busy Christian men and women who want to lose excess fat, regain energy, stay strong as they age and finally stay consistent. We help you honor God with your body through simple routines that fit work, family and faith. Beginners are welcome.'],
  ['What makes this different from a workout app?', 'The Kingdom Capacity Method combines ancient Biblical principles, modern health science and elite athlete expertise. Robin reviews your actual schedule and options, then refines your personalized lifestyle, training and nutrition plans—including sleep, daily rhythm, movement, mindset and discipline. Weekly virtual coaching and PT, monthly mindset sessions and daily accountability help you follow through.'],
  ['What personalized plans do I receive?', 'Your personalized 12-week transformation lifestyle plan, a personalized Biblical and science-based nutrition plan, and a personalized fat loss and muscle-building training plan for your busy schedule. Robin reviews your actual work and family schedule, available time, equipment, preferences, budget and starting ability, then refines a plan you can keep following.'],
@@ -49,25 +49,28 @@ export const faqs = [
 
 // Shared answers keep the public FAQ sections consistent with the complete FAQ.
 const selectFaqs = (questions) => questions.map(q => {
- const entry = faqs.find(([title]) => title === q);
+ const entry = allFaqs.find(([title]) => title === q);
  if (!entry) throw new Error('Missing FAQ: ' + q);
  return entry;
 });
+export const faqs = selectFaqs([
+ 'Who is GodHealth coaching for?', 'What makes this different from a workout app?',
+ 'What personalized plans do I receive?', 'Is everything virtual?',
+ 'How much time will this take each week?', 'What is the starting investment?',
+ 'Will I have to follow an extreme diet or fast?', 'What happens on the free discovery call?'
+]);
 export const homeFaqs = selectFaqs([
- 'Who is GodHealth coaching for?', 'Can I start if I am unfit or have failed before?',
- 'What makes this different from a workout app?', 'What personalized plans do I receive?',
- 'How much time will this take each week?', 'Do I need a gym, equipment or a special setup?',
- 'Can I join from the United States?', 'Who provides the coaching?',
- 'What does daily accountability actually mean?', 'What happens immediately after the assessment?',
- 'What is the starting investment?', 'Do I have to continue after the first 30 days?',
- 'Will I have to follow an extreme diet or fast?', 'How soon will I see results, and how do we measure progress?',
- 'What happens on the free discovery call?', 'What if I still have a question before I book?'
+ 'Who is GodHealth coaching for?', 'What personalized plans do I receive?',
+ 'Is everything virtual?', 'How much time will this take each week?',
+ 'What is the starting investment?', 'What happens on the free discovery call?'
 ]);
 export const methodFaqs = selectFaqs([
  'What makes this different from a workout app?', 'What happens immediately after the assessment?',
- 'Is the method scientifically proven as a complete program?', 'How do you help me stay consistent?',
- 'How is Christian faith included in the coaching?', 'Will I have to follow an extreme diet or fast?',
- 'What if I have an injury, a health condition or persistent fatigue?', 'What if I still have a question before I book?'
+ 'How do you help me stay consistent?', 'Will I have to follow an extreme diet or fast?'
+]);
+export const startFaqs = selectFaqs([
+ 'Can I start without paying for coaching?', 'What happens on the free discovery call?',
+ 'Can I join from the United States?'
 ]);
 
 export const guides = [
