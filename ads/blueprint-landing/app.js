@@ -4,6 +4,8 @@
   const campaign = Object.fromEntries(keys.map(key => [key, params.get(key) || '']));
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({event:'blueprint_page_viewed', ...campaign});
+  // Carrying campaign details on to the next pages belongs to the "Advertising" choice of the cookie banner.
+  const marketingAllowed = () => { try { return !!(window.GodHealthConsent && window.GodHealthConsent.get().marketing === true); } catch (_) { return false; } };
   const form = document.getElementById('blueprint-form');
   const error = document.getElementById('form-error');
   const button = form.querySelector('button[type="submit"]');
@@ -37,7 +39,7 @@
       source: 'blueprint_ads',
       submitted_at: timestamp,
       referrer: document.referrer,
-      landing_page: location.href,
+      landing_page: window.GH_LANDING_URL || location.href,
       ...campaign
     };
 
@@ -53,9 +55,13 @@
       if (!response.ok) throw new Error('Lead registration failed');
 
       window.dataLayer.push({event:'blueprint_optin', contact_consent:false, ...campaign});
-      try { sessionStorage.setItem('godhealth_blueprint_campaign', JSON.stringify(campaign)); } catch (_) {}
+      // Report the sign-up to Google Analytics and Meta, only if the visitor allowed it
+      // (assets/gh-tracking.js). It answers within 0.6 s and can never block the redirect.
+      try { if (window.GHTrack) await window.GHTrack.lead({type:'blueprint', email, nextPage:true}); } catch (_) {}
+      // The campaign note is only kept, and only carried on to the next page, when the visitor allowed advertising cookies.
+      try { if (marketingAllowed()) sessionStorage.setItem('godhealth_blueprint_campaign', JSON.stringify(campaign)); } catch (_) {}
       const next = new URL('thank-you.html', location.href);
-      keys.forEach(key => { if (campaign[key]) next.searchParams.set(key, campaign[key]); });
+      if (marketingAllowed()) keys.forEach(key => { if (campaign[key]) next.searchParams.set(key, campaign[key]); });
       location.assign(next.href);
     } catch (_) {
       error.textContent = 'We could not send your details right now. Please try again.';

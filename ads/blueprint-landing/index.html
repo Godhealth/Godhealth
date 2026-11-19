@@ -9,7 +9,11 @@
   <link rel="icon" type="image/png" href="assets/godhealth-logo.png">
   <link rel="preload" as="image" href="assets/hero-scene.webp">
   <link rel="stylesheet" href="styles.css">
+  <!-- The address the visitor arrived on, for the lead record. Keep above the scripts below: gh-tracking.js tidies the address bar. -->
+  <script>window.GH_LANDING_URL = location.href;</script>
   <script defer src="assets/godhealth-config.js"></script>
+  <script defer src="assets/gh-consent.js?v=20261119-tracking"></script>
+  <script defer src="assets/gh-tracking.js?v=20261119-tracking" data-gh-site="blueprint"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
@@ -33,7 +37,7 @@
             <div class="field"><label for="email">Email address <span>*</span></label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required></div>
             <button class="button button-primary purchase-button" type="submit"><span>SEND MY FREE BLUEPRINT</span><span aria-hidden="true">→</span></button>
             <p class="form-error" id="form-error" role="alert" hidden></p>
-            <p class="form-fine">By submitting, you agree to the processing needed to deliver your Blueprint. Read our <a href="https://www.godhealth.org/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+            <p class="form-fine">By submitting, you agree to the processing needed to deliver your Blueprint. If you accepted advertising cookies, a scrambled (hashed) version of your email address is shared with Meta to measure our ads. Read our <a href="https://www.godhealth.org/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
             <div class="form-trust"><span>✓ Delivered by email</span><span>✓ No payment required</span></div>
           </form>
         </div>

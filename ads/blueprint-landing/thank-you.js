@@ -7,8 +7,11 @@
     stored = JSON.parse(sessionStorage.getItem('godhealth_blueprint_campaign') || '{}');
   } catch (_) {}
 
+  // Campaign details belong to the "Advertising" choice of the cookie banner: without it they are not carried on.
+  let allowed = false;
+  try { allowed = !!(window.GodHealthConsent && window.GodHealthConsent.get().marketing === true); } catch (_) {}
   const params = new URLSearchParams(window.location.search);
-  const campaign = Object.fromEntries(keys.map((key) => [key, params.get(key) || stored[key] || '']));
+  const campaign = Object.fromEntries(keys.map((key) => [key, allowed ? (params.get(key) || stored[key] || '') : '']));
   const ctas = [...document.querySelectorAll('#complete-system-cta, #sticky-system-cta, #bottom-system-cta')];
   if (!ctas.length) return;
 
