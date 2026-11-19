@@ -21,5 +21,6 @@
   form.addEventListener('submit', event => { event.preventDefault(); filter(); });
   input.addEventListener('input', filter);
   form.addEventListener('reset', () => { input.value = ''; filter(); });
+  form.hidden = false;
   filter();
 })();
