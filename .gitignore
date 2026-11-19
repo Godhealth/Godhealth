@@ -1,1 +1,8 @@
 supabase/.temp/
+
+# Local Vercel files and secrets. Never commit these.
+.vercel
+.env
+.env.*
+!.env.example
+node_modules/
